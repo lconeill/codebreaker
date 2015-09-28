@@ -19,7 +19,7 @@ public class SpawnTile : MonoBehaviour
         for (int j = 0; j <= 3; j++)
         {
             int i = Random.Range(0, tiles.Length);
-            GameObject clone = (GameObject) Instantiate(tiles[i], defaultPositions[j], Quaternion.identity);
+            GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[j], Quaternion.identity);
             clonedTiles[j] = clone;
         }
     }
@@ -42,8 +42,8 @@ public class SpawnTile : MonoBehaviour
                 int i = Random.Range(0, tiles.Length);
                 GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[n], Quaternion.identity);
                 clonedTiles[n] = clone;
-            } 
+            }
         }
-        
+
     }
 }
