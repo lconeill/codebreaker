@@ -12,7 +12,7 @@ public class CircularTimer : MonoBehaviour
     public SpawnTile moveTile;       // Reference to SpawnTile class so we can move tiles when timer is full
 
     public slotManager softPause;
-    private float accumulate = 0;
+    public float accumulate = 0;
 
     // Set timer to zero fill amount
     void Start()

@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{247FF158-3730-16A8-A504-48C9152FC2C0}</ProjectGuid>
+	<ProjectGuid>{81A3E39E-9DA4-0F74-D24A-4CCAFC48535E}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -54,7 +54,10 @@
      <Compile Include="Assets\Scripts\GUI\SetAudioLevels.cs" />
      <Compile Include="Assets\Scripts\GUI\ShowPanels.cs" />
      <Compile Include="Assets\Scripts\GUI\StartOptions.cs" />
+     <Compile Include="Assets\Scripts\RewardManager.cs" />
+     <Compile Include="Assets\Scripts\SlotGame.cs" />
      <Compile Include="Assets\Scripts\SpawnTile.cs" />
+     <Compile Include="Assets\Scripts\slotManager.cs" />
      <None Include="Assets\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Fonts\LuckiestGuy\LICENSE.txt" />
  <Reference Include="UnityEngine.UI">

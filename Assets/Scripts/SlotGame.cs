@@ -8,7 +8,8 @@ public class SlotGame : MonoBehaviour
     public int rotationSpeed = -200;    //Speed at which the slot reels rotate
     public GameObject slotButton;       //Button used to stop the wheel from rotating
     public int numOfIcons = 7;          //The number of icons on the slot reel
-    public String selectedIcon; 
+    public String selectedIcon;
+    public bool startRoll = false;      //Flag used to start rolling the reels
 
     private Vector3 rotation = Vector3.zero;    //The rotation vector of the slot reel
     private string[] reelIcon = new string[7] {"Bell","Fruit Gum","Lemon","Cherry1","Grape","Orange","Cherry2"};
@@ -21,7 +22,7 @@ public class SlotGame : MonoBehaviour
 
     public slotManager captureResult;
 
-    public bool startRoll = false;          //Flag used to start spinning the reels
+             //Flag used to start spinning the reels
     private bool stopRoll = false;          //Flag used to stop spinning the reels
     private float startRollLerp = 0;        
 
@@ -75,7 +76,7 @@ public class SlotGame : MonoBehaviour
         startRoll = true;
     }
 
-    // This should be called when the button is pressed
+    // This should be called when the button over the slot reel is pressed
     public void stopSpin()
     {
         continueRotation = false;
