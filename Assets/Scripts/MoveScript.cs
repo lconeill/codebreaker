@@ -13,9 +13,9 @@ public class MoveScript : MonoBehaviour
 	// the match area the tile will jump back to its
 	// starting point.
 	
-	public float horizontal_limit = 1.0f;
-	public float vertical_limit = 1.0f;
-	public float drag_speed = 0.01f;
+	private float horizontal_limit = 1.5f;
+	private float vertical_limit = 1.5f;
+	private float drag_speed = 0.01f;
 	
 	Transform cached_transform;
 	Vector3 starting_pos;
