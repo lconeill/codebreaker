@@ -14,10 +14,16 @@ public class CircularTimer : MonoBehaviour
     public slotManager softPause;
     public float accumulate = 0;
 
+    private float originalFillSpeed;
+    public float effectLasting = 1.5f;     // How long the effects last in seconds
+    private bool triggerEffect = false;
+    private float timeIncrement;
+
     // Set timer to zero fill amount
     void Start()
     {
         Reset();
+        originalFillSpeed = fillSpeed;
     }
 
     // Resets the timer
@@ -33,6 +39,13 @@ public class CircularTimer : MonoBehaviour
     {
         if (softPause.inMiniGame)
         {
+            if (triggerEffect)
+            {
+                timeIncrement += Time.deltaTime;
+                accumulate = circularTimer.fillAmount * fillSpeed;
+                increaseFillTime();
+            }
+
             accumulate += Time.deltaTime;
             circularTimer.fillAmount = accumulate/fillSpeed;
 
@@ -43,4 +56,22 @@ public class CircularTimer : MonoBehaviour
             }
         }
     }
+
+    public void increaseFillTime()
+    {
+        fillSpeed = 20;
+
+        triggerEffect = true;
+
+        if (timeIncrement / effectLasting >= 1)
+        {
+            triggerEffect = false;
+            float percentageFull = accumulate / fillSpeed;
+            accumulate = percentageFull * originalFillSpeed;
+            fillSpeed = originalFillSpeed;
+        }
+    }
+
 }
+
+  
