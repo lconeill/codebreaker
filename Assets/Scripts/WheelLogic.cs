@@ -12,11 +12,26 @@ public class WheelLogic : MonoBehaviour
 	
 	public GameObject circular_timer_ref;
 	
+	private GameObject move_script_ref;
+	
+	private MoveScript move_script;
+	
+	private GameObject score_display_ref;
+	
+	private ScoreLogic score_logic;
+	
 	private CircularTimer circular_timer_Script;
 
 	void Start () 
 	{
 		circular_timer_Script = circular_timer_ref.GetComponent<CircularTimer>();
+		
+		move_script_ref = GameObject.Find("Move_Ref");
+		move_script = move_script_ref.GetComponent<MoveScript>();
+		
+		score_display_ref = GameObject.Find("score_display");
+		score_logic = score_display_ref.GetComponent<ScoreLogic>();
+
 	}
 	
 	// This fucntion is called when a trigger collider enters this objects collider.
@@ -29,11 +44,17 @@ public class WheelLogic : MonoBehaviour
 
 			circular_timer_Script.moveTile.moveTiles();
 			circular_timer_Script.Reset();
+			move_script.is_touch_start = false;
+			
+			score_logic.the_score = score_logic.the_score + 50;
 		}
 		
 		else
 		{
 			Debug.Log("This is not a match!");
+			circular_timer_Script.moveTile.moveTiles();
+			circular_timer_Script.Reset();
+			move_script.is_touch_start = false;
 		}
 	}
 }

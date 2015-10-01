@@ -13,10 +13,16 @@ public class CircularTimer : MonoBehaviour
 
     public slotManager softPause;
     public float accumulate = 0;
-
+	
+	private GameObject move_script_ref;
+	private MoveScript move_script;
+	
     // Set timer to zero fill amount
     void Start()
     {
+		move_script_ref = GameObject.Find("Move_Ref");
+		move_script = move_script_ref.GetComponent<MoveScript>();
+		
         Reset();
     }
 
@@ -25,6 +31,7 @@ public class CircularTimer : MonoBehaviour
     {
         circularTimer.fillAmount = 0f;
         accumulate = 0;
+		move_script.is_touch_start = false;
     }
 
     // Fill the timer based on the time variable
