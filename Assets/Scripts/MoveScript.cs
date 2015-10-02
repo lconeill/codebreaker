@@ -13,9 +13,11 @@ public class MoveScript : MonoBehaviour
 	// the match area the tile will jump back to its
 	// starting point.
 	
-	private float horizontal_limit = 1.5f;
-	private float vertical_limit = 1.5f;
+	private float horizontal_limit = 2.0f;
+	private float vertical_limit = 2.0f;
 	private float drag_speed = 0.01f;
+	
+	public bool is_touch_start =false;
 	
 	Transform cached_transform;
 	Vector3 starting_pos;
@@ -48,13 +50,20 @@ public class MoveScript : MonoBehaviour
 			switch(Input.GetTouch (0).phase)
 			{
 				case TouchPhase.Began:
+					is_touch_start = true;
 					break;
 				
 				case TouchPhase.Moved:
-					DragObject (deltaPosition);
+				
+					if(is_touch_start == true)
+					{
+						DragObject (deltaPosition);
+					}
+					
 					break;
 				
 				case TouchPhase.Ended:
+					is_touch_start = false;
 					break;
 			}
 		}
