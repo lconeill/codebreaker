@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circularTimer: {fileID: 1897455125}
-  effectLasting: 1.5
+  effectLasting: 2
 --- !u!4 &1549242430
 Transform:
   m_ObjectHideFlags: 0
