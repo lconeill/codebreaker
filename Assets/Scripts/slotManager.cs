@@ -25,7 +25,7 @@ public class slotManager : MonoBehaviour
         if (count == 3)
         {
             getReward();
-            count++;
+            count = 0;
         }
     }
 
@@ -39,6 +39,7 @@ public class slotManager : MonoBehaviour
         {
             slotReels[i].enabled = activate;
             slotReels[i].GetComponent<Renderer>().enabled = activate;
+            slotReels[i].slotButton.GetComponent<Button>().interactable = false;
         }
 
         //if (activate)
@@ -76,5 +77,9 @@ public class slotManager : MonoBehaviour
         }
 
         activateSlotGame(false);
+        slotReels[0].resetReel();
+        slotReels[1].resetReel();
+        slotReels[2].resetReel();
+
     }
 }

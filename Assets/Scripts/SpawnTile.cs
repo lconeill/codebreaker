@@ -19,6 +19,7 @@ public class SpawnTile : MonoBehaviour
     
     void Update()
     {
+
     }
 
     public void initializeTiles()
