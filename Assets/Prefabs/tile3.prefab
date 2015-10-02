@@ -60,7 +60,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .720000029, y: .479999989}
+  m_Size: {x: .150000006, y: .150000006}
 --- !u!114 &11448562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967690e701978624d968885df64d9b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_touch_start: 0
 --- !u!114 &11456930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +152,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: .150000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: .150000006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

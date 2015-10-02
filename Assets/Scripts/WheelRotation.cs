@@ -3,6 +3,10 @@ using System.Collections;
 
 public class WheelRotation : MonoBehaviour 
 {
+	// This script is used for controlling the Wheels rotation logic.
+	// The variables to control the wheel are made publisc to let 
+	// us controll the speed and when to start or stop the spinning wheel.
+
 	private float startRollLerp = 0;
 	private Vector3 updateRotation = Vector3.zero;
 	private float stopSpeed = 5.5f;

@@ -13,8 +13,8 @@ public class MoveScript : MonoBehaviour
 	// the match area the tile will jump back to its
 	// starting point.
 	
-	private float horizontal_limit = 1.5f;
-	private float vertical_limit = 1.5f;
+	private float horizontal_limit = 2.0f;
+	private float vertical_limit = 2.0f;
 	private float drag_speed = 0.01f;
 	
 	public bool is_touch_start =false;

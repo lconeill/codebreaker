@@ -32,6 +32,7 @@ public class CircularTimer : MonoBehaviour
         circularTimer.fillAmount = 0f;
         accumulate = 0;
 		move_script.is_touch_start = false;
+		moveTile.moveTiles();
     }
 
     // Fill the timer based on the time variable
@@ -45,7 +46,6 @@ public class CircularTimer : MonoBehaviour
 
             if (circularTimer.fillAmount == 1)
             {
-                moveTile.moveTiles();
                 Reset();
             }
         }
