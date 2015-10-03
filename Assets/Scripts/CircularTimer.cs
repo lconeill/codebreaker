@@ -32,7 +32,7 @@ public class CircularTimer : MonoBehaviour
     // Move tiles and reset timer if timer is full
     void Update()
     {
-        if (slotManager.inMiniGame)
+        if (!slotManager.inMiniGame)
         {
             accumulate += Time.deltaTime;
 

@@ -16,7 +16,10 @@ public class WheelRotation : MonoBehaviour
 	public bool startRoll = false;
 	public bool continueRotation = false;
 	
-	// Use this for initialization
+	public int match_count = 0;
+    public int mismatched_count = 0;
+    
+    // Use this for initialization
 	void Start () 
 	{
 		rotation = transform.eulerAngles;

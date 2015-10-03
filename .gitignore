@@ -19,3 +19,7 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+Assembly-CSharp-vs.csproj
+Assembly-CSharp.csproj
+Assembly-CSharp-vs.csproj
+*.csproj
