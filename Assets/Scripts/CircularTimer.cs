@@ -11,43 +11,67 @@ public class CircularTimer : MonoBehaviour
     public float fillSpeed = 3f;     // How long the timer takes to fill in seconds
     public SpawnTile moveTile;       // Reference to SpawnTile class so we can move tiles when timer is full
 
-    public slotManager softPause;
-    public float accumulate = 0;
-	
-	private GameObject move_script_ref;
-	private MoveScript move_script;
-	
+    public slotManager slotManager;
+    private float accumulate = 0;
+
+    public bool increaseFillTime = false;
+    private float originalFillSpeed;
+    public float rewardFillSpeed = 20;
+    private float rewardEffectTime = 5f;
+    private float timeIncrement = 0;
+    private bool endFillTimeIncrease = false;
+
     // Set timer to zero fill amount
     void Start()
     {
-		move_script_ref = GameObject.Find("Move_Ref");
-		move_script = move_script_ref.GetComponent<MoveScript>();
-		
         Reset();
-    }
-
-    // Resets the timer
-    public void Reset()
-    {
-        circularTimer.fillAmount = 0f;
-        accumulate = 0;
-		move_script.is_touch_start = false;
-		moveTile.moveTiles();
+        originalFillSpeed = fillSpeed;
     }
 
     // Fill the timer based on the time variable
     // Move tiles and reset timer if timer is full
     void Update()
     {
-        if (softPause.inMiniGame)
+        if (slotManager.inMiniGame)
         {
             accumulate += Time.deltaTime;
+
+            if (increaseFillTime)
+            {
+                accumulate = accumulate * rewardFillSpeed/fillSpeed;
+                fillSpeed = rewardFillSpeed;
+                increaseFillTime = false;
+                endFillTimeIncrease = true;
+            }
+
             circularTimer.fillAmount = accumulate/fillSpeed;
 
-            if (circularTimer.fillAmount == 1)
+            if (endFillTimeIncrease)
             {
+                timeIncrement += Time.deltaTime;
+
+                if (timeIncrement / rewardEffectTime >= 1)
+                {
+                    endFillTimeIncrease = false;
+                    accumulate = accumulate * originalFillSpeed / rewardFillSpeed;
+                    fillSpeed = originalFillSpeed;
+                }
+            }
+           
+            if (circularTimer.fillAmount == 1)
+            {    
                 Reset();
             }
         }
     }
+
+    // Resets the timer
+    public void Reset()
+    {
+        moveTile.moveTiles();
+        circularTimer.fillAmount = 0f;
+        accumulate = 0;
+    }
 }
+
+  

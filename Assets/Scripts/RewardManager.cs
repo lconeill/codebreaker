@@ -4,26 +4,17 @@ using System.Collections;
 public class RewardManager : MonoBehaviour {
 
     public CircularTimer circularTimer;
-    
-    private float originalFillSpeed;
-    public float effectLasting = 1.5f;     // How long the effects last in seconds
-    private bool triggerEffect = false;
-    private float timeIncrement;
 
 	// Use this for initialization
 	void Start () 
     {
-        originalFillSpeed = circularTimer.fillSpeed;	
+        
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-        if (triggerEffect)
-        {
-            timeIncrement += Time.deltaTime;
-            increaseFillTime();
-        }
+
 	}
 
     public void returnReward(string reward)
@@ -31,7 +22,8 @@ public class RewardManager : MonoBehaviour {
         switch(reward)
         {
             case "Bell":
-                increaseFillTime();
+                Debug.Log("You got all bells: Slowing down the timer!");
+                circularTimer.increaseFillTime = true;
                 break;
 
             case "Fruit Gum":
@@ -65,21 +57,6 @@ public class RewardManager : MonoBehaviour {
             case "twoMatch":
                 twoMatch();
                 break;
-        }
-    }
-
-    public void increaseFillTime()
-    {
-        circularTimer.fillSpeed = 20;
-
-        triggerEffect = true;
-
-        if (timeIncrement / effectLasting >= 1)
-        {
-            triggerEffect = false;
-            float percentageFull = circularTimer.accumulate/circularTimer.fillSpeed;
-            circularTimer.accumulate = percentageFull * originalFillSpeed;
-            circularTimer.fillSpeed = originalFillSpeed;
         }
     }
 

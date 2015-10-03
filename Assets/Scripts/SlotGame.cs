@@ -46,6 +46,7 @@ public class SlotGame : MonoBehaviour
                 startRollLerp = stopSpeed;
                 startRoll = false;
                 continueRotation = true;
+                slotButton.GetComponent<Button>().interactable = true;
             }
             smoothStart();
         }
@@ -53,7 +54,7 @@ public class SlotGame : MonoBehaviour
         else if (continueRotation)
         {
             rotation.x += rotationSpeed * Time.deltaTime;
-            transform.eulerAngles = rotation;
+            transform.eulerAngles = rotation;  
         }
 
         else if (stopRoll)
@@ -112,5 +113,18 @@ public class SlotGame : MonoBehaviour
         updateRotation.x = Mathf.Lerp(rotation.x, rotation.x - 360, perc);
 
         transform.eulerAngles = updateRotation;
+    }
+
+    public void resetReel()
+    {
+        stopRoll = false;
+        rotation = Vector3.zero;
+        updateRotation = Vector3.zero;
+        currentLerpTime = 0;
+        startRollLerp = 0;
+        stopRoll = false;
+        startRoll = false;
+        continueRotation = false;
+        transform.eulerAngles = rotation;
     }
 }
