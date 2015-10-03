@@ -6,7 +6,7 @@ public class slotManager : MonoBehaviour
 {
     public GameObject slotPanel;
     public SlotGame[] slotReels;
-    public bool inMiniGame = true;
+    public bool inMiniGame = false;
 
     private string[] slotResults = new string[3]{"","",""};
     private int count = 0;
@@ -31,7 +31,16 @@ public class slotManager : MonoBehaviour
 
     public void activateSlotGame(bool activate)
     {
-        inMiniGame = !inMiniGame;
+
+        if (activate)
+        {
+            inMiniGame = true;
+        }
+
+        else
+        {
+            inMiniGame = false;
+        }
 
         slotPanel.SetActive(activate);
 
@@ -54,6 +63,7 @@ public class slotManager : MonoBehaviour
     {
         slotResults[count] = individualResult;
         count++;
+        Debug.Log(count);
     }
 
     public void getReward()
