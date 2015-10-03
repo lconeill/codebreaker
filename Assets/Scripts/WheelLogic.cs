@@ -20,6 +20,10 @@ public class WheelLogic : MonoBehaviour
 	
 	private GameObject score_display_ref;
 	
+	private GameObject wheel_ref;
+	
+	private WheelRotation wheel_rotation_script;
+	
 	private ScoreLogic score_logic;
 	
 	public bool is_match = false;
@@ -32,6 +36,9 @@ public class WheelLogic : MonoBehaviour
 		
 		move_script_ref = GameObject.Find("Move_Ref");
 		move_script = move_script_ref.GetComponent<MoveScript>();
+		
+		wheel_ref = GameObject.Find("wheel_01");
+		wheel_rotation_script = wheel_ref.GetComponent<WheelRotation>();
 		
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
@@ -47,6 +54,8 @@ public class WheelLogic : MonoBehaviour
 		if(this.gameObject.tag == col.tag.Replace("Source", "Target"))
 		{
 			Debug.Log(col.tag);
+			
+			wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
 
 			circular_timer_Script.Reset();
 			move_script.is_touch_start = false;
@@ -61,6 +70,7 @@ public class WheelLogic : MonoBehaviour
 		
 		else
 		{
+			wheel_rotation_script.mismatched_count = wheel_rotation_script.mismatched_count + 1;
 			Debug.Log("This is not a match!");
 			circular_timer_Script.Reset();
 			move_script.is_touch_start = false;
