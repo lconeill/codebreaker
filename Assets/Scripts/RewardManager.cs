@@ -4,6 +4,7 @@ using System.Collections;
 public class RewardManager : MonoBehaviour {
 
     public CircularTimer circularTimer;
+    public LifeSlider lifeSlider;
 
 	// Use this for initialization
 	void Start () 
@@ -35,7 +36,8 @@ public class RewardManager : MonoBehaviour {
                 break;
 
             case "Cherry1":
-                increaseSlider();
+                Debug.Log("You got all Cherry1's: Increasing the slider!");
+                lifeSlider.increaseSlider();
                 break;
 
             case "Grape":
@@ -68,11 +70,6 @@ public class RewardManager : MonoBehaviour {
     public void reduceTileVariation()
     {
         Debug.Log("Selected all Lemons, so the chances of getting the same tile increases by 50%");
-    }
-
-    public void increaseSlider()
-    {
-        Debug.Log("Selected all Cherry1s, so increase the life slider by x amount");
     }
 
     public void decreaseFillTime()
