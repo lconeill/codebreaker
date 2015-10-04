@@ -213,15 +213,15 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -.970710456, y: -.159333631}
-      - {x: -.724789739, y: -.355744779}
-      - {x: -.32703203, y: -.778167427}
-      - {x: -.156753838, y: -1.00226843}
+    - - {x: -.883065701, y: -.103979073}
+      - {x: -.614080787, y: -.125100791}
+      - {x: -.197871387, y: -.625942469}
+      - {x: -.115237914, y: -.87310791}
       - {x: -.140240118, y: -1.11316991}
       - {x: -.578078389, y: -.990214527}
       - {x: -.875108242, y: -.691975296}
       - {x: -1.05208075, y: -.450104237}
-      - {x: -1.12901819, y: -.0986769795}
+      - {x: -1.12901819, y: -.0848383456}
 --- !u!114 &264372712 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11436390, guid: fe6dd17341f25d740a0e92dfafca709e,
@@ -686,9 +686,9 @@ PolygonCollider2D:
       - {x: .844131947, y: .817169785}
       - {x: 1.04028165, y: .521254539}
       - {x: 1.12610698, y: .196206808}
-      - {x: .926216006, y: .24128525}
-      - {x: .755652785, y: .387520552}
-      - {x: .225226253, y: .945376635}
+      - {x: .921602905, y: .17209205}
+      - {x: .6541695, y: .175328046}
+      - {x: .206774697, y: .599410892}
       - {x: .177045867, y: 1.11424851}
 --- !u!1 &700109811
 GameObject:
@@ -720,8 +720,9 @@ MonoBehaviour:
   circularTimer: {fileID: 1292522279}
   fillSpeed: 4
   moveTile: {fileID: 18849914}
-  softPause: {fileID: 386981210}
-  accumulate: 0
+  slotManager: {fileID: 0}
+  increaseFillTime: 0
+  rewardFillSpeed: 20
 --- !u!4 &700109813
 Transform:
   m_ObjectHideFlags: 0
@@ -987,14 +988,14 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: .949162006, y: -.179872915}
+    - - {x: .695453584, y: -.119905613}
       - {x: 1.12221694, y: -.101541005}
       - {x: 1.03481615, y: -.438447922}
       - {x: .813097835, y: -.763615847}
       - {x: .157441139, y: -1.14552653}
-      - {x: .198482007, y: -.967564762}
-      - {x: .502038598, y: -.627710283}
-      - {x: .795268893, y: -.314362705}
+      - {x: .180030704, y: -.630824566}
+      - {x: .354426682, y: -.4985497}
+      - {x: .573850632, y: -.268233955}
 --- !u!1001 &1283307077
 Prefab:
   m_ObjectHideFlags: 0
@@ -1260,11 +1261,11 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -.468167871, y: 1.02576303}
       - {x: -.108064458, y: 1.15738583}
-      - {x: -.1972121, y: 1.0036149}
-      - {x: -.343084991, y: .739106178}
-      - {x: -.467211574, y: .61893034}
-      - {x: -.755275607, y: .390830278}
-      - {x: -.964454114, y: .203791559}
+      - {x: -.104954585, y: .62535882}
+      - {x: -.260053217, y: .503849387}
+      - {x: -.388792634, y: .415963739}
+      - {x: -.639953613, y: .16018635}
+      - {x: -.969067097, y: .153049931}
       - {x: -1.14819074, y: .142006904}
       - {x: -1.00650752, y: .524932206}
       - {x: -.756916523, y: .852609336}
@@ -1406,7 +1407,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circularTimer: {fileID: 1897455125}
-  effectLasting: 1.5
 --- !u!4 &1549242430
 Transform:
   m_ObjectHideFlags: 0
@@ -1964,6 +1964,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11408890, guid: b45892cba799eca4cb4ef9cf72971d9e, type: 2}
+      propertyPath: startRoll
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b45892cba799eca4cb4ef9cf72971d9e, type: 2}
   m_IsPrefabParent: 0
@@ -2116,8 +2120,9 @@ MonoBehaviour:
   circularTimer: {fileID: 1292522279}
   fillSpeed: 3
   moveTile: {fileID: 18849914}
-  softPause: {fileID: 386981210}
-  accumulate: 0
+  slotManager: {fileID: 386981210}
+  increaseFillTime: 0
+  rewardFillSpeed: 20
 --- !u!4 &1897455126
 Transform:
   m_ObjectHideFlags: 0
