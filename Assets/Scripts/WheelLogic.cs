@@ -26,6 +26,10 @@ public class WheelLogic : MonoBehaviour
 	
 	private ScoreLogic score_logic;
 	
+	private GameObject match_fx_ref;
+	
+	private MatchFX match_fx;
+	
 	public bool is_match = false;
 	
 	private CircularTimer circular_timer_Script;
@@ -42,6 +46,9 @@ public class WheelLogic : MonoBehaviour
 		
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
+		
+		match_fx_ref = GameObject.Find("match_fx");
+		match_fx = match_fx_ref.GetComponent<MatchFX>();
 
 	}
 	
@@ -54,6 +61,10 @@ public class WheelLogic : MonoBehaviour
 		if(this.gameObject.tag == col.tag.Replace("Source", "Target"))
 		{
 			Debug.Log(col.tag);
+			
+			match_fx_ref.transform.position = col.transform.position;
+			
+			match_fx.Run();
 			
 			wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
 
