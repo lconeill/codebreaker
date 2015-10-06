@@ -10,7 +10,8 @@ public class WheelLogic : MonoBehaviour
 	// invoked and calls the functions to move the tiels
 	// and reset the timer.
 	//
-	// This script also controols when the score is updated.
+	// This script also controols when the score is updated
+	// and when the slot mini game is called.
 	
 	public GameObject circular_timer_ref;
 	
@@ -29,6 +30,10 @@ public class WheelLogic : MonoBehaviour
 	private GameObject match_fx_ref;
 	
 	private MatchFX match_fx;
+	
+	private GameObject slot_manager_ref;
+	
+	private slotManager slot_manager;
 	
 	public bool is_match = false;
 	
@@ -49,6 +54,9 @@ public class WheelLogic : MonoBehaviour
 		
 		match_fx_ref = GameObject.Find("match_fx");
 		match_fx = match_fx_ref.GetComponent<MatchFX>();
+		
+		slot_manager_ref = GameObject.Find("slotManager");
+		slot_manager = slot_manager_ref.GetComponent<slotManager>();
 
 	}
 	
@@ -76,13 +84,19 @@ public class WheelLogic : MonoBehaviour
 
 			Debug.Log(score_logic.match_streak_counter);
 			
+			// Update the score is called every correct match
+			
 			UpdatScore(is_match);
+			
+			// Check every correct match if the condition is
+			// met to start the mini game.
+			
+			StartMiniGame();
 		}
 		
 		else
 		{
 			wheel_rotation_script.mismatched_count = wheel_rotation_script.mismatched_count + 1;
-			Debug.Log("This is not a match!");
 			circular_timer_Script.Reset();
 			move_script.is_touch_start = false;
 			is_match = false;
@@ -142,6 +156,26 @@ public class WheelLogic : MonoBehaviour
 		else
 		{
 			score_logic.match_streak_counter = 0;
+		}
+	}
+	
+	// After the first 15 matches start a mini game.
+	// After 25 matches if the player has a 
+	// match streak that is a multiple of 20 then
+	// call the mini game again.
+	
+	void StartMiniGame()
+	{
+		if(wheel_rotation_script.match_count == 15)
+		{
+			slot_manager.activateSlotGame(true);
+			slot_manager.inMiniGame = true;
+		}
+		
+		if(score_logic.match_streak_counter % 20 == 0 && wheel_rotation_script.match_count >= 25)
+		{
+			slot_manager.activateSlotGame(true);
+			slot_manager.inMiniGame = true;
 		}
 	}
 	

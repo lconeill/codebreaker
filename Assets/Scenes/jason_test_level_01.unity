@@ -3487,7 +3487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 20
-  increaseWrongMatch: 0
+  matchSliderAmount: 1
 --- !u!114 &1967233208
 MonoBehaviour:
   m_ObjectHideFlags: 0

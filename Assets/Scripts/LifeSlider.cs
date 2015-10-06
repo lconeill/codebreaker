@@ -51,7 +51,7 @@ public class LifeSlider : MonoBehaviour
 
         if (timeKeeper >= lifeTime)
         {
-            Debug.Log("Game Over Sucka");
+            //Debug.Log("Game Over Sucka");
         }
 
         previousCorrectMatches = wheelRotation.match_count;
