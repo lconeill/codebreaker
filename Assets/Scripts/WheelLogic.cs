@@ -10,7 +10,8 @@ public class WheelLogic : MonoBehaviour
 	// invoked and calls the functions to move the tiels
 	// and reset the timer.
 	//
-	// This script also controols when the score is updated.
+	// This script also controols when the score is updated
+	// and when the slot mini game is called.
 	
 	public GameObject circular_timer_ref;
 	
@@ -25,6 +26,14 @@ public class WheelLogic : MonoBehaviour
 	private WheelRotation wheel_rotation_script;
 	
 	private ScoreLogic score_logic;
+	
+	private GameObject match_fx_ref;
+	
+	private MatchFX match_fx;
+	
+	private GameObject slot_manager_ref;
+	
+	private slotManager slot_manager;
 	
 	public bool is_match = false;
 	
@@ -42,6 +51,12 @@ public class WheelLogic : MonoBehaviour
 		
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
+		
+		match_fx_ref = GameObject.Find("match_fx");
+		match_fx = match_fx_ref.GetComponent<MatchFX>();
+		
+		slot_manager_ref = GameObject.Find("slotManager");
+		slot_manager = slot_manager_ref.GetComponent<slotManager>();
 
 	}
 	
@@ -55,6 +70,10 @@ public class WheelLogic : MonoBehaviour
 		{
 			Debug.Log(col.tag);
 			
+			match_fx_ref.transform.position = col.transform.position;
+			
+			match_fx.Run();
+			
 			wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
 
 			circular_timer_Script.Reset();
@@ -65,7 +84,14 @@ public class WheelLogic : MonoBehaviour
 
 			Debug.Log(score_logic.match_streak_counter);
 			
+			// Update the score is called every correct match
+			
 			UpdatScore(is_match);
+			
+			// Check every correct match if the condition is
+			// met to start the mini game.
+			
+			StartMiniGame();
 		}
 		
 		else
@@ -130,6 +156,26 @@ public class WheelLogic : MonoBehaviour
 		else
 		{
 			score_logic.match_streak_counter = 0;
+		}
+	}
+	
+	// After the first 15 matches start a mini game.
+	// After 25 matches if the player has a 
+	// match streak that is a multiple of 20 then
+	// call the mini game again.
+	
+	void StartMiniGame()
+	{
+		if(wheel_rotation_script.match_count == 15)
+		{
+			slot_manager.activateSlotGame(true);
+			slot_manager.inMiniGame = true;
+		}
+		
+		if(score_logic.match_streak_counter % 20 == 0 && wheel_rotation_script.match_count >= 25)
+		{
+			slot_manager.activateSlotGame(true);
+			slot_manager.inMiniGame = true;
 		}
 	}
 	
