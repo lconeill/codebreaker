@@ -181,6 +181,7 @@ GameObject:
   - 224: {fileID: 161574219}
   - 222: {fileID: 161574221}
   - 114: {fileID: 161574220}
+  - 95: {fileID: 161574222}
   m_Layer: 5
   m_Name: slotGamePanel
   m_TagString: Untagged
@@ -236,6 +237,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 161574218}
+--- !u!95 &161574222
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161574218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 616db7934decdb244be8f1761b15b320, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &203143318 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 116508, guid: b45892cba799eca4cb4ef9cf72971d9e, type: 2}
@@ -1145,6 +1163,84 @@ PolygonCollider2D:
       - {x: .180030704, y: -.630824566}
       - {x: .354426682, y: -.4985497}
       - {x: .573850632, y: -.268233955}
+--- !u!1 &1215744634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1215744635}
+  - 222: {fileID: 1215744637}
+  - 114: {fileID: 1215744636}
+  - 114: {fileID: 1215744638}
+  m_Layer: 5
+  m_Name: currency_text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1215744635
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1215744634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1536148951}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 1, y: 0}
+--- !u!114 &1215744636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1215744634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .926470578, g: .904107511, b: .115808822, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 46238fb1ad7a7a84ba8954c1c860994c, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &1215744637
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1215744634}
+--- !u!114 &1215744638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1215744634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1041dee48c9b449b82f53cdf2563a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1283307077
 Prefab:
   m_ObjectHideFlags: 0
@@ -1429,7 +1525,6 @@ GameObject:
   - 223: {fileID: 1536148950}
   - 114: {fileID: 1536148949}
   - 114: {fileID: 1536148948}
-  - 95: {fileID: 1536148952}
   m_Layer: 5
   m_Name: timerCanvas
   m_TagString: Untagged
@@ -1505,6 +1600,7 @@ RectTransform:
   - {fileID: 2093608110}
   - {fileID: 161574219}
   - {fileID: 1967233206}
+  - {fileID: 1215744635}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
@@ -1512,23 +1608,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!95 &1536148952
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1536148947}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d6e16e64801259b48bc8174bea3c3795, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1549242428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2273,11 +2352,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circularTimer: {fileID: 1292522279}
-  fillSpeed: 3
+  fillSpeed: 2
   moveTile: {fileID: 18849914}
   slotManager: {fileID: 386981210}
   increaseFillTime: 0
-  rewardFillSpeed: 20
+  rewardFillSpeed: 2
 --- !u!4 &1897455126
 Transform:
   m_ObjectHideFlags: 0
@@ -2372,7 +2451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 20
-  increaseWrongMatch: 0
+  matchSliderAmount: 1
 --- !u!114 &1967233208
 MonoBehaviour:
   m_ObjectHideFlags: 0

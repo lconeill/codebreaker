@@ -71,7 +71,6 @@ public class WheelLogic : MonoBehaviour
 		else
 		{
 			wheel_rotation_script.mismatched_count = wheel_rotation_script.mismatched_count + 1;
-			Debug.Log("This is not a match!");
 			circular_timer_Script.Reset();
 			move_script.is_touch_start = false;
 			is_match = false;

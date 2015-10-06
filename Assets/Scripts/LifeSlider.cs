@@ -6,10 +6,11 @@ public class LifeSlider : MonoBehaviour
 {
 
     public float lifeTime = 20;                     // How much seconds it takes the life slider to reach zero
-    public int matchSliderAmount = 1;               // The amount to increase/decrease the life slider for correct/incorrect matches
+    public int matchSliderAmount = 2;               // The amount to increase/decrease the life slider for correct/incorrect matches
 
     private Slider lifeSlider;                      // The life slider GameObject
     private WheelRotation wheelRotation;            // The wheel rotation GameObject
+    private slotManager slotManager;
 
     private float timeKeeper;                       // Counter used to increase/decrease the life slider value
     private int previousCorrectMatches;             // The number of correct matches of the last rendered frame
@@ -20,6 +21,7 @@ public class LifeSlider : MonoBehaviour
     {
         GameObject temp = GameObject.Find("lifeSlider");
         GameObject temp_1 = GameObject.Find("wheel_01");
+        GameObject temp_2 = GameObject.Find("slotManager");
 
         if (temp != null) { lifeSlider = temp.GetComponent<Slider>();}
         if (lifeSlider != null) { lifeSlider.value = 0.5f; }
@@ -30,32 +32,37 @@ public class LifeSlider : MonoBehaviour
             previousCorrectMatches = wheelRotation.match_count;
             previousIncorrectMatches = wheelRotation.mismatched_count;
         }
+
+        if (temp_2 != null) { slotManager = temp_2.GetComponent<slotManager>(); }
     }
 
     // Constantly decrease the value of life slider and end game when value is 1
     // Increase/decrease the value based on whether a correct/incorrect match was made
     void Update()
     {
-        timeKeeper += Time.deltaTime;
-        lifeSlider.value = (lifeTime - timeKeeper) / lifeTime;
-
-        if (wheelRotation.match_count > previousCorrectMatches)
+        if (!slotManager.inMiniGame)
         {
-            timeKeeper = Mathf.Clamp(timeKeeper - matchSliderAmount, 0, lifeTime);
-        }
+            timeKeeper += Time.deltaTime;
+            lifeSlider.value = (lifeTime - timeKeeper) / lifeTime;
 
-        if (wheelRotation.mismatched_count > previousIncorrectMatches)
-        {
-            timeKeeper += matchSliderAmount;
-        }
+            if (wheelRotation.match_count > previousCorrectMatches)
+            {
+                timeKeeper = Mathf.Clamp(timeKeeper - matchSliderAmount, 0, lifeTime);
+            }
 
-        if (timeKeeper >= lifeTime)
-        {
-            Debug.Log("Game Over Sucka");
-        }
+            if (wheelRotation.mismatched_count > previousIncorrectMatches)
+            {
+                timeKeeper += matchSliderAmount;
+            }
 
-        previousCorrectMatches = wheelRotation.match_count;
-        previousIncorrectMatches = wheelRotation.mismatched_count;
+            if (timeKeeper >= lifeTime)
+            {
+                //Debug.Log("Game Over Sucka");
+            }
+
+            previousCorrectMatches = wheelRotation.match_count;
+            previousIncorrectMatches = wheelRotation.mismatched_count;
+        }
     }
 
     // Used to decrease the slider when a bad reward from the slot game is acquired
