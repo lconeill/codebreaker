@@ -22,8 +22,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - MiniGame
+  - MainGame
   - 
   - 
   - 
@@ -49,4 +49,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MiniGame
+    uniqueID: 2435700411
+    locked: 0
+  - name: MainGame
+    uniqueID: 4037296741
     locked: 0
