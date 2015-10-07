@@ -50,12 +50,6 @@ public class slotManager : MonoBehaviour
             slotReels[i].GetComponent<Renderer>().enabled = activate;
             slotReels[i].slotButton.GetComponent<Button>().interactable = false;
         }
-
-        //if (activate)
-        //{
-        //    inMiniGame = true;
-        //}
-        
     }
 
     // Gets the results from SlotGame objects 
