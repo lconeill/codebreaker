@@ -68,7 +68,7 @@ public class WheelLogic : MonoBehaviour
 	{
 		if(this.gameObject.tag == col.tag.Replace("Source", "Target"))
 		{
-			Debug.Log(col.tag);
+			//Debug.Log(col.tag);
 			
 			match_fx_ref.transform.position = col.transform.position;
 			
@@ -82,7 +82,7 @@ public class WheelLogic : MonoBehaviour
 			
 			score_logic.match_streak_counter = score_logic.match_streak_counter + 1;
 
-			Debug.Log(score_logic.match_streak_counter);
+			//Debug.Log(score_logic.match_streak_counter);
 			
 			// Update the score is called every correct match
 			

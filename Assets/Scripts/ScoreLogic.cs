@@ -27,7 +27,7 @@ public class ScoreLogic : MonoBehaviour
 		
 		if(previoius_score != the_score)
 		{
-			Debug.Log("The Score has changed!!!");
+			//Debug.Log("The Score has changed!!!");
 		}
 		
 		previoius_score = the_score;

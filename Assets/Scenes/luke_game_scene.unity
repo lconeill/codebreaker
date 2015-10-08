@@ -119,6 +119,12 @@ MonoBehaviour:
   - {fileID: 187954, guid: 8deaad1bffd82f74798649b753295d92, type: 2}
   - {fileID: 143508, guid: 9a863509bbeb3ee4c8da04c000fd7f4b, type: 2}
   - {fileID: 168372, guid: 21ee24f9a09a108418dad523c4c6edaf, type: 2}
+  - {fileID: 144760, guid: 0403f47753640094db52da26b9104a07, type: 2}
+  clonedTiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &18849915
 Transform:
   m_ObjectHideFlags: 0
