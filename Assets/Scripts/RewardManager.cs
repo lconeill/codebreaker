@@ -4,12 +4,19 @@ using System.Collections;
 public class RewardManager : MonoBehaviour {
 
     public CircularTimer circularTimer;
-    public LifeSlider lifeSlider;
+    private LifeSlider lifeSlider;
+    private WheelRotation wheelRotation;
 
 	// Use this for initialization
 	void Start () 
     {
-        
+        GameObject temp = GameObject.Find("lifeSlider");
+
+        if (temp != null) { lifeSlider = temp.GetComponent<LifeSlider>(); }
+
+        GameObject temp_1 = GameObject.Find("wheel_01");
+
+        if (temp_1 != null) { wheelRotation = temp_1.GetComponent<WheelRotation>(); }
 	}
 	
 	// Update is called once per frame
@@ -41,15 +48,17 @@ public class RewardManager : MonoBehaviour {
                 break;
 
             case "Grape":
-                decreaseFillTime();
+                Debug.Log("You got all Grapes: Decreasing the life slider!");
+                lifeSlider.decreaseSlider();
                 break;
 
             case "Orange":
-                emptyTileScroller();
+                Debug.Log("You got all Oranges: Decreasing wheel rotation speed!");
+                wheelRotation.slowRotationReward();
                 break;
 
             case "Cherry2":
-                removeDifficultyVariable();
+                emptyTileScroller();
                 break;
 
             case "noMatch":

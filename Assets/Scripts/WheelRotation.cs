@@ -18,6 +18,12 @@ public class WheelRotation : MonoBehaviour
 	
 	public int match_count = 0;
 	public int mismatched_count = 0;
+
+    public bool slowRotationFlag = false;
+    private float rewardEffectTime = 5f;
+    private float timeIncrement = 0;
+    private int previousRotationSpeed;
+    private int rewardRotationSpeed = 75;
 	
 	// get a reference to the slot game so that once
 	// it starts we stop the roraion of the wheel.
@@ -46,9 +52,10 @@ public class WheelRotation : MonoBehaviour
 				
 				if (startRollLerp > stopSpeed)
 				{
+                    startRoll = false;
 					startRollLerp = stopSpeed;
-					startRoll = false;
 					continueRotation = true;
+                    startRollLerp = 0;
 				}
 				smoothStart();
 			}
@@ -60,6 +67,19 @@ public class WheelRotation : MonoBehaviour
 				transform.eulerAngles = rotation;
 			}
 		}
+
+        if (slowRotationFlag)
+        {
+            timeIncrement += Time.deltaTime;
+
+            if (timeIncrement > rewardEffectTime)
+            {
+                rotationSpeed = previousRotationSpeed;
+                slowRotationFlag = false;
+                timeIncrement = 0;
+                startRoll = true;
+            }
+        }
 	}
 	
 	public void smoothStart()
@@ -74,41 +94,50 @@ public class WheelRotation : MonoBehaviour
 	
 	// This function based on the match count 
 	// will increase the speed in which the wheel spins.
-	
+
+    public void slowRotationReward()
+    {
+        slowRotationFlag = true;
+        previousRotationSpeed = rotationSpeed;
+        rotationSpeed = rewardRotationSpeed;
+    }
+
 	void speedLevel(int count)
 	{
-		if(count == 10 )
-		{
-			rotationSpeed = 108;
-		}
-		
-		if(count == 20 )
-		{
-			rotationSpeed = 126;
-		}
-		
-		if(count == 30 )
-		{
-			rotationSpeed = 144;
-		}
-		
-		if(count == 40 )
-		{
-			rotationSpeed = 162;
-		}
-		
-		if(count == 50 )
-		{
-			rotationSpeed = 180;
-		}
-		
-		if(count == 60 )
-		{
-			rotationSpeed = 200;
-		}
+        if (!slowRotationFlag)
+        {
+            if (count >= 10 && count < 20)
+            {
+                rotationSpeed = 108;
+            }
+
+            else if (count >= 20 && count < 30)
+            {
+                rotationSpeed = 126;
+            }
+
+            else if (count >= 30 && count < 40)
+            {
+                rotationSpeed = 144;
+            }
+
+            else if (count >= 40 && count < 50)
+            {
+                rotationSpeed = 162;
+            }
+
+            else if (count >= 50 && count < 60)
+            {
+                rotationSpeed = 180;
+            }
+
+            else if (count >= 60)
+            {
+                rotationSpeed = 200;
+            }
+        }
 	}
 }
-
 
 
 
