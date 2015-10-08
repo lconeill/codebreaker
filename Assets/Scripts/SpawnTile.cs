@@ -6,7 +6,7 @@ public class SpawnTile : MonoBehaviour
     public GameObject[] tiles;
     private Vector2[] defaultPositions = new Vector2[4] { new Vector2(7, 3), new Vector2(7, 0), 
                                                           new Vector2 (7,-3), new Vector2 (0,0) };
-    private GameObject[] clonedTiles = new GameObject[4];
+    public GameObject[] clonedTiles = new GameObject[4];
     
     // Added the variable to hold a reference to the MoveScript.
     

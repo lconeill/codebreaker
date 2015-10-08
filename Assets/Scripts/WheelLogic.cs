@@ -38,6 +38,14 @@ public class WheelLogic : MonoBehaviour
 	public bool is_match = false;
 	
 	private CircularTimer circular_timer_Script;
+	
+	private GameObject match_sfx_ref;
+	
+	private AudioSource match_sfx;
+
+	private GameObject mismatch_sfx_ref;
+	
+	private AudioSource mismatch_sfx;
 
 	void Start () 
 	{
@@ -57,6 +65,12 @@ public class WheelLogic : MonoBehaviour
 		
 		slot_manager_ref = GameObject.Find("slotManager");
 		slot_manager = slot_manager_ref.GetComponent<slotManager>();
+		
+		match_sfx_ref = GameObject.Find("Match_SFX_01");
+		match_sfx = match_sfx_ref.GetComponent<AudioSource>();
+		
+		mismatch_sfx_ref = GameObject.Find("MisMatch_SFX_01");
+		mismatch_sfx = mismatch_sfx_ref.GetComponent<AudioSource>();
 
 	}
 	
@@ -73,6 +87,8 @@ public class WheelLogic : MonoBehaviour
 			match_fx_ref.transform.position = col.transform.position;
 			
 			match_fx.Run();
+			
+			match_sfx.Play();
 			
 			wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
 
@@ -96,6 +112,7 @@ public class WheelLogic : MonoBehaviour
 		
 		else
 		{
+			mismatch_sfx.Play();
 			wheel_rotation_script.mismatched_count = wheel_rotation_script.mismatched_count + 1;
 			circular_timer_Script.Reset();
 			move_script.is_touch_start = false;
@@ -113,7 +130,7 @@ public class WheelLogic : MonoBehaviour
 	// Bonuses are done in increments of 5 to a total of a 30 streak where the 
 	// total points awarded is 3000.
 	
-	void UpdatScore(bool match)
+	public void UpdatScore(bool match)
 	{
 		if (match == true)
 		{

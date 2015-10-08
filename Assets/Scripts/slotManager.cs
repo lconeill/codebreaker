@@ -12,11 +12,40 @@ public class slotManager : MonoBehaviour
     private int count = 0;
     private bool threeMatch, noMatch;
     public RewardManager sendIconResult;
+    
+	private GameObject SlotGameTheme_01_ref;
+	
+	private AudioSource SlotGameTheme_01;
+	
+	private GameObject MainTheme_01_ref;
+	
+	private AudioSource MainTheme_01;
+	
+	private GameObject SlotGameWin_01_ref;
+	
+	private AudioSource SlotGameWin_01;
+	
+	private GameObject SlotGameLose_01_ref;
+	
+	private AudioSource SlotGameLose_01;
 
     // Deactivate the slot game by default
     void Start()
     {
         activateSlotGame(false);
+        
+		SlotGameTheme_01_ref = GameObject.Find("SlotGameTheme_01");
+		SlotGameTheme_01 = SlotGameTheme_01_ref.GetComponent<AudioSource>();
+		
+		MainTheme_01_ref = GameObject.Find("MainTheme_01");
+		MainTheme_01 = MainTheme_01_ref.GetComponent<AudioSource>();
+		
+		SlotGameWin_01_ref = GameObject.Find("SlotGameWin_01");
+		SlotGameWin_01 = SlotGameWin_01_ref.GetComponent<AudioSource>();
+		
+		SlotGameLose_01_ref = GameObject.Find("SlotGameLose_01");
+		SlotGameLose_01 = SlotGameLose_01_ref.GetComponent<AudioSource>();
+		
     }
 
     // Checks if all three reels have been pressed and determines the reward
@@ -34,6 +63,9 @@ public class slotManager : MonoBehaviour
 
         if (activate)
         {
+			MainTheme_01.Stop();
+			SlotGameTheme_01.Play();
+			
             inMiniGame = true;
         }
 
@@ -73,16 +105,25 @@ public class slotManager : MonoBehaviour
 
         if (threeMatch)
         {
+			SlotGameTheme_01.Stop();
+			SlotGameWin_01.Play();
+			MainTheme_01.PlayDelayed(1.5f);
             sendIconResult.returnReward(slotResults[0]);
         }
 
         else if (noMatch)
         {
+			SlotGameTheme_01.Stop();
+			SlotGameLose_01.Play();
+			MainTheme_01.PlayDelayed(1.5f);
             sendIconResult.returnReward("noMatch");
         }
 
         else
         {
+			SlotGameTheme_01.Stop();
+			SlotGameLose_01.Play();
+			MainTheme_01.PlayDelayed(1.5f);
             sendIconResult.returnReward("twoMatch");
         }
 

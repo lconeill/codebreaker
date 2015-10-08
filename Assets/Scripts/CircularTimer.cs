@@ -28,6 +28,19 @@ public class CircularTimer : MonoBehaviour
     private float fillSpeed_50;
     private float fillSpeed_60; 
 
+	private GameObject wheel_logic_ref;
+	
+	private WheelLogic wheel_logic;
+
+	private GameObject match_sfx_ref;
+	
+	private AudioSource match_sfx;
+	
+
+	private GameObject mismatch_sfx_ref;
+	
+	private AudioSource mismatch_sfx;
+
     // Set timer to zero fill amount
     void Start()
     {
@@ -39,6 +52,15 @@ public class CircularTimer : MonoBehaviour
         fillSpeed_60 = fillSpeed * 0.4f; 
 
         GameObject temp = GameObject.Find("wheel_01");
+        
+		match_sfx_ref = GameObject.Find("Match_SFX_01");
+		match_sfx = match_sfx_ref.GetComponent<AudioSource>();
+        
+		mismatch_sfx_ref = GameObject.Find("MisMatch_SFX_01");
+		mismatch_sfx = mismatch_sfx_ref.GetComponent<AudioSource>();
+		
+		wheel_logic_ref = GameObject.Find("match_01");
+		wheel_logic = wheel_logic_ref.GetComponent<WheelLogic>();
 
         if (temp != null) 
         { 
@@ -101,8 +123,27 @@ public class CircularTimer : MonoBehaviour
             }
            
             if (circularTimer.fillAmount == 1)
-            {    
-                Reset();
+            {   
+				Debug.Log(moveTile.clonedTiles[3].tag);
+
+				string[] unmatchable = {"Source_05", "Source_06", "Source_07"}; 
+				string tile_value = moveTile.clonedTiles[3].tag;
+				int pos = System.Array.IndexOf(unmatchable, tile_value);
+				if(pos > -1)
+				{
+					wheelRotation.match_count = wheelRotation.match_count + 1;
+					wheel_logic.UpdatScore(wheel_logic.is_match = true);
+					match_sfx.Play();
+					Reset();
+				}
+            	
+				else
+				{
+					wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
+					wheel_logic.UpdatScore(wheel_logic.is_match = false);
+					mismatch_sfx.Play();
+	                Reset();
+	            }
             }
         }
     }

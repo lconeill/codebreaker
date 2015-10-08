@@ -13,6 +13,9 @@ TagManager:
   - Source_02
   - Source_03
   - Source_04
+  - Source_05
+  - Source_06
+  - Source_07
   layers:
   - Default
   - TransparentFX
