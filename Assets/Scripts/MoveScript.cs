@@ -21,6 +21,10 @@ public class MoveScript : MonoBehaviour
 	
 	Transform cached_transform;
 	Vector3 starting_pos;
+
+    private SpawnTile spawnTile;
+    private float doubleTapTime;
+    private bool doubleTap = false;
 	
 	// Initializing the tiles position.
 	
@@ -29,6 +33,9 @@ public class MoveScript : MonoBehaviour
 		cached_transform = transform;
 		
 		starting_pos = cached_transform.position;
+
+        GameObject temp = GameObject.Find("tileSpawn");
+        if (temp != null) { spawnTile = temp.GetComponent<SpawnTile>(); }
 	}
 	
 	
@@ -66,6 +73,20 @@ public class MoveScript : MonoBehaviour
 					is_touch_start = false;
 					break;
 			}
+
+            //if (spawnTile.clonedTiles[3].tag == "bomb")
+            //{
+            //    if (Input.GetTouch(0).phase == TouchPhase.Began)
+            //    {
+            //        if (Time.time < doubleTapTime + 0.5f)
+            //        {
+            //            Debug.Log("I have defused the bomb!");
+            //        }
+
+            //        doubleTapTime = Time.time;
+            //    }
+
+            //}
 		}
 		
 		else
@@ -75,7 +96,6 @@ public class MoveScript : MonoBehaviour
 			
 			cached_transform.position = starting_pos;
 		}
-
 	}
 	
 	// Move the tile by changing its position based on the 
