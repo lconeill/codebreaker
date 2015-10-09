@@ -47,6 +47,9 @@ public class WheelLogic : MonoBehaviour
 	
 	private AudioSource mismatch_sfx;
 
+    private SpawnTile spawnTile;
+    private float doubleTapTime;
+
 	void Start () 
 	{
 		circular_timer_Script = circular_timer_ref.GetComponent<CircularTimer>();
@@ -72,8 +75,44 @@ public class WheelLogic : MonoBehaviour
 		mismatch_sfx_ref = GameObject.Find("MisMatch_SFX_01");
 		mismatch_sfx = mismatch_sfx_ref.GetComponent<AudioSource>();
 
+        GameObject temp = GameObject.Find("tileSpawn");
+        if (temp != null) { spawnTile = temp.GetComponent<SpawnTile>(); }
+
 	}
-	
+
+    void Update()
+    {
+        if (Input.touchCount == 1)
+        {
+            if (spawnTile.clonedTiles[3].tag == "bomb")
+            {
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    if (Time.time < doubleTapTime + 0.3f)
+                    {
+                        wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
+                        score_logic.match_streak_counter = score_logic.match_streak_counter + 1;
+                        UpdatScore(is_match);
+                        circular_timer_Script.Reset();
+                        move_script.is_touch_start = false;
+                        is_match = true;
+                    }
+
+                    doubleTapTime = Time.time;
+                }
+            }
+        }
+
+        if (wheel_rotation_script.match_count == 30)
+        {
+            spawnTile.spawnRange = 5;
+        }
+        else if (wheel_rotation_script.match_count == 40)
+        {
+            spawnTile.spawnRange = 8;
+        }
+    }	
+
 	// This fucntion is called when a trigger collider enters this objects collider.
 	// When a Correct match is made the scroe is updated and a variable tracks
 	// how many matches the player makes.
