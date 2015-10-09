@@ -75,7 +75,6 @@ public class MoveScript : MonoBehaviour
 			
 			cached_transform.position = starting_pos;
 		}
-
 	}
 	
 	// Move the tile by changing its position based on the 

@@ -12,6 +12,9 @@ public class slotManager : MonoBehaviour
     private int count = 0;
     private bool threeMatch, noMatch;
     public RewardManager sendIconResult;
+
+    public Animator slotPanelAnimation;
+    private float track;
     
 	private GameObject SlotGameTheme_01_ref;
 	
@@ -45,7 +48,6 @@ public class slotManager : MonoBehaviour
 		
 		SlotGameLose_01_ref = GameObject.Find("SlotGameLose_01");
 		SlotGameLose_01 = SlotGameLose_01_ref.GetComponent<AudioSource>();
-		
     }
 
     // Checks if all three reels have been pressed and determines the reward
@@ -56,6 +58,8 @@ public class slotManager : MonoBehaviour
             getReward();
             count = 0;
         }
+
+        track += Time.deltaTime;
     }
 
     public void activateSlotGame(bool activate)
@@ -71,6 +75,7 @@ public class slotManager : MonoBehaviour
 
         else
         {
+            //slotPanelAnimation.SetBool("isHidden", false);
             inMiniGame = false;
         }
 

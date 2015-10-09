@@ -7,6 +7,7 @@ public class SpawnTile : MonoBehaviour
     private Vector2[] defaultPositions = new Vector2[4] { new Vector2(7, 3), new Vector2(7, 0), 
                                                           new Vector2 (7,-3), new Vector2 (0,0) };
     public GameObject[] clonedTiles = new GameObject[4];
+    public int spawnRange = 4;
     
     // Added the variable to hold a reference to the MoveScript.
     
@@ -26,7 +27,7 @@ public class SpawnTile : MonoBehaviour
     {
         for (int j = 0; j <= 3; j++)
         {
-            int i = Random.Range(0, tiles.Length);
+            int i = Random.Range(0, spawnRange);
             GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[j], Quaternion.identity);
             clonedTiles[j] = clone;
             
@@ -65,7 +66,7 @@ public class SpawnTile : MonoBehaviour
             clonedTiles[n + 1] = clonedTiles[n];
             if (n == 0)
             {
-                int i = Random.Range(0, tiles.Length);
+                int i = Random.Range(0, spawnRange);
                 GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[n], Quaternion.identity);
                 clonedTiles[n] = clone;
             }

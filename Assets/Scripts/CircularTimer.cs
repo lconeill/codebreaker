@@ -124,7 +124,7 @@ public class CircularTimer : MonoBehaviour
            
             if (circularTimer.fillAmount == 1)
             {   
-				Debug.Log(moveTile.clonedTiles[3].tag);
+				//Debug.Log(moveTile.clonedTiles[3].tag);
 
 				string[] unmatchable = {"Source_05", "Source_06", "Source_07"}; 
 				string tile_value = moveTile.clonedTiles[3].tag;
