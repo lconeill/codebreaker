@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -15,6 +15,11 @@ public class LifeSlider : MonoBehaviour
     private float timeKeeper;                       // Counter used to increase/decrease the life slider value
     private int previousCorrectMatches;             // The number of correct matches of the last rendered frame
     private int previousIncorrectMatches;           // The number of incorrect matches of the last rendered frame
+    
+    // Reference to the UI
+    
+    private GameObject gameover_ref;
+    private ShowPanels gameover_panel;
 
     // Find references to the GameObjects
     void Start()
@@ -22,7 +27,19 @@ public class LifeSlider : MonoBehaviour
         GameObject temp = GameObject.Find("lifeSlider");
         GameObject temp_1 = GameObject.Find("wheel_01");
         GameObject temp_2 = GameObject.Find("slotManager");
-
+        
+        // Get reference to the Gameover UI and
+        // the restart button.
+        
+        gameover_ref = GameObject.Find("UI");
+		gameover_panel = gameover_ref.GetComponent<ShowPanels>();
+		
+		gameover_panel.HideGameOver();
+		
+		// Make sure that the game on start is not paused
+		
+		Time.timeScale = 1;
+		
         if (temp != null) { lifeSlider = temp.GetComponent<Slider>();}
         if (lifeSlider != null) { lifeSlider.value = 0.5f; }
 
@@ -57,6 +74,14 @@ public class LifeSlider : MonoBehaviour
 
             if (timeKeeper >= lifeTime)
             {
+            	// When the life bar reaches the end then
+            	// pause the game and show the Gameover 
+            	// screen with a restart button. 
+            	
+            	Time.timeScale = 0;
+            	
+				gameover_panel.ShowGameOver();
+            	
                 //Debug.Log("Game Over Sucka");
             }
 
