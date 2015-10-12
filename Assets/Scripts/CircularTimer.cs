@@ -15,8 +15,8 @@ public class CircularTimer : MonoBehaviour
     private float accumulate = 0;
 
     public bool increaseFillTime = false;
-    private float originalFillSpeed;
-    public float rewardFillSpeed = 20;
+    private float fillSpeedBefore;
+    public float rewardFillSpeed = 5;
     private float rewardEffectTime = 5f;
     private float timeIncrement = 0;
     private bool endFillTimeIncrease = false;
@@ -41,18 +41,23 @@ public class CircularTimer : MonoBehaviour
 	
 	private AudioSource mismatch_sfx;
 
+    private Button bell_button;
+
     // Set timer to zero fill amount
     void Start()
     {
         Reset();
-        originalFillSpeed = fillSpeed;
         fillSpeed_30 = fillSpeed * 0.75f;
         fillSpeed_40 = fillSpeed * 0.625f;
         fillSpeed_50 = fillSpeed * 0.5f;
         fillSpeed_60 = fillSpeed * 0.4f; 
 
         GameObject temp = GameObject.Find("wheel_01");
-        
+        if (temp != null) { wheelRotation = temp.GetComponent<WheelRotation>(); }
+
+        GameObject temp_1 = GameObject.Find("bell_power_up");
+        if (temp_1 != null) { bell_button = temp_1.GetComponent<Button>(); }
+
 		match_sfx_ref = GameObject.Find("Match_SFX_01");
 		match_sfx = match_sfx_ref.GetComponent<AudioSource>();
         
@@ -61,11 +66,6 @@ public class CircularTimer : MonoBehaviour
 		
 		wheel_logic_ref = GameObject.Find("match_01");
 		wheel_logic = wheel_logic_ref.GetComponent<WheelLogic>();
-
-        if (temp != null) 
-        { 
-            wheelRotation = temp.GetComponent<WheelRotation>(); 
-        }
     }
 
     // Fill the timer based on the time variable
@@ -102,10 +102,12 @@ public class CircularTimer : MonoBehaviour
 
             if (increaseFillTime)
             {
+                fillSpeedBefore = fillSpeed;
                 accumulate = accumulate * rewardFillSpeed/fillSpeed;
                 fillSpeed = rewardFillSpeed;
                 increaseFillTime = false;
                 endFillTimeIncrease = true;
+                bell_button.enabled = false;
             }
 
             circularTimer.fillAmount = accumulate/fillSpeed;
@@ -116,9 +118,11 @@ public class CircularTimer : MonoBehaviour
 
                 if (timeIncrement / rewardEffectTime >= 1)
                 {
+                    timeIncrement = 0;
                     endFillTimeIncrease = false;
-                    accumulate = accumulate * originalFillSpeed / rewardFillSpeed;
-                    fillSpeed = originalFillSpeed;
+                    accumulate = accumulate * fillSpeedBefore / rewardFillSpeed;
+                    fillSpeed = fillSpeedBefore;
+                    bell_button.enabled = true;
                 }
             }
            

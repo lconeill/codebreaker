@@ -63,6 +63,8 @@ public class slotManager : MonoBehaviour
     public void activateSlotGame(bool activate)
     {
 
+        // This needs to be at the top so that reference to the animator
+        // can be reached when activate is true
         slotPanel.SetActive(activate);
 
         if (activate)
@@ -97,6 +99,7 @@ public class slotManager : MonoBehaviour
         Debug.Log(count);
     }
 
+    // Play the scale out animation then deactive the slot game when finished
     IEnumerator playScaleOut()
     {
         slotPanelAnimation.SetBool("scale", false);
@@ -133,6 +136,7 @@ public class slotManager : MonoBehaviour
             sendIconResult.returnReward("twoMatch");
         }
 
+        //Using coroutine to play the scale out animation
         StartCoroutine(playScaleOut());
         //activateSlotGame(false);
         slotReels[0].resetReel();
