@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class WheelLogic : MonoBehaviour 
 {
@@ -49,6 +50,19 @@ public class WheelLogic : MonoBehaviour
 
     private SpawnTile spawnTile;
     private float doubleTapTime;
+    
+    private GameObject streak_fb_great_ref;
+	private Image streak_fb_great;
+	private GameObject streak_fb_awesome_ref;
+	private Image streak_fb_awesome;
+	private Image streak_fb_amazing;
+	private GameObject streak_fb_amazing_ref;
+	private Image streak_fb_unstoppable;
+	private GameObject streak_fb_unstoppable_ref;
+	private Image streak_fb_match_fiend;
+	private GameObject streak_fb_match_fiend_ref;
+	private Image streak_fb_mayhem;
+	private GameObject streak_fb_mayhem_ref;  
 
 	void Start () 
 	{
@@ -74,7 +88,31 @@ public class WheelLogic : MonoBehaviour
 		
 		mismatch_sfx_ref = GameObject.Find("MisMatch_SFX_01");
 		mismatch_sfx = mismatch_sfx_ref.GetComponent<AudioSource>();
-
+		
+		streak_fb_great_ref = GameObject.Find("Great");
+		
+		streak_fb_great = streak_fb_great_ref.GetComponent<Image>();
+		
+		streak_fb_awesome_ref = GameObject.Find("Awesome");
+		
+		streak_fb_awesome = streak_fb_awesome_ref.GetComponent<Image>();
+		
+		streak_fb_amazing_ref = GameObject.Find("Amazing");
+		
+		streak_fb_amazing = streak_fb_amazing_ref.GetComponent<Image>();
+		
+		streak_fb_unstoppable_ref = GameObject.Find("Unstoppable");
+		
+		streak_fb_unstoppable = streak_fb_unstoppable_ref.GetComponent<Image>();
+		
+		streak_fb_match_fiend_ref = GameObject.Find("Match_Fiend");
+		
+		streak_fb_match_fiend = streak_fb_match_fiend_ref.GetComponent<Image>();
+		
+		streak_fb_mayhem_ref = GameObject.Find("Mayhem");
+		
+		streak_fb_mayhem = streak_fb_mayhem_ref.GetComponent<Image>();
+		
         GameObject temp = GameObject.Find("tileSpawn");
         if (temp != null) { spawnTile = temp.GetComponent<SpawnTile>(); }
 
@@ -175,31 +213,37 @@ public class WheelLogic : MonoBehaviour
 		{
 			if(score_logic.match_streak_counter == 5)
 			{
+				StartCoroutine(ShowStreakGreat());
 				score_logic.the_score = score_logic.the_score + 100;
 			}
 			
 			if(score_logic.match_streak_counter == 10)
 			{
+				StartCoroutine(ShowStreakAwesome());
 				score_logic.the_score = score_logic.the_score + 200;
 			}
 						
 			if(score_logic.match_streak_counter == 15)
 			{
+				StartCoroutine(ShowStreakAmazing());
 				score_logic.the_score = score_logic.the_score + 500;
 			}
 			
 			if(score_logic.match_streak_counter == 20)
 			{
+				StartCoroutine(ShowStreakUnstoppable());
 				score_logic.the_score = score_logic.the_score + 1000;
 			}
 			
 			if(score_logic.match_streak_counter == 25)
 			{
+				StartCoroutine(ShowStreakMatchFiend());
 				score_logic.the_score = score_logic.the_score + 1500;
 			}
 			
 			if(score_logic.match_streak_counter == 30)
 			{
+				StartCoroutine(ShowStreakMayhem());
 				score_logic.the_score = score_logic.the_score + 3000;
 			}
 			
@@ -233,6 +277,60 @@ public class WheelLogic : MonoBehaviour
 			slot_manager.activateSlotGame(true);
 			slot_manager.inMiniGame = true;
 		}
+	}
+	
+	IEnumerator ShowStreakGreat()
+	{
+		streak_fb_great.enabled = true;
+		
+		yield return new WaitForSeconds(1.0f);
+		
+		streak_fb_great.enabled = false;
+	}
+	
+	IEnumerator ShowStreakAwesome()
+	{
+		streak_fb_awesome.enabled = true;
+		
+		yield return new WaitForSeconds(1.0f);
+		
+		streak_fb_awesome.enabled = false;
+	}
+	
+	IEnumerator ShowStreakAmazing()
+	{
+		streak_fb_amazing.enabled = true;
+		
+		yield return new WaitForSeconds(1.0f);
+		
+		streak_fb_amazing.enabled = false;
+	}
+	
+	IEnumerator ShowStreakUnstoppable()
+	{
+		streak_fb_unstoppable.enabled = true;
+		
+		yield return new WaitForSeconds(1.0f);
+		
+		streak_fb_unstoppable.enabled = false;
+	}
+	
+	IEnumerator ShowStreakMatchFiend()
+	{
+		streak_fb_match_fiend.enabled = true;
+		
+		yield return new WaitForSeconds(1.0f);
+		
+		streak_fb_match_fiend.enabled = false;
+	}
+	
+	IEnumerator ShowStreakMayhem()
+	{
+		streak_fb_mayhem.enabled = true;
+		
+		yield return new WaitForSeconds(1.0f);
+		
+		streak_fb_mayhem.enabled = false;
 	}
 	
 }

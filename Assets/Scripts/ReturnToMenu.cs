@@ -7,18 +7,18 @@ public class ReturnToMenu : MonoBehaviour
 	// screen and hide the Gameover UI
 	
 	public GameObject UI_ref;
+	//private StartOptions start_options;
 	
 	void Start()
 	{
-
+		UI_ref = GameObject.Find("UI");
 	}
 	
 	public void LoadMainMenu()
 	{
+		Destroy(UI_ref);
+		
 		Application.LoadLevel("startScreen");
 		
-		Time.timeScale = 1;	
-		Destroy(UI_ref);
-
 	}
 }
