@@ -123,6 +123,11 @@ MonoBehaviour:
   - {fileID: 181250, guid: 39aba78af881da541b72c52592588b64, type: 2}
   - {fileID: 165450, guid: b59c9a7b03115ac4baa2fffce83366db, type: 2}
   - {fileID: 166378, guid: cceb074e7b4aacc4d871033ae258d9d3, type: 2}
+  - {fileID: 166378, guid: 1f5cb87452affe64390d01a1bf835aa2, type: 2}
+  - {fileID: 166378, guid: 05aff3f7ef1b3544d81ecaee01e869a4, type: 2}
+  - {fileID: 166378, guid: 387771c72d8a9f64c86cb437305d1303, type: 2}
+  - {fileID: 166378, guid: 944ed089a4d6c994988ccb7d3eb7a4ab, type: 2}
+  - {fileID: 166378, guid: 2912e6e2335ad0a4faafa4b102fff147, type: 2}
   clonedTiles:
   - {fileID: 0}
   - {fileID: 0}
@@ -4249,6 +4254,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 21217154, guid: b45892cba799eca4cb4ef9cf72971d9e, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300010, guid: 337df98dbe7577347b7cdd8427e9f6c9,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b45892cba799eca4cb4ef9cf72971d9e, type: 2}
   m_IsPrefabParent: 0

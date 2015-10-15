@@ -119,7 +119,6 @@ public class SpawnTile : MonoBehaviour
             if (n == 0)
             {
                 int i = Random.Range(spawnStartRange, spawnRange);
-                //Debug.Log(i);
                 GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[n], Quaternion.identity);
                 clonedTiles[n] = clone;
             }

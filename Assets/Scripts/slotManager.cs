@@ -102,8 +102,12 @@ public class slotManager : MonoBehaviour
     // Play the scale out animation then deactive the slot game when finished
     IEnumerator playScaleOut()
     {
+        yield return new WaitForSeconds(2);
         slotPanelAnimation.SetBool("scale", false);
         yield return new WaitForSeconds(2);
+        slotReels[0].resetReel();
+        slotReels[1].resetReel();
+        slotReels[2].resetReel();
         activateSlotGame(false);
     }
 
@@ -139,8 +143,5 @@ public class slotManager : MonoBehaviour
         //Using coroutine to play the scale out animation
         StartCoroutine(playScaleOut());
         //activateSlotGame(false);
-        slotReels[0].resetReel();
-        slotReels[1].resetReel();
-        slotReels[2].resetReel();
     }
 }
