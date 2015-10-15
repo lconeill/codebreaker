@@ -84,7 +84,7 @@ public class WheelLogic : MonoBehaviour
     {
         if (Input.touchCount == 1)
         {
-            if (spawnTile.clonedTiles[3].tag == "bomb")
+            if (spawnTile.clonedTiles[3].tag == "Source_05")
             {
                 if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
@@ -101,17 +101,59 @@ public class WheelLogic : MonoBehaviour
                     doubleTapTime = Time.time;
                 }
             }
+
+            //if (spawnTile.clonedTiles[3].tag == "bomb")
+            //{
+            //    if (Input.GetTouch(0).phase == TouchPhase.Began)
+            //    {
+            //        if (Time.time < doubleTapTime + 0.3f)
+            //        {
+            //            wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
+            //            score_logic.match_streak_counter = score_logic.match_streak_counter + 1;
+            //            UpdatScore(is_match);
+            //            circular_timer_Script.Reset();
+            //            move_script.is_touch_start = false;
+            //            is_match = true;
+            //        }
+
+            //        doubleTapTime = Time.time;
+            //    }
+            //}
         }
 
-        if (wheel_rotation_script.match_count == 30)
+        if (wheel_rotation_script.match_count >= 30 && wheel_rotation_script.match_count < 40)
         {
-            spawnTile.spawnRange = 5;
+            extendSpawnRange(4, 5);
+            //spawnTile.spawnRange = 5;
         }
-        else if (wheel_rotation_script.match_count == 40)
+        else if (wheel_rotation_script.match_count >= 40 && wheel_rotation_script.match_count < 50)
         {
-            spawnTile.spawnRange = 8;
+            extendSpawnRange(4, 9);
+            //spawnTile.spawnRange = 9;
         }
-    }	
+        else if (wheel_rotation_script.match_count >= 50)
+        {
+            extendSpawnRange(4, 13);
+            //spawnTile.spawnRange = 13;
+        }
+    }
+
+    // This function reduces the chances of the bomb / different shape / different color tiles appearing
+    // Giving it a 65% chance for now
+    public void extendSpawnRange(int defaultSpawnRange, int newSpawnRange)
+    {
+        int rand = Random.Range(1, 21);
+
+        if (rand >= 13)
+        {
+            spawnTile.spawnRange = defaultSpawnRange;
+        }
+
+        else
+        {
+            spawnTile.spawnRange = newSpawnRange;
+        }
+    }
 
 	// This fucntion is called when a trigger collider enters this objects collider.
 	// When a Correct match is made the scroe is updated and a variable tracks
