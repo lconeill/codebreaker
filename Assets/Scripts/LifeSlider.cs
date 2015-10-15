@@ -93,12 +93,12 @@ public class LifeSlider : MonoBehaviour
     // Used to decrease the slider when a bad reward from the slot game is acquired
     public void decreaseSlider()
     {
-        timeKeeper += 5;
+        timeKeeper = Mathf.Clamp(timeKeeper + 5 - matchSliderAmount, 0, lifeTime);
     }
 
     // Used to injcrease the slider when a good reward from the slot game is acquired
     public void increaseSlider()
     {
-        timeKeeper -= 5;
+        timeKeeper = Mathf.Clamp(timeKeeper - 5 - matchSliderAmount, 0, lifeTime);
     }
 }  

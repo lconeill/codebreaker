@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SpawnTile : MonoBehaviour
 {
@@ -8,6 +9,17 @@ public class SpawnTile : MonoBehaviour
                                                           new Vector2 (7,-3), new Vector2 (0,0) };
     public GameObject[] clonedTiles = new GameObject[4];
     public int spawnRange = 4;
+    public int spawnStartRange = 0;
+
+    private int spawnRangeBefore;
+    private int spawnStartRangeBefore;
+    public bool reduceTileShape = false;
+    private bool endReward = false;
+
+    private float rewardEffectTime = 5;
+    private float timeIncrement = 0;
+
+    private Button fruitgum_button;
     
     // Added the variable to hold a reference to the MoveScript.
     
@@ -16,10 +28,50 @@ public class SpawnTile : MonoBehaviour
     void Start()
     {
         initializeTiles();
+        
+        GameObject temp = GameObject.Find("fruitgum_power_up");
+        if (temp != null){ fruitgum_button = temp.GetComponent<Button>(); }
     }
     
     void Update()
     {
+        if (reduceTileShape)
+        {
+            timeIncrement += Time.deltaTime;
+            spawnRangeBefore = spawnRange;
+            spawnStartRangeBefore = spawnStartRange;
+            spawnStartRange = Random.Range(0, 4);
+
+            if (spawnStartRange == 3)
+            {
+                spawnStartRange = 1;
+                spawnRange = 3;
+            }
+
+            else
+            {
+                spawnRange = spawnStartRange + 2;
+            }
+
+            reduceTileShape = false;
+            endReward = true;
+            fruitgum_button.enabled = false;
+        }
+
+        if (endReward)
+        {
+            timeIncrement += Time.deltaTime;
+
+            if (timeIncrement >= rewardEffectTime)
+            {
+                spawnRange = spawnRangeBefore;
+                spawnStartRange = spawnStartRangeBefore;
+                timeIncrement = 0;
+                endReward = false;
+                fruitgum_button.enabled = true;
+            }
+        }
+
 
     }
 
@@ -27,7 +79,7 @@ public class SpawnTile : MonoBehaviour
     {
         for (int j = 0; j <= 3; j++)
         {
-            int i = Random.Range(0, spawnRange);
+            int i = Random.Range(spawnStartRange, spawnRange);
             GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[j], Quaternion.identity);
             clonedTiles[j] = clone;
             
@@ -66,7 +118,8 @@ public class SpawnTile : MonoBehaviour
             clonedTiles[n + 1] = clonedTiles[n];
             if (n == 0)
             {
-                int i = Random.Range(0, spawnRange);
+                int i = Random.Range(spawnStartRange, spawnRange);
+                //Debug.Log(i);
                 GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[n], Quaternion.identity);
                 clonedTiles[n] = clone;
             }

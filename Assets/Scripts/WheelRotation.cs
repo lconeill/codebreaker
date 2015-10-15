@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+
 
 public class WheelRotation : MonoBehaviour 
 {
@@ -9,7 +11,6 @@ public class WheelRotation : MonoBehaviour
 
 	private float startRollLerp = 0;
 	private Vector3 updateRotation = Vector3.zero;
-	private float stopSpeed = 5.5f;
 	private Vector3 rotation = Vector3.zero;
 	
 	private int rotationSpeed = 90;
@@ -24,6 +25,9 @@ public class WheelRotation : MonoBehaviour
     private float timeIncrement = 0;
     private int previousRotationSpeed;
     private int rewardRotationSpeed = 75;
+    //private int rewardRotationSpeed = 0;
+
+    private Button orange_button;
 	
 	// get a reference to the slot game so that once
 	// it starts we stop the roraion of the wheel.
@@ -38,6 +42,9 @@ public class WheelRotation : MonoBehaviour
 		
 		slot_manager_ref = GameObject.Find("slotManager");
 		slot_manager = slot_manager_ref.GetComponent<slotManager>();
+
+        GameObject temp = GameObject.Find("orange_power_up");
+        if (temp != null) { orange_button = temp.GetComponent<Button>(); }
 	}
 	
 	// Update is called once per frame
@@ -50,10 +57,10 @@ public class WheelRotation : MonoBehaviour
 			{
 				startRollLerp += Time.deltaTime;
 				
-				if (startRollLerp > stopSpeed)
+                if (startRollLerp > (360 + rotationSpeed) / (float)rotationSpeed)
 				{
                     startRoll = false;
-					startRollLerp = stopSpeed;
+                    //startRollLerp = 360 / (float)rotationSpeed;
 					continueRotation = true;
                     startRollLerp = 0;
 				}
@@ -78,13 +85,17 @@ public class WheelRotation : MonoBehaviour
                 slowRotationFlag = false;
                 timeIncrement = 0;
                 startRoll = true;
+                orange_button.enabled = true;
             }
         }
 	}
 	
 	public void smoothStart()
 	{
-		float perc = startRollLerp / stopSpeed;
+
+        float stop = (360 + rotationSpeed) / (float)rotationSpeed;
+        float perc = startRollLerp / stop;
+
 		perc = 1 - Mathf.Cos(perc * Mathf.PI * 0.5f);
 		
 		updateRotation.z = Mathf.Lerp(rotation.z, rotation.z - 360, perc);
@@ -100,6 +111,7 @@ public class WheelRotation : MonoBehaviour
         slowRotationFlag = true;
         previousRotationSpeed = rotationSpeed;
         rotationSpeed = rewardRotationSpeed;
+        orange_button.enabled = false;
     }
 
 	void speedLevel(int count)
@@ -138,8 +150,3 @@ public class WheelRotation : MonoBehaviour
         }
 	}
 }
-
-
-
-
-

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Collections;
 
 public class slotManager : MonoBehaviour
 {
@@ -13,8 +13,7 @@ public class slotManager : MonoBehaviour
     private bool threeMatch, noMatch;
     public RewardManager sendIconResult;
 
-    public Animator slotPanelAnimation;
-    private float track;
+    private Animator slotPanelAnimation;
     
 	private GameObject SlotGameTheme_01_ref;
 	
@@ -48,6 +47,7 @@ public class slotManager : MonoBehaviour
 		
 		SlotGameLose_01_ref = GameObject.Find("SlotGameLose_01");
 		SlotGameLose_01 = SlotGameLose_01_ref.GetComponent<AudioSource>();
+
     }
 
     // Checks if all three reels have been pressed and determines the reward
@@ -58,12 +58,14 @@ public class slotManager : MonoBehaviour
             getReward();
             count = 0;
         }
-
-        track += Time.deltaTime;
     }
 
     public void activateSlotGame(bool activate)
     {
+
+        // This needs to be at the top so that reference to the animator
+        // can be reached when activate is true
+        slotPanel.SetActive(activate);
 
         if (activate)
         {
@@ -71,15 +73,15 @@ public class slotManager : MonoBehaviour
 			SlotGameTheme_01.Play();
 			
             inMiniGame = true;
+
+            GameObject temp = GameObject.Find("slotGamePanel");
+            slotPanelAnimation = temp.GetComponent<Animator>();
         }
 
         else
-        {
-            //slotPanelAnimation.SetBool("isHidden", false);
+        {   
             inMiniGame = false;
         }
-
-        slotPanel.SetActive(activate);
 
         for (int i = 0; i <= 2; i++)
         {
@@ -95,6 +97,14 @@ public class slotManager : MonoBehaviour
         slotResults[count] = individualResult;
         count++;
         Debug.Log(count);
+    }
+
+    // Play the scale out animation then deactive the slot game when finished
+    IEnumerator playScaleOut()
+    {
+        slotPanelAnimation.SetBool("scale", false);
+        yield return new WaitForSeconds(2);
+        activateSlotGame(false);
     }
 
     public void getReward()
@@ -126,10 +136,11 @@ public class slotManager : MonoBehaviour
             sendIconResult.returnReward("twoMatch");
         }
 
-        activateSlotGame(false);
+        //Using coroutine to play the scale out animation
+        StartCoroutine(playScaleOut());
+        //activateSlotGame(false);
         slotReels[0].resetReel();
         slotReels[1].resetReel();
         slotReels[2].resetReel();
-
     }
 }

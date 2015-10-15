@@ -6,17 +6,19 @@ public class RewardManager : MonoBehaviour {
     public CircularTimer circularTimer;
     private LifeSlider lifeSlider;
     private WheelRotation wheelRotation;
+    private SpawnTile spawnTile;
 
 	// Use this for initialization
 	void Start () 
     {
         GameObject temp = GameObject.Find("lifeSlider");
-
         if (temp != null) { lifeSlider = temp.GetComponent<LifeSlider>(); }
 
         GameObject temp_1 = GameObject.Find("wheel_01");
-
         if (temp_1 != null) { wheelRotation = temp_1.GetComponent<WheelRotation>(); }
+
+        GameObject temp_2 = GameObject.Find("tileSpawn");
+        if (temp != null) { spawnTile = temp_2.GetComponent<SpawnTile>(); }
 	}
 	
 	// Update is called once per frame
@@ -35,7 +37,8 @@ public class RewardManager : MonoBehaviour {
                 break;
 
             case "Fruit Gum":
-                reduceTileShapes();
+                Debug.Log("You got all fruit gums: Reducing tile shapes!");
+                spawnTile.reduceTileShape = true;
                 break;
 
             case "Lemon":
