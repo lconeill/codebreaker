@@ -130,6 +130,8 @@ public class CircularTimer : MonoBehaviour
             {   
 				//Debug.Log(moveTile.clonedTiles[3].tag);
 
+				/*
+				
 				string[] unmatchable = {"Source_05", "Source_06", "Source_07"}; 
 				string tile_value = moveTile.clonedTiles[3].tag;
 				int pos = System.Array.IndexOf(unmatchable, tile_value);
@@ -140,14 +142,14 @@ public class CircularTimer : MonoBehaviour
 					match_sfx.Play();
 					Reset();
 				}
-            	
-				else
-				{
-					wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
-					wheel_logic.UpdatScore(wheel_logic.is_match = false);
-					mismatch_sfx.Play();
-	                Reset();
-	            }
+				
+				*/
+
+				wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
+				wheel_logic.UpdatScore(wheel_logic.is_match = false);
+				mismatch_sfx.Play();
+                Reset();
+
             }
         }
     }
