@@ -21,6 +21,9 @@ public class MatchFX : MonoBehaviour
 	
 	public void Run()
 	{
-		match_particle.Play();
+		if(!match_particle.isPlaying)
+		{
+			match_particle.Play();
+		}
 	}
 }
