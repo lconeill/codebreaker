@@ -96,7 +96,7 @@ public class slotManager : MonoBehaviour
     {
         slotResults[count] = individualResult;
         count++;
-        Debug.Log(count);
+        //Debug.Log(count);
     }
 
     // Play the scale out animation then deactive the slot game when finished

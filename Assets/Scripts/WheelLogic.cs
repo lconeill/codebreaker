@@ -49,7 +49,6 @@ public class WheelLogic : MonoBehaviour
 	private AudioSource mismatch_sfx;
 
     private SpawnTile spawnTile;
-    private float doubleTapTime;
     
     private GameObject streak_fb_great_ref;
 	private Image streak_fb_great;
@@ -120,59 +119,20 @@ public class WheelLogic : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount == 1)
-        {
-            if (spawnTile.clonedTiles[3].tag == "Source_05")
-            {
-                if (Input.GetTouch(0).phase == TouchPhase.Began)
-                {
-                    if (Time.time < doubleTapTime + 0.3f)
-                    {
-                        wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
-                        score_logic.match_streak_counter = score_logic.match_streak_counter + 1;
-                        UpdatScore(is_match);
-                        circular_timer_Script.Reset();
-                        move_script.is_touch_start = false;
-                        is_match = true;
-                    }
-
-                    doubleTapTime = Time.time;
-                }
-            }
-
-            //if (spawnTile.clonedTiles[3].tag == "bomb")
-            //{
-            //    if (Input.GetTouch(0).phase == TouchPhase.Began)
-            //    {
-            //        if (Time.time < doubleTapTime + 0.3f)
-            //        {
-            //            wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
-            //            score_logic.match_streak_counter = score_logic.match_streak_counter + 1;
-            //            UpdatScore(is_match);
-            //            circular_timer_Script.Reset();
-            //            move_script.is_touch_start = false;
-            //            is_match = true;
-            //        }
-
-            //        doubleTapTime = Time.time;
-            //    }
-            //}
-        }
-
-        if (wheel_rotation_script.match_count >= 30 && wheel_rotation_script.match_count < 40)
+        
+        if (wheel_rotation_script.match_count >= 15 && wheel_rotation_script.match_count < 30)
         {
             extendSpawnRange(4, 5);
-            //spawnTile.spawnRange = 5;
         }
-        else if (wheel_rotation_script.match_count >= 40 && wheel_rotation_script.match_count < 50)
+
+        else if (wheel_rotation_script.match_count >= 30 && wheel_rotation_script.match_count < 40)
         {
             extendSpawnRange(4, 9);
-            //spawnTile.spawnRange = 9;
         }
-        else if (wheel_rotation_script.match_count >= 50)
+
+        else if (wheel_rotation_script.match_count >= 40)
         {
             extendSpawnRange(4, 13);
-            //spawnTile.spawnRange = 13;
         }
     }
 
@@ -376,9 +336,3 @@ public class WheelLogic : MonoBehaviour
 	}
 	
 }
-
-
-
-
-
-
