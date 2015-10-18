@@ -54,7 +54,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57cd902798caffd4b90801db7c99dedd, type: 3}
   m_Name: 
@@ -70,9 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967690e701978624d968885df64d9b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontal_limit: 1
-  vertical_limit: 1
-  drag_speed: .00999999978
+  is_touch_start: 0
 --- !u!212 &21231158
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -124,6 +122,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Target_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

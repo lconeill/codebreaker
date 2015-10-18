@@ -42,11 +42,19 @@ public class CircularTimer : MonoBehaviour
 	private AudioSource mismatch_sfx;
 
     private Button bell_button;
+    
+    private GameObject match_fx_ref;
+    private ParticleSystem match_fx_particle;
+    private MatchFX match_fx_script;
+    
+    public float particle_duration = 0.0f;
+    
+    private bool is_reset = false;
 
     // Set timer to zero fill amount
     void Start()
     {
-        Reset();
+        
         fillSpeed_30 = fillSpeed * 0.75f;
         fillSpeed_40 = fillSpeed * 0.625f;
         fillSpeed_50 = fillSpeed * 0.5f;
@@ -66,12 +74,24 @@ public class CircularTimer : MonoBehaviour
 		
 		wheel_logic_ref = GameObject.Find("match_01");
 		wheel_logic = wheel_logic_ref.GetComponent<WheelLogic>();
+		
+		match_fx_ref = GameObject.Find("match_fx");
+		match_fx_particle = match_fx_ref.GetComponent<ParticleSystem>();
+		match_fx_script = match_fx_ref.GetComponent<MatchFX>();
+		
+		Reset();
+		
     }
 
     // Fill the timer based on the time variable
     // Move tiles and reset timer if timer is full
     void Update()
     {
+		if(is_reset == true)
+		{
+			Reset();
+		}
+		
         if (!slotManager.inMiniGame)
         {
             accumulate += Time.deltaTime;
@@ -126,10 +146,12 @@ public class CircularTimer : MonoBehaviour
                 }
             }
            
-            if (circularTimer.fillAmount == 1)
+			if (circularTimer.fillAmount == 1 && is_reset == false)
             {   
 				//Debug.Log(moveTile.clonedTiles[3].tag);
 
+				/*
+				
 				string[] unmatchable = {"Source_05", "Source_06", "Source_07"}; 
 				string tile_value = moveTile.clonedTiles[3].tag;
 				int pos = System.Array.IndexOf(unmatchable, tile_value);
@@ -140,14 +162,17 @@ public class CircularTimer : MonoBehaviour
 					match_sfx.Play();
 					Reset();
 				}
-            	
-				else
-				{
-					wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
-					wheel_logic.UpdatScore(wheel_logic.is_match = false);
-					mismatch_sfx.Play();
-	                Reset();
-	            }
+				
+				*/
+
+				wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
+				wheel_logic.UpdatScore(wheel_logic.is_match = false);
+				match_fx_script.Run();
+				particle_duration = Time.time;
+				mismatch_sfx.Play();
+            	Reset();
+
+
             }
         }
     }
@@ -155,8 +180,14 @@ public class CircularTimer : MonoBehaviour
     // Resets the timer
     public void Reset()
     {
-        moveTile.moveTiles();
-        circularTimer.fillAmount = 0f;
-        accumulate = 0;
+		is_reset = true;
+		moveTile.clonedTiles[3].SetActive(false);
+		circularTimer.fillAmount = 0f;
+		accumulate = 0;
+		if(Time.time >= particle_duration + match_fx_particle.duration / 4)
+		{
+	        moveTile.moveTiles();
+	        is_reset = false;
+        }
     }
 }

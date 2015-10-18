@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ScoreLogic : MonoBehaviour 
 {
@@ -12,12 +13,12 @@ public class ScoreLogic : MonoBehaviour
 	
 	private int previoius_score = 0;
 	
-	private GUIText gui_text;
+	private Text gui_text;
 	
 	// Use this for initialization
 	void Start () 
 	{
-		gui_text = GetComponent<GUIText>();
+		gui_text = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
