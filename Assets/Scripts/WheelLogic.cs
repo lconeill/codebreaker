@@ -49,7 +49,9 @@ public class WheelLogic : MonoBehaviour
 	private AudioSource mismatch_sfx;
 
     private SpawnTile spawnTile;
-    
+	private SpriteRenderer spawn_tile_renderer;
+	private MoveScript active_tile_move_ref;
+	
     private GameObject streak_fb_great_ref;
 	private Image streak_fb_great;
 	private GameObject streak_fb_awesome_ref;
@@ -118,7 +120,24 @@ public class WheelLogic : MonoBehaviour
 	}
 
     void Update()
-    {
+    {   
+		if (slot_manager.inMiniGame == true)
+		{
+			spawn_tile_renderer = spawnTile.clonedTiles[3].GetComponent<SpriteRenderer>();
+			spawn_tile_renderer.enabled = false;
+			
+			active_tile_move_ref = spawnTile.clonedTiles[3].GetComponent<MoveScript>();
+			active_tile_move_ref.enabled = false;
+		}
+		
+		else
+		{
+			spawn_tile_renderer = spawnTile.clonedTiles[3].GetComponent<SpriteRenderer>();
+			spawn_tile_renderer.enabled = true;
+			
+			active_tile_move_ref = spawnTile.clonedTiles[3].GetComponent<MoveScript>();
+			active_tile_move_ref.enabled = true;
+		}
         
         if (wheel_rotation_script.match_count >= 15 && wheel_rotation_script.match_count < 30)
         {

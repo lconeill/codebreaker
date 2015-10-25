@@ -20,6 +20,9 @@ public class NonSwipeActions : MonoBehaviour {
     private float diffuseTimer = 0;
     private bool isBombTouch = false;
     Touch touch;
+    
+	private GameObject slot_manager_ref;
+	private slotManager slot_manager;
 
 
 	// Use this for initialization
@@ -46,23 +49,29 @@ public class NonSwipeActions : MonoBehaviour {
         GameObject temp_7 = GameObject.Find("MisMatch_SFX_01");
         if (temp_7 != null) { mismatchSFX = temp_7.GetComponent<AudioSource>(); }
         
+		slot_manager_ref = GameObject.Find("slotManager");
+		slot_manager = slot_manager_ref.GetComponent<slotManager>();
+        
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-        if (Input.touchCount > 0)
-        {
-            doubleTap();
-            diffuseBomb();
-        }
-
-        if (spawnTile.clonedTiles[3].tag == "bomb" && circularTimer.circularTimer.fillAmount >= 0.99)
-        {
-            isBombTouch = false;
-            diffuseTimer = 0;
-            badReset();
-            Debug.Log("The bomb exploded!");
+		if(slot_manager.inMiniGame == false)
+		{
+	        if (Input.touchCount > 0)
+	        {
+	            doubleTap();
+	            diffuseBomb();
+	        }
+	
+	        if (spawnTile.clonedTiles[3].tag == "bomb" && circularTimer.circularTimer.fillAmount >= 0.99)
+	        {
+	            isBombTouch = false;
+	            diffuseTimer = 0;
+	            badReset();
+	            Debug.Log("The bomb exploded!");
+	        }
         }
 	}
 
