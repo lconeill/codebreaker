@@ -2010,6 +2010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806d125bc1109f347ae23df7b23f8b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circularTimer: {fileID: 1897455125}
 --- !u!4 &1409585048
 Transform:
   m_ObjectHideFlags: 0
