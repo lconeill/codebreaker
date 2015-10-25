@@ -7,6 +7,7 @@ public class RewardManager : MonoBehaviour {
     private LifeSlider lifeSlider;
     private WheelRotation wheelRotation;
     private SpawnTile spawnTile;
+    private HideTileReward hideTileReward;
 
 	// Use this for initialization
 	void Start () 
@@ -18,7 +19,10 @@ public class RewardManager : MonoBehaviour {
         if (temp_1 != null) { wheelRotation = temp_1.GetComponent<WheelRotation>(); }
 
         GameObject temp_2 = GameObject.Find("tileSpawn");
-        if (temp != null) { spawnTile = temp_2.GetComponent<SpawnTile>(); }
+        if (temp_2 != null) { spawnTile = temp_2.GetComponent<SpawnTile>(); }
+
+        GameObject temp_3 = GameObject.Find("tileSpawn");
+        if (temp_3 != null) { hideTileReward = temp_3.GetComponent<HideTileReward>(); }
 	}
 	
 	// Update is called once per frame
@@ -61,7 +65,7 @@ public class RewardManager : MonoBehaviour {
                 break;
 
             case "Cherry2":
-                emptyTileScroller();
+                hideTileReward.hideTile();
                 break;
 
             case "noMatch":
