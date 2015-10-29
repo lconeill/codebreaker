@@ -72,6 +72,11 @@ public class WheelLogic : MonoBehaviour
 
 	void Start () 
 	{
+		if(PlayerPrefs.GetInt("High Score") == 0)
+		{
+			PlayerPrefs.SetInt("High Score", 0);
+		}
+		
 		circular_timer_Script = circular_timer_ref.GetComponent<CircularTimer>();
 		
 		move_script_ref = GameObject.Find("Move_Ref");

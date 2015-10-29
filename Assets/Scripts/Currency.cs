@@ -17,6 +17,11 @@ public class Currency : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+    	if(PlayerPrefs.GetInt("Coins") == 0)
+    	{
+			PlayerPrefs.SetInt("Coins", 0);
+    	}
+    	
         GameObject temp = GameObject.Find("score_display");
         GameObject temp_1 = GameObject.Find("wheel_01");
 
@@ -35,6 +40,7 @@ public class Currency : MonoBehaviour {
         }
 
         currencyText = gameObject.GetComponent<Text>();
+		stringCurrency = "x" + PlayerPrefs.GetInt("Coins");
         currencyText.text = stringCurrency;
 	}
 	
@@ -46,7 +52,8 @@ public class Currency : MonoBehaviour {
             if (wheelRotation.match_count % 5 == 0)
             {
                 currency += 50;
-                stringCurrency = "x" + currency;
+				PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins") + currency));
+				stringCurrency = "x" + PlayerPrefs.GetInt("Coins");
                 currencyText.text = stringCurrency;
             }
         }
@@ -58,7 +65,8 @@ public class Currency : MonoBehaviour {
                 if (scoreLogic.match_streak_counter % i == 0)
                 {
                     currency += 5 + i - 5;
-                    stringCurrency = "x" + currency;
+					PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins") + currency));
+					stringCurrency = "x" + PlayerPrefs.GetInt("Coins");
                     currencyText.text = stringCurrency;
                     //break;
                 }
