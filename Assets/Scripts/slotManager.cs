@@ -109,6 +109,7 @@ public class slotManager : MonoBehaviour
         slotReels[1].resetReel();
         slotReels[2].resetReel();
         activateSlotGame(false);
+        MainTheme_01.Play();
     }
 
     public void getReward()
@@ -120,7 +121,7 @@ public class slotManager : MonoBehaviour
         {
 			SlotGameTheme_01.Stop();
 			SlotGameWin_01.Play();
-			MainTheme_01.PlayDelayed(1.5f);
+			//MainTheme_01.PlayDelayed(1.5f);
             sendIconResult.returnReward(slotResults[0]);
         }
 
@@ -128,7 +129,7 @@ public class slotManager : MonoBehaviour
         {
 			SlotGameTheme_01.Stop();
 			SlotGameLose_01.Play();
-			MainTheme_01.PlayDelayed(1.5f);
+			//MainTheme_01.PlayDelayed(1.5f);
             sendIconResult.returnReward("noMatch");
         }
 
@@ -136,7 +137,7 @@ public class slotManager : MonoBehaviour
         {
 			SlotGameTheme_01.Stop();
 			SlotGameLose_01.Play();
-			MainTheme_01.PlayDelayed(1.5f);
+			//MainTheme_01.PlayDelayed(1.5f);
             sendIconResult.returnReward("twoMatch");
         }
 
