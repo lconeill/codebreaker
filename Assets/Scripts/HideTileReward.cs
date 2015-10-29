@@ -29,6 +29,8 @@ public class HideTileReward : MonoBehaviour {
     // Hide the tiles for effect duration then play open vault animation
     void Update () 
     {
+        // TODO: Get reference to slot manager and make sure time reward time doesn't increment when
+        //       in the slot game
         if (hide)
         {
             rewardTime += Time.deltaTime;
