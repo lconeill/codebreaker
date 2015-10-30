@@ -11,8 +11,9 @@ public class HideTileReward : MonoBehaviour {
     private float rewardTime = 0;               // Counter used to determine if the rewardEffectTime has been reached
     private float rewardEffectTime = 5.0f;      // How long the effect lasts for in seconds
 
-    public GameObject vault;
+    public GameObject vault;                    // Needs to be public to setActive on/off so that default animation plays when it turns on
 
+    private slotManager slots;
 
 	// Get reference to animator components
     void Start () 
@@ -23,13 +24,17 @@ public class HideTileReward : MonoBehaviour {
         GameObject temp_1 = GameObject.Find("vault_image_right");
         if (temp_1 != null) { vaultRightAnimation = temp_1.GetComponent<Animator>(); }
 
+        GameObject temp_2 = GameObject.Find("slotManager");
+        if (temp_2 != null) { slots = temp_2.GetComponent<slotManager>(); }
+
         vault.SetActive(false);
     }
 	
     // Hide the tiles for effect duration then play open vault animation
     void Update () 
     {
-        if (hide)
+
+        if (hide && !slots.inMiniGame)
         {
             rewardTime += Time.deltaTime;
             if (rewardTime >= rewardEffectTime)
