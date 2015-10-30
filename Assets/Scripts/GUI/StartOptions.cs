@@ -39,7 +39,7 @@ public class StartOptions : MonoBehaviour {
 	{
 		Time.timeScale = 1;
 		showPanels.ShowMenu();
-		playMusic.PlaySelectedMusic(musicToChangeTo);
+		StartCoroutine(PlayNewMusic(0, 0f));
 		playMusic.FadeUp (fastFadeIn);
 	}
 
@@ -51,7 +51,7 @@ public class StartOptions : MonoBehaviour {
 		if (changeMusicOnStart) 
 		{
 			playMusic.FadeDown(fadeColorAnimationClip.length);
-			Invoke ("PlayNewMusic", fadeAlphaAnimationClip.length);
+			StartCoroutine(PlayNewMusic(1, 1f));
 		}
 
 		//If changeScenes is true, start fading and change scenes halfway through animation when screen is blocked by FadeImage
@@ -64,6 +64,8 @@ public class StartOptions : MonoBehaviour {
 			
 			//Set the trigger of Animator animColorFade to start transition to the FadeToOpaque state.
 			animColorFade.SetTrigger ("fade");
+
+			StartCoroutine(PlayNewMusic(1, 1f));
 		} 
 
 		//If changeScenes is false, call StartGameInScene
@@ -99,7 +101,7 @@ public class StartOptions : MonoBehaviour {
 		if (changeMusicOnStart) 
 		{
 			//Wait until game has started, then play new music
-			Invoke ("PlayNewMusic", fadeAlphaAnimationClip.length);
+			StartCoroutine(PlayNewMusic(1, 1f));
 		}
 		//Set trigger for animator to start animation fading out Menu UI
 		animMenuAlpha.SetTrigger ("fade");
@@ -113,8 +115,9 @@ public class StartOptions : MonoBehaviour {
 	}
 
 
-	public void PlayNewMusic()
+	IEnumerator PlayNewMusic(int musicToChangeTo, float delayTime)
 	{
+		yield return new WaitForSeconds(delayTime);
 		//Fade up music nearly instantly without a click 
 		playMusic.FadeUp (fastFadeIn);
 		//Play music clip assigned to mainMusic in PlayMusic script
