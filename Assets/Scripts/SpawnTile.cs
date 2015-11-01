@@ -88,7 +88,7 @@ public class SpawnTile : MonoBehaviour
             	// Based on the Initial tile get reference to the
             	// MoveScript and enable it.
             	
-            	clonedTiles[j].transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            	clonedTiles[j].transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             	
 				move_script = clonedTiles[j].GetComponent<MoveScript>();
 				move_script.enabled = true;
@@ -107,7 +107,7 @@ public class SpawnTile : MonoBehaviour
             	// For every tile 'In Play', add a reference to
             	// the Move script and enable it.
             	
-				clonedTiles[n].transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+				clonedTiles[n].transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 				
 				move_script = clonedTiles[n].GetComponent<MoveScript>();
 				move_script.enabled = true;
