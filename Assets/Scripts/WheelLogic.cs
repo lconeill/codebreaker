@@ -49,7 +49,9 @@ public class WheelLogic : MonoBehaviour
 	private AudioSource mismatch_sfx;
 
     private SpawnTile spawnTile;
-    
+	private SpriteRenderer spawn_tile_renderer;
+	private MoveScript active_tile_move_ref;
+	
     private GameObject streak_fb_great_ref;
 	private Image streak_fb_great;
 	private GameObject streak_fb_awesome_ref;
@@ -61,10 +63,20 @@ public class WheelLogic : MonoBehaviour
 	private Image streak_fb_match_fiend;
 	private GameObject streak_fb_match_fiend_ref;
 	private Image streak_fb_mayhem;
-	private GameObject streak_fb_mayhem_ref;  
+	private GameObject streak_fb_mayhem_ref;
+
+    public int score_multiplier = 1;
+    private bool multiplier_flag = false;
+    private float reward_time_increment = 0;
+    private float reward_effect_time = 10;
 
 	void Start () 
 	{
+		if(PlayerPrefs.GetInt("High Score") == 0)
+		{
+			PlayerPrefs.SetInt("High Score", 0);
+		}
+		
 		circular_timer_Script = circular_timer_ref.GetComponent<CircularTimer>();
 		
 		move_script_ref = GameObject.Find("Move_Ref");
@@ -118,7 +130,24 @@ public class WheelLogic : MonoBehaviour
 	}
 
     void Update()
-    {
+    {   
+		if (slot_manager.inMiniGame == true)
+		{
+			spawn_tile_renderer = spawnTile.clonedTiles[3].GetComponent<SpriteRenderer>();
+			spawn_tile_renderer.enabled = false;
+			
+			active_tile_move_ref = spawnTile.clonedTiles[3].GetComponent<MoveScript>();
+			active_tile_move_ref.enabled = false;
+		}
+		
+		else
+		{
+			spawn_tile_renderer = spawnTile.clonedTiles[3].GetComponent<SpriteRenderer>();
+			spawn_tile_renderer.enabled = true;
+			
+			active_tile_move_ref = spawnTile.clonedTiles[3].GetComponent<MoveScript>();
+			active_tile_move_ref.enabled = true;
+		}
         
         if (wheel_rotation_script.match_count >= 15 && wheel_rotation_script.match_count < 30)
         {
@@ -133,6 +162,18 @@ public class WheelLogic : MonoBehaviour
         else if (wheel_rotation_script.match_count >= 40)
         {
             extendSpawnRange(4, 13);
+        }
+
+        // Controls the score multiplier effect time
+        if (multiplier_flag && !slot_manager.inMiniGame)
+        {
+            reward_time_increment += Time.deltaTime;
+
+            if (reward_time_increment >= reward_effect_time)
+            {
+                multiplier_flag = false;
+                score_multiplier = 1;
+            }
         }
     }
 
@@ -202,6 +243,12 @@ public class WheelLogic : MonoBehaviour
 			UpdatScore(is_match);
 		}
 	}
+
+    public void increaseMultiplier()
+    {
+        multiplier_flag = true;
+        score_multiplier = 2;
+    }
 	
 	// This function checks to see if the player has made a corect or incorrect
 	// match. If the play makes a correct match then his score is updated, if 
@@ -216,37 +263,37 @@ public class WheelLogic : MonoBehaviour
 			if(score_logic.match_streak_counter == 5)
 			{
 				StartCoroutine(ShowStreakGreat());
-				score_logic.the_score = score_logic.the_score + 100;
+                score_logic.the_score = score_logic.the_score + (100 * score_multiplier);
 			}
 			
 			if(score_logic.match_streak_counter == 10)
 			{
 				StartCoroutine(ShowStreakAwesome());
-				score_logic.the_score = score_logic.the_score + 200;
+                score_logic.the_score = score_logic.the_score + (200 * score_multiplier);
 			}
 						
 			if(score_logic.match_streak_counter == 15)
 			{
 				StartCoroutine(ShowStreakAmazing());
-				score_logic.the_score = score_logic.the_score + 500;
+                score_logic.the_score = score_logic.the_score + (500 * score_multiplier);
 			}
 			
 			if(score_logic.match_streak_counter == 20)
 			{
 				StartCoroutine(ShowStreakUnstoppable());
-				score_logic.the_score = score_logic.the_score + 1000;
+                score_logic.the_score = score_logic.the_score + (1000 * score_multiplier);
 			}
 			
 			if(score_logic.match_streak_counter == 25)
 			{
 				StartCoroutine(ShowStreakMatchFiend());
-				score_logic.the_score = score_logic.the_score + 1500;
+                score_logic.the_score = score_logic.the_score + (1500 * score_multiplier);
 			}
 			
 			if(score_logic.match_streak_counter == 30)
 			{
 				StartCoroutine(ShowStreakMayhem());
-				score_logic.the_score = score_logic.the_score + 3000;
+                score_logic.the_score = score_logic.the_score + (3000 * score_multiplier);
 			}
 			
 			else
