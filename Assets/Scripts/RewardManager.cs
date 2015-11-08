@@ -72,8 +72,8 @@ public class RewardManager : MonoBehaviour {
                 wheelRotation.slowRotationReward();
                 break;
 
-            case "hideShapes":
-                Debug.Log("You got all hideShapes: Hiding the upcoming!");
+            case "hideTiles":
+				Debug.Log("You got all hideTiles: Hiding the upcoming!");
                 hideTileReward.hideTile();
                 break;
 

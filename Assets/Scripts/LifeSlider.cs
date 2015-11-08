@@ -34,10 +34,10 @@ public class LifeSlider : MonoBehaviour
         // Get reference to the Gameover UI and
         // the restart button.
         
-        //gameover_ref = GameObject.Find("UI");
-        //gameover_panel = gameover_ref.GetComponent<ShowPanels>();
+        gameover_ref = GameObject.Find("UI");
+        gameover_panel = gameover_ref.GetComponent<ShowPanels>();
 		
-        //gameover_panel.HideGameOver();
+        gameover_panel.HideGameOver();
 		
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();

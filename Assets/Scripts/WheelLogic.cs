@@ -211,7 +211,8 @@ public class WheelLogic : MonoBehaviour
 			match_sfx.Play();
 			
 			wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
-
+			
+			circular_timer_Script.particle_duration = Time.time;
 			circular_timer_Script.Reset();
 			move_script.is_touch_start = false;
 			is_match = true;
@@ -234,6 +235,8 @@ public class WheelLogic : MonoBehaviour
 		{
 			mismatch_sfx.Play();
 			wheel_rotation_script.mismatched_count = wheel_rotation_script.mismatched_count + 1;
+			
+			circular_timer_Script.particle_duration = Time.time;
 			circular_timer_Script.Reset();
 			move_script.is_touch_start = false;
 			is_match = false;
