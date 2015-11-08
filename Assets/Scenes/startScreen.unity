@@ -4454,6 +4454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicClips:
   - {fileID: 8300000, guid: 48cf5d90111ddf9479cd107113b0d5f5, type: 3}
+  - {fileID: 8300000, guid: 4cd79c2398d616e4bad1544029609073, type: 3}
+  - {fileID: 8300000, guid: eaa8b4b1257fb5343b2a26c549b2fba9, type: 3}
   volumeDown: {fileID: 24519918, guid: 0ac7fb39e445048d89688f69c2a1839a, type: 2}
   volumeUp: {fileID: 24500003, guid: 0ac7fb39e445048d89688f69c2a1839a, type: 2}
 --- !u!82 &2076030753

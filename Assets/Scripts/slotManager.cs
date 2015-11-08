@@ -30,7 +30,11 @@ public class slotManager : MonoBehaviour
 	private GameObject SlotGameLose_01_ref;
 	
 	private AudioSource SlotGameLose_01;
-
+	
+	private GameObject the_ui_ref;
+	
+	private PlayMusic play_music_script;
+	
     // Deactivate the slot game by default
     void Start()
     {
@@ -47,7 +51,10 @@ public class slotManager : MonoBehaviour
 		
 		SlotGameLose_01_ref = GameObject.Find("SlotGameLose_01");
 		SlotGameLose_01 = SlotGameLose_01_ref.GetComponent<AudioSource>();
-
+		
+		the_ui_ref = GameObject.Find("UI");
+		play_music_script = the_ui_ref.GetComponent<PlayMusic>();
+		
     }
 
     // Checks if all three reels have been pressed and determines the reward
@@ -69,8 +76,9 @@ public class slotManager : MonoBehaviour
 
         if (activate)
         {
-			MainTheme_01.Stop();
-			SlotGameTheme_01.Play();
+			play_music_script.FadeDown(0.5f);
+			play_music_script.PlaySelectedMusic(2);
+			play_music_script.FadeUp(0.5f);
 			
             inMiniGame = true;
 
@@ -110,7 +118,9 @@ public class slotManager : MonoBehaviour
         slotReels[1].resetReel();
         slotReels[2].resetReel();
         activateSlotGame(false);
-        MainTheme_01.Play();
+		play_music_script.FadeDown(0.5f);
+		play_music_script.PlaySelectedMusic(1);
+		play_music_script.FadeUp(0.5f);
     }
 
     public void getReward()
