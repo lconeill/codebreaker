@@ -22,12 +22,15 @@ public class SlotGame : MonoBehaviour
     private bool stopRoll = false;
     private float parent_transform = 0.0f;
 
+    public Button roll_button;
+
     // Use this for initialization
     void Start()
     {
         //initializeWheel();
         slotButton.GetComponent<Button>().enabled = false;
         parent_transform = transform.position.x; // This script needs to be on the button that's clicked for this to work
+        roll_button.enabled = true;
     }
 
     // This is called everytime the gameobject is enabled
@@ -43,6 +46,7 @@ public class SlotGame : MonoBehaviour
         if (startRoll)
         {
             start_lerp_timer += Time.deltaTime;
+            roll_button.enabled = false;
 
             if (start_lerp_timer > lerp_duration)
             {
@@ -92,7 +96,7 @@ public class SlotGame : MonoBehaviour
         {
             image_clone[i] = (Image)Instantiate(powerup_images[index_array[i]], defaultPositions[i], Quaternion.identity);
             image_clone[i].transform.SetParent(slotButton.transform, false);
-            image_clone[i].enabled = false;
+            //image_clone[i].enabled = false;
         }
     }
 
@@ -118,9 +122,9 @@ public class SlotGame : MonoBehaviour
             image_clone[0] = (Image)Instantiate(powerup_images[index_tracker], new Vector2(0, 290), Quaternion.identity);
             image_clone[0].transform.SetParent(slotButton.transform, false);
 
-            image_clone[0].enabled = false;
-            image_clone[1].enabled = false;
-            image_clone[2].enabled = false;
+            //image_clone[0].enabled = false;
+            //image_clone[1].enabled = false;
+            //image_clone[2].enabled = false;
         }
     }
 
@@ -171,6 +175,7 @@ public class SlotGame : MonoBehaviour
         startRoll = false;
         continueRoll = false;
         start_lerp_timer = 0;
+        roll_button.enabled = true;
 
         for (int i = 0; i < 3; i++)
         {

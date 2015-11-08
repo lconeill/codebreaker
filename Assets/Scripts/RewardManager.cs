@@ -42,38 +42,38 @@ public class RewardManager : MonoBehaviour {
     {
         switch(reward)
         {
-            case "Bell":
-                Debug.Log("You got all bells: Slowing down the timer!");
+            case "freezeTimer":
+                Debug.Log("You got all freezeTimer: Slowing down the timer!");
                 circularTimer.increaseFillTime = true;
                 break;
 
-            case "Fruit Gum":
-                Debug.Log("You got all fruit gums: Reducing tile shapes!");
+            case "shapeReduction":
+                Debug.Log("You got all shapeReduction: Reducing tile shapes!");
                 spawnTile.reduceTileShape = true;
                 break;
 
-            case "Lemon":
-                Debug.Log("You got all Lemons: Multiplying the score by x!");
+            case "doublePoints":
+                Debug.Log("You got all doublePoints: Multiplying the score by x!");
                 wheelLogic.increaseMultiplier();
                 break;
 
-            case "Cherry1":
-                Debug.Log("You got all Cherry1's: Increasing the slider!");
+            case "increaseLife":
+                Debug.Log("You got all increaseLife: Increasing the slider!");
                 lifeSlider.increaseSlider();
                 break;
 
-            case "Grape":
-                Debug.Log("You got all Grapes: Decreasing the life slider!");
+            case "decreaseLife":
+                Debug.Log("You got all decreaseLife: Decreasing the life slider!");
                 lifeSlider.decreaseSlider();
                 break;
 
-            case "Orange":
-                Debug.Log("You got all Oranges: Decreasing wheel rotation speed!");
+            case "decreaseRotation":
+                Debug.Log("You got all decreaseRotation: Decreasing wheel rotation speed!");
                 wheelRotation.slowRotationReward();
                 break;
 
-            case "Cherry2":
-                Debug.Log("You got all Cherry2's: Hiding the upcoming!");
+            case "hideShapes":
+                Debug.Log("You got all hideShapes: Hiding the upcoming!");
                 hideTileReward.hideTile();
                 break;
 

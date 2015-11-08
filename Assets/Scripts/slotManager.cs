@@ -53,7 +53,7 @@ public class slotManager : MonoBehaviour
 		SlotGameLose_01 = SlotGameLose_01_ref.GetComponent<AudioSource>();
 		
 		the_ui_ref = GameObject.Find("UI");
-		play_music_script = the_ui_ref.GetComponent<PlayMusic>();
+        play_music_script = the_ui_ref.GetComponent<PlayMusic>();
 		
     }
 
@@ -76,9 +76,9 @@ public class slotManager : MonoBehaviour
 
         if (activate)
         {
-			play_music_script.FadeDown(0.5f);
-			play_music_script.PlaySelectedMusic(2);
-			play_music_script.FadeUp(0.5f);
+            play_music_script.FadeDown(0.5f);
+            play_music_script.PlaySelectedMusic(2);
+            play_music_script.FadeUp(0.5f);
 			
             inMiniGame = true;
 
