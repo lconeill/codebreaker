@@ -36,6 +36,8 @@ public class RewardManager : MonoBehaviour {
 
 	}
 
+
+    // TODO: change the names to exactly match the prefab images!! 
     public void returnReward(string reward)
     {
         switch(reward)

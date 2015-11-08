@@ -24,9 +24,6 @@ public class LifeSlider : MonoBehaviour
 	private GameObject score_display_ref;
 	private ScoreLogic score_logic;
 	
-	private GameObject currency_ref;
-	private Currency currency_script;
-	
     // Find references to the GameObjects
     void Start()
     {
@@ -44,9 +41,6 @@ public class LifeSlider : MonoBehaviour
 		
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
-		
-		currency_ref = GameObject.Find("currency_text");
-		currency_script = currency_ref.GetComponent<Currency>();
 		
 		// Make sure that the game on start is not paused
 		
@@ -101,14 +95,7 @@ public class LifeSlider : MonoBehaviour
 					Debug.Log(PlayerPrefs.GetInt("High Score"));
             	}
             	
-				/*
-				if(currency_script.currency > PlayerPrefs.GetInt("Coins"))
-				{
-					PlayerPrefs.SetInt("Coins", currency_script.currency);
-					
-					Debug.Log (PlayerPrefs.GetInt("Coins"));
-				}
-				*/	//Debug.Log("Game Over Sucka");
+                //Debug.Log("Game Over Sucka");
             }
 
             previousCorrectMatches = wheelRotation.match_count;
