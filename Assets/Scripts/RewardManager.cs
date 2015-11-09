@@ -7,8 +7,9 @@ public class RewardManager : MonoBehaviour {
     private LifeSlider lifeSlider;
     private WheelRotation wheelRotation;
     private SpawnTile spawnTile;
-    private HideTileReward hideTileReward;
+    public GameObject vault;
     private WheelLogic wheelLogic;
+    private HideTileReward hide_the_tiles;
 
 	// Use this for initialization
 	void Start () 
@@ -22,8 +23,7 @@ public class RewardManager : MonoBehaviour {
         GameObject temp_2 = GameObject.Find("tileSpawn");
         if (temp_2 != null) { spawnTile = temp_2.GetComponent<SpawnTile>(); }
 
-        GameObject temp_3 = GameObject.Find("vault");
-        if (temp_3 != null) { hideTileReward = temp_3.GetComponent<HideTileReward>(); }
+        hide_the_tiles = vault.GetComponent<HideTileReward>();
 
         GameObject temp_4 = GameObject.Find("match_01");
         if (temp_4 != null) { wheelLogic = temp_4.GetComponent<WheelLogic>(); }
@@ -72,9 +72,9 @@ public class RewardManager : MonoBehaviour {
                 wheelRotation.slowRotationReward();
                 break;
 
-            case "hideShapes":
-                Debug.Log("You got all hideShapes: Hiding the upcoming!");
-                hideTileReward.hideTile();
+            case "hideTiles":
+                Debug.Log("You got all hideTiles: Hiding the upcoming!");
+                hide_the_tiles.hideTile();
                 break;
 
             case "noMatch":

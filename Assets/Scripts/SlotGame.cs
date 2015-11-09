@@ -96,7 +96,6 @@ public class SlotGame : MonoBehaviour
         {
             image_clone[i] = (Image)Instantiate(powerup_images[index_array[i]], defaultPositions[i], Quaternion.identity);
             image_clone[i].transform.SetParent(slotButton.transform, false);
-            //image_clone[i].enabled = false;
         }
     }
 
@@ -121,10 +120,6 @@ public class SlotGame : MonoBehaviour
 
             image_clone[0] = (Image)Instantiate(powerup_images[index_tracker], new Vector2(0, 290), Quaternion.identity);
             image_clone[0].transform.SetParent(slotButton.transform, false);
-
-            //image_clone[0].enabled = false;
-            //image_clone[1].enabled = false;
-            //image_clone[2].enabled = false;
         }
     }
 
