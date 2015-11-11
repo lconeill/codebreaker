@@ -7,8 +7,9 @@ public class RewardManager : MonoBehaviour {
     private LifeSlider lifeSlider;
     private WheelRotation wheelRotation;
     private SpawnTile spawnTile;
-    private HideTileReward hideTileReward;
+    public GameObject vault;
     private WheelLogic wheelLogic;
+    private HideTileReward hide_the_tiles;
 
 	// Use this for initialization
 	void Start () 
@@ -22,8 +23,7 @@ public class RewardManager : MonoBehaviour {
         GameObject temp_2 = GameObject.Find("tileSpawn");
         if (temp_2 != null) { spawnTile = temp_2.GetComponent<SpawnTile>(); }
 
-        GameObject temp_3 = GameObject.Find("vault");
-        if (temp_3 != null) { hideTileReward = temp_3.GetComponent<HideTileReward>(); }
+        hide_the_tiles = vault.GetComponent<HideTileReward>();
 
         GameObject temp_4 = GameObject.Find("match_01");
         if (temp_4 != null) { wheelLogic = temp_4.GetComponent<WheelLogic>(); }
@@ -36,43 +36,45 @@ public class RewardManager : MonoBehaviour {
 
 	}
 
+
+    // TODO: change the names to exactly match the prefab images!! 
     public void returnReward(string reward)
     {
         switch(reward)
         {
-            case "Bell":
-                Debug.Log("You got all bells: Slowing down the timer!");
+            case "freezeTimer":
+                Debug.Log("You got all freezeTimer: Slowing down the timer!");
                 circularTimer.increaseFillTime = true;
                 break;
 
-            case "Fruit Gum":
-                Debug.Log("You got all fruit gums: Reducing tile shapes!");
+            case "shapeReduction":
+                Debug.Log("You got all shapeReduction: Reducing tile shapes!");
                 spawnTile.reduceTileShape = true;
                 break;
 
-            case "Lemon":
-                Debug.Log("You got all Lemons: Multiplying the score by x!");
+            case "doublePoints":
+                Debug.Log("You got all doublePoints: Multiplying the score by x!");
                 wheelLogic.increaseMultiplier();
                 break;
 
-            case "Cherry1":
-                Debug.Log("You got all Cherry1's: Increasing the slider!");
+            case "increaseLife":
+                Debug.Log("You got all increaseLife: Increasing the slider!");
                 lifeSlider.increaseSlider();
                 break;
 
-            case "Grape":
-                Debug.Log("You got all Grapes: Decreasing the life slider!");
+            case "decreaseLife":
+                Debug.Log("You got all decreaseLife: Decreasing the life slider!");
                 lifeSlider.decreaseSlider();
                 break;
 
-            case "Orange":
-                Debug.Log("You got all Oranges: Decreasing wheel rotation speed!");
+            case "decreaseRotation":
+                Debug.Log("You got all decreaseRotation: Decreasing wheel rotation speed!");
                 wheelRotation.slowRotationReward();
                 break;
 
-            case "Cherry2":
-                Debug.Log("You got all Cherry2's: Hiding the upcoming!");
-                hideTileReward.hideTile();
+            case "hideTiles":
+                Debug.Log("You got all hideTiles: Hiding the upcoming!");
+                hide_the_tiles.hideTile();
                 break;
 
             case "noMatch":

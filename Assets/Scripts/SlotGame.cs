@@ -1,74 +1,80 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 using System;
 
 public class SlotGame : MonoBehaviour
 {
 
-    public int rotationSpeed = -200;    //Speed at which the slot reels rotate
-    public GameObject slotButton;       //Button used to stop the wheel from rotating
-    public int numOfIcons = 7;          //The number of icons on the slot reel
-    public String selectedIcon;
-    public bool startRoll = false;      //Flag used to start rolling the reels
+    public Image[] powerup_images;
+    public GameObject slotButton;
+    private Image[] image_clone = new Image[3];
+    private int index_tracker;
+    private Vector2[] defaultPositions = new Vector2[3] { new Vector2(0, 200), new Vector2(0, 0), new Vector2(0, -200) };
 
-    private Vector3 rotation = Vector3.zero;    //The rotation vector of the slot reel
-    private string[] reelIcon = new string[7] {"Bell","Fruit Gum","Lemon","Cherry1","Grape","Orange","Cherry2"};
-    private bool continueRotation = false;       //Flag used to stop rotation when the button is pressed
-    private Vector3 updateRotation = Vector3.zero;  //Used to update the rotation vector of the slot reel after button is pressed
-
-    private float currentLerpTime = 0;      //Variable that is updated to provide an argument to Math.Lerp
-    private int stopSpeed = 3;              //How fast to stop the slot reel after the button is pressed
-    private float degreesPerIcon;           //Used to find out which icon we are on when the buttin is pressed
+    private float start_lerp_timer = 0.0f;  // Timer that determines when to exit lerp function
+    private float lerp_duration = 1.0f;     // How long to lerp for
+    private float wheel_speed = 12.5f;
 
     public slotManager captureResult;
+    private bool startRoll = false;
+    private bool continueRoll = false;
+    private bool stopRoll = false;
+    private float parent_transform = 0.0f;
 
-             //Flag used to start spinning the reels
-    private bool stopRoll = false;          //Flag used to stop spinning the reels
-    private float startRollLerp = 0;        
+    public Button roll_button;
 
-    //Initialize the slot reel starting rotation
+    // Use this for initialization
     void Start()
     {
-        transform.eulerAngles = rotation;
-        degreesPerIcon = 360 / numOfIcons;
+        //initializeWheel();
+        slotButton.GetComponent<Button>().enabled = false;
+        parent_transform = transform.position.x; // This script needs to be on the button that's clicked for this to work
+        roll_button.enabled = true;
     }
 
-    // Rotate the slot reel based on Rotationspeed as long as continueRotation flag is true
-    // Otherwise call smoothStop
+    // This is called everytime the gameobject is enabled
+    void OnEnable()
+    {
+        initializeWheel();
+    }
+
+    // Update is called once per frame
     void Update()
     {
+
         if (startRoll)
         {
-            startRollLerp += Time.deltaTime;
+            start_lerp_timer += Time.deltaTime;
+            roll_button.enabled = false;
 
-            if (startRollLerp > stopSpeed)
+            if (start_lerp_timer > lerp_duration)
             {
-                startRollLerp = stopSpeed;
                 startRoll = false;
-                continueRotation = true;
-                slotButton.GetComponent<Button>().interactable = true;
+                continueRoll = true;
+                start_lerp_timer = 0;
+                slotButton.GetComponent<Button>().enabled = true;
             }
+
             smoothStart();
         }
 
-        else if (continueRotation)
+        else if (continueRoll)
         {
-            rotation.x += rotationSpeed * Time.deltaTime;
-            transform.eulerAngles = rotation;  
+            moveWheel(wheel_speed);
         }
 
         else if (stopRoll)
         {
-            currentLerpTime += Time.deltaTime;
+            start_lerp_timer += Time.deltaTime;
 
-            if (currentLerpTime > stopSpeed)
+            if (start_lerp_timer > lerp_duration)
             {
-                currentLerpTime = stopSpeed;
+                stopRoll = false;
             }
 
             smoothStop();
         }
-        
     }
 
     // This is called when the roll button is pressed
@@ -77,54 +83,98 @@ public class SlotGame : MonoBehaviour
         startRoll = true;
     }
 
+    // Randomizes slot wheel icons and instatiates buttons in correct position
+    public void initializeWheel()
+    {
+        index_tracker = UnityEngine.Random.Range(0, 7);
+        int index_one = (index_tracker + 1 == 7) ? 0 : index_tracker + 1;
+        int index_two = (index_tracker + 2 >= 7) ? Math.Abs(7 - (index_tracker + 2)) : index_tracker + 2;
+
+        int[] index_array = { index_tracker, index_one, index_two };
+
+        for (int i = 0; i < 3; i++)
+        {
+            image_clone[i] = (Image)Instantiate(powerup_images[index_array[i]], defaultPositions[i], Quaternion.identity);
+            image_clone[i].transform.SetParent(slotButton.transform, false);
+        }
+    }
+
+    // Move the icons down as if the slot wheel was rotating
+    public void moveWheel(float speed)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            image_clone[i].transform.position -= new Vector3(0, speed, 0);
+        }
+
+        //Debug.Log(image_clone[2].transform.position);
+        //Debug.Log(image_clone[2].transform.parent.transform.position);
+
+        if (image_clone[0].transform.position.y <= 405)
+        {
+            Destroy(image_clone[2].gameObject); // Had to add ".gameObject" otherwise it would not be destroyed
+            image_clone[2] = image_clone[1];
+            image_clone[1] = image_clone[0];
+
+            index_tracker = (index_tracker == 0) ? 6 : index_tracker - 1;
+
+            image_clone[0] = (Image)Instantiate(powerup_images[index_tracker], new Vector2(0, 290), Quaternion.identity);
+            image_clone[0].transform.SetParent(slotButton.transform, false);
+        }
+    }
+
     // This should be called when the button over the slot reel is pressed
     public void stopSpin()
     {
-        continueRotation = false;
+        continueRoll = false;
         stopRoll = true;
         slotButton.GetComponent<Button>().interactable = false;
 
-        float revolutionsRemainder = rotation.x % 360;
-        int iconIndex = Math.Abs((int)(revolutionsRemainder/degreesPerIcon));
+        string full_name = image_clone[1].name;
+        char[] delimter = { '_' };
+        string[] parsed_name = full_name.Split(delimter);
+        string selectedIcon = parsed_name[0];
 
-        selectedIcon = reelIcon[iconIndex];
         captureResult.getResults(selectedIcon);
     }
 
-    // Smoothly stops the slot reel rotation and centers on the icon the button was pressed on
-    public void smoothStop()
-    {
-        float perc = currentLerpTime / stopSpeed;
-        perc = Mathf.Sin(perc * Mathf.PI * 0.5f);
-
-        float endRotation = System.Convert.ToSingle(rotation.x % 360 % degreesPerIcon + degreesPerIcon / 2);
-
-        updateRotation.x = Mathf.Lerp(rotation.x, rotation.x - (360 + endRotation), perc);
-
-        transform.eulerAngles = updateRotation;
-    }
-
-    // Smoothly starts the slot reel rotation when the roll button is pressed
+    // Smoothly starts the slot wheel movement when the roll button is pressed
     public void smoothStart()
     {
-        float perc = startRollLerp / stopSpeed;
+        float perc = start_lerp_timer / lerp_duration;
         perc = 1 - Mathf.Cos(perc * Mathf.PI * 0.5f);
 
-        updateRotation.x = Mathf.Lerp(rotation.x, rotation.x - 360, perc);
+        float speed = Mathf.Lerp(0, wheel_speed, perc);
 
-        transform.eulerAngles = updateRotation;
+        moveWheel(speed);
     }
 
+    public void smoothStop()
+    {
+        float perc = start_lerp_timer / lerp_duration;
+        perc = Mathf.Sin(perc * Mathf.PI * 0.5f);
+
+        float button_location_0 = Mathf.Lerp(image_clone[0].transform.position.y, 508.5f, perc);
+        float button_location_1 = Mathf.Lerp(image_clone[1].transform.position.y, 317, perc);
+        float button_location_2 = Mathf.Lerp(image_clone[2].transform.position.y, 108.5f, perc);
+
+        image_clone[0].transform.position = new Vector3(parent_transform + 110, button_location_0, 0);
+        image_clone[1].transform.position = new Vector3(parent_transform + 110, button_location_1, 0);
+        image_clone[2].transform.position = new Vector3(parent_transform + 110, button_location_2, 0);
+    }
+
+    // TODO: Look into what needs to be reset
     public void resetReel()
     {
         stopRoll = false;
-        rotation = Vector3.zero;
-        updateRotation = Vector3.zero;
-        currentLerpTime = 0;
-        startRollLerp = 0;
-        stopRoll = false;
         startRoll = false;
-        continueRotation = false;
-        transform.eulerAngles = rotation;
+        continueRoll = false;
+        start_lerp_timer = 0;
+        roll_button.enabled = true;
+
+        for (int i = 0; i < 3; i++)
+        {
+            Destroy(image_clone[i].gameObject);
+        }
     }
 }
