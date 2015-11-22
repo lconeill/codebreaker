@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: 11294849c45941a4e91d460d07f76612
+timeCreated: 1448119202
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Unstoppable_Yellow_1
+    21300002: Unstoppable_Navy_1
+    21300004: Unstoppable_Yellow_2
+    21300006: Unstoppable_Navy_2
+    21300008: Unstoppable_Yellow_3
+    21300010: Unstoppable_Navy_3
+    21300012: Unstoppable_Yellow_4
+    21300014: Unstoppable_Navy_4
+    21300016: Unstoppable_Yellow_5
+    21300018: Unstoppable_Navy_5
+    21300020: Unstoppable_Sky_1
+    21300022: Unstoppable_Sky_2
+    21300024: Unstoppable_Sky_3
+    21300026: Unstoppable_Sky_4
+    21300028: Unstoppable_Sky_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Unstoppable_Yellow_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1918
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Navy_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1918
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Yellow_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1788
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Navy_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1788
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Yellow_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1658
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Navy_3
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1658
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Yellow_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1527
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Navy_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1528
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Yellow_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1398
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Navy_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1398
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Sky_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1268
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Sky_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1138
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Sky_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1008
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Sky_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 878
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unstoppable_Sky_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 748
+        width: 1024
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
