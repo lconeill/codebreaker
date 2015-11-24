@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using Soomla.Store;
 
 public class RewardManager : MonoBehaviour {
 
@@ -10,6 +12,7 @@ public class RewardManager : MonoBehaviour {
     public GameObject vault;
     private WheelLogic wheelLogic;
     private HideTileReward hide_the_tiles;
+
 
 	// Use this for initialization
 	void Start () 
@@ -27,7 +30,6 @@ public class RewardManager : MonoBehaviour {
 
         GameObject temp_4 = GameObject.Find("match_01");
         if (temp_4 != null) { wheelLogic = temp_4.GetComponent<WheelLogic>(); }
-
 	}
 	
 	// Update is called once per frame
@@ -37,29 +39,68 @@ public class RewardManager : MonoBehaviour {
 	}
 
 
-    // TODO: change the names to exactly match the prefab images!! 
+    // TODO: add powerup manager change balance call to decrease rotation rewards
+    // TODO: give this method a bool argument that is false when called from the button and true when called from the slot game
     public void returnReward(string reward)
     {
         switch(reward)
         {
             case "freezeTimer":
                 Debug.Log("You got all freezeTimer: Slowing down the timer!");
-                circularTimer.increaseFillTime = true;
+
+                string freeze_itemID = MayhemStoreAssets.SLOW_TIMER_ITEM_ID;
+                StoreInventory.TakeItem(freeze_itemID, 1);
+                PowerUpManager.changeBalanceText(freeze_itemID);
+
+                if (StoreInventory.GetItemBalance(freeze_itemID) > 0)
+                {
+                    circularTimer.increaseFillTime = true;
+                }
+                
                 break;
 
             case "shapeReduction":
                 Debug.Log("You got all shapeReduction: Reducing tile shapes!");
-                spawnTile.reduceTileShape = true;
+
+                string reduce_itemID = MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID;
+                StoreInventory.TakeItem(reduce_itemID, 1);
+                PowerUpManager.changeBalanceText(reduce_itemID);
+
+                if (StoreInventory.GetItemBalance(reduce_itemID) > 0)
+                {
+                    spawnTile.reduceTileShape = true;
+                }
+                
                 break;
 
             case "doublePoints":
                 Debug.Log("You got all doublePoints: Multiplying the score by x!");
+
+                string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
+                StoreInventory.TakeItem(double_itemID, 1);
+                PowerUpManager.changeBalanceText(double_itemID);
+
+                if (StoreInventory.GetItemBalance(double_itemID) > 0)
+                {
+                    spawnTile.reduceTileShape = true;
+                }
+
                 wheelLogic.increaseMultiplier();
                 break;
 
             case "increaseLife":
+
                 Debug.Log("You got all increaseLife: Increasing the slider!");
-                lifeSlider.increaseSlider();
+
+                string slider_itemID = MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID;
+                StoreInventory.TakeItem(slider_itemID, 1);
+                PowerUpManager.changeBalanceText(slider_itemID);
+
+                if (StoreInventory.GetItemBalance(slider_itemID) > 0)
+                {
+                    lifeSlider.increaseSlider();
+                }
+
                 break;
 
             case "decreaseLife":

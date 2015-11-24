@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Soomla.Store;
 
 public class Currency : MonoBehaviour {
 
@@ -17,11 +18,7 @@ public class Currency : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-    	if(PlayerPrefs.GetInt("Coins") == 0)
-    	{
-			PlayerPrefs.SetInt("Coins", 0);
-    	}
-    	
+
         GameObject temp = GameObject.Find("score_display");
         GameObject temp_1 = GameObject.Find("wheel_01");
 
@@ -40,21 +37,26 @@ public class Currency : MonoBehaviour {
         }
 
         currencyText = gameObject.GetComponent<Text>();
-		stringCurrency = "x" + PlayerPrefs.GetInt("Coins");
+        stringCurrency = "x" + StoreInventory.GetItemBalance(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID);
         currencyText.text = stringCurrency;
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
+
+        stringCurrency = "x" + StoreInventory.GetItemBalance(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID);
+        currencyText.text = stringCurrency;
+
         if (wheelRotation.match_count > previousCorrectMatches)
         {
             if (wheelRotation.match_count % 5 == 0)
             {
-                currency += 50;
-				PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins") + currency));
-				stringCurrency = "x" + PlayerPrefs.GetInt("Coins");
-                currencyText.text = stringCurrency;
+                //currency += 50;
+                
+                StoreInventory.GiveItem(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID, 5000);
+                //stringCurrency = "x" + StoreInventory.GetItemBalance(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID);
+                //currencyText.text = stringCurrency;
             }
         }
 
@@ -64,10 +66,11 @@ public class Currency : MonoBehaviour {
             {
                 if (scoreLogic.match_streak_counter % i == 0)
                 {
-                    currency += 5 + i - 5;
-					PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins") + currency));
-					stringCurrency = "x" + PlayerPrefs.GetInt("Coins");
-                    currencyText.text = stringCurrency;
+                    //currency += 5 + i - 5;
+                    
+                    StoreInventory.GiveItem(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID, 5 + i - 5);
+                    //stringCurrency = "x" + StoreInventory.GetItemBalance(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID);
+                    //currencyText.text = stringCurrency;
                     //break;
                 }
             }
