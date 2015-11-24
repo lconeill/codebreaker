@@ -2,15 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using Facebook.Unity;
+using UnityEngine.UI;
 
 public class FBholder : MonoBehaviour 
 {
 
-	List<string> perms = new List<string>(){"public_profile", "email", "user_friends"}; 
+	List<string> perms = new List<string>(){"public_profile", "email", "user_friends", "publish_actions"}; 
 
 	void Awake()
 	{
 		FB.Init (SetInit, OnHideUnity);
+	}
+	
+	public void PostToFacebook()
+	{
+		
+		FB.ShareLink(new System.Uri("https://developers.facebook.com/929788493776530"),
+		             "MATCH MAYHEM!",
+		             "I just got a new High Score in Match Mayhem!",
+		             null,
+		             ShareCallback);
+		
+		Debug.Log ("Posted To Facebook!!");
 	}
 	
 	private void SetInit()
@@ -59,19 +72,26 @@ public class FBholder : MonoBehaviour
 			Debug.Log ("FB Login failed");
 		}
 	}
+	
+	private void ShareCallback (IShareResult result) 
+	{
+		if (result.Cancelled || !string.IsNullOrEmpty(result.Error)) 
+		{
+			Debug.Log("ShareLink Error: "+result.Error);
+		} 
+		
+		else if (!string.IsNullOrEmpty(result.PostId)) 
+		{
+			// Print post identifier of the shared content
+			Debug.Log(result.PostId);
+		} 
+		
+		else 
+		{
+			// Share succeeded without postID 
+			Debug.Log("ShareLink success!");
+		}
+		
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
