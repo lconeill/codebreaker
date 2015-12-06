@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Advertisements;
 
 public class RestartLevel : MonoBehaviour 
 {
@@ -16,8 +17,17 @@ public class RestartLevel : MonoBehaviour
 	
 	}
 	
+	public void ShowAd()
+	{
+		if (Advertisement.IsReady())
+		{
+			Advertisement.Show();
+		}
+	}
+	
 	public void Restart()
 	{
 		Application.LoadLevel("gameScreen");
+		ShowAd();
 	}
 }
