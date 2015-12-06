@@ -43,7 +43,7 @@ namespace Facebook.Unity.Editor
             var style = new GUIStyle(GUI.skin.window);
             style.normal.background = texture;
 
-            GUI.ModalWindow(
+            GUI.Window(
                 this.GetHashCode(),
                 rect,
                 this.OnGUIDialog,
