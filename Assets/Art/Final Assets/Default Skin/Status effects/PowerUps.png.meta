@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 36816a8a81c7cc4469eb4f32bf728d0c
-timeCreated: 1447116050
+timeCreated: 1449426158
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -45,6 +45,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -80,9 +81,9 @@ TextureImporter:
     - name: PowerUps_2
       rect:
         serializedVersion: 2
-        x: 512
+        x: 513
         y: 768
-        width: 256
+        width: 255
         height: 256
       alignment: 0
       pivot: {x: .5, y: .5}
