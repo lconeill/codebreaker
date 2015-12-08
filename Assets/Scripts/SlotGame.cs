@@ -3,19 +3,24 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class SlotGame : MonoBehaviour
-{
+public class SlotGame : MonoBehaviour {
 
     public Image[] powerup_images;
-    public GameObject slotButton;
     private Image[] image_clone = new Image[3];
-    private int index_tracker;
-    private Vector2[] defaultPositions = new Vector2[3] { new Vector2(0, 200), new Vector2(0, 0), new Vector2(0, -200) };
+    private Vector2[] defaultAnchorPositions = new Vector2[6] { new Vector2(0.08f, 0.7888f), new Vector2(0.92f, 1.0f), 
+                                                                new Vector2(0.08f, 0.2994f), new Vector2(0.92f, 0.7003f),
+                                                                new Vector2(0.08f, 0f), new Vector2(0.92f, 0.2161f),
+                                                              };
 
+    private Vector2[] defaultRectPositions = new Vector2[6]{ new Vector2(0, 71.7f), new Vector2(0, 0), //positive number
+                                                             new Vector2(0, 0), new Vector2(0, 0),
+                                                             new Vector2(0, 0), new Vector2(0, -71.7f),
+                                                           };
+
+    private int index_tracker;
     private float start_lerp_timer = 0.0f;  // Timer that determines when to exit lerp function
     private float lerp_duration = 1.0f;     // How long to lerp for
-    private float wheel_speed = 12.5f;
-
+    private float wheel_speed = 0.5f;
     public slotManager captureResult;
     private bool startRoll = false;
     private bool continueRoll = false;
@@ -24,25 +29,23 @@ public class SlotGame : MonoBehaviour
 
     public Button roll_button;
 
-    // Use this for initialization
-    void Start()
+	// Use this for initialization
+	void Start () 
     {
-        //initializeWheel();
-        slotButton.GetComponent<Button>().enabled = false;
-        parent_transform = transform.position.x; // This script needs to be on the button that's clicked for this to work
+        // initializeWheel();
+        gameObject.GetComponent<Button>().enabled = false;
         roll_button.enabled = true;
-    }
+	}
 
-    // This is called everytime the gameobject is enabled
+    // Wheel needs to be initialized each time the slot game is enabled
     void OnEnable()
     {
         initializeWheel();
     }
-
-    // Update is called once per frame
-    void Update()
+	
+	// Update is called once per frame
+	void Update () 
     {
-
         if (startRoll)
         {
             start_lerp_timer += Time.deltaTime;
@@ -53,7 +56,8 @@ public class SlotGame : MonoBehaviour
                 startRoll = false;
                 continueRoll = true;
                 start_lerp_timer = 0;
-                slotButton.GetComponent<Button>().enabled = true;
+
+                gameObject.GetComponent<Button>().enabled = true;
             }
 
             smoothStart();
@@ -75,7 +79,7 @@ public class SlotGame : MonoBehaviour
 
             smoothStop();
         }
-    }
+	}
 
     // This is called when the roll button is pressed
     public void startSpinSwtich()
@@ -83,7 +87,6 @@ public class SlotGame : MonoBehaviour
         startRoll = true;
     }
 
-    // Randomizes slot wheel icons and instatiates buttons in correct position
     public void initializeWheel()
     {
         index_tracker = UnityEngine.Random.Range(0, 7);
@@ -91,15 +94,23 @@ public class SlotGame : MonoBehaviour
         int index_two = (index_tracker + 2 >= 7) ? Math.Abs(7 - (index_tracker + 2)) : index_tracker + 2;
 
         int[] index_array = { index_tracker, index_one, index_two };
+        int j = 0;
 
         for (int i = 0; i < 3; i++)
         {
-            image_clone[i] = (Image)Instantiate(powerup_images[index_array[i]], defaultPositions[i], Quaternion.identity);
-            image_clone[i].transform.SetParent(slotButton.transform, false);
+            image_clone[i] = Instantiate(powerup_images[index_array[i]]) as Image;
+            image_clone[i].transform.SetParent(gameObject.transform, false);
+
+            image_clone[i].rectTransform.anchorMin = defaultAnchorPositions[j];
+            image_clone[i].rectTransform.anchorMax = defaultAnchorPositions[j + 1];
+
+            image_clone[i].rectTransform.offsetMax = defaultRectPositions[j];
+            image_clone[i].rectTransform.offsetMin = defaultRectPositions[j + 1];
+
+            j = j+2;
         }
     }
 
-    // Move the icons down as if the slot wheel was rotating
     public void moveWheel(float speed)
     {
         for (int i = 0; i < 3; i++)
@@ -107,36 +118,53 @@ public class SlotGame : MonoBehaviour
             image_clone[i].transform.position -= new Vector3(0, speed, 0);
         }
 
-        //Debug.Log(image_clone[2].transform.position);
-        //Debug.Log(image_clone[2].transform.parent.transform.position);
-
-        if (image_clone[0].transform.position.y <= 405)
+        // Must check the position of clone zero - it is the only clone whose position from its anchors will be consistent
+        if (image_clone[0].rectTransform.offsetMax.y < -38)
         {
-            Destroy(image_clone[2].gameObject); // Had to add ".gameObject" otherwise it would not be destroyed
-            image_clone[2] = image_clone[1];
-            image_clone[1] = image_clone[0];
-
-            index_tracker = (index_tracker == 0) ? 6 : index_tracker - 1;
-
-            image_clone[0] = (Image)Instantiate(powerup_images[index_tracker], new Vector2(0, 290), Quaternion.identity);
-            image_clone[0].transform.SetParent(slotButton.transform, false);
+            swapClones();
         }
     }
 
+    public void swapClones()
+    {
+        Destroy(image_clone[2].gameObject);
+
+        // Order is important!
+        image_clone[2] = image_clone[1];
+        image_clone[1] = image_clone[0];
+
+        // Instantiate new power up item
+        index_tracker = (index_tracker == 0) ? 6 : index_tracker - 1;
+
+        image_clone[0] = Instantiate(powerup_images[index_tracker]) as Image;
+        image_clone[0].transform.SetParent(gameObject.transform, false);
+
+        image_clone[0].rectTransform.anchorMin = defaultAnchorPositions[0];
+        image_clone[0].rectTransform.anchorMax = defaultAnchorPositions[1];
+
+        image_clone[0].rectTransform.offsetMax = new Vector2(0, 152.55f);
+        image_clone[0].rectTransform.offsetMin = new Vector2(0, 80.85f);
+    }
+
+    
     // This should be called when the button over the slot reel is pressed
     public void stopSpin()
     {
         continueRoll = false;
         stopRoll = true;
-        slotButton.GetComponent<Button>().interactable = false;
+
+        gameObject.GetComponent<Button>().interactable = false;
 
         string full_name = image_clone[1].name;
         char[] delimter = { '_' };
         string[] parsed_name = full_name.Split(delimter);
         string selectedIcon = parsed_name[0];
 
+
+        // TODO: Determine if the names are still correct
         captureResult.getResults(selectedIcon);
     }
+
 
     // Smoothly starts the slot wheel movement when the roll button is pressed
     public void smoothStart()
@@ -149,19 +177,33 @@ public class SlotGame : MonoBehaviour
         moveWheel(speed);
     }
 
+
     public void smoothStop()
     {
         float perc = start_lerp_timer / lerp_duration;
         perc = Mathf.Sin(perc * Mathf.PI * 0.5f);
 
-        float button_location_0 = Mathf.Lerp(image_clone[0].transform.position.y, 508.5f, perc);
-        float button_location_1 = Mathf.Lerp(image_clone[1].transform.position.y, 317, perc);
-        float button_location_2 = Mathf.Lerp(image_clone[2].transform.position.y, 108.5f, perc);
+        Vector2 image_clone0_offsetMax_lerp_value = Vector2.Lerp(image_clone[0].rectTransform.offsetMax, defaultRectPositions[0], perc);
+        Vector2 image_clone0_offsetMin_lerp_value = Vector2.Lerp(image_clone[0].rectTransform.offsetMin, defaultRectPositions[1], perc);
 
-        image_clone[0].transform.position = new Vector3(parent_transform + 110, button_location_0, 0);
-        image_clone[1].transform.position = new Vector3(parent_transform + 110, button_location_1, 0);
-        image_clone[2].transform.position = new Vector3(parent_transform + 110, button_location_2, 0);
+        // Need these new rect transform values here because all images eventually have their anchors at the location of clone zero
+        // These are the rect transform positions relative to default anchor zero
+        Vector2 image_clone1_offsetMax_lerp_value = Vector2.Lerp(image_clone[1].rectTransform.offsetMax, new Vector2(0, -116.35f), perc);
+        Vector2 image_clone1_offsetMin_lerp_value = Vector2.Lerp(image_clone[1].rectTransform.offsetMin, new Vector2(0, -189.05f), perc);
+
+        Vector2 image_clone2_offsetMax_lerp_value = Vector2.Lerp(image_clone[2].rectTransform.offsetMax, new Vector2(0, -300.75f), perc);
+        Vector2 image_clone2_offsetMin_lerp_value = Vector2.Lerp(image_clone[2].rectTransform.offsetMin, new Vector2(0, -372.45f), perc);
+
+        image_clone[0].rectTransform.offsetMax = image_clone0_offsetMax_lerp_value;
+        image_clone[0].rectTransform.offsetMin = image_clone0_offsetMin_lerp_value;
+
+        image_clone[1].rectTransform.offsetMax = image_clone1_offsetMax_lerp_value;
+        image_clone[1].rectTransform.offsetMin = image_clone1_offsetMin_lerp_value;
+
+        image_clone[2].rectTransform.offsetMax = image_clone2_offsetMax_lerp_value;
+        image_clone[2].rectTransform.offsetMin = image_clone2_offsetMin_lerp_value;
     }
+
 
     // TODO: Look into what needs to be reset
     public void resetReel()

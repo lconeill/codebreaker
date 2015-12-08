@@ -63,7 +63,7 @@ public class CircularTimer : MonoBehaviour
         GameObject temp = GameObject.Find("wheel_01");
         if (temp != null) { wheelRotation = temp.GetComponent<WheelRotation>(); }
 
-        GameObject temp_1 = GameObject.Find("bell_power_up");
+        GameObject temp_1 = GameObject.Find("freeze_timer_power_up");
         if (temp_1 != null) { bell_button = temp_1.GetComponent<Button>(); }
 
 		match_sfx_ref = GameObject.Find("Match_SFX_01");

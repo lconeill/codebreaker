@@ -95,7 +95,8 @@ public class slotManager : MonoBehaviour
         {
             //slotReels[i].enabled = activate;
             //slotReels[i].GetComponent<Renderer>().enabled = activate;
-            slotReels[i].slotButton.GetComponent<Button>().interactable = activate;
+            //slotReels[i].slotButton.GetComponent<Button>().interactable = activate;
+            slotReels[i].GetComponent<Button>().interactable = activate;
             slotReels[i].gameObject.SetActive(activate);
         }
     }
