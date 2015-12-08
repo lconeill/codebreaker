@@ -118,32 +118,32 @@ public class WheelRotation : MonoBehaviour
 	{
         if (!slowRotationFlag)
         {
-            if (count >= 10 && count < 20)
+            if (count >= 10 && count < 15)
             {
                 rotationSpeed = 108;
             }
 
-            else if (count >= 20 && count < 30)
+			else if (count >= 15 && count < 20)
             {
                 rotationSpeed = 126;
             }
 
-            else if (count >= 30 && count < 40)
+            else if (count >= 20 && count < 25)
             {
                 rotationSpeed = 144;
             }
 
-            else if (count >= 40 && count < 50)
+            else if (count >= 25 && count < 35)
             {
                 rotationSpeed = 162;
             }
 
-            else if (count >= 50 && count < 60)
+            else if (count >= 35 && count < 40)
             {
                 rotationSpeed = 180;
             }
 
-            else if (count >= 60)
+            else if (count >= 50)
             {
                 rotationSpeed = 200;
             }

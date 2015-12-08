@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: c280770dd65cfeb45957654066f6fa3f
-timeCreated: 1448316734
+guid: 996afbc369d237d4f834584cafa7f381
+timeCreated: 1449407704
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Medals_0
-    21300002: Medals_1
-    21300004: Medals_2
+    21300000: StorePage01_Left
+    21300002: StorePage01_Centre
+    21300004: StorePage01_Right
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -53,35 +53,35 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Medals_0
+    - name: StorePage01_Left
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 336
-        height: 336
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 24
+        y: 41
+        width: 345
+        height: 686
+      alignment: 5
+      pivot: {x: 1, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Medals_1
+    - name: StorePage01_Centre
       rect:
         serializedVersion: 2
-        x: 344
-        y: 0
-        width: 336
-        height: 336
+        x: 369
+        y: 41
+        width: 285
+        height: 686
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Medals_2
+    - name: StorePage01_Right
       rect:
         serializedVersion: 2
-        x: 688
-        y: 0
-        width: 336
-        height: 336
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 654
+        y: 41
+        width: 345
+        height: 686
+      alignment: 4
+      pivot: {x: 0, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
