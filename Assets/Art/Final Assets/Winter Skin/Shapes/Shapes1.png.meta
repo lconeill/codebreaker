@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: ff6df16d1b4deb54b9828722ccec4eba
+timeCreated: 1449103785
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Shapes1_0
+    21300002: Shapes1_1
+    21300004: Shapes1_2
+    21300006: Shapes1_3
+    21300008: Shapes1_4
+    21300010: Shapes1_5
+    21300012: Shapes1_6
+    21300014: Shapes1_7
+    21300016: Shapes1_8
+    21300018: Shapes1_9
+    21300020: Shapes1_10
+    21300022: Shapes1_11
+    21300024: Shapes1_12
+    21300026: Shapes1_13
+    21300028: Shapes1_14
+    21300030: Shapes1_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Shapes1_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 807
+        width: 234
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_1
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 807
+        width: 233
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 827
+        width: 249
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_3
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 827
+        width: 250
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_4
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 572
+        width: 194
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_5
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 572
+        width: 196
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_6
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 554
+        width: 224
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_7
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 554
+        width: 224
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 303
+        width: 280
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_9
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 303
+        width: 278
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_10
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 303
+        width: 212
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_11
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 303
+        width: 212
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_12
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 12
+        width: 203
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_13
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 12
+        width: 204
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_14
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 12
+        width: 166
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shapes1_15
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 12
+        width: 166
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
