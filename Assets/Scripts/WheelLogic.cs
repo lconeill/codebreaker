@@ -149,17 +149,17 @@ public class WheelLogic : MonoBehaviour
 			active_tile_move_ref.enabled = true;
 		}
         
-        if (wheel_rotation_script.match_count >= 15 && wheel_rotation_script.match_count < 30)
+        if (wheel_rotation_script.match_count >= 10 && wheel_rotation_script.match_count < 15)
         {
             extendSpawnRange(4, 5);
         }
 
-        else if (wheel_rotation_script.match_count >= 30 && wheel_rotation_script.match_count < 40)
+        else if (wheel_rotation_script.match_count >= 20 && wheel_rotation_script.match_count < 25)
         {
             extendSpawnRange(4, 9);
         }
 
-        else if (wheel_rotation_script.match_count >= 40)
+        else if (wheel_rotation_script.match_count >= 30)
         {
             extendSpawnRange(4, 13);
         }

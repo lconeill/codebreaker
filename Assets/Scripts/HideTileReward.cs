@@ -30,6 +30,7 @@ public class HideTileReward : MonoBehaviour {
         vault.SetActive(false);
     }
 	
+    // TODO: Figure out why this isn't working
     // Hide the tiles for effect duration then play open vault animation
     void Update () 
     {
