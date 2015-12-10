@@ -20,7 +20,7 @@ public class SlotGame : MonoBehaviour {
     private int index_tracker;
     private float start_lerp_timer = 0.0f;  // Timer that determines when to exit lerp function
     private float lerp_duration = 1.0f;     // How long to lerp for
-    private float wheel_speed = 0.5f;
+    private float wheel_speed = 9.5f;
     public slotManager captureResult;
     private bool startRoll = false;
     private bool continueRoll = false;
