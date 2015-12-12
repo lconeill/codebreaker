@@ -26,8 +26,11 @@ public class HideTileReward : MonoBehaviour {
 
         GameObject temp_2 = GameObject.Find("slotManager");
         if (temp_2 != null) { slots = temp_2.GetComponent<slotManager>(); }
-
-        vault.SetActive(false);
+		
+		// This line caused a bug where the vault would not appear
+		// when you got it in the slot game.
+		
+        //vault.SetActive(false);
     }
 	
     // TODO: Figure out why this isn't working
