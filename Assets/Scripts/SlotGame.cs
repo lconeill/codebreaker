@@ -3,6 +3,10 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
+
+// Solution for preserving aspect ration and supporting multiple resolutions and multiple aspect ratios
+// Create a button image that is exactly the same aspect ratio as the button in the slot game
+// Then drop that image into the button and turn on preserve aspect ratio
 public class SlotGame : MonoBehaviour {
 
     public Image[] powerup_images;
@@ -20,7 +24,7 @@ public class SlotGame : MonoBehaviour {
     private int index_tracker;
     private float start_lerp_timer = 0.0f;  // Timer that determines when to exit lerp function
     private float lerp_duration = 1.0f;     // How long to lerp for
-    private float wheel_speed = 0.5f;
+    private float wheel_speed = 9.5f;
     public slotManager captureResult;
     private bool startRoll = false;
     private bool continueRoll = false;

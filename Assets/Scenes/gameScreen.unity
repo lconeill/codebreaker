@@ -256,7 +256,7 @@ RectTransform:
   m_AnchorMax: {x: .601000011, y: .821333349}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: .5}
+  m_Pivot: {x: .5, y: .5}
 --- !u!114 &78114085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +837,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8474e3ab84f39924992c6a546cb09cb5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2241,7 +2241,7 @@ RectTransform:
   m_AnchorMax: {x: .803000033, y: .821333349}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: .5}
+  m_Pivot: {x: .5, y: .5}
 --- !u!114 &1170353143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2695,9 +2695,9 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1024, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: .5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3164,7 +3164,7 @@ RectTransform:
   m_AnchorMax: {x: .394601583, y: .821333349}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: .5}
+  m_Pivot: {x: .5, y: .5}
 --- !u!114 &1777393871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3213,7 +3213,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1777393873}
   m_OnClick:
     m_PersistentCalls:
