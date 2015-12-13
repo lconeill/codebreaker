@@ -167,7 +167,7 @@ public class CircularTimer : MonoBehaviour
 
 				wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
 				wheel_logic.UpdatScore(wheel_logic.is_match = false);
-				match_fx_script.Run();
+				match_fx_script.FalseRun();
 				particle_duration = Time.time;
 				mismatch_sfx.Play();
             	Reset();
