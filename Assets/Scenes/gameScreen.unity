@@ -745,7 +745,7 @@ RectTransform:
   - {fileID: 1708784652}
   - {fileID: 1588386663}
   m_Father: {fileID: 1536148951}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1336,7 +1336,7 @@ GameObject:
   - 114: {fileID: 329700088}
   - 114: {fileID: 329700087}
   m_Layer: 5
-  m_Name: increase_life_power_up
+  m_Name: increase_slider_power_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1752,7 +1752,7 @@ GameObject:
   - 222: {fileID: 446094880}
   - 114: {fileID: 446094879}
   m_Layer: 5
-  m_Name: increase_life_border
+  m_Name: increase_slider_border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1820,7 +1820,7 @@ GameObject:
   - 222: {fileID: 446555343}
   - 114: {fileID: 446555342}
   m_Layer: 5
-  m_Name: double_points_border
+  m_Name: double_point_border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1838,7 +1838,7 @@ RectTransform:
   m_Children:
   - {fileID: 1043748470}
   m_Father: {fileID: 1536148951}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_AnchorMin: {x: .339677125, y: 7.82341303e-05}
   m_AnchorMax: {x: .434491187, y: .151721478}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2400,7 +2400,7 @@ GameObject:
   - 114: {fileID: 1043748472}
   - 114: {fileID: 1043748471}
   m_Layer: 5
-  m_Name: double_points_power_up
+  m_Name: double_point_power_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3268,9 +3268,9 @@ RectTransform:
   - {fileID: 1775106717}
   - {fileID: 446094878}
   - {fileID: 1608348721}
-  - {fileID: 161574219}
   - {fileID: 446555341}
   - {fileID: 1741384089}
+  - {fileID: 161574219}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
@@ -3400,7 +3400,7 @@ GameObject:
   - 222: {fileID: 1608348723}
   - 114: {fileID: 1608348722}
   m_Layer: 5
-  m_Name: increase_life_text
+  m_Name: increase_slider_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3619,7 +3619,7 @@ GameObject:
   - 222: {fileID: 1741384091}
   - 114: {fileID: 1741384090}
   m_Layer: 5
-  m_Name: double_points_text
+  m_Name: double_point_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3636,7 +3636,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1536148951}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_AnchorMin: {x: .36714384, y: .151721448}
   m_AnchorMax: {x: .407024473, y: .205007836}
   m_AnchoredPosition: {x: 0, y: 0}
