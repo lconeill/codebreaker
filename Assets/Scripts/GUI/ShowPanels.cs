@@ -8,6 +8,14 @@ public class ShowPanels : MonoBehaviour {
 	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
 	public GameObject pausePanel;							//Store a reference to the Game Object PausePanel 
 	public GameObject game_over_panel;
+	public GameObject medal_ref;
+	
+	private ShowMedals medal_script_ref;
+	
+	void Start()
+	{
+		medal_script_ref = medal_ref.GetComponent<ShowMedals>();
+	}
 
 	//Call this function to activate and display the Options panel during the main menu
 	public void ShowOptionsPanel()
@@ -35,6 +43,7 @@ public class ShowPanels : MonoBehaviour {
 	public void ShowGameOver()
 	{
 		game_over_panel.SetActive (true);
+		medal_script_ref.ShowEarnedMedal();
 	}
 
 	//Call this function to deactivate and hide the main menu panel during the main menu

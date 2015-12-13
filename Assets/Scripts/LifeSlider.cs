@@ -85,8 +85,6 @@ public class LifeSlider : MonoBehaviour
             	// screen with a restart button. 
             	
             	Time.timeScale = 0;
-            	
-				gameover_panel.ShowGameOver();
 				
 				if(score_logic.the_score > PlayerPrefs.GetInt("High Score"))
 				{
@@ -94,6 +92,8 @@ public class LifeSlider : MonoBehaviour
 					
 					Debug.Log(PlayerPrefs.GetInt("High Score"));
             	}
+            	
+				gameover_panel.ShowGameOver();
             	
                 //Debug.Log("Game Over Sucka");
             }
