@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 996afbc369d237d4f834584cafa7f381
-timeCreated: 1449407704
+guid: e55ac02d2f6f19748a110a1a45879e8e
+timeCreated: 1450023220
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: StorePage01_Left
-    21300002: StorePage01_Centre
-    21300004: StorePage01_Right
+    21300000: Hands_0
+    21300002: Hands_1
+    21300004: Hands_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -41,7 +41,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -53,35 +53,35 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: StorePage01_Left
+    - name: Hands_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 41
-        width: 345
-        height: 686
-      alignment: 5
-      pivot: {x: 1, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: StorePage01_Centre
-      rect:
-        serializedVersion: 2
-        x: 369
-        y: 41
-        width: 285
-        height: 686
+        x: 48
+        y: 17
+        width: 268
+        height: 235
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: StorePage01_Right
+    - name: Hands_1
       rect:
         serializedVersion: 2
-        x: 654
-        y: 41
-        width: 345
-        height: 686
-      alignment: 4
-      pivot: {x: 0, y: .5}
+        x: 348
+        y: 17
+        width: 268
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hands_2
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 16
+        width: 265
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

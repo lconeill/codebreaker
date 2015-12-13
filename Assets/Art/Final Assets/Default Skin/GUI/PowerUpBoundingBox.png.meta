@@ -1,16 +1,18 @@
 fileFormatVersion: 2
-guid: 996afbc369d237d4f834584cafa7f381
-timeCreated: 1449407704
+guid: c2ee0c3984e25be43af923f93e94f823
+timeCreated: 1450023327
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: StorePage01_Left
-    21300002: StorePage01_Centre
-    21300004: StorePage01_Right
+    21300000: PowerUpBoundingBox_BG
+    21300002: PowerUpBoundingBox_1
+    21300004: PowerUpBoundingBox_2
+    21300006: PowerUpBoundingBox_3
+    21300008: PowerUpBoundingBox_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -41,7 +43,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -53,35 +55,55 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: StorePage01_Left
+    - name: PowerUpBoundingBox_BG
       rect:
         serializedVersion: 2
-        x: 24
-        y: 41
-        width: 345
-        height: 686
-      alignment: 5
-      pivot: {x: 1, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: StorePage01_Centre
-      rect:
-        serializedVersion: 2
-        x: 369
-        y: 41
-        width: 285
-        height: 686
+        x: 42
+        y: 729
+        width: 252
+        height: 252
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: StorePage01_Right
+    - name: PowerUpBoundingBox_1
       rect:
         serializedVersion: 2
-        x: 654
-        y: 41
-        width: 345
-        height: 686
-      alignment: 4
-      pivot: {x: 0, y: .5}
+        x: 338
+        y: 717
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PowerUpBoundingBox_2
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 717
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PowerUpBoundingBox_3
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 395
+        width: 277
+        height: 276
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PowerUpBoundingBox_4
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 395
+        width: 276
+        height: 275
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

@@ -3,6 +3,10 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
+
+// Solution for preserving aspect ration and supporting multiple resolutions and multiple aspect ratios
+// Create a button image that is exactly the same aspect ratio as the button in the slot game
+// Then drop that image into the button and turn on preserve aspect ratio
 public class SlotGame : MonoBehaviour {
 
     public Image[] powerup_images;
