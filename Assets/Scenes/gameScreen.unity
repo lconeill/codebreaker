@@ -4268,6 +4268,18 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 19800736, guid: a5693f40a803ac6428d6c2b74594ee17, type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800736, guid: a5693f40a803ac6428d6c2b74594ee17, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800736, guid: a5693f40a803ac6428d6c2b74594ee17, type: 2}
+      propertyPath: EmissionModule.cnt0
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5693f40a803ac6428d6c2b74594ee17, type: 2}
   m_IsPrefabParent: 0
