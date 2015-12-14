@@ -21,6 +21,19 @@ public class MatchFX : MonoBehaviour
 	
 	public void Run()
 	{
+		match_particle.maxParticles = 10;
+		match_particle.Play();
+		
+		/*if(!match_particle.isPlaying)
+		{
+			match_particle.Play();
+		}*/
+	}
+	
+	public void FalseRun()
+	{
+		match_particle.maxParticles = 0;
+		
 		match_particle.Play();
 		
 		/*if(!match_particle.isPlaying)
