@@ -19,6 +19,7 @@ public class ScoreLogic : MonoBehaviour
 	void Start () 
 	{
 		gui_text = GetComponent<Text>();
+		the_score = 0;
 	}
 	
 	// Update is called once per frame

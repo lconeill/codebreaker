@@ -14,13 +14,13 @@ public class Store_Init : MonoBehaviour
 	{
 		//image_anim = image_ref.GetComponent<Animator>();
 		
-		fadeColorAnimationClip = image_ref.GetComponent<Animation>();
+		//fadeColorAnimationClip = image_ref.GetComponent<Animation>();
 		
-		fadeColorAnimationClip.Play ("FadeToColor");
+		//fadeColorAnimationClip.Play ("FadeToColor");
 		
 		SoomlaStore.Initialize(new MayhemStoreAssets());
 		
-		Invoke("LoadDelayed", 4.0f);
+		Invoke("LoadDelayed", 8.0f);
 	}
 	
 	// Update is called once per frame

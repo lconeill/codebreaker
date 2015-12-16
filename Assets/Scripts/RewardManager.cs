@@ -49,13 +49,14 @@ public class RewardManager : MonoBehaviour {
                 Debug.Log("You got all freezeTimer: Slowing down the timer!");
 
                 string freeze_itemID = MayhemStoreAssets.SLOW_TIMER_ITEM_ID;
-                StoreInventory.TakeItem(freeze_itemID, 1);
-                PowerUpManager.changeBalanceText(freeze_itemID);
 
                 if (StoreInventory.GetItemBalance(freeze_itemID) > 0)
                 {
                     circularTimer.increaseFillTime = true;
                 }
+
+                StoreInventory.TakeItem(freeze_itemID, 1);
+                PowerUpManager.changeBalanceText(freeze_itemID);
                 
                 break;
 
@@ -63,13 +64,14 @@ public class RewardManager : MonoBehaviour {
                 Debug.Log("You got all shapeReduction: Reducing tile shapes!");
 
                 string reduce_itemID = MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID;
-                StoreInventory.TakeItem(reduce_itemID, 1);
-                PowerUpManager.changeBalanceText(reduce_itemID);
 
                 if (StoreInventory.GetItemBalance(reduce_itemID) > 0)
                 {
                     spawnTile.reduceTileShape = true;
                 }
+
+                StoreInventory.TakeItem(reduce_itemID, 1);
+                PowerUpManager.changeBalanceText(reduce_itemID);
                 
                 break;
 
@@ -77,13 +79,14 @@ public class RewardManager : MonoBehaviour {
                 Debug.Log("You got all doublePoints: Multiplying the score by x!");
 
                 string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
-                StoreInventory.TakeItem(double_itemID, 1);
-                PowerUpManager.changeBalanceText(double_itemID);
 
                 if (StoreInventory.GetItemBalance(double_itemID) > 0)
                 {
-                    spawnTile.reduceTileShape = true;
+                    wheelLogic.increaseMultiplier();
                 }
+
+                StoreInventory.TakeItem(double_itemID, 1);
+                PowerUpManager.changeBalanceText(double_itemID);
 
                 wheelLogic.increaseMultiplier();
                 break;
@@ -93,13 +96,14 @@ public class RewardManager : MonoBehaviour {
                 Debug.Log("You got all increaseLife: Increasing the slider!");
 
                 string slider_itemID = MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID;
-                StoreInventory.TakeItem(slider_itemID, 1);
-                PowerUpManager.changeBalanceText(slider_itemID);
 
                 if (StoreInventory.GetItemBalance(slider_itemID) > 0)
                 {
                     lifeSlider.increaseSlider();
                 }
+
+                StoreInventory.TakeItem(slider_itemID, 1);
+                PowerUpManager.changeBalanceText(slider_itemID);
 
                 break;
 

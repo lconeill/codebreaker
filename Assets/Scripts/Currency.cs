@@ -15,6 +15,8 @@ public class Currency : MonoBehaviour {
     private string stringCurrency = "x0";
     private Text currencyText;
 
+    public GameObject coin;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -55,6 +57,7 @@ public class Currency : MonoBehaviour {
                 //currency += 50;
                 
                 StoreInventory.GiveItem(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID, 5000);
+                StartCoroutine(coinAnimation());
                 //stringCurrency = "x" + StoreInventory.GetItemBalance(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID);
                 //currencyText.text = stringCurrency;
             }
@@ -79,4 +82,11 @@ public class Currency : MonoBehaviour {
         previousCorrectMatches = wheelRotation.match_count;
         previousMatchStreak = scoreLogic.match_streak_counter;
 	}
+
+    IEnumerator coinAnimation()
+    {
+        coin.SetActive(true);
+        yield return new WaitForSeconds(0.75f);
+        coin.SetActive(false);
+    }
 }

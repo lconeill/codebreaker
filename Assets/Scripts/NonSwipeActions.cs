@@ -14,6 +14,8 @@ public class NonSwipeActions : MonoBehaviour {
     private AudioSource mismatchSFX;
     private WheelLogic wheelLogic;
     private MoveScript moveScript;
+    private GameObject match_fx_gameobject;
+    private MatchFX match_fx;
 
     private float doubleTapTime = 0;
     private string[] tagArray = { "Source_01", "Source_02", "Source_03", "Source_04" };
@@ -23,6 +25,7 @@ public class NonSwipeActions : MonoBehaviour {
     
 	private GameObject slot_manager_ref;
 	private slotManager slot_manager;
+    private Vector2 particle_spawn = new Vector2(0,0);
 
 
 	// Use this for initialization
@@ -48,6 +51,9 @@ public class NonSwipeActions : MonoBehaviour {
 
         GameObject temp_7 = GameObject.Find("MisMatch_SFX_01");
         if (temp_7 != null) { mismatchSFX = temp_7.GetComponent<AudioSource>(); }
+
+        match_fx_gameobject = GameObject.Find("match_fx");
+        if (match_fx_gameobject != null) { match_fx = match_fx_gameobject.GetComponent<MatchFX>(); }
         
 		slot_manager_ref = GameObject.Find("slotManager");
 		slot_manager = slot_manager_ref.GetComponent<slotManager>();
@@ -153,6 +159,10 @@ public class NonSwipeActions : MonoBehaviour {
         circularTimer.Reset();
         moveScript.is_touch_start = false;
         matchSFX.Play();
+
+        // Spawn the particle effect
+        match_fx_gameobject.transform.position = particle_spawn;
+        match_fx.Run();
     }
 
     public void badReset()

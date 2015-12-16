@@ -22,6 +22,11 @@ public class MayhemStoreManager : MonoBehaviour {
         
 	}
 
+    //void onEnable()
+    //{
+    //    Time.timeScale = 0;
+    //}
+
 
     public void onItemPurchased(PurchasableVirtualItem pvi, string payload)
     {
