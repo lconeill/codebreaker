@@ -18,6 +18,7 @@ public class Tutorial : MonoBehaviour {
 	
 	}
 
+    // Displays the next tutorial screen while not on the last page
     public void nextLogic()
     {
         int index;
@@ -39,6 +40,7 @@ public class Tutorial : MonoBehaviour {
         }
     }
 
+    // Displays previous tutorial screen while not on the first page
     public void previousLogic()
     {
         int index;
