@@ -36,7 +36,7 @@ public class RestartLevel : MonoBehaviour
 		
 		PlayerPrefs.SetInt("Player Deaths", death_count);
 		
-		if(PlayerPrefs.GetInt("Player Deaths") == 3)
+		if(PlayerPrefs.GetInt("Player Deaths") == 2)
 		{
 			Debug.Log("This is death number: " + death_count);
 			ShowAd();
