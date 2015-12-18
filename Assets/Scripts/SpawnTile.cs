@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class SpawnTile : MonoBehaviour
 {
     public GameObject[] tiles;
-    private Vector2[] defaultPositions = new Vector2[4] { new Vector2(-6, 2), new Vector2(-6, 0), 
-                                                          new Vector2 (-6,-2), new Vector2 (0,0) };
+    private Vector2[] defaultPositions = new Vector2[4] { new Vector2(-5, 2), new Vector2(-5, 0), 
+                                                          new Vector2 (-5,-2), new Vector2 (0,0) };
     public GameObject[] clonedTiles = new GameObject[4];
     public int spawnRange = 4;
     public int spawnStartRange = 0;

@@ -151,9 +151,12 @@
      <Compile Include="Assets\Scripts\ReturnToMenu.cs" />
      <Compile Include="Assets\Scripts\RewardManager.cs" />
      <Compile Include="Assets\Scripts\ScoreLogic.cs" />
+     <Compile Include="Assets\Scripts\ShowMedals.cs" />
      <Compile Include="Assets\Scripts\SlotGame.cs" />
      <Compile Include="Assets\Scripts\SpawnTile.cs" />
+     <Compile Include="Assets\Scripts\Store_Init.cs" />
      <Compile Include="Assets\Scripts\TouchInput.cs" />
+     <Compile Include="Assets\Scripts\Tutorial.cs" />
      <Compile Include="Assets\Scripts\WheelLogic.cs" />
      <Compile Include="Assets\Scripts\WheelRotation.cs" />
      <Compile Include="Assets\Scripts\slotManager.cs" />

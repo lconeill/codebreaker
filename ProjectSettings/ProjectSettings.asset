@@ -170,20 +170,60 @@ PlayerSettings:
       m_Height: 0
   - m_BuildTarget: Standalone
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 27beb06d836f26e449dce628a704768b, type: 3}
-      m_Size: 1024
-    - m_Icon: {fileID: 0}
-      m_Size: 512
-    - m_Icon: {fileID: 0}
-      m_Size: 256
-    - m_Icon: {fileID: 0}
-      m_Size: 128
-    - m_Icon: {fileID: 0}
-      m_Size: 48
-    - m_Icon: {fileID: 0}
-      m_Size: 32
-    - m_Icon: {fileID: 0}
-      m_Size: 16
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 27beb06d836f26e449dce628a704768b, type: 3}
+      m_Width: 1024
+      m_Height: 1024
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 512
+      m_Height: 512
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 256
+      m_Height: 256
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 128
+      m_Height: 128
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 48
+      m_Height: 48
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 32
+      m_Height: 32
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 16
+      m_Height: 16
+  - m_BuildTarget: Android
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 27beb06d836f26e449dce628a704768b, type: 3}
+      m_Width: 192
+      m_Height: 192
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 144
+      m_Height: 144
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 96
+      m_Height: 96
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 72
+      m_Height: 72
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 48
+      m_Height: 48
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 36
+      m_Height: 36
   m_BuildTargetBatching:
   - m_BuildTarget: Android
     m_StaticBatching: 1
