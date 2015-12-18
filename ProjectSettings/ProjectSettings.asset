@@ -150,11 +150,11 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Luke/Documents/GitHub/codebreaker/redtape.keystore
+  AndroidKeystoreName: redtape.keystore
   AndroidKeyaliasName: mm
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
-  androidEnableBanner: 1
+  androidEnableBanner: 0
   m_AndroidBanners:
   - width: 320
     height: 180
