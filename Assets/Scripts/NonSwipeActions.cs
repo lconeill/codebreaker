@@ -63,7 +63,7 @@ public class NonSwipeActions : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-		if(slot_manager.inMiniGame == false)
+        if (slot_manager.inMiniGame == false && !ShowPanels.in_menu)
 		{
 	        if (Input.touchCount > 0)
 	        {
@@ -76,7 +76,6 @@ public class NonSwipeActions : MonoBehaviour {
 	            isBombTouch = false;
 	            diffuseTimer = 0;
 	            badReset();
-	            Debug.Log("The bomb exploded!");
 	        }
         }
 	}

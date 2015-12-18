@@ -11,6 +11,8 @@ public class ShowPanels : MonoBehaviour {
 	public GameObject medal_ref;
 	
 	private ShowMedals medal_script_ref;
+
+    public static bool in_menu;
 	
 	void Start()
 	{
@@ -22,6 +24,7 @@ public class ShowPanels : MonoBehaviour {
 	{
 		optionsPanel.SetActive(true);
 		optionsTint.SetActive(true);
+        in_menu = true;
 	}
 
 	//Call this function to deactivate and hide the Options panel during the main menu
@@ -29,12 +32,14 @@ public class ShowPanels : MonoBehaviour {
 	{
 		optionsPanel.SetActive(false);
 		optionsTint.SetActive(false);
+        in_menu = false;
 	}
 
 	//Call this function to activate and display the main menu panel during the main menu
 	public void ShowMenu()
 	{
 		menuPanel.SetActive (true);
+        in_menu = true;
 	}
 	
 	// Call this function when the player loses 
@@ -44,12 +49,14 @@ public class ShowPanels : MonoBehaviour {
 	{
 		game_over_panel.SetActive (true);
 		medal_script_ref.ShowEarnedMedal();
+        in_menu = true;
 	}
 
 	//Call this function to deactivate and hide the main menu panel during the main menu
 	public void HideMenu()
 	{
 		menuPanel.SetActive (false);
+        in_menu = false;
 	}
 	
 	// Call this function to hide the
@@ -58,6 +65,7 @@ public class ShowPanels : MonoBehaviour {
 	public void HideGameOver()
 	{
 		game_over_panel.SetActive (false);
+        in_menu = false;
 	}
 	
 	//Call this function to activate and display the Pause panel during game play
@@ -65,6 +73,7 @@ public class ShowPanels : MonoBehaviour {
 	{
 		pausePanel.SetActive (true);
 		optionsTint.SetActive(true);
+        in_menu = true;
 	}
 
 	//Call this function to deactivate and hide the Pause panel during game play
@@ -72,6 +81,6 @@ public class ShowPanels : MonoBehaviour {
 	{
 		pausePanel.SetActive (false);
 		optionsTint.SetActive(false);
-
+        in_menu = false;
 	}
 }
