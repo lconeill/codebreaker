@@ -151,17 +151,17 @@ public class WheelLogic : MonoBehaviour
         
         if (wheel_rotation_script.match_count >= 10 && wheel_rotation_script.match_count < 15)
         {
-            extendSpawnRange(4, 5);
+            spawnTile.extendSpawnRange(4, 5);
         }
 
         else if (wheel_rotation_script.match_count >= 20 && wheel_rotation_script.match_count < 25)
         {
-            extendSpawnRange(4, 9);
+            spawnTile.extendSpawnRange(4, 9);
         }
 
         else if (wheel_rotation_script.match_count >= 30)
         {
-            extendSpawnRange(4, 13);
+            spawnTile.extendSpawnRange(4, 13);
         }
 
         // Controls the score multiplier effect time
@@ -177,22 +177,6 @@ public class WheelLogic : MonoBehaviour
         }
     }
 
-    // This function reduces the chances of the bomb / different shape / different color tiles appearing
-    // Giving it a 65% chance for now
-    public void extendSpawnRange(int defaultSpawnRange, int newSpawnRange)
-    {
-        int rand = Random.Range(1, 21);
-
-        if (rand >= 13)
-        {
-            spawnTile.spawnRange = defaultSpawnRange;
-        }
-
-        else
-        {
-            spawnTile.spawnRange = newSpawnRange;
-        }
-    }
 
 	// This fucntion is called when a trigger collider enters this objects collider.
 	// When a Correct match is made the scroe is updated and a variable tracks

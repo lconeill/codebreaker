@@ -11,7 +11,8 @@ public class MayhemStoreManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        //SoomlaStore.Initialize(new MayhemStoreAssets());
+        // TODO: Comment the below initialization out
+        SoomlaStore.Initialize(new MayhemStoreAssets());
         StoreEvents.OnItemPurchased += onItemPurchased;
         DontDestroyOnLoad(this.gameObject);
 	}
