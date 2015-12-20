@@ -119,7 +119,8 @@ public class RewardManager : MonoBehaviour {
 
             case "hideTiles":
                 Debug.Log("You got all hideTiles: Hiding the upcoming!");
-                hide_the_tiles.hideTile();
+                spawnTile.hideTiles();
+                //hide_the_tiles.hideTile();
                 break;
 
             case "noMatch":

@@ -56,6 +56,7 @@ public class HideTileReward : MonoBehaviour {
         hide = true;
     }
 
+
     // Play open vault animation and then reset all variables
     IEnumerator revealTileRoutine()
     {

@@ -9,6 +9,12 @@ public class SpawnTile : MonoBehaviour
                                                           new Vector2 (-5,-2), new Vector2 (0,0) };
     public GameObject[] clonedTiles = new GameObject[4];
 
+    public GameObject hide_tile_image;                          // the image shown when the hide tile effect is active
+    private GameObject[] hide_tile_clones = new GameObject[3];  // holds reference to instantiated "hide tile" gameobject
+    private bool hide_tile_flag = false;                        // flag used to start effect countdown
+    private float hide_tile_counter = 0;                        // used to terminate the effect
+    private float hide_reward_effect_time = 10;                 // the time the effect is active for
+
     public int spawnRange = 4;                  // the current tile spawn range
     public int spawnStartRange = 0;             // the current tile spawn start range
 
@@ -71,6 +77,17 @@ public class SpawnTile : MonoBehaviour
                 timeIncrement = 0;
                 endReward = false;
                 reduce_shape_button.enabled = true;
+            }
+        }
+
+        if (hide_tile_flag)
+        {
+            hide_tile_counter += Time.deltaTime;
+
+            if (hide_tile_counter >= hide_reward_effect_time)
+            {
+                hide_tile_flag = false;
+                destroyHideTiles();
             }
         }
     }
@@ -156,4 +173,29 @@ public class SpawnTile : MonoBehaviour
             }
         }
     }
+
+
+    // hide tiles when effect activated in slot game
+    public void hideTiles()
+    {
+        hide_tile_flag = true;
+
+        for (int i = 0; i <= 2; i++)
+        {
+            GameObject clone = (GameObject)Instantiate(hide_tile_image, defaultPositions[i], Quaternion.identity);
+            hide_tile_clones[i] = clone;
+        }
+    }
+
+
+    // reveal tiles after hide tiles effect is up
+    public void destroyHideTiles()
+    {
+        for (int i = 0; i <= 2; i++)
+        {
+            Destroy(hide_tile_clones[i]);
+        }
+    }
 }
+
+

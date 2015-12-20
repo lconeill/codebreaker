@@ -27,6 +27,8 @@ public class NonSwipeActions : MonoBehaviour {
 	private slotManager slot_manager;
     private Vector2 particle_spawn = new Vector2(0,0);
 
+    private int primed = 0; // the user can touch the bomb once without exploding. If touched twice without holding, it explodes
+
 
 	// Use this for initialization
 	void Start () 
@@ -73,6 +75,7 @@ public class NonSwipeActions : MonoBehaviour {
 	
 	        if (spawnTile.clonedTiles[3].tag == "bomb" && circularTimer.circularTimer.fillAmount >= 0.99)
 	        {
+                primed = 0;
 	            isBombTouch = false;
 	            diffuseTimer = 0;
 	            badReset();
@@ -94,14 +97,21 @@ public class NonSwipeActions : MonoBehaviour {
 
             if (isBombTouch && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                isBombTouch = false;
-                diffuseTimer = 0;
-                badReset();
-                Debug.Log("The bomb exploded!");
+                primed++;
+
+                if (primed == 2)
+                {
+                    primed = 0;
+                    isBombTouch = false;
+                    diffuseTimer = 0;
+                    badReset();
+                    Debug.Log("The bomb exploded!");
+                }
             }
 
-            if (isBombTouch && (Time.time - diffuseTimer) >= 0.5)
+            if (isBombTouch && (Time.time - diffuseTimer) >= 0.3)
             {
+                primed = 0;
                 isBombTouch = false;
                 diffuseTimer = 0;
                 goodReset();
