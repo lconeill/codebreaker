@@ -22,9 +22,13 @@ public class PlayMusic : MonoBehaviour {
 	{
 		//Play the music clip at the array index musicChoice
 		musicSource.clip = musicClips [musicChoice];
-
-		//Play the selected clip
-		musicSource.Play ();
+		
+		if(PlayerPrefs.GetInt("Mute") == 1)
+		{
+			//Play the selected clip
+			musicSource.Play ();
+		}
+		
 	}
 
 	//Call this function to very quickly fade up the volume of master mixer
@@ -39,5 +43,16 @@ public class PlayMusic : MonoBehaviour {
 	{
 		//call the TransitionTo function of the audioMixerSnapshot volumeDown;
 		volumeDown.TransitionTo (fadeTime);
+	}
+	
+	public void PauseClip()
+	{
+		musicSource.Pause();
+	}
+	
+	public void PlayClip()
+	{
+		musicSource.Play ();
+		musicSource.UnPause();
 	}
 }

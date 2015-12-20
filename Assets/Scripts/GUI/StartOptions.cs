@@ -43,12 +43,24 @@ public class StartOptions : MonoBehaviour {
 		if(PlayerPrefs.GetInt("Mute") == 1)
 		{
 			PlayerPrefs.SetInt("Mute", 1);
+			mute_button_ref.SetActive(true);
+			unmute_button_ref.SetActive(false);
+		}
+		
+		else
+		{
+			mute_button_ref.SetActive(false);
+			unmute_button_ref.SetActive(true);
 		}
 		
 		Time.timeScale = 1;
 		showPanels.ShowMenu();
 		StartCoroutine(PlayNewMusic(0, 0f));
-		playMusic.FadeUp (fastFadeIn);
+		
+		if (PlayerPrefs.GetInt("Mute") == 1)
+		{
+			playMusic.FadeUp (fastFadeIn);
+		}
 	}
 
 
@@ -132,7 +144,11 @@ public class StartOptions : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(delayTime);
 		//Fade up music nearly instantly without a click 
-		playMusic.FadeUp (fastFadeIn);
+		if (PlayerPrefs.GetInt("Mute") == 1)
+		{
+			playMusic.FadeUp (fastFadeIn);
+		}
+		
 		//Play music clip assigned to mainMusic in PlayMusic script
 		playMusic.PlaySelectedMusic (musicToChangeTo);
 	}
