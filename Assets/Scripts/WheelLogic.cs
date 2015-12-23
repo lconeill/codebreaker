@@ -65,10 +65,10 @@ public class WheelLogic : MonoBehaviour
 	private Image streak_fb_mayhem;
 	private GameObject streak_fb_mayhem_ref;
 
-    public int score_multiplier = 1;
+    private int score_multiplier = 1;
     private bool multiplier_flag = false;
     private float reward_time_increment = 0;
-    private float reward_effect_time = 10;
+    private float reward_effect_time = 5;
 
 	void Start () 
 	{
@@ -126,7 +126,6 @@ public class WheelLogic : MonoBehaviour
 		
         GameObject temp = GameObject.Find("tileSpawn");
         if (temp != null) { spawnTile = temp.GetComponent<SpawnTile>(); }
-
 	}
 
     void Update()
@@ -173,6 +172,7 @@ public class WheelLogic : MonoBehaviour
             {
                 multiplier_flag = false;
                 score_multiplier = 1;
+                reward_time_increment = 0;
             }
         }
     }
@@ -285,7 +285,7 @@ public class WheelLogic : MonoBehaviour
 			
 			else
 			{
-				score_logic.the_score = score_logic.the_score + 50;
+				score_logic.the_score = score_logic.the_score + (50 * score_multiplier);
 			}
 		}
 		
