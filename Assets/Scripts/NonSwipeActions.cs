@@ -29,7 +29,8 @@ public class NonSwipeActions : MonoBehaviour {
 
     private int primed = 0; // the user can touch the bomb once without exploding. If touched twice without holding, it explodes
 
-
+	private LifeSlider lifeSlider;
+	
 	// Use this for initialization
 	void Start () 
     {
@@ -60,6 +61,9 @@ public class NonSwipeActions : MonoBehaviour {
 		slot_manager_ref = GameObject.Find("slotManager");
 		slot_manager = slot_manager_ref.GetComponent<slotManager>();
         
+		GameObject temp_08 = GameObject.Find("lifeSlider");
+		if (temp_08 != null) { lifeSlider = temp_08.GetComponent<LifeSlider>(); }
+        
 	}
 	
 	// Update is called once per frame
@@ -78,7 +82,7 @@ public class NonSwipeActions : MonoBehaviour {
                 primed = 0;
 	            isBombTouch = false;
 	            diffuseTimer = 0;
-	            badReset();
+				bombReset();
 	        }
         }
 	}
@@ -104,7 +108,7 @@ public class NonSwipeActions : MonoBehaviour {
                     primed = 0;
                     isBombTouch = false;
                     diffuseTimer = 0;
-                    badReset();
+					bombReset();
                     Debug.Log("The bomb exploded!");
                 }
             }
@@ -184,4 +188,15 @@ public class NonSwipeActions : MonoBehaviour {
         wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
         scoreLogic.match_streak_counter = 0;
     }
+    
+	public void bombReset()
+	{
+		wheelLogic.is_match = false;
+		lifeSlider.bombOver();
+		circularTimer.Reset();
+		moveScript.is_touch_start = false;
+		mismatchSFX.Play();
+		wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
+		scoreLogic.match_streak_counter = 0;
+	}
 }
