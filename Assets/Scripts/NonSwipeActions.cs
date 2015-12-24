@@ -30,6 +30,10 @@ public class NonSwipeActions : MonoBehaviour {
     private int primed = 0; // the user can touch the bomb once without exploding. If touched twice without holding, it explodes
 
 	private LifeSlider lifeSlider;
+
+    public GameObject bomb_tick_sfx;    // Contains the bomb ticking sound effect
+    private int tick_sfx_count = 0;     // Counter used to play ticking sound effect
+
 	
 	// Use this for initialization
 	void Start () 
@@ -68,7 +72,14 @@ public class NonSwipeActions : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () 
-    {
+    {   
+        // play bomb ticking sfx
+        if (spawnTile.clonedTiles[3].tag == "bomb" && tick_sfx_count == 0 && slot_manager.inMiniGame == false)
+        {
+            bomb_tick_sfx.GetComponent<AudioSource>().Play();
+            tick_sfx_count++;
+        }
+
         if (slot_manager.inMiniGame == false && !ShowPanels.in_menu)
 		{
 	        if (Input.touchCount > 0)
@@ -92,7 +103,6 @@ public class NonSwipeActions : MonoBehaviour {
 
         if (spawnTile.clonedTiles[3].tag == "bomb")
         {
-
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 diffuseTimer = Time.time;
@@ -176,6 +186,9 @@ public class NonSwipeActions : MonoBehaviour {
         // Spawn the particle effect
         match_fx_gameobject.transform.position = particle_spawn;
         match_fx.Run();
+
+        bomb_tick_sfx.GetComponent<AudioSource>().Stop();
+        tick_sfx_count = 0;
     }
 
     public void badReset()
@@ -198,5 +211,8 @@ public class NonSwipeActions : MonoBehaviour {
 		mismatchSFX.Play();
 		wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
 		scoreLogic.match_streak_counter = 0;
+
+        bomb_tick_sfx.GetComponent<AudioSource>().Stop();
+        tick_sfx_count = 0;
 	}
 }

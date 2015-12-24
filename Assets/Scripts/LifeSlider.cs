@@ -23,6 +23,10 @@ public class LifeSlider : MonoBehaviour
 
 	private GameObject score_display_ref;
 	private ScoreLogic score_logic;
+
+    public GameObject explosion_animation;          // Game object that contains the bomb explosion animation
+    public GameObject explosion_sfx;                // Game object that contains the sound effect for the bomb explosion
+    public GameObject bomb_tick_sfx;                // Game object that contains the bomb ticking sound effect
 	
     // Find references to the GameObjects
     void Start()
@@ -94,6 +98,9 @@ public class LifeSlider : MonoBehaviour
             	}
             	
 				gameover_panel.ShowGameOver();
+
+                // Stop ticking sfx. This is for the case when the bomb is still active but the life slider is zero
+                bomb_tick_sfx.GetComponent<AudioSource>().Stop();
             	
                 //Debug.Log("Game Over Sucka");
             }
@@ -115,8 +122,22 @@ public class LifeSlider : MonoBehaviour
         timeKeeper = Mathf.Clamp(timeKeeper - 5 - matchSliderAmount, 0, lifeTime);
     }
     
+    // Plays the bomb explosion animation and triggers the game over panel
     public void bombOver()
     {
-		lifeTime = 0;
+        explosion_animation.SetActive(true);
+        explosion_sfx.GetComponent<AudioSource>().Play();
+        StartCoroutine(playExplosion());
     }
+
+    // Waits for explosion animation to finish and then pop up the game over screen
+    IEnumerator playExplosion()
+    {
+        yield return new WaitForSeconds(0.7f);
+        Time.timeScale = 0;
+        explosion_animation.SetActive(false);
+        explosion_sfx.GetComponent<AudioSource>().Stop();
+        lifeTime = 0;
+    }
+
 }  
