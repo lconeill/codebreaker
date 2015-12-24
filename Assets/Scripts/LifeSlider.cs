@@ -75,7 +75,7 @@ public class LifeSlider : MonoBehaviour
 
             if (wheelRotation.mismatched_count > previousIncorrectMatches)
             {
-                timeKeeper += matchSliderAmount;
+                timeKeeper += matchSliderAmount * 5;
             }
 
             if (timeKeeper >= lifeTime)
@@ -113,5 +113,10 @@ public class LifeSlider : MonoBehaviour
     public void increaseSlider()
     {
         timeKeeper = Mathf.Clamp(timeKeeper - 5 - matchSliderAmount, 0, lifeTime);
+    }
+    
+    public void bombOver()
+    {
+		lifeTime = 0;
     }
 }  

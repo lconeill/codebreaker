@@ -27,7 +27,10 @@ public class NonSwipeActions : MonoBehaviour {
 	private slotManager slot_manager;
     private Vector2 particle_spawn = new Vector2(0,0);
 
+    private int primed = 0; // the user can touch the bomb once without exploding. If touched twice without holding, it explodes
 
+	private LifeSlider lifeSlider;
+	
 	// Use this for initialization
 	void Start () 
     {
@@ -58,12 +61,15 @@ public class NonSwipeActions : MonoBehaviour {
 		slot_manager_ref = GameObject.Find("slotManager");
 		slot_manager = slot_manager_ref.GetComponent<slotManager>();
         
+		GameObject temp_08 = GameObject.Find("lifeSlider");
+		if (temp_08 != null) { lifeSlider = temp_08.GetComponent<LifeSlider>(); }
+        
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-		if(slot_manager.inMiniGame == false)
+        if (slot_manager.inMiniGame == false && !ShowPanels.in_menu)
 		{
 	        if (Input.touchCount > 0)
 	        {
@@ -73,10 +79,10 @@ public class NonSwipeActions : MonoBehaviour {
 	
 	        if (spawnTile.clonedTiles[3].tag == "bomb" && circularTimer.circularTimer.fillAmount >= 0.99)
 	        {
+                primed = 0;
 	            isBombTouch = false;
 	            diffuseTimer = 0;
-	            badReset();
-	            Debug.Log("The bomb exploded!");
+				bombReset();
 	        }
         }
 	}
@@ -95,14 +101,21 @@ public class NonSwipeActions : MonoBehaviour {
 
             if (isBombTouch && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                isBombTouch = false;
-                diffuseTimer = 0;
-                badReset();
-                Debug.Log("The bomb exploded!");
+                primed++;
+
+                if (primed == 2)
+                {
+                    primed = 0;
+                    isBombTouch = false;
+                    diffuseTimer = 0;
+					bombReset();
+                    Debug.Log("The bomb exploded!");
+                }
             }
 
-            if (isBombTouch && (Time.time - diffuseTimer) >= 0.5)
+            if (isBombTouch && (Time.time - diffuseTimer) >= 0.3)
             {
+                primed = 0;
                 isBombTouch = false;
                 diffuseTimer = 0;
                 goodReset();
@@ -175,4 +188,15 @@ public class NonSwipeActions : MonoBehaviour {
         wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
         scoreLogic.match_streak_counter = 0;
     }
+    
+	public void bombReset()
+	{
+		wheelLogic.is_match = false;
+		lifeSlider.bombOver();
+		circularTimer.Reset();
+		moveScript.is_touch_start = false;
+		mismatchSFX.Play();
+		wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
+		scoreLogic.match_streak_counter = 0;
+	}
 }

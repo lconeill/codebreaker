@@ -65,10 +65,10 @@ public class WheelLogic : MonoBehaviour
 	private Image streak_fb_mayhem;
 	private GameObject streak_fb_mayhem_ref;
 
-    public int score_multiplier = 1;
+    private int score_multiplier = 1;
     private bool multiplier_flag = false;
     private float reward_time_increment = 0;
-    private float reward_effect_time = 10;
+    private float reward_effect_time = 5;
 
 	void Start () 
 	{
@@ -126,7 +126,6 @@ public class WheelLogic : MonoBehaviour
 		
         GameObject temp = GameObject.Find("tileSpawn");
         if (temp != null) { spawnTile = temp.GetComponent<SpawnTile>(); }
-
 	}
 
     void Update()
@@ -151,17 +150,17 @@ public class WheelLogic : MonoBehaviour
         
         if (wheel_rotation_script.match_count >= 10 && wheel_rotation_script.match_count < 15)
         {
-            extendSpawnRange(4, 5);
+            spawnTile.extendSpawnRange(4, 5);
         }
 
         else if (wheel_rotation_script.match_count >= 20 && wheel_rotation_script.match_count < 25)
         {
-            extendSpawnRange(4, 9);
+            spawnTile.extendSpawnRange(4, 9);
         }
 
         else if (wheel_rotation_script.match_count >= 30)
         {
-            extendSpawnRange(4, 13);
+            spawnTile.extendSpawnRange(4, 13);
         }
 
         // Controls the score multiplier effect time
@@ -173,26 +172,11 @@ public class WheelLogic : MonoBehaviour
             {
                 multiplier_flag = false;
                 score_multiplier = 1;
+                reward_time_increment = 0;
             }
         }
     }
 
-    // This function reduces the chances of the bomb / different shape / different color tiles appearing
-    // Giving it a 65% chance for now
-    public void extendSpawnRange(int defaultSpawnRange, int newSpawnRange)
-    {
-        int rand = Random.Range(1, 21);
-
-        if (rand >= 13)
-        {
-            spawnTile.spawnRange = defaultSpawnRange;
-        }
-
-        else
-        {
-            spawnTile.spawnRange = newSpawnRange;
-        }
-    }
 
 	// This fucntion is called when a trigger collider enters this objects collider.
 	// When a Correct match is made the scroe is updated and a variable tracks
@@ -263,37 +247,37 @@ public class WheelLogic : MonoBehaviour
 	{
 		if (match == true)
 		{
-			if(score_logic.match_streak_counter == 5)
+			if(score_logic.match_streak_counter == 10)
 			{
 				StartCoroutine(ShowStreakGreat());
                 score_logic.the_score = score_logic.the_score + (100 * score_multiplier);
 			}
 			
-			if(score_logic.match_streak_counter == 10)
+			if(score_logic.match_streak_counter == 20)
 			{
 				StartCoroutine(ShowStreakAwesome());
                 score_logic.the_score = score_logic.the_score + (200 * score_multiplier);
 			}
 						
-			if(score_logic.match_streak_counter == 15)
+			if(score_logic.match_streak_counter == 30)
 			{
 				StartCoroutine(ShowStreakAmazing());
                 score_logic.the_score = score_logic.the_score + (500 * score_multiplier);
 			}
 			
-			if(score_logic.match_streak_counter == 20)
+			if(score_logic.match_streak_counter == 40)
 			{
 				StartCoroutine(ShowStreakUnstoppable());
                 score_logic.the_score = score_logic.the_score + (1000 * score_multiplier);
 			}
 			
-			if(score_logic.match_streak_counter == 25)
+			if(score_logic.match_streak_counter == 50)
 			{
 				StartCoroutine(ShowStreakMatchFiend());
                 score_logic.the_score = score_logic.the_score + (1500 * score_multiplier);
 			}
 			
-			if(score_logic.match_streak_counter == 30)
+			if(score_logic.match_streak_counter == 60)
 			{
 				StartCoroutine(ShowStreakMayhem());
                 score_logic.the_score = score_logic.the_score + (3000 * score_multiplier);
@@ -301,7 +285,7 @@ public class WheelLogic : MonoBehaviour
 			
 			else
 			{
-				score_logic.the_score = score_logic.the_score + 50;
+				score_logic.the_score = score_logic.the_score + (50 * score_multiplier);
 			}
 		}
 		

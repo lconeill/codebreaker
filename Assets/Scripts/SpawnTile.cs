@@ -5,34 +5,41 @@ using UnityEngine.UI;
 public class SpawnTile : MonoBehaviour
 {
     public GameObject[] tiles;
-    private Vector2[] defaultPositions = new Vector2[4] { new Vector2(-6, 2), new Vector2(-6, 0), 
-                                                          new Vector2 (-6,-2), new Vector2 (0,0) };
+    private Vector2[] defaultPositions = new Vector2[4] { new Vector2(-5, 2), new Vector2(-5, 0), 
+                                                          new Vector2 (-5,-2), new Vector2 (0,0) };
     public GameObject[] clonedTiles = new GameObject[4];
-    public int spawnRange = 4;
-    public int spawnStartRange = 0;
 
-    private int spawnRangeBefore;
-    private int spawnStartRangeBefore;
-    public bool reduceTileShape = false;
-    private bool endReward = false;
+    public GameObject hide_tile_image;                          // the image shown when the hide tile effect is active
+    private GameObject[] hide_tile_clones = new GameObject[3];  // holds reference to instantiated "hide tile" gameobject
+    private bool hide_tile_flag = false;                        // flag used to start effect countdown
+    private float hide_tile_counter = 0;                        // used to terminate the effect
+    private float hide_reward_effect_time = 10;                 // the time the effect is active for
 
-    private float rewardEffectTime = 5;
-    private float timeIncrement = 0;
+    public int spawnRange = 4;                  // the current tile spawn range
+    public int spawnStartRange = 0;             // the current tile spawn start range
 
-    private Button fruitgum_button;
-    
-    // Added the variable to hold a reference to the MoveScript.
-    
-	private MoveScript move_script;
+    private int spawnRangeBefore;               // the tile spawn range before the effect
+    private int spawnStartRangeBefore;          // the tile spawn start range before the effect
+    public bool reduceTileShape = false;        // flag used to enable the reduce shape effect
+    private bool endReward = false;             // flag used to track length of reduce shape effect and reset tile ranges
+
+    private float rewardEffectTime = 7;         // how long the reduce tile shapes effect lasts for
+    private float timeIncrement = 0;            // counter used to to track length of the effect
+
+    private Button reduce_shape_button;         // button component of reduce tile shape power up game object
+
+    private MoveScript move_script;             // reference to MoveScript used to move the active game tile
 	
     void Start()
     {
         initializeTiles();
-        
-        GameObject temp = GameObject.Find("fruitgum_power_up");
-        if (temp != null){ fruitgum_button = temp.GetComponent<Button>(); }
+
+        GameObject temp = GameObject.Find("reduce_shape_power_up");
+        if (temp != null) { reduce_shape_button = temp.GetComponent<Button>(); }
     }
     
+
+    // checks to see if reduce tile shape reward has been triggered, activates, and terminates the reward
     void Update()
     {
         if (reduceTileShape)
@@ -55,7 +62,8 @@ public class SpawnTile : MonoBehaviour
 
             reduceTileShape = false;
             endReward = true;
-            fruitgum_button.enabled = false;
+            reduce_shape_button.enabled = false;
+            
         }
 
         if (endReward)
@@ -68,13 +76,24 @@ public class SpawnTile : MonoBehaviour
                 spawnStartRange = spawnStartRangeBefore;
                 timeIncrement = 0;
                 endReward = false;
-                fruitgum_button.enabled = true;
+                reduce_shape_button.enabled = true;
             }
         }
 
+        if (hide_tile_flag)
+        {
+            hide_tile_counter += Time.deltaTime;
 
+            if (hide_tile_counter >= hide_reward_effect_time)
+            {
+                hide_tile_flag = false;
+                destroyHideTiles();
+            }
+        }
     }
 
+
+    // Randomly initializes the tiles in their deault positions
     public void initializeTiles()
     {
         for (int j = 0; j <= 3; j++)
@@ -97,6 +116,8 @@ public class SpawnTile : MonoBehaviour
         }
     }
 
+
+    // Moves the tiles and scales the active tile
     public void moveTiles()
     {
 
@@ -130,4 +151,51 @@ public class SpawnTile : MonoBehaviour
         }
 
     }
+
+
+    // This function reduces the chances of the bomb / different shape / different color tiles appearing
+    // Giving it a 65% chance for now
+    public void extendSpawnRange(int defaultSpawnRange, int newSpawnRange)
+    {
+        // This function only runs when the reduce shape reward is not in effect
+        if (!endReward)
+        {
+            int rand = Random.Range(1, 21);
+
+            if (rand >= 13)
+            {
+                spawnRange = defaultSpawnRange;
+            }
+
+            else
+            {
+                spawnRange = newSpawnRange;
+            }
+        }
+    }
+
+
+    // hide tiles when effect activated in slot game
+    public void hideTiles()
+    {
+        hide_tile_flag = true;
+
+        for (int i = 0; i <= 2; i++)
+        {
+            GameObject clone = (GameObject)Instantiate(hide_tile_image, defaultPositions[i], Quaternion.identity);
+            hide_tile_clones[i] = clone;
+        }
+    }
+
+
+    // reveal tiles after hide tiles effect is up
+    public void destroyHideTiles()
+    {
+        for (int i = 0; i <= 2; i++)
+        {
+            Destroy(hide_tile_clones[i]);
+        }
+    }
 }
+
+

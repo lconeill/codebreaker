@@ -6,7 +6,10 @@ using UnityEngine.Audio;
 public class StartOptions : MonoBehaviour {
 
 
-
+	public GameObject mute_button_ref;
+	public GameObject unmute_button_ref;
+	public GameObject pause_button_ref;
+	
 	public int sceneToStart = 2;										//Index number in build settings of scene to load if changeScenes is true
 	public bool changeScenes;											//If true, load a new scene when Start is pressed, if false, fade out UI and continue in single scene
 	public bool changeMusicOnStart;										//Choose whether to continue playing menu music or start a new music clip
@@ -37,10 +40,27 @@ public class StartOptions : MonoBehaviour {
 
 	void Start()
 	{
+		if(PlayerPrefs.GetInt("Mute") == 1)
+		{
+			PlayerPrefs.SetInt("Mute", 1);
+			mute_button_ref.SetActive(true);
+			unmute_button_ref.SetActive(false);
+		}
+		
+		else
+		{
+			mute_button_ref.SetActive(false);
+			unmute_button_ref.SetActive(true);
+		}
+		
 		Time.timeScale = 1;
 		showPanels.ShowMenu();
 		StartCoroutine(PlayNewMusic(0, 0f));
-		playMusic.FadeUp (fastFadeIn);
+		
+		if (PlayerPrefs.GetInt("Mute") == 1)
+		{
+			playMusic.FadeUp (fastFadeIn);
+		}
 	}
 
 
@@ -59,7 +79,11 @@ public class StartOptions : MonoBehaviour {
 		{
 			//Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
 			Invoke ("LoadDelayed", fadeColorAnimationClip.length * .5f);
-
+			
+			Invoke("HideMuteGUI",fadeColorAnimationClip.length * .5f);
+			
+			Invoke("ShowMuteGUI",fadeColorAnimationClip.length * .5f);
+						
 			playMusic.FadeDown(fadeColorAnimationClip.length);
 			
 			//Set the trigger of Animator animColorFade to start transition to the FadeToOpaque state.
@@ -76,8 +100,7 @@ public class StartOptions : MonoBehaviour {
 		}
 
 	}
-
-
+	
 	public void LoadDelayed()
 	{
 		//Pause button now works if escape is pressed since we are no longer in Main menu.
@@ -88,6 +111,8 @@ public class StartOptions : MonoBehaviour {
 
 		//Load the selected scene, by scene index number in build settings
 		Application.LoadLevel (sceneToStart);
+		
+		pause_button_ref.SetActive(true);
 	}
 
 
@@ -119,7 +144,11 @@ public class StartOptions : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(delayTime);
 		//Fade up music nearly instantly without a click 
-		playMusic.FadeUp (fastFadeIn);
+		if (PlayerPrefs.GetInt("Mute") == 1)
+		{
+			playMusic.FadeUp (fastFadeIn);
+		}
+		
 		//Play music clip assigned to mainMusic in PlayMusic script
 		playMusic.PlaySelectedMusic (musicToChangeTo);
 	}

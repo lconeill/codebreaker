@@ -76,9 +76,12 @@ public class slotManager : MonoBehaviour
 
         if (activate)
         {
-            play_music_script.FadeDown(0.5f);
-            play_music_script.PlaySelectedMusic(2);
-            play_music_script.FadeUp(0.5f);
+			if (PlayerPrefs.GetInt("Mute") == 1)
+			{
+            	play_music_script.FadeDown(0.5f);
+            	play_music_script.PlaySelectedMusic(2);
+            	play_music_script.FadeUp(0.5f);
+			}
 			
             inMiniGame = true;
 
@@ -119,9 +122,14 @@ public class slotManager : MonoBehaviour
         slotReels[1].resetReel();
         slotReels[2].resetReel();
         activateSlotGame(false);
-		play_music_script.FadeDown(0.5f);
-		play_music_script.PlaySelectedMusic(1);
-		play_music_script.FadeUp(0.5f);
+        
+		if (PlayerPrefs.GetInt("Mute") == 1)
+		{
+			play_music_script.FadeDown(0.5f);
+			play_music_script.PlaySelectedMusic(1);
+			play_music_script.FadeUp(0.5f);
+		}
+		
     }
 
     public void getReward()

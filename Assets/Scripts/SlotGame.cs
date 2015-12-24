@@ -217,6 +217,7 @@ public class SlotGame : MonoBehaviour {
         continueRoll = false;
         start_lerp_timer = 0;
         roll_button.enabled = true;
+        gameObject.GetComponent<Button>().enabled = false;
 
         for (int i = 0; i < 3; i++)
         {

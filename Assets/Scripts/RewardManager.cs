@@ -12,6 +12,7 @@ public class RewardManager : MonoBehaviour {
     public GameObject vault;
     private WheelLogic wheelLogic;
     private HideTileReward hide_the_tiles;
+    private DoublePoints double_points_script;
 
 
 	// Use this for initialization
@@ -30,6 +31,9 @@ public class RewardManager : MonoBehaviour {
 
         GameObject temp_4 = GameObject.Find("match_01");
         if (temp_4 != null) { wheelLogic = temp_4.GetComponent<WheelLogic>(); }
+
+        GameObject temp_5 = GameObject.Find("double_points_script");
+        if (temp_5 != null) { double_points_script = temp_5.GetComponent<DoublePoints>(); }
 	}
 	
 	// Update is called once per frame
@@ -76,13 +80,14 @@ public class RewardManager : MonoBehaviour {
                 break;
 
             case "doublePoints":
-                Debug.Log("You got all doublePoints: Multiplying the score by x!");
+                Debug.Log("You got all doublePoints: Multiplying the score by 2!");
 
                 string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
 
                 if (StoreInventory.GetItemBalance(double_itemID) > 0)
                 {
-                    wheelLogic.increaseMultiplier();
+                    //wheelLogic.increaseMultiplier();
+                    double_points_script.activateReward();
                 }
 
                 StoreInventory.TakeItem(double_itemID, 1);
@@ -119,7 +124,8 @@ public class RewardManager : MonoBehaviour {
 
             case "hideTiles":
                 Debug.Log("You got all hideTiles: Hiding the upcoming!");
-                hide_the_tiles.hideTile();
+                spawnTile.hideTiles();
+                //hide_the_tiles.hideTile();
                 break;
 
             case "noMatch":
