@@ -101,8 +101,6 @@ public class LifeSlider : MonoBehaviour
 
                 // Stop ticking sfx. This is for the case when the bomb is still active but the life slider is zero
                 bomb_tick_sfx.GetComponent<AudioSource>().Stop();
-            	
-                //Debug.Log("Game Over Sucka");
             }
 
             previousCorrectMatches = wheelRotation.match_count;
@@ -134,9 +132,14 @@ public class LifeSlider : MonoBehaviour
     IEnumerator playExplosion()
     {
         yield return new WaitForSeconds(0.7f);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         explosion_animation.SetActive(false);
         explosion_sfx.GetComponent<AudioSource>().Stop();
+
+        // Stop ticking sfx
+        // For case when the bomb has exploded but there is another bomb now active
+        bomb_tick_sfx.GetComponent<AudioSource>().Stop();
+
         lifeTime = 0;
     }
 

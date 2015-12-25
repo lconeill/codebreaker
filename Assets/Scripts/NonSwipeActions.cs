@@ -90,6 +90,8 @@ public class NonSwipeActions : MonoBehaviour {
 	
 	        if (spawnTile.clonedTiles[3].tag == "bomb" && circularTimer.circularTimer.fillAmount >= 0.99)
 	        {
+                Debug.Log(">>>>>>>>> The bomb exploded because I waited too long!");
+
                 primed = 0;
 	            isBombTouch = false;
 	            diffuseTimer = 0;
@@ -98,6 +100,7 @@ public class NonSwipeActions : MonoBehaviour {
         }
 	}
 
+    // Hold on bomb to diffuse the bomb
     public void diffuseBomb()
     {
 
@@ -140,7 +143,7 @@ public class NonSwipeActions : MonoBehaviour {
         }
     }
 
-    // Double tap logic - fails because reset is being called 4 times per actual double tap
+    // Double tap on tiles that do not match to score
     public void doubleTap()
     {
 
@@ -205,14 +208,15 @@ public class NonSwipeActions : MonoBehaviour {
 	public void bombReset()
 	{
 		wheelLogic.is_match = false;
-		lifeSlider.bombOver();
-		circularTimer.Reset();
+		//circularTimer.Reset();
 		moveScript.is_touch_start = false;
-		mismatchSFX.Play();
+        //mismatchSFX.Play();
 		wheelRotation.mismatched_count = wheelRotation.mismatched_count + 1;
 		scoreLogic.match_streak_counter = 0;
 
         bomb_tick_sfx.GetComponent<AudioSource>().Stop();
         tick_sfx_count = 0;
+
+        lifeSlider.bombOver();
 	}
 }
