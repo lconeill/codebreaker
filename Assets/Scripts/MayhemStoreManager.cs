@@ -33,10 +33,12 @@ public class MayhemStoreManager : MonoBehaviour {
         PowerUpManager.changeBalanceText(pvi.ItemId);
     }
 
+
     public void buySlowTimerPack()
     {
         StoreInventory.BuyItem(MayhemStoreAssets.SLOW_TIMER_FIVE_PACK_PRODUCT_ID);   
     }
+
 
     public void buySlowTimer()
     {
@@ -52,6 +54,13 @@ public class MayhemStoreManager : MonoBehaviour {
             Debug.Log("You don't have enough coins to afford slow timer item!");
         }
     }
+
+
+    public void buyIncreaseSliderPack()
+    {
+        StoreInventory.BuyItem(MayhemStoreAssets.INCREASE_SLIDER_FIVE_PACK_PRODUCT_ID);
+    }
+
 
     public void buyIncreaseSlider()
     {
@@ -69,6 +78,13 @@ public class MayhemStoreManager : MonoBehaviour {
 
     }
 
+
+    public void buyReduceShapePack()
+    {
+        StoreInventory.BuyItem(MayhemStoreAssets.REDUCE_SHAPE_FIVE_PACK_PRODUCT_ID);
+    }
+
+
     public void buyReduceShape()
     {
         bool can_afford = StoreInventory.CanAfford(MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID);
@@ -84,6 +100,13 @@ public class MayhemStoreManager : MonoBehaviour {
         }
 
     }
+
+    
+    public void buyDoublePointPack()
+    {
+        StoreInventory.BuyItem(MayhemStoreAssets.DOUBLE_POINT_FIVE_PACK_PRODUCT_ID);
+    }
+
 
     public void buyDoublePoint()
     {
