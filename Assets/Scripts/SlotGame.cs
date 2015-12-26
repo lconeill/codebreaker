@@ -17,7 +17,7 @@ public class SlotGame : MonoBehaviour
                                                                 new Vector2(0, 0), new Vector2(1, 1),
                                                                 new Vector2(0, 0), new Vector2(1, 1),
                                                               };
-
+    // Based on WXGA 1280 x 800 resolution
     private Vector2[] defaultRectPositions = new Vector2[6]{ new Vector2(0, 80.0f), new Vector2(0, 320f), //positive number
                                                              new Vector2(0, -120), new Vector2(0, 120),
                                                              new Vector2(0, -320f), new Vector2(0, -80.0f),
