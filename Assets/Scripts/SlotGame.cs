@@ -7,18 +7,20 @@ using System;
 // Solution for preserving aspect ration and supporting multiple resolutions and multiple aspect ratios
 // Create a button image that is exactly the same aspect ratio as the button in the slot game
 // Then drop that image into the button and turn on preserve aspect ratio
-public class SlotGame : MonoBehaviour {
+public class SlotGame : MonoBehaviour
+{
 
     public Image[] powerup_images;
     private Image[] image_clone = new Image[3];
-    private Vector2[] defaultAnchorPositions = new Vector2[6] { new Vector2(0.08f, 0.7888f), new Vector2(0.92f, 1.0f), 
-                                                                new Vector2(0.08f, 0.2994f), new Vector2(0.92f, 0.7003f),
-                                                                new Vector2(0.08f, 0f), new Vector2(0.92f, 0.2161f),
+
+    private Vector2[] defaultAnchorPositions = new Vector2[6] { new Vector2(0, 0), new Vector2(1, 1), 
+                                                                new Vector2(0, 0), new Vector2(1, 1),
+                                                                new Vector2(0, 0), new Vector2(1, 1),
                                                               };
 
-    private Vector2[] defaultRectPositions = new Vector2[6]{ new Vector2(0, 71.7f), new Vector2(0, 0), //positive number
-                                                             new Vector2(0, 0), new Vector2(0, 0),
-                                                             new Vector2(0, 0), new Vector2(0, -71.7f),
+    private Vector2[] defaultRectPositions = new Vector2[6]{ new Vector2(0, 80.0f), new Vector2(0, 320f), //positive number
+                                                             new Vector2(0, -120), new Vector2(0, 120),
+                                                             new Vector2(0, -320f), new Vector2(0, -80.0f),
                                                            };
 
     private int index_tracker;
@@ -33,22 +35,22 @@ public class SlotGame : MonoBehaviour {
 
     public Button roll_button;
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start()
     {
         // initializeWheel();
         gameObject.GetComponent<Button>().enabled = false;
         roll_button.enabled = true;
-	}
+    }
 
     // Wheel needs to be initialized each time the slot game is enabled
     void OnEnable()
     {
         initializeWheel();
     }
-	
-	// Update is called once per frame
-	void Update () 
+
+    // Update is called once per frame
+    void Update()
     {
         if (startRoll)
         {
@@ -83,7 +85,7 @@ public class SlotGame : MonoBehaviour {
 
             smoothStop();
         }
-	}
+    }
 
     // This is called when the roll button is pressed
     public void startSpinSwtich()
@@ -111,7 +113,7 @@ public class SlotGame : MonoBehaviour {
             image_clone[i].rectTransform.offsetMax = defaultRectPositions[j];
             image_clone[i].rectTransform.offsetMin = defaultRectPositions[j + 1];
 
-            j = j+2;
+            j = j + 2;
         }
     }
 
@@ -146,11 +148,11 @@ public class SlotGame : MonoBehaviour {
         image_clone[0].rectTransform.anchorMin = defaultAnchorPositions[0];
         image_clone[0].rectTransform.anchorMax = defaultAnchorPositions[1];
 
-        image_clone[0].rectTransform.offsetMax = new Vector2(0, 152.55f);
-        image_clone[0].rectTransform.offsetMin = new Vector2(0, 80.85f);
+        image_clone[0].rectTransform.offsetMax = new Vector2(0, 158.0f);
+        image_clone[0].rectTransform.offsetMin = new Vector2(0, 398.0f);
     }
 
-    
+
     // This should be called when the button over the slot reel is pressed
     public void stopSpin()
     {
@@ -190,13 +192,11 @@ public class SlotGame : MonoBehaviour {
         Vector2 image_clone0_offsetMax_lerp_value = Vector2.Lerp(image_clone[0].rectTransform.offsetMax, defaultRectPositions[0], perc);
         Vector2 image_clone0_offsetMin_lerp_value = Vector2.Lerp(image_clone[0].rectTransform.offsetMin, defaultRectPositions[1], perc);
 
-        // Need these new rect transform values here because all images eventually have their anchors at the location of clone zero
-        // These are the rect transform positions relative to default anchor zero
-        Vector2 image_clone1_offsetMax_lerp_value = Vector2.Lerp(image_clone[1].rectTransform.offsetMax, new Vector2(0, -116.35f), perc);
-        Vector2 image_clone1_offsetMin_lerp_value = Vector2.Lerp(image_clone[1].rectTransform.offsetMin, new Vector2(0, -189.05f), perc);
+        Vector2 image_clone1_offsetMax_lerp_value = Vector2.Lerp(image_clone[1].rectTransform.offsetMax, defaultRectPositions[2], perc);
+        Vector2 image_clone1_offsetMin_lerp_value = Vector2.Lerp(image_clone[1].rectTransform.offsetMin, defaultRectPositions[3], perc);
 
-        Vector2 image_clone2_offsetMax_lerp_value = Vector2.Lerp(image_clone[2].rectTransform.offsetMax, new Vector2(0, -300.75f), perc);
-        Vector2 image_clone2_offsetMin_lerp_value = Vector2.Lerp(image_clone[2].rectTransform.offsetMin, new Vector2(0, -372.45f), perc);
+        Vector2 image_clone2_offsetMax_lerp_value = Vector2.Lerp(image_clone[2].rectTransform.offsetMax, defaultRectPositions[4], perc);
+        Vector2 image_clone2_offsetMin_lerp_value = Vector2.Lerp(image_clone[2].rectTransform.offsetMin, defaultRectPositions[5], perc);
 
         image_clone[0].rectTransform.offsetMax = image_clone0_offsetMax_lerp_value;
         image_clone[0].rectTransform.offsetMin = image_clone0_offsetMin_lerp_value;
