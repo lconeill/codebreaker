@@ -18,9 +18,9 @@ public class SlotGame : MonoBehaviour
                                                                 new Vector2(0, 0), new Vector2(1, 1),
                                                               };
 
-    private Vector2[] defaultRectPositions = new Vector2[6]{ new Vector2(16.5f, 119.5f), new Vector2(-16.5f, 408.5f), //positive number
-                                                             new Vector2(16.5f, -144.5f), new Vector2(-16.5f, 144.5f),
-                                                             new Vector2(16.5f, -408.5f), new Vector2(-16.5f, -119.5f),
+    private Vector2[] defaultRectPositions = new Vector2[6]{ new Vector2(0, 80.0f), new Vector2(0, 320f), //positive number
+                                                             new Vector2(0, -120), new Vector2(0, 120),
+                                                             new Vector2(0, -320f), new Vector2(0, -80.0f),
                                                            };
 
     private int index_tracker;
@@ -125,7 +125,7 @@ public class SlotGame : MonoBehaviour
         }
 
         // Must check the position of clone zero - it is the only clone whose position from its anchors will be consistent
-        if (image_clone[0].rectTransform.offsetMax.y < -26.5)
+        if (image_clone[0].rectTransform.offsetMax.y < -38)
         {
             swapClones();
         }
@@ -148,8 +148,8 @@ public class SlotGame : MonoBehaviour
         image_clone[0].rectTransform.anchorMin = defaultAnchorPositions[0];
         image_clone[0].rectTransform.anchorMax = defaultAnchorPositions[1];
 
-        image_clone[0].rectTransform.offsetMax = new Vector2(0, 222.5f);
-        image_clone[0].rectTransform.offsetMin = new Vector2(0, 511.5f);
+        image_clone[0].rectTransform.offsetMax = new Vector2(0, 158.0f);
+        image_clone[0].rectTransform.offsetMin = new Vector2(0, 398.0f);
     }
 
 
