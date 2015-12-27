@@ -4,9 +4,7 @@ using UnityEngine.UI;
 using System;
 
 
-// Solution for preserving aspect ration and supporting multiple resolutions and multiple aspect ratios
-// Create a button image that is exactly the same aspect ratio as the button in the slot game
-// Then drop that image into the button and turn on preserve aspect ratio
+// Using a relative positioning system to make images fit on all resolutions and aspect ratios
 public class SlotGame : MonoBehaviour
 {
 
@@ -17,11 +15,15 @@ public class SlotGame : MonoBehaviour
                                                                 new Vector2(0, 0), new Vector2(1, 1),
                                                                 new Vector2(0, 0), new Vector2(1, 1),
                                                               };
-    // Based on WXGA 1280 x 800 resolution
-    private Vector2[] defaultRectPositions = new Vector2[6]{ new Vector2(0, 80.0f), new Vector2(0, 320f), //positive number
-                                                             new Vector2(0, -120), new Vector2(0, 120),
-                                                             new Vector2(0, -320f), new Vector2(0, -80.0f),
-                                                           };
+
+
+    //Built for 16:10 aspect ratio - looks decent on all resolutions and aspect ratios
+    //private Vector2[] defaultRectPositions = new Vector2[6]{ new Vector2(0, 205.0f), new Vector2(0, 445f), //positive number
+    //                                                         new Vector2(0, -120), new Vector2(0, 120),
+    //                                                         new Vector2(0, -445f), new Vector2(0, -205.0f),
+    //                                                       };
+
+    private Vector2[] defaultRectPositions;
 
     private int index_tracker;
     private float start_lerp_timer = 0.0f;  // Timer that determines when to exit lerp function
@@ -33,25 +35,58 @@ public class SlotGame : MonoBehaviour
     private bool stopRoll = false;
     private float parent_transform = 0.0f;
 
+    private float button_width;
+    private float button_height;
+
     public Button roll_button;
 
-    // Use this for initialization
+    private int initialize_counter = 0;     // Used to determine which function initializes the wheel
+    private float width_scale = 10.5f;      // Used to scale the width of the images relative to the default anchor positions
+    private float height_scale = 2.0f;      // Used to scale the height of the images relative to the default anchor positions
+
+
+    // Not that OnEnable function is called before start function
     void Start()
     {
         // initializeWheel();
         gameObject.GetComponent<Button>().enabled = false;
         roll_button.enabled = true;
+
+        button_height = gameObject.GetComponent<RectTransform>().rect.height;
+        button_width = gameObject.GetComponent<RectTransform>().rect.width;
+
+        //Debug.Log(gameObject.GetComponent<RectTransform>().rect);
+
+        defaultRectPositions = new Vector2[6]{  new Vector2(-button_width/width_scale, button_height/height_scale), new Vector2(button_width/width_scale, button_height/height_scale), //positive number
+                                                new Vector2(-button_width/width_scale, 0), new Vector2(button_width/width_scale, 0),
+                                                new Vector2(-button_width/width_scale, -button_height/height_scale), new Vector2(button_width/width_scale, -button_height/height_scale),
+                                             };
+
+        wheel_speed = button_height / 50;
     }
+
 
     // Wheel needs to be initialized each time the slot game is enabled
     void OnEnable()
     {
-        initializeWheel();
+        // Initialize the wheel from OnEnable every time after the first time
+        if (initialize_counter == 1)
+        {
+            initializeWheel();
+        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        // Initialize the wheel in update the very first time only
+        if (captureResult.inMiniGame && initialize_counter == 0)
+        {
+            initializeWheel();
+            initialize_counter = 1;
+        }
+
         if (startRoll)
         {
             start_lerp_timer += Time.deltaTime;
@@ -124,8 +159,9 @@ public class SlotGame : MonoBehaviour
             image_clone[i].transform.position -= new Vector3(0, speed, 0);
         }
 
-        // Must check the position of clone zero - it is the only clone whose position from its anchors will be consistent
-        if (image_clone[0].rectTransform.offsetMax.y < -38)
+        //Built for 16:10 aspect ratio - looks decent on all resolutions and aspect ratios
+        //if (image_clone[0].rectTransform.offsetMax.y < -38)
+        if (image_clone[0].rectTransform.offsetMax.y < button_height / 5.5)
         {
             swapClones();
         }
@@ -148,8 +184,12 @@ public class SlotGame : MonoBehaviour
         image_clone[0].rectTransform.anchorMin = defaultAnchorPositions[0];
         image_clone[0].rectTransform.anchorMax = defaultAnchorPositions[1];
 
-        image_clone[0].rectTransform.offsetMax = new Vector2(0, 158.0f);
-        image_clone[0].rectTransform.offsetMin = new Vector2(0, 398.0f);
+        //Built for 16:10 aspect ratio - looks decent on all resolutions and aspect ratios
+        //image_clone[0].rectTransform.offsetMax = new Vector2(0, 298.0f);
+        //image_clone[0].rectTransform.offsetMin = new Vector2(0, 538.0f);
+
+        image_clone[0].rectTransform.offsetMax = new Vector2(-button_width / 10.5f, button_height / 1.35f);
+        image_clone[0].rectTransform.offsetMin = new Vector2(button_width / 10.5f, button_height / 1.35f);
     }
 
 
