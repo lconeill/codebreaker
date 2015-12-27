@@ -9,11 +9,11 @@ public class WheelRotation : MonoBehaviour
 	// The variables to control the wheel are made publisc to let 
 	// us controll the speed and when to start or stop the spinning wheel.
 
-	private float startRollLerp = 0;
+	private float startRollLerp = 360;
 	private Vector3 updateRotation = Vector3.zero;
 	private Vector3 rotation = Vector3.zero;
 	
-	private int rotationSpeed = 90;
+	private int rotationSpeed = 110;
 	public bool startRoll = true;
 	public bool continueRotation = false;
 	
@@ -64,7 +64,7 @@ public class WheelRotation : MonoBehaviour
 					continueRotation = true;
                     startRollLerp = 0;
 				}
-				smoothStart();
+				//smoothStart();
 			}
 			
 			else if (continueRotation)
@@ -118,35 +118,40 @@ public class WheelRotation : MonoBehaviour
 	{
         if (!slowRotationFlag)
         {
-            if (count >= 10 && count < 15)
+            if (count >= 3 && count < 9)
             {
-                rotationSpeed = 108;
+                rotationSpeed = 130;
             }
 
-			else if (count >= 15 && count < 20)
+			else if (count >= 9 && count < 16)
             {
-                rotationSpeed = 126;
+                rotationSpeed = 150;
+            }
+
+            else if (count >= 17 && count < 20)
+            {
+                rotationSpeed = 170;
             }
 
             else if (count >= 20 && count < 25)
             {
-                rotationSpeed = 144;
+                rotationSpeed = 190;
             }
 
-            else if (count >= 25 && count < 35)
+            else if (count >= 25 && count < 30)
             {
-                rotationSpeed = 162;
+                rotationSpeed = 210;
             }
 
             else if (count >= 35 && count < 40)
             {
-                rotationSpeed = 180;
-            }
-
-            else if (count >= 50)
-            {
                 rotationSpeed = 200;
             }
+            
+			else if (count >= 40)
+			{
+				rotationSpeed = 220;
+			}
         }
 	}
 }

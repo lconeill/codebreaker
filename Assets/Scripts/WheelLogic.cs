@@ -69,6 +69,9 @@ public class WheelLogic : MonoBehaviour
     private bool multiplier_flag = false;
     private float reward_time_increment = 0;
     private float reward_effect_time = 5;
+    
+    private NonSwipeActions non_swipe_script;
+	private GameObject double_tap_ref;
 
 	void Start () 
 	{
@@ -126,6 +129,11 @@ public class WheelLogic : MonoBehaviour
 		
         GameObject temp = GameObject.Find("tileSpawn");
         if (temp != null) { spawnTile = temp.GetComponent<SpawnTile>(); }
+        
+		double_tap_ref = GameObject.Find ("double_tap");
+		
+		non_swipe_script = double_tap_ref.GetComponent<NonSwipeActions>();
+		
 	}
 
     void Update()
@@ -213,6 +221,11 @@ public class WheelLogic : MonoBehaviour
 			// met to start the mini game.
 			
 			StartMiniGame();
+		}
+		
+		else if(col.tag == "bomb")
+		{
+			non_swipe_script.bombReset();
 		}
 		
 		else
