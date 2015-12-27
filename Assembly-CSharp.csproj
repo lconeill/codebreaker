@@ -132,6 +132,7 @@
      <Compile Include="Assets\Scripts\ADS.cs" />
      <Compile Include="Assets\Scripts\CircularTimer.cs" />
      <Compile Include="Assets\Scripts\Currency.cs" />
+     <Compile Include="Assets\Scripts\DoublePoints.cs" />
      <Compile Include="Assets\Scripts\GUI\DontDestroy.cs" />
      <Compile Include="Assets\Scripts\GUI\Pause.cs" />
      <Compile Include="Assets\Scripts\GUI\PlayMusic.cs" />
@@ -145,6 +146,7 @@
      <Compile Include="Assets\Scripts\MayhemStoreAssets.cs" />
      <Compile Include="Assets\Scripts\MayhemStoreManager.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
+     <Compile Include="Assets\Scripts\MuteGUI.cs" />
      <Compile Include="Assets\Scripts\NonSwipeActions.cs" />
      <Compile Include="Assets\Scripts\PowerUpManager.cs" />
      <Compile Include="Assets\Scripts\RestartLevel.cs" />
@@ -161,7 +163,6 @@
      <Compile Include="Assets\Scripts\WheelRotation.cs" />
      <Compile Include="Assets\Scripts\slotManager.cs" />
      <Compile Include="Assets\Scripts\test_ui_insantiate.cs" />
-     <Compile Include="Assets\Scripts\uGUITools.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\Plugins\Android\Soomla\AndroidManifest.xml" />
      <None Include="Assets\Fonts\OpenSans\License!.txt" />
