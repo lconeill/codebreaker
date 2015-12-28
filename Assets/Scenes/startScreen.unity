@@ -449,7 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3273,7 +3273,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 586935978}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 941512495}
+        m_MethodName: selectTheme
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: winter
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &602082501
@@ -4430,7 +4441,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6573289}
   m_HandleRect: {fileID: 6573288}
   m_Direction: 2
-  m_Value: 1
+  m_Value: .99999994
   m_Size: .4333736
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5192,8 +5203,8 @@ GameObject:
   - 224: {fileID: 941512493}
   - 222: {fileID: 941512497}
   - 114: {fileID: 941512496}
-  - 114: {fileID: 941512495}
   - 225: {fileID: 941512494}
+  - 114: {fileID: 941512495}
   m_Layer: 5
   m_Name: ThemePanel
   m_TagString: Untagged
@@ -5237,7 +5248,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &941512495
 MonoBehaviour:
@@ -5247,9 +5258,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 941512492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a15a2a3675fd04ca4b37f598e132df, type: 3}
+  m_Script: {fileID: 11500000, guid: 84472850c85c6f44f82ba5595fa045d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  store_panel: {fileID: 2093107575}
 --- !u!114 &941512496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10196,7 +10208,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1850676250}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 941512495}
+        m_MethodName: selectTheme
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: classic
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1894398538

@@ -11,7 +11,7 @@ public class MayhemStoreAssets : IStoreAssets {
     /// <returns>the version of your specific <c>IStoreAssets</c>.</returns>
     public int GetVersion()
     {
-        return 0;
+        return 1;
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public class MayhemStoreAssets : IStoreAssets {
     public VirtualGood[] GetGoods()
     {
         return new VirtualGood[] { SLOW_TIMER_PACK, INCREASE_SLIDER_PACK, REDUCE_SHAPE_PACK, DOUBLE_POINT_PACK, 
-                                   SLOW_TIMER, INCREASE_SLIDER, REDUCE_SHAPE, DOUBLE_POINT };
+                                   NO_ADS_LTVG, WINTER_THEME, SLOW_TIMER, INCREASE_SLIDER, REDUCE_SHAPE, DOUBLE_POINT };
     }
 
     /// <summary>
@@ -69,6 +69,8 @@ public class MayhemStoreAssets : IStoreAssets {
     public const string DOUBLE_POINT_FIVE_PACK_PRODUCT_ID = "double_point_5_pack";
 
     public const string NO_ADS_LIFETIME_PRODUCT_ID = "no_ads";
+
+    public const string WINTER_THEME_LIFETIME_PRODUCT_ID = "match_mayhem_winter_theme";
 
     /** Virtual Currencies **/
 
@@ -162,6 +164,13 @@ public class MayhemStoreAssets : IStoreAssets {
         NO_ADS_LIFETIME_PRODUCT_ID,										// item id
 		new PurchaseWithMarket(NO_ADS_LIFETIME_PRODUCT_ID, 1.99)	    // the way this virtual good is purchased
     );
+
+    public static VirtualGood WINTER_THEME = new LifetimeVG(
+        "Winter Theme", 														// name
+        "Winter inspired theme featuring brand new tiles, menus, background, particle effects, and many other changes!",  // description
+        WINTER_THEME_LIFETIME_PRODUCT_ID,										// item id
+        new PurchaseWithMarket(WINTER_THEME_LIFETIME_PRODUCT_ID, 2.99)	    // the way this virtual good is purchased
+        );
 
 
     /** Virtual Categories **/

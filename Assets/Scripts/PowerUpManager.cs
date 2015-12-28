@@ -60,8 +60,29 @@ public class PowerUpManager : MonoBehaviour {
 
     public static void changeBalanceText(string itemID)
     {
+
         if (Application.loadedLevelName == "gameScreen")
         {
+            // If a pack is bought change the product_id to the corresponding item_id 
+            switch (itemID)
+            {
+                case "slow_timer_5_pack":
+                    itemID = "slow_timer";
+                    break;
+
+                case "increase_slider_5_pack":
+                    itemID = "increase_slider";
+                    break;
+
+                case "reduce_shape_5_pack":
+                    itemID = "reduce_shape";
+                    break;
+
+                case "double_point_5_pack":
+                    itemID = "double_point";
+                    break;
+            }
+
             switch (itemID)
             {
                 case "slow_timer":
