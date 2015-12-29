@@ -41,7 +41,7 @@ public class CircularTimer : MonoBehaviour
 	
 	private AudioSource mismatch_sfx;
 
-    private Button bell_button;
+    private Button freeze_timer_button;
     
     private GameObject match_fx_ref;
     private ParticleSystem match_fx_particle;
@@ -64,7 +64,7 @@ public class CircularTimer : MonoBehaviour
         if (temp != null) { wheelRotation = temp.GetComponent<WheelRotation>(); }
 
         GameObject temp_1 = GameObject.Find("freeze_timer_power_up");
-        if (temp_1 != null) { bell_button = temp_1.GetComponent<Button>(); }
+        if (temp_1 != null) { freeze_timer_button = temp_1.GetComponent<Button>(); }
 
 		match_sfx_ref = GameObject.Find("Match_SFX_01");
 		match_sfx = match_sfx_ref.GetComponent<AudioSource>();
@@ -127,7 +127,7 @@ public class CircularTimer : MonoBehaviour
                 fillSpeed = rewardFillSpeed;
                 increaseFillTime = false;
                 endFillTimeIncrease = true;
-                bell_button.enabled = false;
+                freeze_timer_button.enabled = false;
             }
 
             circularTimer.fillAmount = accumulate/fillSpeed;
@@ -142,7 +142,7 @@ public class CircularTimer : MonoBehaviour
                     endFillTimeIncrease = false;
                     accumulate = accumulate * fillSpeedBefore / rewardFillSpeed;
                     fillSpeed = fillSpeedBefore;
-                    bell_button.enabled = true;
+                    freeze_timer_button.enabled = true;
                 }
             }
            
