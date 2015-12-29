@@ -73,6 +73,8 @@ public class WheelLogic : MonoBehaviour
     private NonSwipeActions non_swipe_script;
 	private GameObject double_tap_ref;
 
+    private Button double_points_button;         // button component of reduce tile shape power up game object
+
 	void Start () 
 	{
 		if(PlayerPrefs.GetInt("High Score") == 0)
@@ -133,6 +135,9 @@ public class WheelLogic : MonoBehaviour
 		double_tap_ref = GameObject.Find ("double_tap");
 		
 		non_swipe_script = double_tap_ref.GetComponent<NonSwipeActions>();
+
+        GameObject temp_01 = GameObject.Find("double_point_power_up");
+        if (temp_01 != null) { double_points_button = temp_01.GetComponent<Button>(); }
 		
 	}
 
@@ -175,18 +180,20 @@ public class WheelLogic : MonoBehaviour
         if (multiplier_flag && !slot_manager.inMiniGame)
         {
             reward_time_increment += Time.deltaTime;
+            double_points_button.enabled = false;
 
             if (reward_time_increment >= reward_effect_time)
             {
                 multiplier_flag = false;
                 score_multiplier = 1;
                 reward_time_increment = 0;
+                double_points_button.enabled = true;
             }
         }
     }
 
 
-	// This fucntion is called when a trigger collider enters this objects collider.
+	// This function is called when a trigger collider enters this objects collider.
 	// When a Correct match is made the scroe is updated and a variable tracks
 	// how many matches the player makes.
 
