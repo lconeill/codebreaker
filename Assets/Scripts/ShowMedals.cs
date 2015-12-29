@@ -44,7 +44,8 @@ public class ShowMedals : MonoBehaviour
         bronze_medal_ref.SetActive(false);
         silver_medal_ref.SetActive(false);
         gold_medal_ref.SetActive(false);
-
+		medal_ribbon.SetActive(false);
+		
         highscore_text.SetActive(true);
         highscore_text.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("High Score");
 
