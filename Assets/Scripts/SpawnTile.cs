@@ -201,6 +201,12 @@ public class SpawnTile : MonoBehaviour
             Destroy(hide_tile_clones[i]);
         }
     }
+
+    // Used to trigger double point particle effects in WheelLogic and NonSwipeActions scripts
+    public bool reduceShapeActivated()
+    {
+        return endReward;
+    }
 }
 
 

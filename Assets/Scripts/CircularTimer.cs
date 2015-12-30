@@ -14,12 +14,12 @@ public class CircularTimer : MonoBehaviour
     public slotManager slotManager;
     private float accumulate = 0;
 
-    public bool increaseFillTime = false;
+    public bool increaseFillTime = false;       // Flag used to active freeze timer reward
     private float fillSpeedBefore;
     public float rewardFillSpeed = 5;
     private float rewardEffectTime = 5f;
     private float timeIncrement = 0;
-    private bool endFillTimeIncrease = false;
+    private bool endFillTimeIncrease = false;   // Flag used to deactivate freeze timer reward
 
     private WheelRotation wheelRotation;            // The wheel rotation GameObject
     private int count = 0;
@@ -189,5 +189,12 @@ public class CircularTimer : MonoBehaviour
 	        moveTile.moveTiles();
 	        is_reset = false;
         }
+    }
+
+
+    // Used to trigger freeze timer particle effects in WheelLogic and NonSwipeActions scripts
+    public bool freezeTimerActivated()
+    {
+        return endFillTimeIncrease;
     }
 }

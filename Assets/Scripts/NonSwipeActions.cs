@@ -34,6 +34,15 @@ public class NonSwipeActions : MonoBehaviour {
     public GameObject bomb_tick_sfx;    // Contains the bomb ticking sound effect
     private int tick_sfx_count = 0;     // Counter used to play ticking sound effect
 
+    private GameObject double_points_fx;        // Used to position spawn point of double points fx
+    private MatchFX double_points_match_fx;     // Used to spawn double points fx
+
+    private GameObject freeze_timer_fx;
+    private MatchFX freeze_timer_match_fx;
+
+    private GameObject reduce_shape_fx;
+    private MatchFX reduce_shape_match_fx;
+
 	
 	// Use this for initialization
 	void Start () 
@@ -67,6 +76,15 @@ public class NonSwipeActions : MonoBehaviour {
         
 		GameObject temp_08 = GameObject.Find("lifeSlider");
 		if (temp_08 != null) { lifeSlider = temp_08.GetComponent<LifeSlider>(); }
+
+        double_points_fx = GameObject.Find("double_points_fx");
+        if (double_points_fx != null) { double_points_match_fx = double_points_fx.GetComponent<MatchFX>(); }
+
+        freeze_timer_fx = GameObject.Find("freeze_timer_fx");
+        if (freeze_timer_fx != null) { freeze_timer_match_fx = freeze_timer_fx.GetComponent<MatchFX>(); }
+
+        reduce_shape_fx = GameObject.Find("reduce_shape_fx");
+        if (reduce_shape_fx != null) { reduce_shape_match_fx = reduce_shape_fx.GetComponent<MatchFX>(); }
         
 	}
 	
@@ -186,9 +204,33 @@ public class NonSwipeActions : MonoBehaviour {
         moveScript.is_touch_start = false;
         matchSFX.Play();
 
-        // Spawn the particle effect
-        match_fx_gameobject.transform.position = particle_spawn;
-        match_fx.Run();
+        // Spawn the double point fx
+        if (wheelLogic.doublePointActivated())
+        {
+            double_points_fx.transform.position = particle_spawn;
+            double_points_match_fx.Run();
+        }
+
+        if (spawnTile.reduceShapeActivated())
+        {
+            reduce_shape_fx.transform.position = particle_spawn;
+            reduce_shape_match_fx.Run();
+        }
+
+        if (circularTimer.freezeTimerActivated())
+        {
+            freeze_timer_fx.transform.position = particle_spawn;
+            freeze_timer_match_fx.Run();
+        }
+
+        // If any of the rewards are activated don't play default fx
+        if (wheelLogic.doublePointActivated() || spawnTile.reduceShapeActivated() || circularTimer.freezeTimerActivated()) { }
+
+        else
+        {
+            match_fx_gameobject.transform.position = particle_spawn;
+            match_fx.Run();
+        }
 
         bomb_tick_sfx.GetComponent<AudioSource>().Stop();
         tick_sfx_count = 0;

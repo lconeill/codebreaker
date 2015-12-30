@@ -75,6 +75,15 @@ public class WheelLogic : MonoBehaviour
 
     private Button double_points_button;         // button component of reduce tile shape power up game object
 
+    private GameObject double_points_fx;
+    private MatchFX double_points_match_fx;
+
+    private GameObject freeze_timer_fx;
+    private MatchFX freeze_timer_match_fx;
+
+    private GameObject reduce_shape_fx;
+    private MatchFX reduce_shape_match_fx;
+
 	void Start () 
 	{
 		if(PlayerPrefs.GetInt("High Score") == 0)
@@ -138,7 +147,15 @@ public class WheelLogic : MonoBehaviour
 
         GameObject temp_01 = GameObject.Find("double_point_power_up");
         if (temp_01 != null) { double_points_button = temp_01.GetComponent<Button>(); }
-		
+
+        double_points_fx = GameObject.Find("double_points_fx");
+        if (double_points_fx != null) { double_points_match_fx = double_points_fx.GetComponent<MatchFX>(); }
+
+        freeze_timer_fx = GameObject.Find("freeze_timer_fx");
+        if (freeze_timer_fx != null) { freeze_timer_match_fx = freeze_timer_fx.GetComponent<MatchFX>(); }
+
+        reduce_shape_fx = GameObject.Find("reduce_shape_fx");
+        if (reduce_shape_fx != null) { reduce_shape_match_fx = reduce_shape_fx.GetComponent<MatchFX>(); }
 	}
 
     void Update()
@@ -202,11 +219,35 @@ public class WheelLogic : MonoBehaviour
 		if(this.gameObject.tag == col.tag.Replace("Source", "Target"))
 		{
 			//Debug.Log(col.tag);
-			
-			match_fx_ref.transform.position = col.transform.position;
-			
-			match_fx.Run();
-			
+
+            
+            if (multiplier_flag)
+            {
+                double_points_fx.transform.position = col.transform.position;
+                double_points_match_fx.Run();
+            }
+
+            if (circular_timer_Script.freezeTimerActivated())
+            {
+                freeze_timer_fx.transform.position = col.transform.position;
+                freeze_timer_match_fx.Run();
+            }
+
+            if (spawnTile.reduceShapeActivated())
+            {
+                reduce_shape_fx.transform.position = col.transform.position;
+                reduce_shape_match_fx.Run();
+            }
+
+            // If any of the rewards are activated don't play default fx
+            if (multiplier_flag || spawnTile.reduceShapeActivated() || circular_timer_Script.freezeTimerActivated()) { }
+
+            else
+            {
+                match_fx_ref.transform.position = col.transform.position;
+                match_fx.Run();
+            }
+
 			match_sfx.Play();
 			
 			wheel_rotation_script.match_count = wheel_rotation_script.match_count + 1;
@@ -388,5 +429,12 @@ public class WheelLogic : MonoBehaviour
 		
 		streak_fb_mayhem.enabled = false;
 	}
+
+
+    // Used to trigger double point particle effects in NonSwipeActions script
+    public bool doublePointActivated()
+    {
+        return multiplier_flag;
+    }
 	
 }
