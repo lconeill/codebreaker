@@ -52,19 +52,19 @@ public class ShowMedals : MonoBehaviour
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
 
-        if (score_logic.the_score >= 10000 && score_logic.the_score < 20000)
+        if (score_logic.the_score >= 8000 && score_logic.the_score < 15000)
 		{
             medal_ribbon.SetActive(true);
 			bronze_medal_ref.SetActive(true);
 		}
 
-        if (score_logic.the_score >= 20000 && score_logic.the_score < 30000)
+        if (score_logic.the_score >= 15000 && score_logic.the_score < 25000)
 		{
             medal_ribbon.SetActive(true);
 			silver_medal_ref.SetActive(true);
 		}
 
-        if (score_logic.the_score >= 30000)
+        if (score_logic.the_score >= 25000)
 		{
             medal_ribbon.SetActive(true);
 			gold_medal_ref.SetActive(true);
