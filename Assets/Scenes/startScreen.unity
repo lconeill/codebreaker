@@ -3293,7 +3293,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 80d34842625837549b515269602195a7, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3498,8 +3498,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .175325215, y: .217144683}
   m_AnchorMax: {x: .824674904, y: .709741831}
-  m_AnchoredPosition: {x: -2.38418579e-07, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2.38418579e-07, y: -.800000012}
+  m_SizeDelta: {x: 0, y: 5.30000019}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &628765430
 GameObject:
@@ -10330,10 +10330,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 89438003}
   m_RootOrder: 0
-  m_AnchorMin: {x: .108365774, y: 0}
-  m_AnchorMax: {x: .918725669, y: .799995482}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: .143350422, y: .0603863932}
+  m_AnchorMax: {x: .841941178, y: .73960942}
+  m_AnchoredPosition: {x: -1.1920929e-07, y: 0}
+  m_SizeDelta: {x: -2.38418579e-07, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1698468311
 MonoBehaviour:
@@ -10988,7 +10988,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 27beb06d836f26e449dce628a704768b, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

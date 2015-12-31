@@ -55,12 +55,11 @@ public class PowerUpManager : MonoBehaviour {
 	
 	}
 
-    //TODO: change name of the function to match what it does
-    //TODO: on currency balance changed update the currency text. add currency text to store menu
 
+    // Updates the inventory balance text on the gamescreen for each power up
     public static void changeBalanceText(string itemID)
     {
-
+        // TODO: also add the winter theme name when it becomes available
         if (Application.loadedLevelName == "gameScreen")
         {
             // If a pack is bought change the product_id to the corresponding item_id 
@@ -89,10 +88,7 @@ public class PowerUpManager : MonoBehaviour {
                     int freeze_timer_balance = StoreInventory.GetItemBalance(itemID);
                     freeze_timer_text.text = freeze_timer_balance.ToString();
 
-                    if (freeze_timer_balance == 0)
-                    {
-                        freeze_timer_button.enabled = false;
-                    } 
+                    freeze_timer_button.enabled = (freeze_timer_balance == 0) ? false : true;
                 
                     //Debug.Log(StoreInventory.GetItemBalance(itemID).ToString());
                     break;
@@ -101,10 +97,7 @@ public class PowerUpManager : MonoBehaviour {
                     int increase_slider_balance = StoreInventory.GetItemBalance(itemID);
                     increase_slider_text.text = increase_slider_balance.ToString();
 
-                    if (increase_slider_balance == 0)
-                    {
-                        increase_slider_button.enabled = false;
-                    } 
+                    increase_slider_button.enabled = (increase_slider_balance == 0) ? false : true;
 
                     //Debug.Log(StoreInventory.GetItemBalance(itemID).ToString());
                     break;
@@ -113,10 +106,7 @@ public class PowerUpManager : MonoBehaviour {
                     int reduce_shape_balance = StoreInventory.GetItemBalance(itemID);
                     reduce_shape_text.text = reduce_shape_balance.ToString();
 
-                    if (reduce_shape_balance == 0)
-                    {
-                        reduce_shape_button.enabled = false;
-                    } 
+                    reduce_shape_button.enabled = (reduce_shape_balance == 0) ? false : true;
 
                     //Debug.Log(StoreInventory.GetItemBalance(itemID).ToString());
                     break;
@@ -125,10 +115,7 @@ public class PowerUpManager : MonoBehaviour {
                     int double_point_balance = StoreInventory.GetItemBalance(itemID);
                     double_point_text.text = double_point_balance.ToString();
 
-                    if (double_point_balance == 0)
-                    {
-                        double_point_button.enabled = false;
-                    }
+                    double_point_button.enabled = (double_point_balance == 0) ? false : true;
 
                     //Debug.Log(StoreInventory.GetItemBalance(itemID).ToString());
                     break;

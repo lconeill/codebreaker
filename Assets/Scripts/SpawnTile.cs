@@ -29,6 +29,7 @@ public class SpawnTile : MonoBehaviour
     private Button reduce_shape_button;         // button component of reduce tile shape power up game object
 
     private MoveScript move_script;             // reference to MoveScript used to move the active game tile
+    private slotManager slot_manager;
 	
     void Start()
     {
@@ -36,13 +37,17 @@ public class SpawnTile : MonoBehaviour
 
         GameObject temp = GameObject.Find("reduce_shape_power_up");
         if (temp != null) { reduce_shape_button = temp.GetComponent<Button>(); }
+
+        GameObject temp_01 = GameObject.Find("slotManager");
+        if (temp_01 != null) { slot_manager = temp_01.GetComponent<slotManager>(); }
     }
     
 
-    // checks to see if reduce tile shape reward has been triggered, activates, and terminates the reward
+    // Checks to see if reduce tile shape reward has been triggered, activates, and terminates the reward
+    // Waits until slot game has exited before reward timer begins
     void Update()
     {
-        if (reduceTileShape)
+        if (reduceTileShape && !slot_manager.inMiniGame)
         {
             timeIncrement += Time.deltaTime;
             spawnRangeBefore = spawnRange;
@@ -195,6 +200,12 @@ public class SpawnTile : MonoBehaviour
         {
             Destroy(hide_tile_clones[i]);
         }
+    }
+
+    // Used to trigger double point particle effects in WheelLogic and NonSwipeActions scripts
+    public bool reduceShapeActivated()
+    {
+        return endReward;
     }
 }
 
