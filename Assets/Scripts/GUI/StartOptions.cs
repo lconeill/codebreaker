@@ -10,7 +10,7 @@ public class StartOptions : MonoBehaviour {
 	public GameObject unmute_button_ref;
 	public GameObject pause_button_ref;
 	
-	public int sceneToStart = 2;										//Index number in build settings of scene to load if changeScenes is true
+	public int sceneToStart;    										//Index number in build settings of scene to load if changeScenes is true
 	public bool changeScenes;											//If true, load a new scene when Start is pressed, if false, fade out UI and continue in single scene
 	public bool changeMusicOnStart;										//Choose whether to continue playing menu music or start a new music clip
 	public int musicToChangeTo = 0;										//Array index in array MusicClips to change to if changeMusicOnStart is true.
@@ -66,6 +66,9 @@ public class StartOptions : MonoBehaviour {
 
 	public void StartButtonClicked()
 	{
+        // Load the theme in the player prefs
+        sceneToStart = PlayerPrefs.GetInt("Theme");
+
 		//If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic, using length of fadeColorAnimationClip as time. 
 		//To change fade time, change length of animation "FadeToColor"
 		if (changeMusicOnStart) 
@@ -78,11 +81,11 @@ public class StartOptions : MonoBehaviour {
 		if (changeScenes) 
 		{
 			//Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
-			Invoke ("LoadDelayed", fadeColorAnimationClip.length * .5f);
+			Invoke ("LoadDelayed", fadeColorAnimationClip.length * .99f);
 			
-			Invoke("HideMuteGUI",fadeColorAnimationClip.length * .5f);
+			Invoke("HideMuteGUI",fadeColorAnimationClip.length * .99f);
 			
-			Invoke("ShowMuteGUI",fadeColorAnimationClip.length * .5f);
+			Invoke("ShowMuteGUI",fadeColorAnimationClip.length * .99f);
 						
 			playMusic.FadeDown(fadeColorAnimationClip.length);
 			

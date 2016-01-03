@@ -14,6 +14,8 @@ public class RewardManager : MonoBehaviour {
     private HideTileReward hide_the_tiles;
     private DoublePoints double_points_script;
 
+    public bool from_slot_game = false;
+
 
 	// Use this for initialization
 	void Start () 
@@ -44,7 +46,6 @@ public class RewardManager : MonoBehaviour {
 
 
     // TODO: add powerup manager change balance call to decrease rotation rewards
-    // TODO: give this method a bool argument that is false when called from the button and true when called from the slot game
     public void returnReward(string reward)
     {
         switch(reward)
@@ -53,6 +54,13 @@ public class RewardManager : MonoBehaviour {
                 Debug.Log("You got all freezeTimer: Slowing down the timer!");
 
                 string freeze_itemID = MayhemStoreAssets.SLOW_TIMER_ITEM_ID;
+
+                // If the reward is from slot game, give the item for free
+                if (from_slot_game)
+                {
+                    StoreInventory.GiveItem(freeze_itemID, 1);
+                    from_slot_game = false;
+                }
 
                 if (StoreInventory.GetItemBalance(freeze_itemID) > 0)
                 {
@@ -64,10 +72,18 @@ public class RewardManager : MonoBehaviour {
                 
                 break;
 
+
             case "shapeReduction":
                 Debug.Log("You got all shapeReduction: Reducing tile shapes!");
 
                 string reduce_itemID = MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID;
+
+                // If the reward is from slot game, give the item for free
+                if (from_slot_game)
+                {
+                    StoreInventory.GiveItem(reduce_itemID, 1);
+                    from_slot_game = false;
+                }
 
                 if (StoreInventory.GetItemBalance(reduce_itemID) > 0)
                 {
@@ -79,10 +95,18 @@ public class RewardManager : MonoBehaviour {
                 
                 break;
 
+
             case "doublePoints":
                 Debug.Log("You got all doublePoints: Multiplying the score by 2!");
 
                 string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
+
+                // If the reward is from slot game, give the item for free
+                if (from_slot_game)
+                {
+                    StoreInventory.GiveItem(double_itemID, 1);
+                    from_slot_game = false;
+                }
 
                 if (StoreInventory.GetItemBalance(double_itemID) > 0)
                 {
@@ -96,11 +120,19 @@ public class RewardManager : MonoBehaviour {
                 wheelLogic.increaseMultiplier();
                 break;
 
+
             case "increaseLife":
 
                 Debug.Log("You got all increaseLife: Increasing the slider!");
 
                 string slider_itemID = MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID;
+
+                // If the reward is from slot game, give the item for free
+                if (from_slot_game)
+                {
+                    StoreInventory.GiveItem(slider_itemID, 1);
+                    from_slot_game = false;
+                }
 
                 if (StoreInventory.GetItemBalance(slider_itemID) > 0)
                 {
@@ -111,6 +143,7 @@ public class RewardManager : MonoBehaviour {
                 PowerUpManager.changeBalanceText(slider_itemID);
 
                 break;
+
 
             case "decreaseLife":
                 Debug.Log("You got all decreaseLife: Decreasing the life slider!");
