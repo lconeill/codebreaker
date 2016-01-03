@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Linq;
+using System.Collections.Generic;
 
 public class SpawnTile : MonoBehaviour
 {
@@ -68,6 +70,9 @@ public class SpawnTile : MonoBehaviour
             reduceTileShape = false;
             endReward = true;
             reduce_shape_button.enabled = false;
+
+            reduceUpcomingTiles();
+            spawnArray();
             
         }
 
@@ -154,7 +159,6 @@ public class SpawnTile : MonoBehaviour
                 clonedTiles[n] = clone;
             }
         }
-
     }
 
 
@@ -206,6 +210,43 @@ public class SpawnTile : MonoBehaviour
     public bool reduceShapeActivated()
     {
         return endReward;
+    }
+
+
+    // This function reduces the tiles in the upcoming tiles area when the reduce shape reward is activated
+    private void reduceUpcomingTiles()
+    {
+        for (int j = 0; j <= 2; j++)
+        {
+            Destroy(clonedTiles[j]);
+
+            int i = Random.Range(spawnStartRange, spawnRange);
+            GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[j], Quaternion.identity);
+            clonedTiles[j] = clone;
+        }
+    }
+
+
+    // Used to 'X' out tiles no longer used when reduce tile reward is in effect  
+    public int[] spawnArray()
+    {
+
+        int[] tileSpawnRange = new int[4] {0, 1, 2, 3};
+        int[] reduceRange = new int[2] {spawnStartRange, spawnStartRange + 1};
+
+        int[] crossedArray = new int[2];
+
+        IEnumerable<int> result = tileSpawnRange.Except(reduceRange);
+
+        crossedArray = result.ToArray();
+
+        string sarray11 = string.Format("These are the tiles that spawn: {0}, {1}", spawnStartRange, spawnRange-1);
+        string sarray = string.Format("This is the tiles to cross out: {0}, {1}", crossedArray[0], crossedArray[1]);
+
+        Debug.Log(sarray11);
+        Debug.Log(sarray);
+
+        return crossedArray;
     }
 }
 
