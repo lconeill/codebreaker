@@ -17,6 +17,7 @@ public class ShowMedals : MonoBehaviour
 	private ScoreLogic score_logic;
 
     public GameObject highscore_text;
+    public GameObject score_to_next_medal;
 
 	// Use this for initialization
 	void Start () 
@@ -28,8 +29,9 @@ public class ShowMedals : MonoBehaviour
 		bronze_medal_ref.SetActive(false);
 		silver_medal_ref.SetActive(false);
 		gold_medal_ref.SetActive(false);
-        medal_ribbon.SetActive(false);
+        //medal_ribbon.SetActive(false);
         highscore_text.SetActive(false);
+		score_to_next_medal.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -44,7 +46,7 @@ public class ShowMedals : MonoBehaviour
         bronze_medal_ref.SetActive(false);
         silver_medal_ref.SetActive(false);
         gold_medal_ref.SetActive(false);
-		medal_ribbon.SetActive(false);
+		medal_ribbon.SetActive(true);
 		
         highscore_text.SetActive(true);
         highscore_text.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("High Score");
@@ -52,21 +54,31 @@ public class ShowMedals : MonoBehaviour
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
 
+		if (score_logic.the_score < 8000)
+		{
+			score_to_next_medal.SetActive(true);
+			score_to_next_medal.GetComponent<Text>().text = "8000 points for Bronze";
+		}
+
         if (score_logic.the_score >= 8000 && score_logic.the_score < 15000)
 		{
-            medal_ribbon.SetActive(true);
+            //medal_ribbon.SetActive(true);
 			bronze_medal_ref.SetActive(true);
+			score_to_next_medal.SetActive(true);
+			score_to_next_medal.GetComponent<Text>().text = "15000 points for Silver";
 		}
 
         if (score_logic.the_score >= 15000 && score_logic.the_score < 25000)
 		{
-            medal_ribbon.SetActive(true);
+            //medal_ribbon.SetActive(true);
 			silver_medal_ref.SetActive(true);
+			score_to_next_medal.SetActive(true);
+			score_to_next_medal.GetComponent<Text>().text = "25000 points for Gold";
 		}
 
         if (score_logic.the_score >= 25000)
 		{
-            medal_ribbon.SetActive(true);
+            //medal_ribbon.SetActive(true);
 			gold_medal_ref.SetActive(true);
 		}
 	}
