@@ -228,6 +228,7 @@ public class SpawnTile : MonoBehaviour
     }
 
 
+    // Returns array of base tiles that will no longer appear when reduce shapes is activated
     // Used to 'X' out tiles no longer used when reduce tile reward is in effect  
     public int[] spawnArray()
     {
