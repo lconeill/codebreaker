@@ -206,6 +206,7 @@ public class SpawnTile : MonoBehaviour
         }
     }
 
+
     // Used to trigger double point particle effects in WheelLogic and NonSwipeActions scripts
     public bool reduceShapeActivated()
     {
@@ -227,6 +228,7 @@ public class SpawnTile : MonoBehaviour
     }
 
 
+    // Returns array of base tiles that will no longer appear when reduce shapes is activated
     // Used to 'X' out tiles no longer used when reduce tile reward is in effect  
     public int[] spawnArray()
     {
@@ -240,11 +242,11 @@ public class SpawnTile : MonoBehaviour
 
         crossedArray = result.ToArray();
 
-        string sarray11 = string.Format("These are the tiles that spawn: {0}, {1}", spawnStartRange, spawnRange-1);
-        string sarray = string.Format("This is the tiles to cross out: {0}, {1}", crossedArray[0], crossedArray[1]);
+        //string sarray11 = string.Format("These are the tiles that spawn: {0}, {1}", spawnStartRange, spawnRange-1);
+        //string sarray = string.Format("This is the tiles to cross out: {0}, {1}", crossedArray[0], crossedArray[1]);
 
-        Debug.Log(sarray11);
-        Debug.Log(sarray);
+        //Debug.Log(sarray11);
+        //Debug.Log(sarray);
 
         return crossedArray;
     }
