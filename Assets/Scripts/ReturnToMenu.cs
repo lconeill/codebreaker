@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Advertisements;
+using Soomla.Store;
 
 public class ReturnToMenu : MonoBehaviour 
 {
@@ -16,10 +17,16 @@ public class ReturnToMenu : MonoBehaviour
 	
 	public void ShowAd()
 	{
-		if (Advertisement.IsReady())
-		{
-			Advertisement.Show();
-		}
+
+        string remove_ad_id = MayhemStoreAssets.NO_ADS_LIFETIME_PRODUCT_ID;
+
+        if (StoreInventory.GetItemBalance(remove_ad_id) == 0)
+        {
+            if (Advertisement.IsReady())
+            {
+                Advertisement.Show();
+            }
+        }
 	}
 	
 	public void LoadMainMenu()

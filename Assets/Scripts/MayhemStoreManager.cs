@@ -124,9 +124,16 @@ public class MayhemStoreManager : MonoBehaviour {
 
     }
 
+
     public void buyWinterTheme()
     {
         StoreInventory.BuyItem(MayhemStoreAssets.WINTER_THEME_LIFETIME_PRODUCT_ID);
+    }
+
+
+    public void buyRemoveAds()
+    {
+        StoreInventory.BuyItem(MayhemStoreAssets.NO_ADS_LIFETIME_PRODUCT_ID);
     }
 }
 //Soomla secret: X5rl73jZ8xD86GEabD7Lh3Dm4LBeQG7v

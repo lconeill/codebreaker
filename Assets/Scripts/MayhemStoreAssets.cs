@@ -11,7 +11,7 @@ public class MayhemStoreAssets : IStoreAssets {
     /// <returns>the version of your specific <c>IStoreAssets</c>.</returns>
     public int GetVersion()
     {
-        return 1;
+        return 2;
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public class MayhemStoreAssets : IStoreAssets {
     public const string DOUBLE_POINT_ITEM_ID = "double_point";
     public const string DOUBLE_POINT_FIVE_PACK_PRODUCT_ID = "double_point_5_pack";
 
-    public const string NO_ADS_LIFETIME_PRODUCT_ID = "no_ads";
+    public const string NO_ADS_LIFETIME_PRODUCT_ID = "match_mayhem_no_ads";
 
     public const string WINTER_THEME_LIFETIME_PRODUCT_ID = "match_mayhem_winter_theme";
 
@@ -86,7 +86,7 @@ public class MayhemStoreAssets : IStoreAssets {
     // Slow time power-up pack
     public static VirtualGood SLOW_TIMER_PACK = new SingleUsePackVG(
                 SLOW_TIMER_ITEM_ID,                                             // Item ID of associated good
-                5,                                                              // Amount of goods in pack
+                10,                                                             // Amount of goods in pack
                 "Slow Timer 5 Pack",                                            // Name
                 "A 5 pack of the slow timer power-up",                          // Description
                 SLOW_TIMER_FIVE_PACK_PRODUCT_ID,                                // Product ID (name in google dev console)
@@ -96,7 +96,7 @@ public class MayhemStoreAssets : IStoreAssets {
     // Increase life slider power-up pack
     public static VirtualGood INCREASE_SLIDER_PACK = new SingleUsePackVG(
                 INCREASE_SLIDER_ITEM_ID,
-                5,
+                10,
                 "Increase Slider 5 Pack",
                 "A 5 pack of the life slider power-up",
                 INCREASE_SLIDER_FIVE_PACK_PRODUCT_ID,
@@ -106,7 +106,7 @@ public class MayhemStoreAssets : IStoreAssets {
     // Reduce tile shape power-up pack
     public static VirtualGood REDUCE_SHAPE_PACK = new SingleUsePackVG(
                REDUCE_SHAPE_ITEM_ID,
-               5,
+               10,
                "Reduce Shape 5 Pack",
                "A 5 pack of the reduce shapes power-up",
                REDUCE_SHAPE_FIVE_PACK_PRODUCT_ID,
@@ -116,7 +116,7 @@ public class MayhemStoreAssets : IStoreAssets {
     // Double points power-up pack
     public static VirtualGood DOUBLE_POINT_PACK = new SingleUsePackVG(
                DOUBLE_POINT_ITEM_ID,
-               5,
+               10,
                "Double Points 5 Pack",
                "A 5 pack of the double points power-up",
                DOUBLE_POINT_FIVE_PACK_PRODUCT_ID,
