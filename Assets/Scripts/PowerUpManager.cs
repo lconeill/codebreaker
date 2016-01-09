@@ -85,7 +85,7 @@ public class PowerUpManager : MonoBehaviour {
             switch (itemID)
             {
                 case "slow_timer":
-                    int freeze_timer_balance = StoreInventory.GetItemBalance(itemID);
+                    int freeze_timer_balance = StoreInventory.GetItemBalance(MayhemStoreAssets.SLOW_TIMER_ITEM_ID);
                     freeze_timer_text.text = freeze_timer_balance.ToString();
 
                     freeze_timer_button.enabled = (freeze_timer_balance == 0) ? false : true;
@@ -94,8 +94,10 @@ public class PowerUpManager : MonoBehaviour {
                     break;
 
                 case "increase_slider":
-                    int increase_slider_balance = StoreInventory.GetItemBalance(itemID);
+                    int increase_slider_balance = StoreInventory.GetItemBalance(MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID);
                     increase_slider_text.text = increase_slider_balance.ToString();
+
+                    Debug.Log("Slider balance: " + increase_slider_balance);
 
                     increase_slider_button.enabled = (increase_slider_balance == 0) ? false : true;
 
@@ -103,7 +105,7 @@ public class PowerUpManager : MonoBehaviour {
                     break;
 
                 case "reduce_shape":
-                    int reduce_shape_balance = StoreInventory.GetItemBalance(itemID);
+                    int reduce_shape_balance = StoreInventory.GetItemBalance(MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID);
                     reduce_shape_text.text = reduce_shape_balance.ToString();
 
                     reduce_shape_button.enabled = (reduce_shape_balance == 0) ? false : true;
@@ -112,7 +114,7 @@ public class PowerUpManager : MonoBehaviour {
                     break;
 
                 case "double_point":
-                    int double_point_balance = StoreInventory.GetItemBalance(itemID);
+                    int double_point_balance = StoreInventory.GetItemBalance(MayhemStoreAssets.DOUBLE_POINT_ITEM_ID);
                     double_point_text.text = double_point_balance.ToString();
 
                     double_point_button.enabled = (double_point_balance == 0) ? false : true;

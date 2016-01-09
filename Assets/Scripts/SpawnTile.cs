@@ -46,58 +46,62 @@ public class SpawnTile : MonoBehaviour
     
 
     // Checks to see if reduce tile shape reward has been triggered, activates, and terminates the reward
-    // Waits until slot game has exited before reward timer begins
     void Update()
     {
-        if (reduceTileShape && !slot_manager.inMiniGame)
+        if (!slot_manager.inMiniGame)
         {
-            timeIncrement += Time.deltaTime;
-            spawnRangeBefore = spawnRange;
-            spawnStartRangeBefore = spawnStartRange;
-            spawnStartRange = Random.Range(0, 4);
-
-            if (spawnStartRange == 3)
+            // Reduce shape reward 
+            if (reduceTileShape)
             {
-                spawnStartRange = 1;
-                spawnRange = 3;
+                timeIncrement += Time.deltaTime;
+                spawnRangeBefore = spawnRange;
+                spawnStartRangeBefore = spawnStartRange;
+                spawnStartRange = Random.Range(0, 4);
+
+                if (spawnStartRange == 3)
+                {
+                    spawnStartRange = 1;
+                    spawnRange = 3;
+                }
+
+                else
+                {
+                    spawnRange = spawnStartRange + 2;
+                }
+
+                reduceTileShape = false;
+                endReward = true;
+                reduce_shape_button.enabled = false;
+
+                reduceUpcomingTiles();
+                spawnArray();
+
             }
 
-            else
+            if (endReward)
             {
-                spawnRange = spawnStartRange + 2;
+                timeIncrement += Time.deltaTime;
+
+                if (timeIncrement >= rewardEffectTime)
+                {
+                    spawnRange = spawnRangeBefore;
+                    spawnStartRange = spawnStartRangeBefore;
+                    timeIncrement = 0;
+                    endReward = false;
+                    reduce_shape_button.enabled = true;
+                }
             }
 
-            reduceTileShape = false;
-            endReward = true;
-            reduce_shape_button.enabled = false;
-
-            reduceUpcomingTiles();
-            spawnArray();
-            
-        }
-
-        if (endReward)
-        {
-            timeIncrement += Time.deltaTime;
-
-            if (timeIncrement >= rewardEffectTime)
+            // Hide tile negative reward
+            if (hide_tile_flag)
             {
-                spawnRange = spawnRangeBefore;
-                spawnStartRange = spawnStartRangeBefore;
-                timeIncrement = 0;
-                endReward = false;
-                reduce_shape_button.enabled = true;
-            }
-        }
+                hide_tile_counter += Time.deltaTime;
 
-        if (hide_tile_flag)
-        {
-            hide_tile_counter += Time.deltaTime;
-
-            if (hide_tile_counter >= hide_reward_effect_time)
-            {
-                hide_tile_flag = false;
-                destroyHideTiles();
+                if (hide_tile_counter >= hide_reward_effect_time)
+                {
+                    hide_tile_flag = false;
+                    destroyHideTiles();
+                }
             }
         }
     }

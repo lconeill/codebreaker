@@ -68,7 +68,7 @@ public class RewardManager : MonoBehaviour {
                 }
 
                 StoreInventory.TakeItem(freeze_itemID, 1);
-                PowerUpManager.changeBalanceText(freeze_itemID);
+                //PowerUpManager.changeBalanceText(freeze_itemID);
                 
                 break;
 
@@ -91,7 +91,7 @@ public class RewardManager : MonoBehaviour {
                 }
 
                 StoreInventory.TakeItem(reduce_itemID, 1);
-                PowerUpManager.changeBalanceText(reduce_itemID);
+                //PowerUpManager.changeBalanceText(reduce_itemID);
                 
                 break;
 
@@ -115,7 +115,7 @@ public class RewardManager : MonoBehaviour {
                 }
 
                 StoreInventory.TakeItem(double_itemID, 1);
-                PowerUpManager.changeBalanceText(double_itemID);
+                //PowerUpManager.changeBalanceText(double_itemID);
 
                 wheelLogic.increaseMultiplier();
                 break;
@@ -140,7 +140,7 @@ public class RewardManager : MonoBehaviour {
                 }
 
                 StoreInventory.TakeItem(slider_itemID, 1);
-                PowerUpManager.changeBalanceText(slider_itemID);
+                //PowerUpManager.changeBalanceText(slider_itemID);
 
                 break;
 

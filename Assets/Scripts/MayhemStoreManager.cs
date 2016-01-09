@@ -13,6 +13,7 @@ public class MayhemStoreManager : MonoBehaviour {
     {
         // SoomlaStore.Initialize(new MayhemStoreAssets());
         StoreEvents.OnItemPurchased += onItemPurchased;
+        StoreEvents.OnGoodBalanceChanged += OnGoodBalanceChanged;
         DontDestroyOnLoad(this.gameObject);
 	}
 
@@ -28,9 +29,17 @@ public class MayhemStoreManager : MonoBehaviour {
     //}
 
 
+    // Change inventory balance on gamescreen when item purchased
     public void onItemPurchased(PurchasableVirtualItem pvi, string payload)
     {
         PowerUpManager.changeBalanceText(pvi.ItemId);
+    }
+
+
+    // Change inventory balance when item balance changed (by clicking power-up button from gamescreen)
+    public void OnGoodBalanceChanged(VirtualGood vg, int balance, int amountAdded)
+    {
+        PowerUpManager.changeBalanceText(vg.ItemId);
     }
 
 
