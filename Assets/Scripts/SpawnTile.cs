@@ -50,6 +50,7 @@ public class SpawnTile : MonoBehaviour
     {
         if (!slot_manager.inMiniGame)
         {
+
             // Reduce shape reward 
             if (reduceTileShape)
             {
@@ -71,7 +72,7 @@ public class SpawnTile : MonoBehaviour
 
                 reduceTileShape = false;
                 endReward = true;
-                reduce_shape_button.enabled = false;
+                //reduce_shape_button.enabled = false;
 
                 reduceUpcomingTiles();
                 spawnArray();
@@ -81,6 +82,7 @@ public class SpawnTile : MonoBehaviour
             if (endReward)
             {
                 timeIncrement += Time.deltaTime;
+                reduce_shape_button.enabled = false; //temporary solution
 
                 if (timeIncrement >= rewardEffectTime)
                 {
@@ -89,6 +91,8 @@ public class SpawnTile : MonoBehaviour
                     timeIncrement = 0;
                     endReward = false;
                     reduce_shape_button.enabled = true;
+
+                    Debug.Log("From within counter:" + reduce_shape_button.enabled);
                 }
             }
 

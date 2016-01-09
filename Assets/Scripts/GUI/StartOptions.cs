@@ -64,7 +64,7 @@ public class StartOptions : MonoBehaviour {
 		
 		if (PlayerPrefs.GetInt ("Theme") == 0)
 		{
-			PlayerPrefs.SetInt ("Them", 2);
+			PlayerPrefs.SetInt ("Theme", 2);
 		}
 	}
 

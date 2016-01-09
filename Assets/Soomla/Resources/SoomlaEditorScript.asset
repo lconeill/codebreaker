@@ -20,7 +20,7 @@ MonoBehaviour:
     - name: SoomlaSecret
       value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5MpLgGBffGI4ItrcDA75paf60eHq9fG9/I3zgbqWpGFcJIYiseA6gZrGEqA+NkIRkEPcg/qth4iZMfrFzd6rIPRaOz2akLbfNBZgEbPlikxxy6rRk5cmAxeTQqg/6APOFhJt+wLWiRtYKuaLap/MdkjPjA4bJBrbg3izpEbIY0widpOG2+QdS6kCFDwX7of7IXZ3Er4GLqONl6W5BfdD6j800XYrMtSpmqFofkATVL1TEIsutEFWfpmQMt25Xwh7n6pG9+oqKTxwgcq2oatnNE6mrbXzZdTA87Gj0pirJfKBQhFpwY9Jm5j86m9mTU2okXgaj9xnzHsqIbY9OYjC2wIDAQAB
     - name: DebugUnityMessages
-      value: True
+      value: False
     - name: GPlayBP
       value: True
     - name: AndroidPublicKey

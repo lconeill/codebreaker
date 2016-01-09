@@ -108,6 +108,7 @@ public class PowerUpManager : MonoBehaviour {
                     int reduce_shape_balance = StoreInventory.GetItemBalance(MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID);
                     reduce_shape_text.text = reduce_shape_balance.ToString();
 
+                    // TODO: This caused buttons to be enabled even though it was still in effect ()
                     reduce_shape_button.enabled = (reduce_shape_balance == 0) ? false : true;
 
                     //Debug.Log(StoreInventory.GetItemBalance(itemID).ToString());
