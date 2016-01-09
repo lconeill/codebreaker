@@ -38,6 +38,7 @@ public class ReturnToMenu : MonoBehaviour
 		
 		if(PlayerPrefs.GetInt("Player Deaths") == 1)
 		{
+			PlayerPrefs.SetInt("Player Deaths", 0);
 			ShowAd();
 		}
 		
