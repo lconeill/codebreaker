@@ -220,27 +220,31 @@ public class WheelLogic : MonoBehaviour
 		{
 			//Debug.Log(col.tag);
 
-            
+
             if (multiplier_flag)
             {
                 double_points_fx.transform.position = col.transform.position;
                 double_points_match_fx.Run();
             }
 
-            if (circular_timer_Script.freezeTimerActivated())
-            {
-                freeze_timer_fx.transform.position = col.transform.position;
-                freeze_timer_match_fx.Run();
-            }
+            //**
+            // There are no longer any particle effects for the reduce shapes and freeze timer effects
+            //**
+            //if (circular_timer_Script.freezeTimerActivated())
+            //{
+            //    freeze_timer_fx.transform.position = col.transform.position;
+            //    freeze_timer_match_fx.Run();
+            //}
 
-            if (spawnTile.reduceShapeActivated())
-            {
-                reduce_shape_fx.transform.position = col.transform.position;
-                reduce_shape_match_fx.Run();
-            }
+            //if (spawnTile.reduceShapeActivated())
+            //{
+            //    reduce_shape_fx.transform.position = col.transform.position;
+            //    reduce_shape_match_fx.Run();
+            //}
 
             // If any of the rewards are activated don't play default fx
-            if (multiplier_flag || spawnTile.reduceShapeActivated() || circular_timer_Script.freezeTimerActivated()) { }
+            //if (multiplier_flag || spawnTile.reduceShapeActivated() || circular_timer_Script.freezeTimerActivated()) { }
+            if (multiplier_flag) { }
 
             else
             {

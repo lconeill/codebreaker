@@ -117,7 +117,7 @@ public class RewardManager : MonoBehaviour {
                 StoreInventory.TakeItem(double_itemID, 1);
                 //PowerUpManager.changeBalanceText(double_itemID);
 
-                wheelLogic.increaseMultiplier();
+                //wheelLogic.increaseMultiplier();
                 break;
 
 
