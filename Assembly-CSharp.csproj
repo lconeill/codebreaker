@@ -149,6 +149,7 @@
      <Compile Include="Assets\Scripts\MuteGUI.cs" />
      <Compile Include="Assets\Scripts\NonSwipeActions.cs" />
      <Compile Include="Assets\Scripts\PowerUpManager.cs" />
+     <Compile Include="Assets\Scripts\ReduceShapeUI.cs" />
      <Compile Include="Assets\Scripts\RestartLevel.cs" />
      <Compile Include="Assets\Scripts\ReturnToMenu.cs" />
      <Compile Include="Assets\Scripts\RewardManager.cs" />
