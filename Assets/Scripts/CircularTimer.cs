@@ -127,7 +127,7 @@ public class CircularTimer : MonoBehaviour
                 fillSpeed = rewardFillSpeed;
                 increaseFillTime = false;
                 endFillTimeIncrease = true;
-                freeze_timer_button.enabled = false;
+                //freeze_timer_button.enabled = false;
             }
 
             circularTimer.fillAmount = accumulate/fillSpeed;
@@ -135,6 +135,7 @@ public class CircularTimer : MonoBehaviour
             if (endFillTimeIncrease)
             {
                 timeIncrement += Time.deltaTime;
+                freeze_timer_button.enabled = false; //temporary solution
 
                 if (timeIncrement / rewardEffectTime >= 1)
                 {

@@ -68,7 +68,7 @@ public class WheelLogic : MonoBehaviour
     private int score_multiplier = 1;
     private bool multiplier_flag = false;
     private float reward_time_increment = 0;
-    private float reward_effect_time = 5;
+    private float reward_effect_time = 7;
     
     private NonSwipeActions non_swipe_script;
 	private GameObject double_tap_ref;

@@ -19,10 +19,10 @@ public class ThemeManager : MonoBehaviour {
     {
         store_manager = store_panel.GetComponent<MayhemStoreManager>();
 
-        if (PlayerPrefs.GetInt("Theme") == 0)
-        {
-            PlayerPrefs.SetInt("Theme", 2);
-        }
+       // if (PlayerPrefs.GetInt("Theme") == 0)
+       // {
+       //     PlayerPrefs.SetInt("Theme", 2);
+       // }
 	}
 	
 	// Update is called once per frame

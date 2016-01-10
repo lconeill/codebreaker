@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Linq;
+using System.Collections.Generic;
 
 public class SpawnTile : MonoBehaviour
 {
@@ -44,55 +46,66 @@ public class SpawnTile : MonoBehaviour
     
 
     // Checks to see if reduce tile shape reward has been triggered, activates, and terminates the reward
-    // Waits until slot game has exited before reward timer begins
     void Update()
     {
-        if (reduceTileShape && !slot_manager.inMiniGame)
+        if (!slot_manager.inMiniGame)
         {
-            timeIncrement += Time.deltaTime;
-            spawnRangeBefore = spawnRange;
-            spawnStartRangeBefore = spawnStartRange;
-            spawnStartRange = Random.Range(0, 4);
 
-            if (spawnStartRange == 3)
+            // Reduce shape reward 
+            if (reduceTileShape)
             {
-                spawnStartRange = 1;
-                spawnRange = 3;
+                timeIncrement += Time.deltaTime;
+                spawnRangeBefore = spawnRange;
+                spawnStartRangeBefore = spawnStartRange;
+                spawnStartRange = Random.Range(0, 4);
+
+                if (spawnStartRange == 3)
+                {
+                    spawnStartRange = 1;
+                    spawnRange = 3;
+                }
+
+                else
+                {
+                    spawnRange = spawnStartRange + 2;
+                }
+
+                reduceTileShape = false;
+                endReward = true;
+                //reduce_shape_button.enabled = false;
+
+                reduceUpcomingTiles();
+                spawnArray();
+
             }
 
-            else
+            if (endReward)
             {
-                spawnRange = spawnStartRange + 2;
+                timeIncrement += Time.deltaTime;
+                reduce_shape_button.enabled = false; //temporary solution
+
+                if (timeIncrement >= rewardEffectTime)
+                {
+                    spawnRange = spawnRangeBefore;
+                    spawnStartRange = spawnStartRangeBefore;
+                    timeIncrement = 0;
+                    endReward = false;
+                    reduce_shape_button.enabled = true;
+
+                    Debug.Log("From within counter:" + reduce_shape_button.enabled);
+                }
             }
 
-            reduceTileShape = false;
-            endReward = true;
-            reduce_shape_button.enabled = false;
-            
-        }
-
-        if (endReward)
-        {
-            timeIncrement += Time.deltaTime;
-
-            if (timeIncrement >= rewardEffectTime)
+            // Hide tile negative reward
+            if (hide_tile_flag)
             {
-                spawnRange = spawnRangeBefore;
-                spawnStartRange = spawnStartRangeBefore;
-                timeIncrement = 0;
-                endReward = false;
-                reduce_shape_button.enabled = true;
-            }
-        }
+                hide_tile_counter += Time.deltaTime;
 
-        if (hide_tile_flag)
-        {
-            hide_tile_counter += Time.deltaTime;
-
-            if (hide_tile_counter >= hide_reward_effect_time)
-            {
-                hide_tile_flag = false;
-                destroyHideTiles();
+                if (hide_tile_counter >= hide_reward_effect_time)
+                {
+                    hide_tile_flag = false;
+                    destroyHideTiles();
+                }
             }
         }
     }
@@ -154,7 +167,6 @@ public class SpawnTile : MonoBehaviour
                 clonedTiles[n] = clone;
             }
         }
-
     }
 
 
@@ -202,10 +214,49 @@ public class SpawnTile : MonoBehaviour
         }
     }
 
+
     // Used to trigger double point particle effects in WheelLogic and NonSwipeActions scripts
     public bool reduceShapeActivated()
     {
         return endReward;
+    }
+
+
+    // This function reduces the tiles in the upcoming tiles area when the reduce shape reward is activated
+    private void reduceUpcomingTiles()
+    {
+        for (int j = 0; j <= 2; j++)
+        {
+            Destroy(clonedTiles[j]);
+
+            int i = Random.Range(spawnStartRange, spawnRange);
+            GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[j], Quaternion.identity);
+            clonedTiles[j] = clone;
+        }
+    }
+
+
+    // Returns array of base tiles that will no longer appear when reduce shapes is activated
+    // Used to 'X' out tiles no longer used when reduce tile reward is in effect  
+    public int[] spawnArray()
+    {
+
+        int[] tileSpawnRange = new int[4] {0, 1, 2, 3};
+        int[] reduceRange = new int[2] {spawnStartRange, spawnStartRange + 1};
+
+        int[] crossedArray = new int[2];
+
+        IEnumerable<int> result = tileSpawnRange.Except(reduceRange);
+
+        crossedArray = result.ToArray();
+
+        //string sarray11 = string.Format("These are the tiles that spawn: {0}, {1}", spawnStartRange, spawnRange-1);
+        //string sarray = string.Format("This is the tiles to cross out: {0}, {1}", crossedArray[0], crossedArray[1]);
+
+        //Debug.Log(sarray11);
+        //Debug.Log(sarray);
+
+        return crossedArray;
     }
 }
 

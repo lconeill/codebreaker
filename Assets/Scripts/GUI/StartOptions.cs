@@ -61,6 +61,11 @@ public class StartOptions : MonoBehaviour {
 		{
 			playMusic.FadeUp (fastFadeIn);
 		}
+		
+		if (PlayerPrefs.GetInt ("Theme") == 0)
+		{
+			PlayerPrefs.SetInt ("Theme", 2);
+		}
 	}
 
 
