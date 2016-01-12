@@ -33,8 +33,17 @@ public class ReturnToMenu : MonoBehaviour
 	{
 		
 		Destroy(UI_ref);
-		
-		Application.LoadLevel("startScreen");
+
+        // Load the start screen corresponding to the theme selected
+        if (PlayerPrefs.GetInt("Theme") == ThemeManager.CLASSIC_THEME)
+        {
+            Application.LoadLevel(1);
+        }
+        
+        else
+        {
+            Application.LoadLevel(4);
+        }
 		
 		if(PlayerPrefs.GetInt("Player Deaths") == 1)
 		{

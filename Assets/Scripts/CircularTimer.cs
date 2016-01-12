@@ -51,6 +51,8 @@ public class CircularTimer : MonoBehaviour
     
     private bool is_reset = false;
 
+    private Image freeze_effect_image;
+
     // Set timer to zero fill amount
     void Start()
     {
@@ -78,6 +80,9 @@ public class CircularTimer : MonoBehaviour
 		match_fx_ref = GameObject.Find("match_fx");
 		match_fx_particle = match_fx_ref.GetComponent<ParticleSystem>();
 		match_fx_script = match_fx_ref.GetComponent<MatchFX>();
+
+        GameObject temp_2 = GameObject.Find("freeze_effect_image");
+        if (temp_2 != null) { freeze_effect_image = temp_2.GetComponent<Image>(); }
 		
 		Reset();
 		
@@ -127,6 +132,7 @@ public class CircularTimer : MonoBehaviour
                 fillSpeed = rewardFillSpeed;
                 increaseFillTime = false;
                 endFillTimeIncrease = true;
+                freeze_effect_image.enabled = true;
                 //freeze_timer_button.enabled = false;
             }
 
@@ -144,6 +150,7 @@ public class CircularTimer : MonoBehaviour
                     accumulate = accumulate * fillSpeedBefore / rewardFillSpeed;
                     fillSpeed = fillSpeedBefore;
                     freeze_timer_button.enabled = true;
+                    freeze_effect_image.enabled = false;
                 }
             }
            

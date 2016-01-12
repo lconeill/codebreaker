@@ -4,8 +4,8 @@ using Soomla.Store;
 
 public class ThemeManager : MonoBehaviour {
 
-    private const int CLASSIC_THEME = 2;
-    private const int WINTER_THEME = 3;
+    public const int CLASSIC_THEME = 2;
+    public const int WINTER_THEME = 3;
 
     public GameObject store_panel;
 
@@ -37,7 +37,8 @@ public class ThemeManager : MonoBehaviour {
         {
             case "classic":
                 PlayerPrefs.SetInt("Theme", CLASSIC_THEME);
-                Debug.Log("Classic theme selected.Debug Level to load: " + PlayerPrefs.GetInt("Theme"));
+                Application.LoadLevel(1); // Load the classic start screen
+                Debug.Log("Classic theme selected. Level to load: " + PlayerPrefs.GetInt("Theme"));
                 break;
 
             case "winter":
@@ -48,6 +49,7 @@ public class ThemeManager : MonoBehaviour {
                 if (StoreInventory.GetItemBalance(winter_theme_id) > 0)
                 {
                     PlayerPrefs.SetInt("Theme", WINTER_THEME);
+                    Application.LoadLevel(4); // Load the winter theme start screen
                     Debug.Log("Winter theme selected.Debug Level to load: " + PlayerPrefs.GetInt("Theme"));
                 }
                 
