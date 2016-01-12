@@ -211,20 +211,21 @@ public class NonSwipeActions : MonoBehaviour {
             double_points_match_fx.Run();
         }
 
-        if (spawnTile.reduceShapeActivated())
-        {
-            reduce_shape_fx.transform.position = particle_spawn;
-            reduce_shape_match_fx.Run();
-        }
+        //if (spawnTile.reduceShapeActivated())
+        //{
+        //    reduce_shape_fx.transform.position = particle_spawn;
+        //    reduce_shape_match_fx.Run();
+        //}
 
-        if (circularTimer.freezeTimerActivated())
-        {
-            freeze_timer_fx.transform.position = particle_spawn;
-            freeze_timer_match_fx.Run();
-        }
+        //if (circularTimer.freezeTimerActivated())
+        //{
+        //    freeze_timer_fx.transform.position = particle_spawn;
+        //    freeze_timer_match_fx.Run();
+        //}
 
         // If any of the rewards are activated don't play default fx
-        if (wheelLogic.doublePointActivated() || spawnTile.reduceShapeActivated() || circularTimer.freezeTimerActivated()) { }
+        //if (wheelLogic.doublePointActivated() || spawnTile.reduceShapeActivated() || circularTimer.freezeTimerActivated()) { }
+        if (wheelLogic.doublePointActivated()) { }
 
         else
         {

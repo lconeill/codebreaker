@@ -32,7 +32,10 @@ public class SpawnTile : MonoBehaviour
 
     private MoveScript move_script;             // reference to MoveScript used to move the active game tile
     private slotManager slot_manager;
-	
+    
+    public GameObject ct_game_object;           // reference to CircularTimer game object
+    private CircularTimer circular_timer_script;    // reference to CircularTimer used to reset the timer
+
     void Start()
     {
         initializeTiles();
@@ -42,6 +45,8 @@ public class SpawnTile : MonoBehaviour
 
         GameObject temp_01 = GameObject.Find("slotManager");
         if (temp_01 != null) { slot_manager = temp_01.GetComponent<slotManager>(); }
+
+        circular_timer_script = ct_game_object.GetComponent<CircularTimer>();
     }
     
 
@@ -225,7 +230,8 @@ public class SpawnTile : MonoBehaviour
     // This function reduces the tiles in the upcoming tiles area when the reduce shape reward is activated
     private void reduceUpcomingTiles()
     {
-        for (int j = 0; j <= 2; j++)
+        //for (int j = 0; j <= 2; j++)
+        for (int j = 0; j <= 3; j++)
         {
             Destroy(clonedTiles[j]);
 
@@ -233,6 +239,8 @@ public class SpawnTile : MonoBehaviour
             GameObject clone = (GameObject)Instantiate(tiles[i], defaultPositions[j], Quaternion.identity);
             clonedTiles[j] = clone;
         }
+
+        circular_timer_script.Reset();
     }
 
 
