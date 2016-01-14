@@ -17,7 +17,7 @@ public class CircularTimer : MonoBehaviour
     public bool increaseFillTime = false;       // Flag used to active freeze timer reward
     private float fillSpeedBefore;
     public float rewardFillSpeed = 5;
-    private float rewardEffectTime = 5f;
+    private float rewardEffectTime = 7f;
     private float timeIncrement = 0;
     private bool endFillTimeIncrease = false;   // Flag used to deactivate freeze timer reward
 
