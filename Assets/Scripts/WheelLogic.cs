@@ -348,6 +348,11 @@ public class WheelLogic : MonoBehaviour
                 score_logic.the_score = score_logic.the_score + (3000 * score_multiplier);
 			}
 			
+			if(score_logic.match_streak_counter > 60)
+			{
+				score_logic.the_score = score_logic.the_score + (200 * score_multiplier);
+			}
+			
 			else
 			{
 				score_logic.the_score = score_logic.the_score + (50 * score_multiplier);

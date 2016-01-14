@@ -40,7 +40,11 @@ public class CircularTimer : MonoBehaviour
 	private GameObject mismatch_sfx_ref;
 	
 	private AudioSource mismatch_sfx;
-
+	
+	private GameObject ice_sfx_ref;
+	
+	private AudioSource ice_sfx;
+	
     private Button freeze_timer_button;
     
     private GameObject match_fx_ref;
@@ -73,6 +77,9 @@ public class CircularTimer : MonoBehaviour
         
 		mismatch_sfx_ref = GameObject.Find("MisMatch_SFX_01");
 		mismatch_sfx = mismatch_sfx_ref.GetComponent<AudioSource>();
+		
+		ice_sfx_ref = GameObject.Find("Ice_SFX_01");
+		ice_sfx = ice_sfx_ref.GetComponent<AudioSource>();
 		
 		wheel_logic_ref = GameObject.Find("match_01");
 		wheel_logic = wheel_logic_ref.GetComponent<WheelLogic>();
@@ -133,6 +140,7 @@ public class CircularTimer : MonoBehaviour
                 increaseFillTime = false;
                 endFillTimeIncrease = true;
                 freeze_effect_image.enabled = true;
+				ice_sfx.Play();
                 //freeze_timer_button.enabled = false;
             }
 

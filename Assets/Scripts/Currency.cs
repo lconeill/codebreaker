@@ -16,6 +16,8 @@ public class Currency : MonoBehaviour {
     private Text currencyText;
 
     public GameObject coin;
+    private GameObject coin_sfx_ref;
+    private AudioSource coin_sfx;
 
 	// Use this for initialization
 	void Start () 
@@ -23,6 +25,9 @@ public class Currency : MonoBehaviour {
 
         GameObject temp = GameObject.Find("score_display");
         GameObject temp_1 = GameObject.Find("wheel_01");
+        
+		coin_sfx_ref = GameObject.Find("Coin_SFX_01");
+		coin_sfx = coin_sfx_ref.GetComponent<AudioSource>();
 
         if (temp != null) { scoreLogic = temp.GetComponent<ScoreLogic>(); }
 
@@ -56,8 +61,9 @@ public class Currency : MonoBehaviour {
             {
                 //currency += 50;
                 
-                StoreInventory.GiveItem(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID, 5000);
+                StoreInventory.GiveItem(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID, 50);
                 StartCoroutine(coinAnimation());
+				coin_sfx.Play();
                 //stringCurrency = "x" + StoreInventory.GetItemBalance(MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID);
                 //currencyText.text = stringCurrency;
             }
