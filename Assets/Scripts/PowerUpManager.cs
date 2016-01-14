@@ -60,7 +60,8 @@ public class PowerUpManager : MonoBehaviour {
     public static void changeBalanceText(string itemID)
     {
         // TODO: also add the winter theme name when it becomes available
-        if (Application.loadedLevelName == "gameScreen")
+        //if (Application.loadedLevelName == "gameScreen")
+        if (Application.loadedLevelName == "gameScreen" || Application.loadedLevelName == "gameScreenWinter")
         {
             // If a pack is bought change the product_id to the corresponding item_id 
             switch (itemID)
