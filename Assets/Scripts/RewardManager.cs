@@ -58,16 +58,20 @@ public class RewardManager : MonoBehaviour {
                 // If the reward is from slot game, give the item for free
                 if (from_slot_game)
                 {
-                    StoreInventory.GiveItem(freeze_itemID, 1);
+                    // This wasn't refreshing the balance fast enough to activate the reward when inventory is zero
+                    // StoreInventory.GiveItem(freeze_itemID, 1);
+                    circularTimer.increaseFillTime = true;
                     from_slot_game = false;
                 }
 
-                if (StoreInventory.GetItemBalance(freeze_itemID) > 0)
+                //if (StoreInventory.GetItemBalance(freeze_itemID) > 0)
+                else if (StoreInventory.GetItemBalance(freeze_itemID) > 0)
                 {
                     circularTimer.increaseFillTime = true;
+                    StoreInventory.TakeItem(freeze_itemID, 1);
                 }
 
-                StoreInventory.TakeItem(freeze_itemID, 1);
+                //StoreInventory.TakeItem(freeze_itemID, 1);
                 PowerUpManager.changeBalanceText(freeze_itemID);
                 
                 break;
@@ -81,16 +85,20 @@ public class RewardManager : MonoBehaviour {
                 // If the reward is from slot game, give the item for free
                 if (from_slot_game)
                 {
-                    StoreInventory.GiveItem(reduce_itemID, 1);
+                    // This wasn't refreshing the balance fast enough to activate the reward when inventory is zero
+                    //StoreInventory.GiveItem(reduce_itemID, 1);
+                    spawnTile.reduceTileShape = true;
                     from_slot_game = false;
                 }
 
-                if (StoreInventory.GetItemBalance(reduce_itemID) > 0)
+                //if (StoreInventory.GetItemBalance(reduce_itemID) > 0)
+                else if (StoreInventory.GetItemBalance(reduce_itemID) > 0)
                 {
                     spawnTile.reduceTileShape = true;
+                    StoreInventory.TakeItem(reduce_itemID, 1);
                 }
 
-                StoreInventory.TakeItem(reduce_itemID, 1);
+                //StoreInventory.TakeItem(reduce_itemID, 1);
                 PowerUpManager.changeBalanceText(reduce_itemID);
                 
                 break;
@@ -104,17 +112,21 @@ public class RewardManager : MonoBehaviour {
                 // If the reward is from slot game, give the item for free
                 if (from_slot_game)
                 {
-                    StoreInventory.GiveItem(double_itemID, 1);
+                    // This wasn't refreshing the balance fast enough to activate the reward when inventory is zero
+                    //StoreInventory.GiveItem(double_itemID, 1);
+                    double_points_script.activateReward();
                     from_slot_game = false;
                 }
 
-                if (StoreInventory.GetItemBalance(double_itemID) > 0)
+                //if (StoreInventory.GetItemBalance(double_itemID) > 0)
+                else if (StoreInventory.GetItemBalance(double_itemID) > 0)
                 {
                     //wheelLogic.increaseMultiplier();
                     double_points_script.activateReward();
+                    StoreInventory.TakeItem(double_itemID, 1);
                 }
 
-                StoreInventory.TakeItem(double_itemID, 1);
+                //StoreInventory.TakeItem(double_itemID, 1);
                 PowerUpManager.changeBalanceText(double_itemID);
 
                 //wheelLogic.increaseMultiplier();
@@ -130,16 +142,20 @@ public class RewardManager : MonoBehaviour {
                 // If the reward is from slot game, give the item for free
                 if (from_slot_game)
                 {
-                    StoreInventory.GiveItem(slider_itemID, 1);
+                    // This wasn't refreshing the balance fast enough to activate the reward when inventory is zero
+                    //StoreInventory.GiveItem(slider_itemID, 1);
+                    lifeSlider.increaseSlider();
                     from_slot_game = false;
                 }
 
-                if (StoreInventory.GetItemBalance(slider_itemID) > 0)
+                //if (StoreInventory.GetItemBalance(slider_itemID) > 0)
+                else if (StoreInventory.GetItemBalance(slider_itemID) > 0)
                 {
                     lifeSlider.increaseSlider();
+                    StoreInventory.TakeItem(slider_itemID, 1);
                 }
 
-                StoreInventory.TakeItem(slider_itemID, 1);
+                //StoreInventory.TakeItem(slider_itemID, 1);
                 PowerUpManager.changeBalanceText(slider_itemID);
 
                 break;
