@@ -1,13 +1,12 @@
 fileFormatVersion: 2
-guid: 0c7730525aa7cf642a21c0ac20ec17d8
-timeCreated: 1449439153
+guid: 32a5b9cdf98023c47a4419a39bb47f52
+timeCreated: 1452736797
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Knob_01_0
-    21300002: Knob_01_1
-    21300004: Knob_01_2
-    21300006: Knob_01_3
+    21300000: Knob_03_0
+    21300002: Knob_03_1
+    21300004: Knob_03_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -54,43 +53,33 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Knob_01_0
+    - name: Knob_03_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 128
-        height: 128
+        y: 124
+        width: 132
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Knob_01_1
+    - name: Knob_03_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
+        x: 143
+        y: 0
+        width: 99
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Knob_01_2
+    - name: Knob_03_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Knob_01_3
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
