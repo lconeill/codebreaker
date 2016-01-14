@@ -27,6 +27,11 @@ public class LifeSlider : MonoBehaviour
     public GameObject explosion_animation;          // Game object that contains the bomb explosion animation
     public GameObject explosion_sfx;                // Game object that contains the sound effect for the bomb explosion
     public GameObject bomb_tick_sfx;                // Game object that contains the bomb ticking sound effect
+    
+    private bool is_gameover = true;
+    
+	private GameObject gameover_sfx_ref;
+	private AudioSource gameover_sfx;
 	
     // Find references to the GameObjects
     void Start()
@@ -45,6 +50,9 @@ public class LifeSlider : MonoBehaviour
 		
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
+		
+		gameover_sfx_ref = GameObject.Find("GameOver_SFX_01");
+		gameover_sfx = gameover_sfx_ref.GetComponent<AudioSource>();
 		
 		// Make sure that the game on start is not paused
 		
@@ -87,7 +95,7 @@ public class LifeSlider : MonoBehaviour
             	// When the life bar reaches the end then
             	// pause the game and show the Gameover 
             	// screen with a restart button. 
-            	
+
             	Time.timeScale = 0;
 				
 				if(score_logic.the_score > PlayerPrefs.GetInt("High Score"))
@@ -98,7 +106,8 @@ public class LifeSlider : MonoBehaviour
             	}
             	
 				gameover_panel.ShowGameOver();
-
+				PlayGameOverSound();
+				
                 // Stop ticking sfx. This is for the case when the bomb is still active but the life slider is zero
                 bomb_tick_sfx.GetComponent<AudioSource>().Stop();
             }
@@ -141,6 +150,22 @@ public class LifeSlider : MonoBehaviour
         bomb_tick_sfx.GetComponent<AudioSource>().Stop();
 
         lifeTime = 0;
+    }
+    
+    public void PlayGameOverSound()
+    {
+		if(is_gameover == true)
+		{
+			gameover_sfx.Play();
+			
+			is_gameover = false;
+		}
+    	
+		else
+		{
+		
+		}
+		
     }
 
 }  

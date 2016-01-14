@@ -14,6 +14,21 @@ public class RewardManager : MonoBehaviour {
     private HideTileReward hide_the_tiles;
     private DoublePoints double_points_script;
 
+	private GameObject hide_sfx_ref;
+	private AudioSource hide_sfx;
+	
+	private GameObject reduce_sfx_ref;
+	private AudioSource reduce_sfx;
+	
+	private GameObject increase_life_sfx_ref;
+	private AudioSource increase_life_sfx;
+	
+	private GameObject decrease_life_sfx_ref;
+	private AudioSource decrease_life_sfx;
+	
+	private GameObject double_points_sfx_ref;
+	private AudioSource double_points_sfx;
+
     public bool from_slot_game = false;
 
 
@@ -36,6 +51,21 @@ public class RewardManager : MonoBehaviour {
 
         GameObject temp_5 = GameObject.Find("double_points_script");
         if (temp_5 != null) { double_points_script = temp_5.GetComponent<DoublePoints>(); }
+        
+		hide_sfx_ref = GameObject.Find("Hide_SFX_01");
+		hide_sfx = hide_sfx_ref.GetComponent<AudioSource>();
+		
+		reduce_sfx_ref = GameObject.Find("ReduceShape_SFX_01");
+		reduce_sfx = reduce_sfx_ref.GetComponent<AudioSource>();
+		
+		increase_life_sfx_ref = GameObject.Find("IncreaseLife_SFX_01");
+		increase_life_sfx = increase_life_sfx_ref.GetComponent<AudioSource>();
+		
+		decrease_life_sfx_ref = GameObject.Find("DecreaseLife_SFX_01");
+		decrease_life_sfx = decrease_life_sfx_ref.GetComponent<AudioSource>();
+		
+		double_points_sfx_ref = GameObject.Find("DoublePoints_SFX_01");
+		double_points_sfx = double_points_sfx_ref.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -101,6 +131,8 @@ public class RewardManager : MonoBehaviour {
                 //StoreInventory.TakeItem(reduce_itemID, 1);
                 PowerUpManager.changeBalanceText(reduce_itemID);
                 
+                reduce_sfx.Play();
+                
                 break;
 
 
@@ -128,7 +160,7 @@ public class RewardManager : MonoBehaviour {
 
                 //StoreInventory.TakeItem(double_itemID, 1);
                 PowerUpManager.changeBalanceText(double_itemID);
-
+				double_points_sfx.Play();
                 //wheelLogic.increaseMultiplier();
                 break;
 
@@ -157,6 +189,8 @@ public class RewardManager : MonoBehaviour {
 
                 //StoreInventory.TakeItem(slider_itemID, 1);
                 PowerUpManager.changeBalanceText(slider_itemID);
+                
+                increase_life_sfx.Play();
 
                 break;
 
@@ -164,6 +198,7 @@ public class RewardManager : MonoBehaviour {
             case "decreaseLife":
                 Debug.Log("You got all decreaseLife: Decreasing the life slider!");
                 lifeSlider.decreaseSlider();
+                decrease_life_sfx.Play();
                 break;
 
             case "decreaseRotation":
@@ -173,6 +208,7 @@ public class RewardManager : MonoBehaviour {
 
             case "hideTiles":
                 Debug.Log("You got all hideTiles: Hiding the upcoming!");
+                hide_sfx.Play();
                 spawnTile.hideTiles();
                 //hide_the_tiles.hideTile();
                 break;

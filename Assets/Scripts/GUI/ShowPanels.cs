@@ -13,7 +13,7 @@ public class ShowPanels : MonoBehaviour {
 	private ShowMedals medal_script_ref;
 
     public static bool in_menu;
-	
+    	
 	void Start()
 	{
 		medal_script_ref = medal_ref.GetComponent<ShowMedals>();
@@ -50,6 +50,7 @@ public class ShowPanels : MonoBehaviour {
 		game_over_panel.SetActive (true);
 		medal_script_ref.ShowEarnedMedal();
         in_menu = true;
+		
 	}
 
 	//Call this function to deactivate and hide the main menu panel during the main menu
@@ -83,4 +84,5 @@ public class ShowPanels : MonoBehaviour {
 		optionsTint.SetActive(false);
         in_menu = false;
 	}
+	
 }
