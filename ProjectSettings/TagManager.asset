@@ -17,6 +17,14 @@ TagManager:
   - Source_05
   - Source_06
   - Source_07
+  - Target_13
+  - Target_14
+  - Target_15
+  - Target_16
+  - Source_13
+  - Source_14
+  - Source_15
+  - Source_16
   layers:
   - Default
   - TransparentFX
