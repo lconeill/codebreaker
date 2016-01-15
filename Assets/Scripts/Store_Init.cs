@@ -39,9 +39,9 @@ public class Store_Init : MonoBehaviour
             Debug.Log("Classic theme selected. Level to load: " + PlayerPrefs.GetInt("Theme"));
         }
         
-        else if (PlayerPrefs.GetInt("Theme") != ThemeManager.WINTER_THEME)
+        else if (PlayerPrefs.GetInt("Theme") == ThemeManager.WINTER_THEME)
         {
-            Application.LoadLevel(3); // Load the winter start screen
+            Application.LoadLevel(4); // Load the winter start screen
             Debug.Log("Winter theme selected. Level to load: " + PlayerPrefs.GetInt("Theme"));
         }
 
