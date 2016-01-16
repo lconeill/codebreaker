@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ShowMedals : MonoBehaviour 
 {
+	public GameObject default_medal_ref;
 	public GameObject bronze_medal_ref;
 	public GameObject silver_medal_ref;
 	public GameObject gold_medal_ref;
@@ -26,6 +27,7 @@ public class ShowMedals : MonoBehaviour
 		//silver_medal_img = silver_medal_ref.GetComponent<Image>();
 		//gold_medal_img = gold_medal_ref.GetComponent<Image>();
 		
+		default_medal_ref.SetActive(true);
 		bronze_medal_ref.SetActive(false);
 		silver_medal_ref.SetActive(false);
 		gold_medal_ref.SetActive(false);
@@ -63,6 +65,7 @@ public class ShowMedals : MonoBehaviour
         if (score_logic.the_score >= 8000 && score_logic.the_score < 15000)
 		{
             //medal_ribbon.SetActive(true);
+			default_medal_ref.SetActive(false);
 			bronze_medal_ref.SetActive(true);
 			score_to_next_medal.SetActive(true);
 			score_to_next_medal.GetComponent<Text>().text = "15000 points for Silver";
@@ -71,6 +74,7 @@ public class ShowMedals : MonoBehaviour
         if (score_logic.the_score >= 15000 && score_logic.the_score < 25000)
 		{
             //medal_ribbon.SetActive(true);
+			default_medal_ref.SetActive(false);
 			silver_medal_ref.SetActive(true);
 			score_to_next_medal.SetActive(true);
 			score_to_next_medal.GetComponent<Text>().text = "25000 points for Gold";
@@ -79,6 +83,7 @@ public class ShowMedals : MonoBehaviour
         if (score_logic.the_score >= 25000)
 		{
             //medal_ribbon.SetActive(true);
+			default_medal_ref.SetActive(false);
 			gold_medal_ref.SetActive(true);
 		}
 	}

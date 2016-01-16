@@ -113,7 +113,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c7ac9eb726fef374aad48c385a79fdd9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .800000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2801,7 +2801,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4d12db6df1f09ee4b88726d6658f4f1a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .5
+  m_Volume: .400000006
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2946,7 +2946,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 963463ab7b060c04897f23b72ab7f870, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .800000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3286,7 +3286,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: b9187ea03648cfe40b637ee5d0ca4ec5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .800000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3527,7 +3527,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ac8f5b0be56fbfc4082691116147ae53, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .699999988
+  m_Volume: .150000006
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4408,7 +4408,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: fdbdb8719bdabd0489455e71937c0679, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .800000012
+  m_Volume: .75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4763,7 +4763,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: aedf86d5819b54e4db74fa73a14c7c87, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .800000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6068,7 +6068,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 23b2e15e2017ee94b92188d9ea471d57, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .800000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6213,7 +6213,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: eac5caf214efbad4da8f59c1e423fd28, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .800000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6486,7 +6486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2093608110
 RectTransform:
   m_ObjectHideFlags: 0

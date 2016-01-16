@@ -88,11 +88,11 @@ public class StartOptions : MonoBehaviour {
 		if (changeScenes) 
 		{
 			//Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
-			Invoke ("LoadDelayed", fadeColorAnimationClip.length * .99f);
+			Invoke ("LoadDelayed", fadeColorAnimationClip.length * .90f);
 			
-			Invoke("HideMuteGUI",fadeColorAnimationClip.length * .99f);
+			Invoke("HideMuteGUI",fadeColorAnimationClip.length * .90f);
 			
-			Invoke("ShowMuteGUI",fadeColorAnimationClip.length * .99f);
+			Invoke("ShowMuteGUI",fadeColorAnimationClip.length * .90f);
 						
 			playMusic.FadeDown(fadeColorAnimationClip.length);
 			
