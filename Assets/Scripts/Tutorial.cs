@@ -9,7 +9,23 @@ public class Tutorial : MonoBehaviour {
     public Button previous_button;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
+        //This is now initialized in StartOptions script
+        if (PlayerPrefs.GetInt("Tutorial") == 0)
+        {
+            PlayerPrefs.SetInt("Tutorial", 1);
+        }
+
+        if (PlayerPrefs.GetInt("Tutorial") != 1)
+        {
+            gameObject.SetActive(false);
+        }
+        
+        else
+        {
+            Debug.Log("Player has already played before and seen the tutorial.");
+        }
 	
 	}
 	

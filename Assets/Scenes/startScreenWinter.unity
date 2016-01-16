@@ -323,10 +323,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1072156490}
   m_RootOrder: 1
-  m_AnchorMin: {x: .0954512432, y: .107874386}
-  m_AnchorMax: {x: .939649343, y: .3884058}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: .0954512954, y: .195871383}
+  m_AnchorMax: {x: .939649463, y: .358572066}
+  m_AnchoredPosition: {x: -9.09494702e-13, y: 0}
+  m_SizeDelta: {x: -1.8189894e-12, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &33958435
 MonoBehaviour:
@@ -353,15 +353,13 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Match the tile in the center with the corresponding tile in the outer wheel.
-    To match tiles simply swipe your finger from anywhere to the matching tile. Match
-    the tiles before the green progress bar completely fills!
+  m_Text: Swipe from anywhere to match tiles.
 --- !u!222 &33958436
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1312,7 +1310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &118802083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2402,7 +2400,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1437000754}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: .333948523, y: .12570481}
   m_AnchorMax: {x: .829133093, y: .187728018}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -3393,15 +3391,13 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The "Life slider" (above the wheel) is constantly decreasing. When it reaches
-    zero the game is over. Correct matches increase the slider, incorrect matches
-    decrease the slider.
+  m_Text: Make matches to keep your life slider from reaching zero.
 --- !u!222 &381064472
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3914,10 +3910,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1388290907}
   m_RootOrder: 1
-  m_AnchorMin: {x: .100321025, y: .153399587}
-  m_AnchorMax: {x: .899678946, y: .312603593}
+  m_AnchorMin: {x: .269300282, y: .146379486}
+  m_AnchorMax: {x: .730699658, y: .299900562}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 4.76837158e-07}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &563578517
 MonoBehaviour:
@@ -3950,8 +3946,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Double tap on the center tile when it does not match any tile in the outer
-    wheel
+  m_Text: Double tap on non-matches
 --- !u!222 &563578518
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4509,7 +4504,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1437000754}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: .333948523, y: .235157549}
   m_AnchorMax: {x: .851604998, y: .340298504}
   m_AnchoredPosition: {x: 0, y: 7.62939453e-06}
@@ -6086,14 +6081,12 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: After a certain number of matches users will get the ability to earn power
-    ups. Click on the slot wheel to stop spinning. Get three in a row to earn the
-    power up.
+  m_Text: "Try Your Luck!\n\n Tap on each slot and match three to win."
 --- !u!222 &846163173
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10257,6 +10250,7 @@ RectTransform:
   - {fileID: 363100051}
   - {fileID: 1834404853}
   - {fileID: 1639778899}
+  - {fileID: 1868477316}
   - {fileID: 628765431}
   - {fileID: 226112847}
   m_Father: {fileID: 118802083}
@@ -13144,6 +13138,78 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1868477315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1868477316}
+  - 222: {fileID: 1868477318}
+  - 114: {fileID: 1868477317}
+  m_Layer: 5
+  m_Name: fire_description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1868477316
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868477315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1437000754}
+  m_RootOrder: 3
+  m_AnchorMin: {x: .333948523, y: .403247565}
+  m_AnchorMax: {x: .851604998, y: .479698658}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1868477317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868477315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .95588237, g: .892625451, b: .892625451, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 46238fb1ad7a7a84ba8954c1c860994c, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '- Makes the timer go slightly faster for a short time'
+--- !u!222 &1868477318
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868477315}
 --- !u!1 &1894398538
 GameObject:
   m_ObjectHideFlags: 0
