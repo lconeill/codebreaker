@@ -11,22 +11,18 @@ public class Tutorial : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        //This is now initialized in StartOptions script
-        if (PlayerPrefs.GetInt("Tutorial") == 0)
+        // Turn off tutorial if player has played before (it's active by default)
+        if (PlayerPrefs.GetInt("Tutorial") == 1)
+        {
+            gameObject.SetActive(false);
+            Debug.Log("This should turn off!");
+        }
+        
+        // Playing for first time, set pref
+        else
         {
             PlayerPrefs.SetInt("Tutorial", 1);
         }
-
-        if (PlayerPrefs.GetInt("Tutorial") != 1)
-        {
-            gameObject.SetActive(false);
-        }
-        
-        else
-        {
-            Debug.Log("Player has already played before and seen the tutorial.");
-        }
-	
 	}
 	
 	// Update is called once per frame
