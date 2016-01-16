@@ -36,6 +36,8 @@ public class StartOptions : MonoBehaviour {
 		//Get a reference to PlayMusic attached to UI object
 		playMusic = GetComponent<PlayMusic> ();
 		
+		PlayerPrefs.SetInt("Mute", 1);
+		
 	}
 
 	void Start()
