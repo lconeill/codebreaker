@@ -11,9 +11,13 @@ EditorBuildSettings:
     path: Assets/Scenes/startScreen.unity
   - enabled: 1
     path: Assets/Scenes/gameScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/gameScreenWinter.unity
+  - enabled: 1
+    path: Assets/Scenes/startScreenWinter.unity
+  - enabled: 0
+    path: Assets/Scenes/winter_start_screen.unity
+  - enabled: 0
+    path: Assets/Scenes/winter_game_screen.unity
   - enabled: 0
     path: Assets/Scenes/ui_instantiate_test.unity
-  - enabled: 1
-    path: Assets/Scenes/winter_game_screen.unity
-  - enabled: 1
-    path: Assets/Scenes/winter_start_screen.unity

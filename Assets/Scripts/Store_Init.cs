@@ -32,6 +32,23 @@ public class Store_Init : MonoBehaviour
 	public void LoadDelayed()
 	{
 		//Load the selected scene, by scene index number in build settings
-		Application.LoadLevel (1);
+
+        if (PlayerPrefs.GetInt("Theme") == 0)
+        {
+            Application.LoadLevel(1); // Load the classic start screen
+            Debug.Log("Classic theme selected. Level to load: " + PlayerPrefs.GetInt("Theme"));
+        }
+        
+        else if (PlayerPrefs.GetInt("Theme") == ThemeManager.WINTER_THEME)
+        {
+            Application.LoadLevel(4); // Load the winter start screen
+            Debug.Log("Winter theme selected. Level to load: " + PlayerPrefs.GetInt("Theme"));
+        }
+
+        else
+        {
+            Application.LoadLevel(1); // Load the classic start screen
+            Debug.Log("Classic theme selected. Level to load: " + PlayerPrefs.GetInt("Theme"));
+        }
 	}
 }
