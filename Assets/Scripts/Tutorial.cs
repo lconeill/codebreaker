@@ -9,8 +9,20 @@ public class Tutorial : MonoBehaviour {
     public Button previous_button;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+    {
+        // Turn off tutorial if player has played before (it's active by default)
+        if (PlayerPrefs.GetInt("Tutorial") == 1)
+        {
+            gameObject.SetActive(false);
+            Debug.Log("This should turn off!");
+        }
+        
+        // Playing for first time, set pref
+        else
+        {
+            PlayerPrefs.SetInt("Tutorial", 1);
+        }
 	}
 	
 	// Update is called once per frame
