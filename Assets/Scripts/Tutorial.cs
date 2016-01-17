@@ -27,9 +27,8 @@ public class Tutorial : MonoBehaviour {
         if (pause)
         {
             Time.timeScale = 0;
-            pause = false;
             Debug.Log("Pause the game screen while tutorial is on!");
-            Debug.Log(Application.loadedLevelName);
+            //Debug.Log(Application.loadedLevelName);
         }
 	}
 
@@ -41,6 +40,7 @@ public class Tutorial : MonoBehaviour {
 
         if (Application.loadedLevel == ThemeManager.CLASSIC_THEME || Application.loadedLevel == ThemeManager.WINTER_THEME)
         {
+            pause = false;
             Time.timeScale = 1;
         }
 
