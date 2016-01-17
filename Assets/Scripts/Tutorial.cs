@@ -11,24 +11,32 @@ public class Tutorial : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        // Turn off tutorial if player has played before (it's active by default)
-        if (PlayerPrefs.GetInt("Tutorial") == 1)
-        {
-            gameObject.SetActive(false);
-            Debug.Log("This should turn off!");
-        }
-        
-        // Playing for first time, set pref
-        else
-        {
-            PlayerPrefs.SetInt("Tutorial", 1);
-        }
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+
+    // Activates the tutorial for the first time the user plays
+    public void activateTutorial()
+    {
+        // Playing for first time, set pref
+        if (PlayerPrefs.GetInt("Tutorial") == 1)
+        {
+            Debug.Log("Player has already played before. Don't activate tutorial.");
+        }
+
+        else
+        {
+            PlayerPrefs.SetInt("Tutorial", 1);
+            gameObject.SetActive(true);
+            Debug.Log("Player has never played before. Activate tutorial.");            
+        }
+    }
+
 
     // Displays the next tutorial screen while not on the last page
     public void nextLogic()
@@ -51,6 +59,7 @@ public class Tutorial : MonoBehaviour {
             }
         }
     }
+
 
     // Displays previous tutorial screen while not on the first page
     public void previousLogic()

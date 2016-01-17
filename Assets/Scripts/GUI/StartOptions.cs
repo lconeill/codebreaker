@@ -9,6 +9,8 @@ public class StartOptions : MonoBehaviour {
 	public GameObject mute_button_ref;
 	public GameObject unmute_button_ref;
 	public GameObject pause_button_ref;
+    public GameObject tutorial_object;
+    private Tutorial tutorial_script;
 	
 	public int sceneToStart;    										//Index number in build settings of scene to load if changeScenes is true
 	public bool changeScenes;											//If true, load a new scene when Start is pressed, if false, fade out UI and continue in single scene
@@ -42,6 +44,9 @@ public class StartOptions : MonoBehaviour {
 
 	void Start()
 	{
+        // Used to call logic for displaying tutorial page for first time
+        tutorial_script = tutorial_object.GetComponent<Tutorial>();
+
 		if(PlayerPrefs.GetInt("Mute") == 1)
 		{
 			PlayerPrefs.SetInt("Mute", 1);
@@ -123,6 +128,9 @@ public class StartOptions : MonoBehaviour {
 		Application.LoadLevel (sceneToStart);
 		
 		pause_button_ref.SetActive(true);
+
+        // Activate tutorial if first time playing
+        tutorial_script.activateTutorial();
 	}
 
 

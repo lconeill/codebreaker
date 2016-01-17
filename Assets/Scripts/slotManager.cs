@@ -140,7 +140,7 @@ public class slotManager : MonoBehaviour
         if (threeMatch)
         {
 			SlotGameTheme_01.Stop();
-			SlotGameWin_01.Play();
+            //SlotGameWin_01.Play();
 			//MainTheme_01.PlayDelayed(1.5f);
 
             // Let reward manager know the reward is from the slot game and not the power-up button

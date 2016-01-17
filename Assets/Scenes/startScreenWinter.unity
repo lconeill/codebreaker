@@ -462,8 +462,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1429506480}
   m_RootOrder: 0
-  m_AnchorMin: {x: .56080246, y: .533382297}
-  m_AnchorMax: {x: .729162574, y: .714670062}
+  m_AnchorMin: {x: .464677244, y: .577103317}
+  m_AnchorMax: {x: .633037388, y: .758391082}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
@@ -1310,7 +1310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &118802083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2042,7 +2042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &198401526
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4010,7 +4010,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300002, guid: 7a853dbb6e45e034d9ca7d6354b6b572, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4605,7 +4605,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7a853dbb6e45e034d9ca7d6354b6b572, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -11149,8 +11149,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1429506480}
   m_RootOrder: 1
-  m_AnchorMin: {x: .100320973, y: .196797639}
-  m_AnchorMax: {x: .899678886, y: .312930584}
+  m_AnchorMin: {x: .100320973, y: .157713681}
+  m_AnchorMax: {x: .899678886, y: .312268138}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
@@ -11185,8 +11185,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: If a bomb appears in the center, press and hold on the bomb to defuse it
-    or it's GAME OVER!
+  m_Text: If a bomb appears, press and hold anywhere on the screen to defuse it or
+    it's GAME OVER!
 --- !u!222 &1554096816
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12258,7 +12258,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300002, guid: 9f1ab99a10f45fd4088b9f31ffc1aa05, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -12997,7 +12997,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 46238fb1ad7a7a84ba8954c1c860994c, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
@@ -13005,8 +13005,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Negative effects make it harder to make matches by increasing the difficulty
-    temporarily.
+  m_Text: Negative effects make it harder to make matches.
 --- !u!222 &1834404855
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13147,7 +13146,7 @@ MonoBehaviour:
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 100
+    m_MaxSize: 80
     m_Alignment: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -14735,7 +14734,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300004, guid: 7a853dbb6e45e034d9ca7d6354b6b572, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -14969,6 +14968,7 @@ MonoBehaviour:
   mute_button_ref: {fileID: 1265636037}
   unmute_button_ref: {fileID: 221476577}
   pause_button_ref: {fileID: 799693666}
+  tutorial_object: {fileID: 118802082}
   sceneToStart: 2
   changeScenes: 1
   changeMusicOnStart: 0
