@@ -7,18 +7,44 @@ public class Tutorial : MonoBehaviour {
     public GameObject[] tutorial_pages;
     public Button next_button;
     public Button previous_button;
+    private bool pause = false;
+
 
 	// Use this for initialization
 	void Start () 
     {
-
+        if (PlayerPrefs.GetInt("Tutorial") == 0)
+        {
+            PlayerPrefs.SetInt("Tutorial", 1);
+            Debug.Log("Player is viewing tutorial on the start screen for the first time.");
+        }
 	}
 	
+
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+    {
+        if (pause)
+        {
+            Time.timeScale = 0;
+            pause = false;
+            Debug.Log("Pause the game screen while tutorial is on!");
+            Debug.Log(Application.loadedLevelName);
+        }
 	}
 
+
+    // When user clicks the exit button on the tutorial screen
+    public void deactivateTutorial()
+    {
+        gameObject.SetActive(false);
+
+        if (Application.loadedLevel == ThemeManager.CLASSIC_THEME || Application.loadedLevel == ThemeManager.WINTER_THEME)
+        {
+            Time.timeScale = 1;
+        }
+
+    }
 
     // Activates the tutorial for the first time the user plays
     public void activateTutorial()
@@ -33,7 +59,9 @@ public class Tutorial : MonoBehaviour {
         {
             PlayerPrefs.SetInt("Tutorial", 1);
             gameObject.SetActive(true);
-            Debug.Log("Player has never played before. Activate tutorial.");            
+            pause = true;
+            Debug.Log("Player has never played before. Activate tutorial.");
+            
         }
     }
 

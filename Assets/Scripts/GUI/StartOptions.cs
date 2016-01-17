@@ -93,7 +93,10 @@ public class StartOptions : MonoBehaviour {
 		if (changeScenes) 
 		{
 			//Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
-			Invoke ("LoadDelayed", fadeColorAnimationClip.length * .90f);
+            //Invoke("LoadDelayed", fadeColorAnimationClip.length * .90f);
+
+            //Changed from 0.9 to 1 so that it pauses if the tutorial is activated
+            Invoke("LoadDelayed", fadeColorAnimationClip.length * 1.0f);
 			
 			Invoke("HideMuteGUI",fadeColorAnimationClip.length * .90f);
 			
