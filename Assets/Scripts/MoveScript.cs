@@ -15,7 +15,8 @@ public class MoveScript : MonoBehaviour
 	
 	private float horizontal_limit = 2.0f;
 	private float vertical_limit = 2.0f;
-	private float drag_speed = 0.05f;
+    //private float drag_speed = 0.05f; // Original drag
+    private float drag_speed = 0.03f;
 	
 	public bool is_touch_start =false;
 	
