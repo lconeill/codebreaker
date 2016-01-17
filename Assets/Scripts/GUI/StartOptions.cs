@@ -96,7 +96,7 @@ public class StartOptions : MonoBehaviour {
             //Invoke("LoadDelayed", fadeColorAnimationClip.length * .90f);
 
             //Changed from 0.9 to 1 so that it pauses if the tutorial is activated
-            Invoke("LoadDelayed", fadeColorAnimationClip.length * 1.0f);
+            Invoke("LoadDelayed", fadeColorAnimationClip.length * .90f);
 			
 			Invoke("HideMuteGUI",fadeColorAnimationClip.length * .90f);
 			
@@ -133,7 +133,7 @@ public class StartOptions : MonoBehaviour {
 		pause_button_ref.SetActive(true);
 
         // Activate tutorial if first time playing
-        tutorial_script.activateTutorial();
+        //tutorial_script.activateTutorial();
 	}
 
 

@@ -13,10 +13,23 @@ public class Tutorial : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        if (PlayerPrefs.GetInt("Tutorial") == 0)
+        //if (PlayerPrefs.GetInt("Tutorial") == 0)
+        //{
+        //    PlayerPrefs.SetInt("Tutorial", 1);
+        //    Debug.Log("Player is viewing tutorial on the start screen for the first time.");
+        //}
+
+        // Turn off tutorial if player has played before (it's active by default)
+        if (PlayerPrefs.GetInt("Tutorial") == 1)
+        {
+            gameObject.SetActive(false);
+            Debug.Log("This should turn off!");
+        }
+
+        // Playing for first time, set pref
+        else
         {
             PlayerPrefs.SetInt("Tutorial", 1);
-            Debug.Log("Player is viewing tutorial on the start screen for the first time.");
         }
 	}
 	
@@ -24,46 +37,46 @@ public class Tutorial : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (pause)
-        {
-            Time.timeScale = 0;
-            Debug.Log("Pause the game screen while tutorial is on!");
+        //if (pause && (Application.loadedLevel == ThemeManager.CLASSIC_THEME || Application.loadedLevel == ThemeManager.WINTER_THEME))
+        //{
+        //    Time.timeScale = 0;
+        //    Debug.Log("Pause the game screen while tutorial is on!");
             //Debug.Log(Application.loadedLevelName);
-        }
+        //}
 	}
 
 
     // When user clicks the exit button on the tutorial screen
-    public void deactivateTutorial()
-    {
-        gameObject.SetActive(false);
+    //public void deactivateTutorial()
+    //{
+    //    gameObject.SetActive(false);
 
-        if (Application.loadedLevel == ThemeManager.CLASSIC_THEME || Application.loadedLevel == ThemeManager.WINTER_THEME)
-        {
-            pause = false;
-            Time.timeScale = 1;
-        }
+    //    if (Application.loadedLevel == ThemeManager.CLASSIC_THEME || Application.loadedLevel == ThemeManager.WINTER_THEME)
+    //    {
+    //        pause = false;
+    //        Time.timeScale = 1;
+    //    }
 
-    }
+    //}
 
     // Activates the tutorial for the first time the user plays
-    public void activateTutorial()
-    {
-        // Playing for first time, set pref
-        if (PlayerPrefs.GetInt("Tutorial") == 1)
-        {
-            Debug.Log("Player has already played before. Don't activate tutorial.");
-        }
+    //public void activateTutorial()
+    //{
+    //    // Playing for first time, set pref
+    //    if (PlayerPrefs.GetInt("Tutorial") == 1)
+    //    {
+    //        Debug.Log("Player has already played before. Don't activate tutorial.");
+    //    }
 
-        else
-        {
-            PlayerPrefs.SetInt("Tutorial", 1);
-            gameObject.SetActive(true);
-            pause = true;
-            Debug.Log("Player has never played before. Activate tutorial.");
+    //    else
+    //    {
+    //        PlayerPrefs.SetInt("Tutorial", 1);
+    //        gameObject.SetActive(true);
+    //        pause = true;
+    //        Debug.Log("Player has never played before. Activate tutorial.");
             
-        }
-    }
+    //    }
+    //}
 
 
     // Displays the next tutorial screen while not on the last page
