@@ -29,6 +29,9 @@ public class RewardManager : MonoBehaviour {
 	private GameObject double_points_sfx_ref;
 	private AudioSource double_points_sfx;
 
+	private GameObject fire_sfx_ref;
+	private AudioSource fire_sfx;
+    
     public bool from_slot_game = false;
 
 
@@ -66,6 +69,9 @@ public class RewardManager : MonoBehaviour {
 		
 		double_points_sfx_ref = GameObject.Find("DoublePoints_SFX_01");
 		double_points_sfx = double_points_sfx_ref.GetComponent<AudioSource>();
+		
+		fire_sfx_ref = GameObject.Find("Fire_SFX_01");
+		fire_sfx = fire_sfx_ref.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -203,6 +209,7 @@ public class RewardManager : MonoBehaviour {
 
             case "decreaseRotation":
                 Debug.Log("You got all decreaseRotation: Decreasing wheel rotation speed!");
+                fire_sfx.Play();
                 wheelRotation.slowRotationReward();
                 break;
 
