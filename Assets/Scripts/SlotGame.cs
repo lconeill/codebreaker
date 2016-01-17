@@ -62,7 +62,7 @@ public class SlotGame : MonoBehaviour
                                                 new Vector2(-button_width/width_scale, -button_height/height_scale), new Vector2(button_width/width_scale, -button_height/height_scale),
                                              };
 
-        wheel_speed = button_height / 12.5f; // real speed
+        wheel_speed = button_height / 50.5f; // real speed
         //wheel_speed = button_height / 50f; // test speed
     }
 
