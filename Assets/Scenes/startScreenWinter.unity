@@ -6635,7 +6635,6 @@ GameObject:
   - 222: {fileID: 941512497}
   - 114: {fileID: 941512496}
   - 225: {fileID: 941512494}
-  - 114: {fileID: 941512495}
   m_Layer: 5
   m_Name: ThemePanel
   m_TagString: Untagged
@@ -6681,19 +6680,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &941512495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 941512492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84472850c85c6f44f82ba5595fa045d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  store_panel: {fileID: 2093107575}
-  UI_game_object: {fileID: 2076030746}
 --- !u!114 &941512496
 MonoBehaviour:
   m_ObjectHideFlags: 0
