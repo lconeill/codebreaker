@@ -3406,6 +3406,47 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 381064469}
+--- !u!1 &396514478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 396514479}
+  - 114: {fileID: 396514480}
+  m_Layer: 5
+  m_Name: theme_script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &396514479
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396514478}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2076030747}
+  m_RootOrder: 12
+--- !u!114 &396514480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396514478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84472850c85c6f44f82ba5595fa045d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  store_panel: {fileID: 2093107575}
+  UI_game_object: {fileID: 2076030746}
 --- !u!1 &477903872
 GameObject:
   m_ObjectHideFlags: 0
@@ -4249,7 +4290,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 941512495}
+      - m_Target: {fileID: 396514480}
         m_MethodName: selectTheme
         m_Mode: 5
         m_Arguments:
@@ -6638,7 +6679,6 @@ GameObject:
   - 222: {fileID: 941512497}
   - 114: {fileID: 941512496}
   - 225: {fileID: 941512494}
-  - 114: {fileID: 941512495}
   m_Layer: 5
   m_Name: ThemePanel
   m_TagString: Untagged
@@ -6684,19 +6724,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &941512495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 941512492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84472850c85c6f44f82ba5595fa045d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  store_panel: {fileID: 2093107575}
-  UI_game_object: {fileID: 2076030746}
 --- !u!114 &941512496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13268,7 +13295,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 941512495}
+      - m_Target: {fileID: 396514480}
         m_MethodName: selectTheme
         m_Mode: 5
         m_Arguments:
@@ -14489,7 +14516,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 941512495}
+      - m_Target: {fileID: 396514480}
         m_MethodName: selectTheme
         m_Mode: 5
         m_Arguments:
@@ -14846,6 +14873,7 @@ RectTransform:
   - {fileID: 941512493}
   - {fileID: 118802083}
   - {fileID: 1376127687}
+  - {fileID: 396514479}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
