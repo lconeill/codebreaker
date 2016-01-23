@@ -14,6 +14,8 @@ public class MayhemStoreManager : MonoBehaviour {
         // SoomlaStore.Initialize(new MayhemStoreAssets());
         StoreEvents.OnItemPurchased += onItemPurchased;
         StoreEvents.OnGoodBalanceChanged += OnGoodBalanceChanged;
+        StoreEvents.OnRestoreTransactionsStarted += OnRestoreTransactionsStarted;
+        StoreEvents.OnRestoreTransactionsFinished += OnRestoreTransactionsFinished;
         DontDestroyOnLoad(this.gameObject);
 	}
 
@@ -40,6 +42,20 @@ public class MayhemStoreManager : MonoBehaviour {
     public void OnGoodBalanceChanged(VirtualGood vg, int balance, int amountAdded)
     {
         PowerUpManager.changeBalanceText(vg.ItemId);
+    }
+
+
+    // Print message saying transactions are being restored
+    public void OnRestoreTransactionsStarted()
+    {
+        Debug.Log("The transactions are being restored.");
+    }
+
+
+    // Print message saying transactions are restored
+    public void OnRestoreTransactionsFinished(bool success)
+    {
+        Debug.Log("The transactions are now restored.");
     }
 
 
@@ -144,6 +160,14 @@ public class MayhemStoreManager : MonoBehaviour {
     {
         StoreInventory.BuyItem(MayhemStoreAssets.NO_ADS_LIFETIME_PRODUCT_ID);
     }
+
+
+    public void restorePurchases()
+    {
+        Debug.Log("Restoring previous purchases!");
+        SoomlaStore.RestoreTransactions();
+    }
 }
 //Soomla secret: X5rl73jZ8xD86GEabD7Lh3Dm4LBeQG7v
 //Keystore pwd: t@R3p3D&uO
+//Twitter username: redtapestudios pwd: Apestudios11
