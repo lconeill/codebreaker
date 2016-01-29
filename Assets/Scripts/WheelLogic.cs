@@ -315,47 +315,55 @@ public class WheelLogic : MonoBehaviour
 			if(score_logic.match_streak_counter == 10)
 			{
 				StartCoroutine(ShowStreakGreat());
-                score_logic.the_score = score_logic.the_score + (100 * score_multiplier);
+                //score_logic.the_score = score_logic.the_score + (100 * score_multiplier);
+                ScoreLogic.the_score = ScoreLogic.the_score + (100 * score_multiplier);
 			}
 			
 			if(score_logic.match_streak_counter == 20)
 			{
 				StartCoroutine(ShowStreakAwesome());
-                score_logic.the_score = score_logic.the_score + (200 * score_multiplier);
+                //score_logic.the_score = score_logic.the_score + (200 * score_multiplier);
+                ScoreLogic.the_score = ScoreLogic.the_score + (200 * score_multiplier);
 			}
 						
 			if(score_logic.match_streak_counter == 30)
 			{
 				StartCoroutine(ShowStreakAmazing());
-                score_logic.the_score = score_logic.the_score + (500 * score_multiplier);
+                //score_logic.the_score = score_logic.the_score + (500 * score_multiplier);
+                ScoreLogic.the_score = ScoreLogic.the_score + (500 * score_multiplier);
 			}
 			
 			if(score_logic.match_streak_counter == 40)
 			{
 				StartCoroutine(ShowStreakUnstoppable());
-                score_logic.the_score = score_logic.the_score + (1000 * score_multiplier);
+                //score_logic.the_score = score_logic.the_score + (1000 * score_multiplier);
+                ScoreLogic.the_score = ScoreLogic.the_score + (1000 * score_multiplier);
 			}
 			
 			if(score_logic.match_streak_counter == 50)
 			{
 				StartCoroutine(ShowStreakMatchFiend());
-                score_logic.the_score = score_logic.the_score + (1500 * score_multiplier);
+                //score_logic.the_score = score_logic.the_score + (1500 * score_multiplier);
+                ScoreLogic.the_score = ScoreLogic.the_score + (1500 * score_multiplier);
 			}
 			
 			if(score_logic.match_streak_counter == 60)
 			{
 				StartCoroutine(ShowStreakMayhem());
-                score_logic.the_score = score_logic.the_score + (3000 * score_multiplier);
+                //score_logic.the_score = score_logic.the_score + (3000 * score_multiplier);
+                ScoreLogic.the_score = ScoreLogic.the_score + (3000 * score_multiplier);
 			}
 			
 			if(score_logic.match_streak_counter > 60)
 			{
-				score_logic.the_score = score_logic.the_score + (200 * score_multiplier);
+                //score_logic.the_score = score_logic.the_score + (200 * score_multiplier);
+                ScoreLogic.the_score = ScoreLogic.the_score + (200 * score_multiplier);
 			}
 			
 			else
 			{
-				score_logic.the_score = score_logic.the_score + (50 * score_multiplier);
+                //score_logic.the_score = score_logic.the_score + (50 * score_multiplier);
+                ScoreLogic.the_score = ScoreLogic.the_score + (50 * score_multiplier);
 			}
 		}
 		

@@ -56,13 +56,15 @@ public class ShowMedals : MonoBehaviour
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
 
-		if (score_logic.the_score < 8000)
+        //if (score_logic.the_score < 8000)
+        if (ScoreLogic.the_score < 8000)
 		{
 			score_to_next_medal.SetActive(true);
 			score_to_next_medal.GetComponent<Text>().text = "8000 points for Bronze";
 		}
 
-        if (score_logic.the_score >= 8000 && score_logic.the_score < 15000)
+        //if (score_logic.the_score >= 8000 && score_logic.the_score < 15000)
+        if (ScoreLogic.the_score >= 8000 && ScoreLogic.the_score < 15000)
 		{
             //medal_ribbon.SetActive(true);
 			default_medal_ref.SetActive(false);
@@ -71,7 +73,8 @@ public class ShowMedals : MonoBehaviour
 			score_to_next_medal.GetComponent<Text>().text = "15000 points for Silver";
 		}
 
-        if (score_logic.the_score >= 15000 && score_logic.the_score < 25000)
+        //if (score_logic.the_score >= 15000 && score_logic.the_score < 25000)
+        if (ScoreLogic.the_score >= 15000 && ScoreLogic.the_score < 25000)
 		{
             //medal_ribbon.SetActive(true);
 			default_medal_ref.SetActive(false);
@@ -80,7 +83,8 @@ public class ShowMedals : MonoBehaviour
 			score_to_next_medal.GetComponent<Text>().text = "25000 points for Gold";
 		}
 
-        if (score_logic.the_score >= 25000)
+        //if (score_logic.the_score >= 25000)
+        if (ScoreLogic.the_score >= 25000)
 		{
             //medal_ribbon.SetActive(true);
 			default_medal_ref.SetActive(false);

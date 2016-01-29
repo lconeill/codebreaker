@@ -97,10 +97,12 @@ public class LifeSlider : MonoBehaviour
             	// screen with a restart button. 
 
             	Time.timeScale = 0;
-				
-				if(score_logic.the_score > PlayerPrefs.GetInt("High Score"))
+
+                //if (score_logic.the_score > PlayerPrefs.GetInt("High Score"))
+                if (ScoreLogic.the_score > PlayerPrefs.GetInt("High Score"))
 				{
-					PlayerPrefs.SetInt("High Score", score_logic.the_score);
+                    //PlayerPrefs.SetInt("High Score", score_logic.the_score);
+                    PlayerPrefs.SetInt("High Score", ScoreLogic.the_score);
 					
 					Debug.Log(PlayerPrefs.GetInt("High Score"));
             	}
