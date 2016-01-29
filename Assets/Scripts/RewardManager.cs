@@ -34,6 +34,8 @@ public class RewardManager : MonoBehaviour {
     
     public bool from_slot_game = false;
 
+    private bool free_powerup = false;          // If true, user gets 5 power-ups
+
 
 	// Use this for initialization
 	void Start () 
@@ -72,6 +74,14 @@ public class RewardManager : MonoBehaviour {
 		
 		fire_sfx_ref = GameObject.Find("Fire_SFX_01");
 		fire_sfx = fire_sfx_ref.GetComponent<AudioSource>();
+
+        // Determine if user is playing for the first time or not
+        if (PlayerPrefs.GetInt("FirstTime") == 0)
+        {
+            PlayerPrefs.SetInt("FirstTime", 1);
+            free_powerup = true;
+            giveFreePowerup();
+        }
 	}
 	
 	// Update is called once per frame
@@ -79,6 +89,31 @@ public class RewardManager : MonoBehaviour {
     {
 
 	}
+
+
+    // Give the user 5 free power-up if first time playing
+    private void giveFreePowerup()
+    {
+        string freeze_itemID = MayhemStoreAssets.SLOW_TIMER_ITEM_ID;
+        string reduce_itemID = MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID;
+        string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
+        string slider_itemID = MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID;
+
+        if (free_powerup)
+        {
+            StoreInventory.GiveItem(freeze_itemID, 5);
+            StoreInventory.GiveItem(reduce_itemID, 5);
+            StoreInventory.GiveItem(double_itemID, 5);
+            StoreInventory.GiveItem(slider_itemID, 5);
+            free_powerup = false;
+        }
+
+        // Update the inventory text for the power-ups
+        PowerUpManager.changeBalanceText(freeze_itemID);
+        PowerUpManager.changeBalanceText(reduce_itemID);
+        PowerUpManager.changeBalanceText(double_itemID);
+        PowerUpManager.changeBalanceText(slider_itemID);
+    }
 
 
     // TODO: add powerup manager change balance call to decrease rotation rewards
