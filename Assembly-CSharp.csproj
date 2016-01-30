@@ -250,6 +250,7 @@
      <Compile Include="Assets\Scripts\SpawnTile.cs" />
      <Compile Include="Assets\Scripts\StoreCurrencyText.cs" />
      <Compile Include="Assets\Scripts\Store_Init.cs" />
+     <Compile Include="Assets\Scripts\Test.cs" />
      <Compile Include="Assets\Scripts\ThemeManager.cs" />
      <Compile Include="Assets\Scripts\TouchInput.cs" />
      <Compile Include="Assets\Scripts\Tutorial.cs" />
@@ -267,6 +268,7 @@
      <None Include="Assets\Plugins\WP8\Soomla\IAPMock.xml" />
      <None Include="Assets\Fonts\LuckiestGuy\LICENSE.txt" />
      <None Include="Assets\GooglePlayGames\Editor\template-Constants.txt" />
+     <None Include="Assets\Plugins\Android\AndroidManifest 1.xml" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -275,6 +277,9 @@
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
