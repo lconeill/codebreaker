@@ -109,10 +109,7 @@ public class RewardManager : MonoBehaviour {
         }
 
         // Update the inventory text for the power-ups
-        PowerUpManager.changeBalanceText(freeze_itemID);
-        PowerUpManager.changeBalanceText(reduce_itemID);
-        PowerUpManager.changeBalanceText(double_itemID);
-        PowerUpManager.changeBalanceText(slider_itemID);
+        PowerUpManager.setInventoryText(5, 5, 5, 5);
     }
 
 

@@ -56,6 +56,15 @@ public class PowerUpManager : MonoBehaviour {
 	}
 
 
+    // Set the power-up inventory text manually (SOOMLA onBalanceChanged doesn't work properly)
+    public static void setInventoryText(int freezeBalance, int increaseBalance, int doubleBalance, int reduceBalance)
+    {
+        freeze_timer_text.text = freezeBalance.ToString();
+        increase_slider_text.text = increaseBalance.ToString();
+        double_point_text.text = doubleBalance.ToString();
+        reduce_shape_text.text = reduceBalance.ToString();
+    }
+
     // Updates the inventory balance text on the gamescreen for each power up
     public static void changeBalanceText(string itemID)
     {
