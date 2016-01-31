@@ -9,18 +9,23 @@ public class GiftizController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-	
+		#if UNITY_IPHONE
+		
+		gameObject.gameObject.SetActive(false);
+		
+		#endif
+		
 	}
 	
 	// Update is called once per frame
 	void Update () 
-	{
+	{	
 		ChangeGiftizButtonTexture();
 	}
 	
 	public void ChangeGiftizButtonTexture()
 	{
-		SpriteRenderer button = gameObject.GetComponent<Button>();
+		Image button = gameObject.GetComponent<Image>();
 		
 		switch(GiftizBinding.giftizButtonState)
 		{
@@ -29,6 +34,11 @@ public class GiftizController : MonoBehaviour
 			case GiftizBinding.GiftizButtonState.Badge : button.sprite = Gifted; break;
 			case GiftizBinding.GiftizButtonState.Warning : button.sprite = Warning; break;
 		}
+	}
+	
+	public void GiftizButtonClicked()
+	{
+		GiftizBinding.buttonClicked();
 	}
 	
 }

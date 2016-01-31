@@ -17699,8 +17699,9 @@ GameObject:
   - 222: {fileID: 2079112889}
   - 114: {fileID: 2079112888}
   - 114: {fileID: 2079112887}
+  - 114: {fileID: 2079112890}
   m_Layer: 5
-  m_Name: Button
+  m_Name: GiftizButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17719,10 +17720,10 @@ RectTransform:
   - {fileID: 1249661415}
   m_Father: {fileID: 2076030747}
   m_RootOrder: 17
-  m_AnchorMin: {x: .0321561322, y: .0198677368}
-  m_AnchorMax: {x: .175526634, y: .200198337}
-  m_AnchoredPosition: {x: 2.38418579e-07, y: 0}
-  m_SizeDelta: {x: 4.76837158e-07, y: 0}
+  m_AnchorMin: {x: .0320941731, y: .0199503824}
+  m_AnchorMax: {x: .154522911, y: .18623139}
+  m_AnchoredPosition: {x: 4.76837158e-07, y: 0}
+  m_SizeDelta: {x: 9.53674316e-07, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2079112887
 MonoBehaviour:
@@ -17762,7 +17763,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2079112888}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2079112890}
+        m_MethodName: GiftizButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2079112888
@@ -17798,6 +17810,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2079112885}
+--- !u!114 &2079112890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2079112885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21235cd6bbaa7204fbfa31746d22af75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Naked: {fileID: 21300000, guid: 7e09641d7429b4b1e957f9a99584f25b, type: 3}
+  Normal: {fileID: 21300000, guid: 7e09641d7429b4b1e957f9a99584f25b, type: 3}
+  Gifted: {fileID: 21300000, guid: de93a5a9208064362816d3cf79ae48d1, type: 3}
+  Warning: {fileID: 21300000, guid: 9c3bace2fd320477e89327fed73137e1, type: 3}
 --- !u!1 &2093107575
 GameObject:
   m_ObjectHideFlags: 0
