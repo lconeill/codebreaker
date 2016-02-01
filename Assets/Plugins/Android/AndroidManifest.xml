@@ -3,7 +3,7 @@
   <uses-permission android:name="com.android.vending.BILLING" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission  android:name="android.permission.ACCESS_WIFI_STATE"  /> 
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
   <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" android:anyDensity="true" />
   <application android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:icon="@drawable/app_icon" android:label="@string/app_name" android:debuggable="true" android:name="com.soomla.SoomlaApp">
     <activity android:name="com.unity3d.player.UnityPlayerActivity" android:label="@string/app_name">
@@ -15,21 +15,9 @@
     </activity>
     <activity android:name="com.soomla.store.billing.google.GooglePlayIabService$IabActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
     <meta-data android:name="billing.service" android:value="google.GooglePlayIabService" />
-    <activity android:name="com.facebook.unity.FBUnityLoginActivity" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-    <activity android:name="com.facebook.unity.FBUnityDialogsActivity" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-    <activity android:name="com.facebook.LoginActivity" android:configChanges="keyboardHidden|orientation" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-    <activity android:name="com.facebook.unity.FBUnityAppLinkActivity" android:exported="true" />
-    <activity android:name="com.facebook.unity.FBUnityDeepLinkingActivity" android:exported="true" />
-    <activity android:name="com.facebook.unity.FBUnityGameRequestActivity" />
-    <activity android:name="com.facebook.unity.FBUnityCreateGameGroupActivity" />
-    <activity android:name="com.facebook.unity.FBUnityJoinGameGroupActivity" />
-    <activity android:name="com.facebook.unity.AppInviteDialogActivity" />
-    <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="fb929788493776530" />
-    <provider android:name="com.facebook.FacebookContentProvider" android:authorities="com.facebook.app.FacebookContentProvider929788493776530" android:exported="true" />
-    <activity android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:label="@string/app_name" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     <activity android:name="com.purplebrain.adbuddiz.sdk.AdBuddizActivity" android:theme="@android:style/Theme.Translucent" />
-	<activity  android:name="com.purplebrain.giftiz.sdk.GiftizWebViewActivity"  /> 
-	<meta-data  android:name="GIFTIZ_PARTNER_KEY"  android:value="TEST_PARTNER_KEY"  />   
-	<meta-data  android:name="SHOW_GIFTIZ_LOG"  android:value="true"  /> 
+	<activity android:name="com.purplebrain.giftiz.sdk.GiftizWebViewActivity" /> 
+	<meta-data android:name="GIFTIZ_PARTNER_KEY" android:value="TEST_PARTNER_KEY" />   
+	<meta-data android:name="SHOW_GIFTIZ_LOG" android:value="true" /> 
   </application>
 </manifest>
