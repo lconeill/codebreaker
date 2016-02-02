@@ -84,6 +84,7 @@ public class slotManager : MonoBehaviour
 			}
 			
             inMiniGame = true;
+            Tutorial.tutorialSelector("slot"); // Show slot interactive tutorial
 
             GameObject temp = GameObject.Find("slotGamePanel");
             slotPanelAnimation = temp.GetComponent<Animator>();

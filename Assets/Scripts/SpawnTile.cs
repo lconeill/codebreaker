@@ -158,8 +158,14 @@ public class SpawnTile : MonoBehaviour
 				if(clonedTiles[n].tag == "bomb")
 				{
 					clonedTiles[n].transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+                    Tutorial.tutorialSelector("bomb"); // Show bomb interactive tutorial
 				}
-				
+
+                if (clonedTiles[n].tag == "Source_05")
+                {
+                    Tutorial.tutorialSelector("nomatch"); // Show no match interactive tutorial
+                }
+
 				move_script = clonedTiles[n].GetComponent<MoveScript>();
 				move_script.enabled = true;
                 Destroy(clonedTiles[n + 1]);
