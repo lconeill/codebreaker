@@ -94,7 +94,7 @@ public class LifeSlider : MonoBehaviour
             }
 
             // Show interactive tutorial to increase life slider value
-            if (timeKeeper > 15 && tutorial_exit)
+            if (timeKeeper > 10 && tutorial_exit)
             {
                 Tutorial.tutorialSelector("life");
                 tutorial_exit = false;

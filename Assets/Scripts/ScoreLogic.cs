@@ -35,7 +35,7 @@ public class ScoreLogic : MonoBehaviour
 		
 		previoius_score = the_score;
 
-        if (the_score >= 5000 && tutorial_exit)
+        if (the_score >= 4000 && tutorial_exit)
         {
             Tutorial.tutorialSelector("double");
             tutorial_exit = false;

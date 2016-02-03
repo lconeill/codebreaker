@@ -84,7 +84,7 @@ public class slotManager : MonoBehaviour
 			}
 			
             inMiniGame = true;
-            Tutorial.tutorialSelector("slot"); // Show slot interactive tutorial
+            Invoke("callSlotTutorial", 1.3f); // Make call to show slot tutorial after waiting for scale animation to finish
 
             GameObject temp = GameObject.Find("slotGamePanel");
             slotPanelAnimation = temp.GetComponent<Animator>();
@@ -104,6 +104,14 @@ public class slotManager : MonoBehaviour
             slotReels[i].gameObject.SetActive(activate);
         }
     }
+
+
+    // Show slot interactive tutorial
+    private void callSlotTutorial()
+    {
+        Tutorial.tutorialSelector("slot"); 
+    }
+
 
     // Gets the results from SlotGame objects 
     public void getResults(string individualResult)
