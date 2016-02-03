@@ -8,16 +8,26 @@ public class Tutorial : MonoBehaviour {
     public Button next_button;
     public Button previous_button;
     //private bool interactive = false;
-    public static Image[] interactive_tutorial_images = new Image[8];   // Used to hold the interactive tutorial images
+    public static GameObject[] interactive_tutorial_images = new GameObject[8];   // Used to hold the interactive tutorial images
+    public GameObject[] tutorial_images = new GameObject[8]; // Static variables don't appear in the inspector
+    private static bool pause = false;
 
 
 	// Use this for initialization
 	void Start () 
     {
+        
+
         // Don't show the interactive tutorials
-        if (PlayerPrefs.GetString("Tutorial") == "0")
+        if (!PlayerPrefs.HasKey("Tutorial"))
         {
             PlayerPrefs.SetString("Tutorial", "1");
+        }
+
+        // Transfer images from non-static variable to static variable
+        for (int i = 0; i < tutorial_images.Length; i++)
+        {
+            interactive_tutorial_images[i] = tutorial_images[i];
         }
 	}
 	
@@ -25,16 +35,20 @@ public class Tutorial : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-
+        if (pause)
+        {
+            Time.timeScale = 0;
+        }
 	}
 
 
     // Displays the first interactive tutorial panel if it's the first time the user is playing
     void OnLevelWasLoaded(int level)
     {
-        if (level == 1 && PlayerPrefs.GetString("Tutorial") == "1")
+        if (level == 2 && PlayerPrefs.GetString("Tutorial") == "1")
         {
             interactive_tutorial_images[0].gameObject.SetActive(true);
+            pause = true;
         }
     }
 
@@ -49,7 +63,8 @@ public class Tutorial : MonoBehaviour {
                 if (PlayerPrefs.GetString("Tutorial").IndexOf("2") == -1)
                 {
                     Debug.Log("Display the bomb interactive tutorial.");
-                    interactive_tutorial_images[1].gameObject.SetActive(true);
+                    interactive_tutorial_images[1].SetActive(true);
+                    pause = true;
                     PlayerPrefs.SetString("Tutorial", "12");
                 }
 
@@ -60,7 +75,8 @@ public class Tutorial : MonoBehaviour {
                 if (PlayerPrefs.GetString("Tutorial").IndexOf("3") == -1)
                 {
                     Debug.Log("Display the nomatch interactive tutorial.");
-                    interactive_tutorial_images[2].gameObject.SetActive(true);
+                    interactive_tutorial_images[2].SetActive(true);
+                    pause = true;
                     PlayerPrefs.SetString("Tutorial", "123");
                 }
 
@@ -71,7 +87,8 @@ public class Tutorial : MonoBehaviour {
                 if (PlayerPrefs.GetString("Tutorial").IndexOf("4") == -1)
                 {
                     Debug.Log("Display the slot interactive tutorial.");
-                    interactive_tutorial_images[3].gameObject.SetActive(true);
+                    interactive_tutorial_images[3].SetActive(true);
+                    pause = true;
                     PlayerPrefs.SetString("Tutorial", "1234");
                 }
 
@@ -82,7 +99,8 @@ public class Tutorial : MonoBehaviour {
                 if (PlayerPrefs.GetString("Tutorial").IndexOf("5") == -1)
                 {
                     Debug.Log("Display the freeze interactive tutorial.");
-                    interactive_tutorial_images[4].gameObject.SetActive(true);
+                    interactive_tutorial_images[4].SetActive(true);
+                    pause = true;
                     PlayerPrefs.SetString("Tutorial", "12345");
                 }
 
@@ -93,7 +111,8 @@ public class Tutorial : MonoBehaviour {
                 if (PlayerPrefs.GetString("Tutorial").IndexOf("6") == -1)
                 {
                     Debug.Log("Display the life interactive tutorial.");
-                    interactive_tutorial_images[5].gameObject.SetActive(true);
+                    interactive_tutorial_images[5].SetActive(true);
+                    pause = true;
                     PlayerPrefs.SetString("Tutorial", "123456");
                 }
 
@@ -104,7 +123,8 @@ public class Tutorial : MonoBehaviour {
                 if (PlayerPrefs.GetString("Tutorial").IndexOf("7") == -1)
                 {
                     Debug.Log("Display the reduce interactive tutorial.");
-                    interactive_tutorial_images[6].gameObject.SetActive(true);
+                    interactive_tutorial_images[6].SetActive(true);
+                    pause = true;
                     PlayerPrefs.SetString("Tutorial", "1234567");
                 }
 
@@ -115,7 +135,8 @@ public class Tutorial : MonoBehaviour {
                 if (PlayerPrefs.GetString("Tutorial").IndexOf("8") == -1)
                 {
                     Debug.Log("Display the double interactive tutorial.");
-                    interactive_tutorial_images[7].gameObject.SetActive(true);
+                    interactive_tutorial_images[7].SetActive(true);
+                    pause = true;
                     PlayerPrefs.SetString("Tutorial", "12345678");
                 }
 

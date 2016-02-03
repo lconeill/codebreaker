@@ -1629,7 +1629,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 118802083}
-  - 114: {fileID: 118802084}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -1658,33 +1657,12 @@ RectTransform:
   - {fileID: 920391370}
   - {fileID: 2136246720}
   m_Father: {fileID: 2076030747}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_AnchorMin: {x: .457301438, y: .431694001}
   m_AnchorMax: {x: .542698562, y: .568306029}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &118802084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 118802082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec478c66f0ada4b4a93e60fb2435c911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorial_pages:
-  - {fileID: 1072156489}
-  - {fileID: 18214738}
-  - {fileID: 1429506479}
-  - {fileID: 1388290906}
-  - {fileID: 1622798799}
-  - {fileID: 1437000753}
-  - {fileID: 1519679139}
-  next_button: {fileID: 920391371}
-  previous_button: {fileID: 2136246721}
 --- !u!1 &136128605
 GameObject:
   m_ObjectHideFlags: 0
@@ -3881,7 +3859,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076030747}
-  m_RootOrder: 16
+  m_RootOrder: 17
 --- !u!114 &396514480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4191,7 +4169,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076030747}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_AnchorMin: {x: .622057021, y: -8.27253371e-06}
   m_AnchorMax: {x: 1, y: .504900813}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -5388,7 +5366,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076030747}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_AnchorMin: {x: -3.10091878e-06, y: -4.18670925e-06}
   m_AnchorMax: {x: 1, y: 1.0000124}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -7937,7 +7915,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 118802084}
+      - m_Target: {fileID: 0}
         m_MethodName: nextLogic
         m_Mode: 1
         m_Arguments:
@@ -11606,7 +11584,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076030747}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_AnchorMin: {x: 1.18148868e-08, y: 4.87770961e-08}
   m_AnchorMax: {x: 1.00672638, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -16135,7 +16113,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076030747}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_AnchorMin: {x: .654745638, y: -8.16499887e-05}
   m_AnchorMax: {x: .999974847, y: .460098535}
   m_AnchoredPosition: {x: 0, y: -9.53674316e-07}
@@ -17649,6 +17627,7 @@ RectTransform:
   - {fileID: 221476578}
   - {fileID: 2093107576}
   - {fileID: 941512493}
+  - {fileID: 2106690026}
   - {fileID: 118802083}
   - {fileID: 1376127687}
   - {fileID: 396514479}
@@ -17936,7 +17915,7 @@ RectTransform:
   m_Children:
   - {fileID: 1249661415}
   m_Father: {fileID: 2076030747}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_AnchorMin: {x: .0320941731, y: .0199503824}
   m_AnchorMax: {x: .154522911, y: .18623139}
   m_AnchoredPosition: {x: 4.76837158e-07, y: 0}
@@ -18255,6 +18234,69 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2099336278}
+--- !u!1 &2106690025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 2106690026}
+  - 114: {fileID: 2106690027}
+  m_Layer: 5
+  m_Name: tutorial_script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2106690026
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2106690025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2076030747}
+  m_RootOrder: 14
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &2106690027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2106690025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec478c66f0ada4b4a93e60fb2435c911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorial_pages:
+  - {fileID: 1072156489}
+  - {fileID: 18214738}
+  - {fileID: 1429506479}
+  - {fileID: 1388290906}
+  - {fileID: 1622798799}
+  - {fileID: 1437000753}
+  - {fileID: 1519679139}
+  next_button: {fileID: 920391371}
+  previous_button: {fileID: 2136246721}
+  tutorial_images:
+  - {fileID: 1901311727}
+  - {fileID: 2145739291}
+  - {fileID: 511398568}
+  - {fileID: 2124007259}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2113698379
 GameObject:
   m_ObjectHideFlags: 0
@@ -18380,7 +18422,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076030747}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_AnchorMin: {x: .622057021, y: -8.27253371e-06}
   m_AnchorMax: {x: 1, y: .504900813}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -18494,7 +18536,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 118802084}
+      - m_Target: {fileID: 0}
         m_MethodName: previousLogic
         m_Mode: 1
         m_Arguments:
@@ -18568,7 +18610,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076030747}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_AnchorMin: {x: .631970286, y: -8.27253371e-06}
   m_AnchorMax: {x: 1, y: .491644651}
   m_AnchoredPosition: {x: 0, y: 0}
