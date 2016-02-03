@@ -17,14 +17,6 @@ public class Tutorial : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        
-
-        // Don't show the interactive tutorials
-        if (!PlayerPrefs.HasKey("Tutorial"))
-        {
-            PlayerPrefs.SetString("Tutorial", "1");
-        }
-
         // Transfer images from non-static variable to static variable
         for (int i = 0; i < tutorial_images.Length; i++)
         {
@@ -46,9 +38,10 @@ public class Tutorial : MonoBehaviour {
     // Displays the first interactive tutorial panel if it's the first time the user is playing
     void OnLevelWasLoaded(int level)
     {
-        if (level == 2 && PlayerPrefs.GetString("Tutorial") == "1")
+        if (!PlayerPrefs.HasKey("Tutorial") && level == 2)
         {
             Invoke("showSwipeTutorial", 1.2f); // Need to delay so that game doesn't pause on white transition screen
+            PlayerPrefs.SetString("Tutorial", "1");
         }
     }
 
@@ -58,6 +51,7 @@ public class Tutorial : MonoBehaviour {
     {
         interactive_tutorial_images[0].gameObject.SetActive(true);
         pause = true;
+        Debug.Log("Stuffs is should be of the happening.");
     }
 
 
