@@ -12,6 +12,7 @@ public class Tutorial : MonoBehaviour {
     public GameObject[] tutorial_images = new GameObject[8]; // Static variables don't appear in the inspector
     private static bool pause = false;
 
+    // DONE: first panel, bomb, no match, slot, reduce, life 
 
 	// Use this for initialization
 	void Start () 
@@ -47,9 +48,16 @@ public class Tutorial : MonoBehaviour {
     {
         if (level == 2 && PlayerPrefs.GetString("Tutorial") == "1")
         {
-            interactive_tutorial_images[0].gameObject.SetActive(true);
-            pause = true;
+            Invoke("showSwipeTutorial", 1.2f); // Need to delay so that game doesn't pause on white transition screen
         }
+    }
+
+
+    // Shows the first panel of the interactive tutorial
+    private void showSwipeTutorial()
+    {
+        interactive_tutorial_images[0].gameObject.SetActive(true);
+        pause = true;
     }
 
 

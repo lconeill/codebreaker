@@ -124,12 +124,14 @@ public class CircularTimer : MonoBehaviour
             {
                 fillSpeed = fillSpeed_50;
                 count++;
+
             }
 
             else if (wheelRotation.match_count == 60 && count == 3)
             {
                 fillSpeed = fillSpeed_60;
                 count++;
+                Tutorial.tutorialSelector("freeze"); // Display the freeze tutorial if it hasn't been activated before
             }
 
             if (increaseFillTime)

@@ -14,6 +14,7 @@ public class ScoreLogic : MonoBehaviour
 	private int previoius_score = 0;
 	
 	private Text gui_text;
+    private bool tutorial_exit = true; // Used to exit the check to display tutorial, so it's not constantly querying Tutorial script
 
 	// Use this for initialization
 	void Start () 
@@ -33,5 +34,11 @@ public class ScoreLogic : MonoBehaviour
 		}
 		
 		previoius_score = the_score;
+
+        if (the_score >= 5000 && tutorial_exit)
+        {
+            Tutorial.tutorialSelector("double");
+            tutorial_exit = false;
+        }
 	}
 }

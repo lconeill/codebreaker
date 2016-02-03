@@ -193,6 +193,12 @@ public class WheelLogic : MonoBehaviour
             spawnTile.extendSpawnRange(4, 13);
         }
 
+        // Show interactive tutorial to reduce shapes if never shown before
+        if (wheel_rotation_script.match_count == 35)
+        {
+            Tutorial.tutorialSelector("reduce");
+        }
+
         // Controls the score multiplier effect time
         if (multiplier_flag && !slot_manager.inMiniGame)
         {
