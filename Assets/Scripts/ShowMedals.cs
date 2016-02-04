@@ -61,17 +61,20 @@ public class ShowMedals : MonoBehaviour
 		{
 			score_to_next_medal.SetActive(true);
 			score_to_next_medal.GetComponent<Text>().text = "8000 points for Bronze";
+			
+			if(ScoreLogic.the_score >= 1500)
+			{
+				#if UNITY_ANDROID
+				
+				GiftizBinding.missionComplete();
+				
+				#endif
+			}
 		}
 
         //if (score_logic.the_score >= 8000 && score_logic.the_score < 15000)
         if (ScoreLogic.the_score >= 8000 && ScoreLogic.the_score < 15000)
 		{
-            #if UNITY_ANDROID
-            
-			GiftizBinding.missionComplete();
-            
-			#endif
-			
             //medal_ribbon.SetActive(true);
 			default_medal_ref.SetActive(false);
 			bronze_medal_ref.SetActive(true);
