@@ -28,4 +28,4 @@ MonoBehaviour:
     - name: AndroidTestPurchases
       value: True
     - name: DebugMessages
-      value: True
+      value: False

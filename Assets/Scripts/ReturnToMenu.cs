@@ -45,7 +45,13 @@ public class ReturnToMenu : MonoBehaviour
             Application.LoadLevel(4);
         }
 		
-		if(PlayerPrefs.GetInt("Player Deaths") == 1)
+		if(PlayerPrefs.GetInt("Player Deaths") == 4)
+		{
+			PlayerPrefs.SetInt("Player Deaths", 0);
+			AdBuddizBinding.ShowAd();
+		}
+		
+		if(PlayerPrefs.GetInt("Player Deaths") == 6)
 		{
 			PlayerPrefs.SetInt("Player Deaths", 0);
 			ShowAd();

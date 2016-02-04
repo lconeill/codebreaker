@@ -98,7 +98,7 @@ public class NonSwipeActions : MonoBehaviour {
             tick_sfx_count++;
         }
 
-        if (slot_manager.inMiniGame == false && !ShowPanels.in_menu)
+        if (slot_manager.inMiniGame == false && !ShowPanels.in_menu && Tutorial.interactiveOn == false)
 		{
 	        if (Input.touchCount > 0)
 	        {

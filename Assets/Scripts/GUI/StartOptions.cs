@@ -9,6 +9,8 @@ public class StartOptions : MonoBehaviour {
 	public GameObject mute_button_ref;
 	public GameObject unmute_button_ref;
 	public GameObject pause_button_ref;
+    public GameObject tutorial_object;
+    private Tutorial tutorial_script;
 	
 	public int sceneToStart;    										//Index number in build settings of scene to load if changeScenes is true
 	public bool changeScenes;											//If true, load a new scene when Start is pressed, if false, fade out UI and continue in single scene
@@ -36,10 +38,15 @@ public class StartOptions : MonoBehaviour {
 		//Get a reference to PlayMusic attached to UI object
 		playMusic = GetComponent<PlayMusic> ();
 		
+		PlayerPrefs.SetInt("Mute", 1);
+		
 	}
 
 	void Start()
 	{
+        // Used to call logic for displaying tutorial page for first time
+        tutorial_script = tutorial_object.GetComponent<Tutorial>();
+
 		if(PlayerPrefs.GetInt("Mute") == 1)
 		{
 			PlayerPrefs.SetInt("Mute", 1);
@@ -86,11 +93,14 @@ public class StartOptions : MonoBehaviour {
 		if (changeScenes) 
 		{
 			//Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
-			Invoke ("LoadDelayed", fadeColorAnimationClip.length * .99f);
+            //Invoke("LoadDelayed", fadeColorAnimationClip.length * .90f);
+
+            //Changed from 0.9 to 1 so that it pauses if the tutorial is activated
+            Invoke("LoadDelayed", fadeColorAnimationClip.length * .90f);
 			
-			Invoke("HideMuteGUI",fadeColorAnimationClip.length * .99f);
+			Invoke("HideMuteGUI",fadeColorAnimationClip.length * .90f);
 			
-			Invoke("ShowMuteGUI",fadeColorAnimationClip.length * .99f);
+			Invoke("ShowMuteGUI",fadeColorAnimationClip.length * .90f);
 						
 			playMusic.FadeDown(fadeColorAnimationClip.length);
 			
@@ -121,6 +131,9 @@ public class StartOptions : MonoBehaviour {
 		Application.LoadLevel (sceneToStart);
 		
 		pause_button_ref.SetActive(true);
+
+        // Activate tutorial if first time playing
+        //tutorial_script.activateTutorial();
 	}
 
 

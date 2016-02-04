@@ -84,6 +84,7 @@ public class slotManager : MonoBehaviour
 			}
 			
             inMiniGame = true;
+            Invoke("callSlotTutorial", 1.3f); // Make call to show slot tutorial after waiting for scale animation to finish
 
             GameObject temp = GameObject.Find("slotGamePanel");
             slotPanelAnimation = temp.GetComponent<Animator>();
@@ -103,6 +104,14 @@ public class slotManager : MonoBehaviour
             slotReels[i].gameObject.SetActive(activate);
         }
     }
+
+
+    // Show slot interactive tutorial
+    private void callSlotTutorial()
+    {
+        Tutorial.tutorialSelector("slot"); 
+    }
+
 
     // Gets the results from SlotGame objects 
     public void getResults(string individualResult)
@@ -140,7 +149,7 @@ public class slotManager : MonoBehaviour
         if (threeMatch)
         {
 			SlotGameTheme_01.Stop();
-			SlotGameWin_01.Play();
+            //SlotGameWin_01.Play();
 			//MainTheme_01.PlayDelayed(1.5f);
 
             // Let reward manager know the reward is from the slot game and not the power-up button

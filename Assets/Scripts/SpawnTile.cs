@@ -7,8 +7,8 @@ using System.Collections.Generic;
 public class SpawnTile : MonoBehaviour
 {
     public GameObject[] tiles;
-    private Vector2[] defaultPositions = new Vector2[4] { new Vector2(-5, 2), new Vector2(-5, 0), 
-                                                          new Vector2 (-5,-2), new Vector2 (0,0) };
+    private Vector2[] defaultPositions = new Vector2[4] { new Vector2(6, 2), new Vector2(6, 0), 
+                                                          new Vector2 (6,-2), new Vector2 (0,0) };
     public GameObject[] clonedTiles = new GameObject[4];
 
     public GameObject hide_tile_image;                          // the image shown when the hide tile effect is active
@@ -150,14 +150,22 @@ public class SpawnTile : MonoBehaviour
             {
             	// For every tile 'In Play', add a reference to
             	// the Move script and enable it.
-            	
-				clonedTiles[n].transform.localScale = new Vector3(0.45f, 0.45f, 0.45f);
+
+                // used with match wheel scale of 0.22
+                //clonedTiles[n].transform.localScale = new Vector3(0.45f, 0.45f, 0.45f);
+                clonedTiles[n].transform.localScale = new Vector3(0.61f, 0.61f, 0.61f);
 				
 				if(clonedTiles[n].tag == "bomb")
 				{
 					clonedTiles[n].transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+                    Tutorial.tutorialSelector("bomb"); // Show bomb interactive tutorial
 				}
-				
+
+                if (clonedTiles[n].tag == "Source_05")
+                {
+                    Tutorial.tutorialSelector("nomatch"); // Show no match interactive tutorial
+                }
+
 				move_script = clonedTiles[n].GetComponent<MoveScript>();
 				move_script.enabled = true;
                 Destroy(clonedTiles[n + 1]);

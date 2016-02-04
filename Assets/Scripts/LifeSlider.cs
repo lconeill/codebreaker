@@ -32,6 +32,9 @@ public class LifeSlider : MonoBehaviour
     
 	private GameObject gameover_sfx_ref;
 	private AudioSource gameover_sfx;
+
+    private bool tutorial_exit = true; // Used to exit the check to display tutorial, so it's not constantly querying Tutorial script
+
 	
     // Find references to the GameObjects
     void Start()
@@ -90,6 +93,13 @@ public class LifeSlider : MonoBehaviour
                 timeKeeper += matchSliderAmount * 5;
             }
 
+            // Show interactive tutorial to increase life slider value
+            if (timeKeeper > 10 && tutorial_exit)
+            {
+                Tutorial.tutorialSelector("life");
+                tutorial_exit = false;
+            }
+
             if (timeKeeper >= lifeTime)
             {
             	// When the life bar reaches the end then
@@ -97,10 +107,12 @@ public class LifeSlider : MonoBehaviour
             	// screen with a restart button. 
 
             	Time.timeScale = 0;
-				
-				if(score_logic.the_score > PlayerPrefs.GetInt("High Score"))
+
+                //if (score_logic.the_score > PlayerPrefs.GetInt("High Score"))
+                if (ScoreLogic.the_score > PlayerPrefs.GetInt("High Score"))
 				{
-					PlayerPrefs.SetInt("High Score", score_logic.the_score);
+                    //PlayerPrefs.SetInt("High Score", score_logic.the_score);
+                    PlayerPrefs.SetInt("High Score", ScoreLogic.the_score);
 					
 					Debug.Log(PlayerPrefs.GetInt("High Score"));
             	}
@@ -123,7 +135,7 @@ public class LifeSlider : MonoBehaviour
         timeKeeper = Mathf.Clamp(timeKeeper + 5 - matchSliderAmount, 0, lifeTime);
     }
 
-    // Used to injcrease the slider when a good reward from the slot game is acquired
+    // Used to inicrease the slider when a good reward from the slot game is acquired
     public void increaseSlider()
     {
         timeKeeper = Mathf.Clamp(timeKeeper - 5 - matchSliderAmount, 0, lifeTime);
