@@ -20,6 +20,8 @@ public class ShowMedals : MonoBehaviour
     public GameObject highscore_text;
     public GameObject score_to_next_medal;
 
+    private bool stop_giftiz_mission_complete = true;      // Stop the Giftiz mission complete banner from showing
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -56,20 +58,23 @@ public class ShowMedals : MonoBehaviour
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
 
+
+        // Show the Giftiz mission complete
+        if (ScoreLogic.the_score >= 1500 && stop_giftiz_mission_complete)
+        {
+            #if UNITY_ANDROID
+
+            GiftizBinding.missionComplete();
+            stop_giftiz_mission_complete = false;
+
+            #endif
+        }
+
         //if (score_logic.the_score < 8000)
         if (ScoreLogic.the_score < 8000)
 		{
 			score_to_next_medal.SetActive(true);
 			score_to_next_medal.GetComponent<Text>().text = "8000 points for Bronze";
-			
-			if(ScoreLogic.the_score >= 1500)
-			{
-				#if UNITY_ANDROID
-				
-				GiftizBinding.missionComplete();
-				
-				#endif
-			}
 		}
 
         //if (score_logic.the_score >= 8000 && score_logic.the_score < 15000)
