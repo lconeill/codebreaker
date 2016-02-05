@@ -44,6 +44,14 @@ public class PowerUpManager : MonoBehaviour {
         GameObject temp_8 = GameObject.Find("reduce_shape_text");
         if (temp_8 != null) { reduce_shape_text = temp_8.GetComponent<Text>(); }
 
+
+        // Determine if user is playing for the first time or not
+        if (!PlayerPrefs.HasKey("FirstTime"))
+        {
+            PlayerPrefs.SetInt("FirstTime", 1);
+            giveFreePowerup();
+        }
+
         changeBalanceText("slow_timer");
         changeBalanceText("increase_slider");
         changeBalanceText("reduce_shape");
@@ -56,20 +64,37 @@ public class PowerUpManager : MonoBehaviour {
 	}
 
 
-    // Set the power-up inventory text manually (SOOMLA onBalanceChanged doesn't work properly)
-    public static void setInventoryText(int freezeBalance, int increaseBalance, int doubleBalance, int reduceBalance)
+    // Give the user 5 free power-up if first time playing
+    private void giveFreePowerup()
     {
-        freeze_timer_text.text = freezeBalance.ToString();
-        increase_slider_text.text = increaseBalance.ToString();
-        double_point_text.text = doubleBalance.ToString();
-        reduce_shape_text.text = reduceBalance.ToString();
+        string freeze_itemID = MayhemStoreAssets.SLOW_TIMER_ITEM_ID;
+        string reduce_itemID = MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID;
+        string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
+        string slider_itemID = MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID;
+
+        StoreInventory.GiveItem(freeze_itemID, 5);
+        StoreInventory.GiveItem(reduce_itemID, 5);
+        StoreInventory.GiveItem(double_itemID, 5);
+        StoreInventory.GiveItem(slider_itemID, 5);
+
+        // Update the inventory text for the power-ups
+        //setInventoryText(5, 5, 5, 5);
     }
+
+
+    // Set the power-up inventory text manually (SOOMLA onBalanceChanged doesn't work properly)
+    //public static void setInventoryText(int freezeBalance, int increaseBalance, int doubleBalance, int reduceBalance)
+    //{
+    //    freeze_timer_text.text = freezeBalance.ToString();
+    //    increase_slider_text.text = increaseBalance.ToString();
+    //    double_point_text.text = doubleBalance.ToString();
+    //    reduce_shape_text.text = reduceBalance.ToString();
+    //}
+
 
     // Updates the inventory balance text on the gamescreen for each power up
     public static void changeBalanceText(string itemID)
     {
-        // TODO: also add the winter theme name when it becomes available
-        //if (Application.loadedLevelName == "gameScreen")
         if (Application.loadedLevelName == "gameScreen" || Application.loadedLevelName == "gameScreenWinter")
         {
             // If a pack is bought change the product_id to the corresponding item_id 

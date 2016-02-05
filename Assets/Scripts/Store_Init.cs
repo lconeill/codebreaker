@@ -23,7 +23,7 @@ public class Store_Init : MonoBehaviour
 		//AdBuddizBinding.SetTestModeActive();
 		
 		AdBuddizBinding.SetAndroidPublisherKey("3a0d8f7a-9823-41ec-8b62-cfc7c02d53ef");
-		AdBuddizBinding.SetIOSPublisherKey("1068342116");
+        AdBuddizBinding.SetIOSPublisherKey("6ead862d-ed50-402e-ad2e-7ce8931e128a");
 		
 		AdBuddizBinding.CacheAds();
 		

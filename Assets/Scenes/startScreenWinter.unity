@@ -1310,7 +1310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &118802083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1359,6 +1359,17 @@ MonoBehaviour:
   - {fileID: 1519679139}
   next_button: {fileID: 920391371}
   previous_button: {fileID: 2136246721}
+  tutorial_images:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &136128605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,7 +2053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &198401526
 RectTransform:
   m_ObjectHideFlags: 0
