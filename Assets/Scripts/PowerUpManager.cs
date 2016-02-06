@@ -94,7 +94,7 @@ public class PowerUpManager : MonoBehaviour {
 
         // Update the inventory text for the power-ups
         //setInventoryText(5, 5, 5, 5);
-    }
+    //}
 
 
     // Set the power-up inventory text manually (SOOMLA onBalanceChanged doesn't work properly)
