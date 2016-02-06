@@ -19,6 +19,13 @@ public class Store_Init : MonoBehaviour
 		//fadeColorAnimationClip.Play ("FadeToColor");
 		
 		SoomlaStore.Initialize(new MayhemStoreAssets());
+
+        // Determine if user is playing for the first time or not
+        if (!PlayerPrefs.HasKey("FirstTime"))
+        {
+            PlayerPrefs.SetInt("FirstTime", 1);
+            giveFreeCurrency();
+        }
 		
 		//AdBuddizBinding.SetTestModeActive();
 		
@@ -35,6 +42,27 @@ public class Store_Init : MonoBehaviour
 	{
 	
 	}
+
+
+    // Give the user 5 free power-up if first time playing
+    private void giveFreeCurrency()
+    {
+        //string currency_ID = MayhemStoreAssets.MAYHEM_CURRENCY_ITEM_ID;
+        //StoreInventory.GiveItem(currency_ID, 100000);
+
+        //Debug.Log(">>>>>>User gets 100000 coins");
+
+        string freeze_itemID = MayhemStoreAssets.SLOW_TIMER_ITEM_ID;
+        string reduce_itemID = MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID;
+        string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
+        string slider_itemID = MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID;
+
+        StoreInventory.GiveItem(freeze_itemID, 5);
+        StoreInventory.GiveItem(reduce_itemID, 5);
+        StoreInventory.GiveItem(double_itemID, 5);
+        StoreInventory.GiveItem(slider_itemID, 5);
+    }
+
 	
 	public void LoadDelayed()
 	{

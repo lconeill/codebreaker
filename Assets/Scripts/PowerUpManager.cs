@@ -46,11 +46,11 @@ public class PowerUpManager : MonoBehaviour {
 
 
         // Determine if user is playing for the first time or not
-        if (!PlayerPrefs.HasKey("FirstTime"))
-        {
-            PlayerPrefs.SetInt("FirstTime", 1);
-            giveFreePowerup();
-        }
+        //if (PlayerPrefs.GetInt("FirstTime") == 1)
+        //{
+        //    PlayerPrefs.SetInt("FirstTime", 2);
+        //    giveFreePowerup();
+        //}
 
         changeBalanceText("slow_timer");
         changeBalanceText("increase_slider");
@@ -64,18 +64,33 @@ public class PowerUpManager : MonoBehaviour {
 	}
 
 
-    // Give the user 5 free power-up if first time playing
-    private void giveFreePowerup()
-    {
-        string freeze_itemID = MayhemStoreAssets.SLOW_TIMER_ITEM_ID;
-        string reduce_itemID = MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID;
-        string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
-        string slider_itemID = MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID;
+     //Give the user 5 free power-up if first time playing
+    //private void giveFreePowerup()
+    //{
+    //    string freeze_itemID = MayhemStoreAssets.SLOW_TIMER_ITEM_ID;
+    //    string reduce_itemID = MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID;
+    //    string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
+    //    string slider_itemID = MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID;
 
-        StoreInventory.GiveItem(freeze_itemID, 5);
-        StoreInventory.GiveItem(reduce_itemID, 5);
-        StoreInventory.GiveItem(double_itemID, 5);
-        StoreInventory.GiveItem(slider_itemID, 5);
+    //    for (int i = 0; i <= 4; i++)
+    //    {
+    //        StoreInventory.BuyItem(freeze_itemID);
+    //        StoreInventory.BuyItem(reduce_itemID);
+    //        StoreInventory.BuyItem(double_itemID);
+    //        StoreInventory.BuyItem(slider_itemID);
+
+    //        Debug.Log(">>>>>>User gets 1 of each power up");
+    //    }
+
+        //string freeze_itemID = MayhemStoreAssets.SLOW_TIMER_ITEM_ID;
+        //string reduce_itemID = MayhemStoreAssets.REDUCE_SHAPE_ITEM_ID;
+        //string double_itemID = MayhemStoreAssets.DOUBLE_POINT_ITEM_ID;
+        //string slider_itemID = MayhemStoreAssets.INCREASE_SLIDER_ITEM_ID;
+
+        //StoreInventory.GiveItem(freeze_itemID, 5);
+        //StoreInventory.GiveItem(reduce_itemID, 5);
+        //StoreInventory.GiveItem(double_itemID, 5);
+        //StoreInventory.GiveItem(slider_itemID, 5);
 
         // Update the inventory text for the power-ups
         //setInventoryText(5, 5, 5, 5);
