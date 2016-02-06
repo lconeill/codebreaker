@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+#if UNITY_ANDROID
 public class GiftizController : MonoBehaviour 
 {
 	
@@ -42,3 +43,4 @@ public class GiftizController : MonoBehaviour
 	}
 	
 }
+#endif
