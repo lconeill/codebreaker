@@ -24,7 +24,9 @@ public class RestartLevel : MonoBehaviour
 	{
 	
 	}
-	
+
+
+    // Show Unity ads
 	public void ShowAd()
 	{
         string remove_ad_id = MayhemStoreAssets.NO_ADS_LIFETIME_PRODUCT_ID;
@@ -37,19 +39,34 @@ public class RestartLevel : MonoBehaviour
             }
         }
 	}
+
+
+    // Show AppBuddiz ads
+    public void ShowAppBuddizAd()
+    {
+        string remove_ad_id = MayhemStoreAssets.NO_ADS_LIFETIME_PRODUCT_ID;
+
+        if (StoreInventory.GetItemBalance(remove_ad_id) == 0)
+        {
+            AdBuddizBinding.ShowAd();
+        }
+    }
 	
+
 	public void Restart()
 	{
 		death_count = death_count + 1;
 		
 		PlayerPrefs.SetInt("Player Deaths", death_count);
-		
+
+        // Display appbuddiz ads
 		if(PlayerPrefs.GetInt("Player Deaths") == 4)
 		{
 			Debug.Log("This is death number: " + death_count);
-			AdBuddizBinding.ShowAd();
+            ShowAppBuddizAd();
 		}
-		
+
+        // Display Unity ads
 		if(PlayerPrefs.GetInt("Player Deaths") == 6)
 		{
 			Debug.Log("This is death number: " + death_count);

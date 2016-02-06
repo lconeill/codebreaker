@@ -14,10 +14,11 @@ public class ReturnToMenu : MonoBehaviour
 	{
 		UI_ref = GameObject.Find("UI");
 	}
-	
+
+
+    // Show Unity ads
 	public void ShowAd()
 	{
-
         string remove_ad_id = MayhemStoreAssets.NO_ADS_LIFETIME_PRODUCT_ID;
 
         if (StoreInventory.GetItemBalance(remove_ad_id) == 0)
@@ -28,6 +29,20 @@ public class ReturnToMenu : MonoBehaviour
             }
         }
 	}
+
+
+    // Show AppBuddiz ads
+    public void ShowAppBuddizAd()
+    {
+        string remove_ad_id = MayhemStoreAssets.NO_ADS_LIFETIME_PRODUCT_ID;
+
+        if (StoreInventory.GetItemBalance(remove_ad_id) == 0)
+        {
+            AdBuddizBinding.ShowAd();
+        }
+    }
+
+
 	
 	public void LoadMainMenu()
 	{
@@ -45,18 +60,18 @@ public class ReturnToMenu : MonoBehaviour
             Application.LoadLevel(4);
         }
 		
+        // Display appbuddiz ads
 		if(PlayerPrefs.GetInt("Player Deaths") == 4)
 		{
 			PlayerPrefs.SetInt("Player Deaths", 0);
-			AdBuddizBinding.ShowAd();
+            ShowAppBuddizAd();
 		}
 		
+        // Display Unity ads
 		if(PlayerPrefs.GetInt("Player Deaths") == 6)
 		{
 			PlayerPrefs.SetInt("Player Deaths", 0);
 			ShowAd();
 		}
-		
-		
 	}
 }
