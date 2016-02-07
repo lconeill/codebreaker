@@ -6516,7 +6516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1971759480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6543,7 +6543,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f9f2ed2bfda149f41bc37d5f80398751, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 93b6af4266d07f34282e66c013d2b919, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1971759481
 Transform:
@@ -6552,8 +6552,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1971759479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .100000001, y: .310000002, z: 0}
-  m_LocalScale: {x: .927426517, y: .927426517, z: .927426517}
+  m_LocalPosition: {x: -.00999999978, y: -.0500000007, z: 0}
+  m_LocalScale: {x: .586835563, y: .55816102, z: .927426517}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
