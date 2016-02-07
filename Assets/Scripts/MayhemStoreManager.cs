@@ -12,6 +12,11 @@ public class MayhemStoreManager : MonoBehaviour {
 	void Start () 
     {
         // SoomlaStore.Initialize(new MayhemStoreAssets());
+        // These events should be called on the splash screen!!
+        // Test it out on sunday
+        //problem was that store which had this script on it was turned off by default and only executed when 
+        //the store was entered
+        //meaning i wasn't catching the events being generated
         StoreEvents.OnItemPurchased += onItemPurchased;
         StoreEvents.OnGoodBalanceChanged += OnGoodBalanceChanged;
         StoreEvents.OnRestoreTransactionsStarted += OnRestoreTransactionsStarted;
