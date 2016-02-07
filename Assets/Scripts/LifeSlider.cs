@@ -138,7 +138,7 @@ public class LifeSlider : MonoBehaviour
     // Used to inicrease the slider when a good reward from the slot game is acquired
     public void increaseSlider()
     {
-        timeKeeper = Mathf.Clamp(timeKeeper - 5 - matchSliderAmount, 0, lifeTime);
+        timeKeeper = Mathf.Clamp(timeKeeper - 10 - matchSliderAmount, 0, lifeTime);
     }
     
     // Plays the bomb explosion animation and triggers the game over panel
