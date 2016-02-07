@@ -33,6 +33,11 @@ public class Tutorial : MonoBehaviour {
             Time.timeScale = 0;
         }
         
+        else if (Pause.isPaused)
+        {
+            Time.timeScale = 0;
+        }
+
         else
         {
             Time.timeScale = 1;

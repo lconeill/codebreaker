@@ -8,6 +8,9 @@ using UnityEngine.SocialPlatforms;
 public class LeaderBoard : MonoBehaviour {
 
     public string leaderboard;
+    public bool showLogIn = true;
+    public GameObject login_game_object;
+    public GameObject logout_game_object;
 
     void Start ()
     {
@@ -16,6 +19,12 @@ public class LeaderBoard : MonoBehaviour {
         
         // Activate the Google Play Games platform
         PlayGamesPlatform.Activate ();
+
+        // Check if the user is already logged in
+        if (PlayGamesPlatform.Instance.IsAuthenticated())
+        {
+            showLogIn = false;
+        }
     }
 
     // Login In Into Your Google+ Account
@@ -23,9 +32,15 @@ public class LeaderBoard : MonoBehaviour {
     {
         Social.localUser.Authenticate ((bool success) =>
         {
-            if (success) {
+            if (success) 
+            {
                 Debug.Log ("Login Sucess");
-            } else {
+                showLogIn = false;
+                swapLogButtons();
+            } 
+            
+            else 
+            {
                 Debug.Log ("Login failed");
             }
         });
@@ -61,5 +76,25 @@ public class LeaderBoard : MonoBehaviour {
     public void OnLogOut ()
     {
         ((PlayGamesPlatform)Social.Active).SignOut ();
+        showLogIn = true;
+        swapLogButtons();
+    }
+
+
+    // On successful log-in swap button to log-out
+    // On successful log-out swap button to log-in
+    public void swapLogButtons()
+    {
+        if (showLogIn)
+        {
+            login_game_object.SetActive(true);
+            logout_game_object.SetActive(false);
+        }
+
+        else
+        {
+            login_game_object.SetActive(false);
+            logout_game_object.SetActive(true);
+        }
     }
 }
