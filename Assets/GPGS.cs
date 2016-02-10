@@ -22,9 +22,14 @@
 ///
 
 
-public static class LeaderboardManager
+public static class GPGS
 {
+        public const string achievement_professional_reflexes = "CgkIkNLrku8MEAIQBQ"; // <GPGSID>
         public const string leaderboard_high_scores = "CgkIkNLrku8MEAIQAQ"; // <GPGSID>
+        public const string achievement_upandcomer = "CgkIkNLrku8MEAIQAw"; // <GPGSID>
+        public const string achievement_mayhem = "CgkIkNLrku8MEAIQBw"; // <GPGSID>
+        public const string achievement_i_do_this_for_a_living = "CgkIkNLrku8MEAIQBg"; // <GPGSID>
+        public const string achievement_moving_on_up = "CgkIkNLrku8MEAIQBA"; // <GPGSID>
 
 }
 
