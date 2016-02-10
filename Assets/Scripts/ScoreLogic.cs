@@ -16,6 +16,12 @@ public class ScoreLogic : MonoBehaviour
 	private Text gui_text;
     private bool tutorial_exit = true; // Used to exit the check to display tutorial, so it's not constantly querying Tutorial script
 
+    private bool first_exit = true;
+    private bool second_exit = true;
+    private bool third_exit = true;
+    private bool fourth_exit = true;
+    private bool fifth_exit = true;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -40,5 +46,42 @@ public class ScoreLogic : MonoBehaviour
             Tutorial.tutorialSelector("double");
             tutorial_exit = false;
         }
+
+        unlockAchievement(the_score);
 	}
+
+
+    // Unlocks the achievement once the score has been reached
+    private void unlockAchievement(int score)
+    {
+        if (score >= 4000 && first_exit)
+        {
+            Achievements.unlockFirstAchievement();
+            first_exit = false;
+        }
+
+        else if (score >= 8000 && second_exit)
+        {
+            Achievements.bronzeAchievement();
+            second_exit = false;
+        }
+
+        else if (score >= 15000 && third_exit)
+        {
+            Achievements.silverAchievement();
+            third_exit = false;
+        }
+
+        else if (score >= 25000 && fourth_exit)
+        {
+            Achievements.goldAchievement();
+            fourth_exit = false;
+        }
+
+        else if (score >= 50000 && fifth_exit)
+        {
+            Achievements.finalAchievement();
+            fifth_exit = false;
+        }
+    }
 }

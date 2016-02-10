@@ -14,11 +14,12 @@ public class LeaderBoard : MonoBehaviour {
 
     void Start ()
     {
+        // moved to achievements class script
         // recommended for debugging:
-        PlayGamesPlatform.DebugLogEnabled = true;
+        //PlayGamesPlatform.DebugLogEnabled = true;
         
         // Activate the Google Play Games platform
-        PlayGamesPlatform.Activate ();
+        //PlayGamesPlatform.Activate ();
 
         // Check if the user is already logged in
         if (PlayGamesPlatform.Instance.IsAuthenticated())
