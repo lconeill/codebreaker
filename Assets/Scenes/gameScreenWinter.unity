@@ -2136,7 +2136,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 464, y: 220.999985}
@@ -5058,7 +5058,7 @@ RectTransform:
   - {fileID: 1741384089}
   - {fileID: 161574219}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -6559,6 +6559,10 @@ Prefab:
     - target: {fileID: 19800736, guid: a5693f40a803ac6428d6c2b74594ee17, type: 2}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800736, guid: a5693f40a803ac6428d6c2b74594ee17, type: 2}
+      propertyPath: InitialModule.startColor.maxColor.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5693f40a803ac6428d6c2b74594ee17, type: 2}

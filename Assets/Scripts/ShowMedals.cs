@@ -21,7 +21,7 @@ public class ShowMedals : MonoBehaviour
     public GameObject score_to_next_medal;
 
     private bool stop_giftiz_mission_complete = true;      // Stop the Giftiz mission complete banner from showing
-
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -43,7 +43,7 @@ public class ShowMedals : MonoBehaviour
 	{
 	
 	}
-	
+
 	public void ShowEarnedMedal()
 	{
 

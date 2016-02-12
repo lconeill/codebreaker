@@ -5,9 +5,12 @@ using Soomla.Store;
 
 public class RestartLevel : MonoBehaviour 
 {
-	private int death_count = 0;
+	//private int death_count = 0;
     private int gamescreen_theme_to_load;
+    
+	public int death_count = 0;
 	
+	public bool is_game_over = true;
 	// Use this for initialization
 	void Start () 
 	{
@@ -25,7 +28,7 @@ public class RestartLevel : MonoBehaviour
 	
 	}
 
-
+	/*
     // Show Unity ads
 	public void ShowAd()
 	{
@@ -39,8 +42,9 @@ public class RestartLevel : MonoBehaviour
             }
         }
 	}
-
-
+	*/
+	
+	/*
     // Show AppBuddiz ads
     public void ShowAppBuddizAd()
     {
@@ -51,10 +55,11 @@ public class RestartLevel : MonoBehaviour
             AdBuddizBinding.ShowAd();
         }
     }
+	*/
 	
-
 	public void Restart()
 	{
+	/*
 		death_count = death_count + 1;
 		
 		PlayerPrefs.SetInt("Player Deaths", death_count);
@@ -76,7 +81,7 @@ public class RestartLevel : MonoBehaviour
 			
 			PlayerPrefs.SetInt("Player Deaths", death_count);
 		}
-		
+		*/
         //Application.LoadLevel("gameScreen");
         Application.LoadLevel(gamescreen_theme_to_load);
 	}

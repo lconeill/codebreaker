@@ -61,7 +61,7 @@ public class ReturnToMenu : MonoBehaviour
         }
 		
         // Display appbuddiz ads
-		if(PlayerPrefs.GetInt("Player Deaths") == 4)
+		if(PlayerPrefs.GetInt("Player Deaths") == 5)
 		{
 			PlayerPrefs.SetInt("Player Deaths", 0);
             ShowAppBuddizAd();

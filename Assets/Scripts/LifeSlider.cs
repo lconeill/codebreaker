@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
+using Soomla.Store;
 
 public class LifeSlider : MonoBehaviour
 {
@@ -34,8 +36,10 @@ public class LifeSlider : MonoBehaviour
 	private AudioSource gameover_sfx;
 
     private bool tutorial_exit = true; // Used to exit the check to display tutorial, so it's not constantly querying Tutorial script
-
 	
+	private GameObject restart_ref;
+	private RestartLevel restart_script;
+
     // Find references to the GameObjects
     void Start()
     {
@@ -57,6 +61,9 @@ public class LifeSlider : MonoBehaviour
 		gameover_sfx_ref = GameObject.Find("GameOver_SFX_01");
 		gameover_sfx = gameover_sfx_ref.GetComponent<AudioSource>();
 		
+		restart_ref = GameObject.Find("ADsManager");
+		restart_script = restart_ref.GetComponent<RestartLevel>();
+		
 		// Make sure that the game on start is not paused
 		
 		Time.timeScale = 1;
@@ -72,6 +79,8 @@ public class LifeSlider : MonoBehaviour
         }
 
         if (temp_2 != null) { slotManager = temp_2.GetComponent<slotManager>(); }
+        
+		restart_script.is_game_over = true;
     }
 
     // Constantly decrease the value of life slider and end game when value is 1
@@ -120,10 +129,15 @@ public class LifeSlider : MonoBehaviour
 				gameover_panel.ShowGameOver();
 				PlayGameOverSound();
 				
+				if(restart_script.is_game_over == true)
+				{
+					ADsManager();
+				}
+				
                 // Stop ticking sfx. This is for the case when the bomb is still active but the life slider is zero
                 bomb_tick_sfx.GetComponent<AudioSource>().Stop();
             }
-
+            
             previousCorrectMatches = wheelRotation.match_count;
             previousIncorrectMatches = wheelRotation.mismatched_count;
         }
@@ -179,5 +193,71 @@ public class LifeSlider : MonoBehaviour
 		}
 		
     }
+    
+	// Show Unity ads
+	public void ShowAd()
+	{
+		string remove_ad_id = MayhemStoreAssets.NO_ADS_LIFETIME_PRODUCT_ID;
+		
+		if (StoreInventory.GetItemBalance(remove_ad_id) == 0)
+		{
+			if (Advertisement.IsReady())
+			{
+				Advertisement.Show();
+			}
+		}
+	}
+	
+	// Show AppBuddiz ads
+	public void ShowAppBuddizAd()
+	{
+		string remove_ad_id = MayhemStoreAssets.NO_ADS_LIFETIME_PRODUCT_ID;
+		
+		if (StoreInventory.GetItemBalance(remove_ad_id) == 0)
+		{
+			AdBuddizBinding.ShowAd();
+		}
+	}
+	
+	public void SetIsGameOverTrue()
+	{
+		restart_script.is_game_over = true;
+	}
+	
+	public void ADsManager()
+	{
+		if (restart_script.is_game_over == true)
+		{
+			restart_script.death_count = restart_script.death_count + 1;
+			Debug.Log("This is the Death Count: " + restart_script.death_count);
+			
+			PlayerPrefs.SetInt("Player Deaths", restart_script.death_count);
+			
+			// Display appbuddiz ads
+			if(PlayerPrefs.GetInt("Player Deaths") == 4)
+			{
+				Debug.Log("This is death number: " + restart_script.death_count);
+				ShowAppBuddizAd();
+			}
+			
+			// Display Unity ads
+			if(PlayerPrefs.GetInt("Player Deaths") == 6)
+			{
+				Debug.Log("This is death number: " + restart_script.death_count);
+				ShowAd();
+				
+				restart_script.death_count = 0;
+				
+				PlayerPrefs.SetInt("Player Deaths", restart_script.death_count);
+			}
+			
+			restart_script.is_game_over = false;
+		}
+		
+		else
+		{
+		
+		}
+	}
 
 }  
