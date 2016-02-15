@@ -98,100 +98,105 @@ public class Tutorial : MonoBehaviour {
     // Display the tutorial if it has not been displayed before
     public static void tutorialSelector(string tutorial)
     {
-        switch (tutorial)
+        int theme_selected = PlayerPrefs.GetInt("Theme");
+        int winter_theme = 3;
+
+        if (theme_selected != winter_theme)
         {
-            case "bomb":
+            switch (tutorial)
+            {
+                case "bomb":
 
-                if (PlayerPrefs.GetString("Tutorial").IndexOf("2") == -1)
-                {
-                    Debug.Log("Display the bomb interactive tutorial.");
-                    activateCommon();
-                    static_tutorial_images[1].SetActive(true);
-                    pause = true;
-                    updatePrefsString("2");
-                }
+                    if (PlayerPrefs.GetString("Tutorial").IndexOf("2") == -1)
+                    {
+                        Debug.Log("Display the bomb interactive tutorial.");
+                        activateCommon();
+                        static_tutorial_images[1].SetActive(true);
+                        pause = true;
+                        updatePrefsString("2");
+                    }
 
-                break;
+                    break;
 
-            case "nomatch":
+                case "nomatch":
 
-                if (PlayerPrefs.GetString("Tutorial").IndexOf("3") == -1)
-                {
-                    Debug.Log("Display the nomatch interactive tutorial.");
-                    activateCommon();
-                    static_tutorial_images[2].SetActive(true);
-                    pause = true;
-                    updatePrefsString("3");
-                }
+                    if (PlayerPrefs.GetString("Tutorial").IndexOf("3") == -1)
+                    {
+                        Debug.Log("Display the nomatch interactive tutorial.");
+                        activateCommon();
+                        static_tutorial_images[2].SetActive(true);
+                        pause = true;
+                        updatePrefsString("3");
+                    }
 
-                break;
+                    break;
 
-            case "slot":
+                case "slot":
 
-                if (PlayerPrefs.GetString("Tutorial").IndexOf("4") == -1)
-                {
-                    Debug.Log("Display the slot interactive tutorial.");
-                    activateCommon();
-                    static_tutorial_images[3].SetActive(true);
-                    pause = true;
-                    updatePrefsString("4");
-                }
+                    if (PlayerPrefs.GetString("Tutorial").IndexOf("4") == -1)
+                    {
+                        Debug.Log("Display the slot interactive tutorial.");
+                        activateCommon();
+                        static_tutorial_images[3].SetActive(true);
+                        pause = true;
+                        updatePrefsString("4");
+                    }
 
-                break;
+                    break;
 
-            case "freeze":
+                case "freeze":
 
-                if (PlayerPrefs.GetString("Tutorial").IndexOf("5") == -1)
-                {
-                    Debug.Log("Display the freeze interactive tutorial.");
-                    activateCommon();
-                    static_tutorial_images[4].SetActive(true);
-                    pause = true;
-                    updatePrefsString("5");
-                }
+                    if (PlayerPrefs.GetString("Tutorial").IndexOf("5") == -1)
+                    {
+                        Debug.Log("Display the freeze interactive tutorial.");
+                        activateCommon();
+                        static_tutorial_images[4].SetActive(true);
+                        pause = true;
+                        updatePrefsString("5");
+                    }
 
-                break;
-                
-            case "life":
+                    break;
 
-                if (PlayerPrefs.GetString("Tutorial").IndexOf("6") == -1)
-                {
-                    Debug.Log("Display the life interactive tutorial.");
-                    activateCommon();
-                    static_tutorial_images[5].SetActive(true);
-                    pause = true;
-                    updatePrefsString("6");
-                }
+                case "life":
 
-                break;
+                    if (PlayerPrefs.GetString("Tutorial").IndexOf("6") == -1)
+                    {
+                        Debug.Log("Display the life interactive tutorial.");
+                        activateCommon();
+                        static_tutorial_images[5].SetActive(true);
+                        pause = true;
+                        updatePrefsString("6");
+                    }
 
-            case "reduce":
+                    break;
 
-                if (PlayerPrefs.GetString("Tutorial").IndexOf("7") == -1)
-                {
-                    Debug.Log("Display the reduce interactive tutorial.");
-                    activateCommon();
-                    static_tutorial_images[6].SetActive(true);
-                    pause = true;
-                    updatePrefsString("7");
-                }
+                case "reduce":
 
-                break;
+                    if (PlayerPrefs.GetString("Tutorial").IndexOf("7") == -1)
+                    {
+                        Debug.Log("Display the reduce interactive tutorial.");
+                        activateCommon();
+                        static_tutorial_images[6].SetActive(true);
+                        pause = true;
+                        updatePrefsString("7");
+                    }
 
-            case "double":
+                    break;
 
-                if (PlayerPrefs.GetString("Tutorial").IndexOf("8") == -1)
-                {
-                    Debug.Log("Display the double interactive tutorial.");
-                    activateCommon();
-                    static_tutorial_images[7].SetActive(true);
-                    pause = true;
-                    updatePrefsString("8");
-                }
+                case "double":
 
-                break;
-        }
-               
+                    if (PlayerPrefs.GetString("Tutorial").IndexOf("8") == -1)
+                    {
+                        Debug.Log("Display the double interactive tutorial.");
+                        activateCommon();
+                        static_tutorial_images[7].SetActive(true);
+                        pause = true;
+                        updatePrefsString("8");
+                    }
+
+                    break;
+            }
+        }      
     }
 
 
