@@ -19,6 +19,7 @@ public class ShowMedals : MonoBehaviour
 
     public GameObject highscore_text;
     public GameObject score_to_next_medal;
+    public GameObject current_score_text;
 
     private bool stop_giftiz_mission_complete = true;      // Stop the Giftiz mission complete banner from showing
 	
@@ -36,6 +37,7 @@ public class ShowMedals : MonoBehaviour
         //medal_ribbon.SetActive(false);
         highscore_text.SetActive(false);
 		score_to_next_medal.SetActive(false);
+        current_score_text.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -54,6 +56,10 @@ public class ShowMedals : MonoBehaviour
 		
         highscore_text.SetActive(true);
         highscore_text.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("High Score");
+
+        current_score_text.SetActive(true);
+        string score = ScoreLogic.the_score.ToString();
+        current_score_text.GetComponent<Text>().text = "Score: " + score;
 
 		score_display_ref = GameObject.Find("score_display");
 		score_logic = score_display_ref.GetComponent<ScoreLogic>();
