@@ -45,8 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf61808d40f146a5bee00c091ecce4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_state: 0
-  m_banner: 
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\ExampleScene\AdBuddizExample.cs" />
+     <Compile Include="Assets\GPGS.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\Achievement.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\CommonStatusCodes.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\CommonTypes.cs" />
@@ -218,8 +219,8 @@
      <Compile Include="Assets\GooglePlayGames\Platforms\PlayGamesClientFactory.cs" />
      <Compile Include="Assets\GooglePlayGames\Platforms\TokenClient.cs" />
      <Compile Include="Assets\GooglePlayGames\PluginVersion.cs" />
-     <Compile Include="Assets\LeaderboardManager.cs" />
      <Compile Include="Assets\Scripts\ADS.cs" />
+     <Compile Include="Assets\Scripts\Achievements.cs" />
      <Compile Include="Assets\Scripts\CircularTimer.cs" />
      <Compile Include="Assets\Scripts\Currency.cs" />
      <Compile Include="Assets\Scripts\DoublePoints.cs" />
@@ -230,6 +231,7 @@
      <Compile Include="Assets\Scripts\GUI\SetAudioLevels.cs" />
      <Compile Include="Assets\Scripts\GUI\ShowPanels.cs" />
      <Compile Include="Assets\Scripts\GUI\StartOptions.cs" />
+     <Compile Include="Assets\Scripts\GiftizController.cs" />
      <Compile Include="Assets\Scripts\HideTileReward.cs" />
      <Compile Include="Assets\Scripts\LeaderBoard.cs" />
      <Compile Include="Assets\Scripts\LifeSlider.cs" />
@@ -250,7 +252,6 @@
      <Compile Include="Assets\Scripts\SpawnTile.cs" />
      <Compile Include="Assets\Scripts\StoreCurrencyText.cs" />
      <Compile Include="Assets\Scripts\Store_Init.cs" />
-     <Compile Include="Assets\Scripts\Test.cs" />
      <Compile Include="Assets\Scripts\ThemeManager.cs" />
      <Compile Include="Assets\Scripts\TouchInput.cs" />
      <Compile Include="Assets\Scripts\Tutorial.cs" />
